@@ -60,6 +60,9 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784472 | Physical-failure reporting tests | Five passed; real retained failure recognized, corrupt/unknown failures rejected, denominators and seed/fixed-control rules verified |
 | 1784481 / 1784482 | Exploratory GRT outcome reports | After final outcome classification; preserve physical failures and suppress incomplete-method/configuration means |
 | 1784485 / 1784486 | Failure-aware GRT plots | After verified outcome reports; show failure counts, all candidate CSV rows, and no incomplete-method mean or pooled correlation |
+| 1784533 | Released DEF geometry audit | All six checked against released LEFs; swerv has three raw macro overlaps, other five have none; no coordinates changed |
+| 1784534 | bp_be fullflow raw-report audit | Completed and passed; DRC247 retained separately from flow completion |
+| 1784543 | Generated deterministic swerv fullflow | Independent official-checkpoint baseline after released input failed macro overlap; original failed Table 2 row remains unchanged |
 
 ## Interpretation fixes
 

@@ -44,11 +44,24 @@ def main():
         row = {"design": design, "run": str(run), "paper_rounded": reference, "status": "unavailable"}
         try:
             manifest_path, metrics_path = run / "manifest.json", run / "metrics.json"
-            manifest, metrics = json.loads(manifest_path.read_text()), json.loads(metrics_path.read_text())
+            manifest = json.loads(manifest_path.read_text())
+            row.update(manifest_sha256=digest(manifest_path), slurm_job_id=manifest["slurm_job_id"])
+            if manifest["design"] != design or digest(manifest["def_path"]) != manifest["def_sha256"]:
+                raise ValueError("Declared design or input DEF differs from the run manifest")
+            row.update(def_sha256=manifest["def_sha256"], openroad_sha256=manifest["openroad_sha256"])
+            failure_path = run / "failure_analysis.json"
+            if manifest.get("success") is not True and failure_path.exists():
+                failure = json.loads(failure_path.read_text())
+                if failure["manifest_sha256"] != digest(manifest_path) or failure["def_sha256"] != manifest["def_sha256"]:
+                    raise ValueError("Failure analysis does not match original run inputs")
+                for field in ["log", "raw_geometry_audit"]:
+                    if digest(failure[field + "_path"]) != failure[field + "_sha256"]:
+                        raise ValueError("Failure evidence changed after analysis")
+                row.update(failure_analysis=failure, failure_analysis_sha256=digest(failure_path))
+                raise ValueError(failure["error_line"])
             if manifest.get("success") is not True or manifest["design"] != design:
                 raise ValueError("Fullflow did not complete successfully for the declared design")
-            if digest(manifest["def_path"]) != manifest["def_sha256"]:
-                raise ValueError("Input DEF changed since evaluation")
+            metrics = json.loads(metrics_path.read_text())
             audit_path = run / "fullflow_audit.json"
             audit = json.loads(audit_path.read_text())
             if audit.get("all_checks_pass") is not True or audit.get("stage") != "finish_after_detailed_route":
@@ -63,7 +76,7 @@ def main():
                     raise ValueError(f"Nonfinite {key}")
                 measured[name] = value
                 differences[name] = value - reference[name]
-                flat.append({"design": design, "metric": name, "paper_rounded": reference[name],
+                flat.append({"design": design, "status": "completed", "error": "", "metric": name, "paper_rounded": reference[name],
                              "measured": value, "difference": differences[name],
                              "relative_to_abs_paper_percent": 100 * differences[name] / abs(reference[name])})
             drc = float(metrics["DRC"])
@@ -81,6 +94,10 @@ def main():
             row.update(status="failed_or_unavailable", error_type=type(error).__name__, error=str(error))
             report["failures"].append({"design": design, "run": str(run), "error": str(error)})
             flat = [entry for entry in flat if entry["design"] != design]
+            for name, _, _ in columns:
+                flat.append({"design": design, "status": row["status"], "error": str(error),
+                             "metric": name, "paper_rounded": reference[name], "measured": None,
+                             "difference": None, "relative_to_abs_paper_percent": None})
         report["designs"].append(row)
     successful = [row for row in report["designs"] if row["status"] == "completed"]
     report["completed_count"] = len(successful)
@@ -88,7 +105,7 @@ def main():
     report["status"] = "completed" if len(successful) == 6 and report["same_tool_binary"] else "incomplete"
     (output / "report.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
     with (output / "metric_comparison.csv").open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=["design", "metric", "paper_rounded", "measured", "difference", "relative_to_abs_paper_percent"])
+        writer = csv.DictWriter(stream, fieldnames=["design", "status", "error", "metric", "paper_rounded", "measured", "difference", "relative_to_abs_paper_percent"])
         writer.writeheader(); writer.writerows(flat)
     lines = ["# Released-DEF fullflow comparison", "", report["scope"], "",
              "| Design | Status | rWL (million um) | Paper rWL | WNS (ns) | TNS (ns) | Power (W) | Cell area (um²) | DRC |",
@@ -100,6 +117,10 @@ def main():
             m = row["measured"]
             lines.append(f"| {row['design']} | completed | {m['rWL_million_um']:.6f} | {row['paper_rounded']['rWL_million_um']} | {m['WNS_ns']:.6f} | {m['TNS_ns']:.3f} | {m['Power_W']:.3f} | {m['CellArea_um2']:.1f} | {row['DRC']} |")
     lines += ["", "Paper values for every metric and signed differences are in metric_comparison.csv.", ""]
+    if report["failures"]:
+        lines += ["Failed or unavailable cases retain all five metric rows with blank measurements; they are not zero-valued results.", ""]
+        lines += [f"- {failure['design']}: {failure['error']}" for failure in report["failures"]]
+        lines.append("")
     lines += ["- " + note for note in report["limitations"]]
     (output / "comparison.md").write_text("\n".join(lines) + "\n")
     print(json.dumps({"status": report["status"], "completed": len(successful), "output": str(output)}))
