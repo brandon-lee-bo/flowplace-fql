@@ -58,7 +58,7 @@ def main():
     checkpoint = torch.load(args.reference_checkpoint, map_location=args.device, weights_only=False)
     if checkpoint["data"]["sha256"] != data.metadata["sha256"]:
         raise ValueError("Diagnostic critic checkpoint belongs to a different dataset")
-    critic = Critics(checkpoint["dim"], checkpoint["widths"]).to(args.device).eval()
+    critic = Critics(checkpoint["dim"], checkpoint.get("critic_widths", checkpoint["widths"])).to(args.device).eval()
     critic.load_state_dict(checkpoint["critic_state"])
     for parameter in critic.parameters():
         parameter.requires_grad_(False)

@@ -24,11 +24,13 @@ try:
                        distillation_loss, policy_loss, write_json)
     from .analytic import load_hpwl
     from .latency import benchmark_actor
+    from .provenance import capture_source_provenance, checkpoint_provenance
 except ImportError:
     from core import (Critics, OneStepActor, PlacementData, critic_diagnostics,
                       distillation_loss, policy_loss, write_json)
     from analytic import load_hpwl
     from latency import benchmark_actor
+    from provenance import capture_source_provenance, checkpoint_provenance
 
 
 def parse_args():
@@ -38,6 +40,7 @@ def parse_args():
     parser.add_argument("--seeds", default="0,1,2")
     parser.add_argument("--alphas", default="1,10,100")
     parser.add_argument("--widths", default="256,256,256")
+    parser.add_argument("--critic-widths", help="Separate critic widths; defaults to actor widths or loaded gate checkpoint")
     parser.add_argument("--critic-steps", type=int, default=2000)
     parser.add_argument("--warmup-steps", type=int, default=1000)
     parser.add_argument("--actor-steps", type=int, default=2000)
@@ -48,6 +51,8 @@ def parse_args():
     parser.add_argument("--split-seed", type=int, default=20261017)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--normalize-q", action="store_true")
+    parser.add_argument("--pretrained-critic-dir", help="Optional critic_gate output; reuse its verified per-seed GRT critic")
+    parser.add_argument("--seal-heldout", action="store_true", help="Suppress heldout diagnostics; always enabled for GRT datasets")
     parser.add_argument("--analytic-hpwl-cache", help="Optional real-circuit benchmark cache for analytic actor control")
     parser.add_argument("--analytic-alphas", default="", help="Optional same-student analytic HPWL alpha sweep")
     parser.add_argument("--reward-scale", type=float, help="Training-only HPWL normalization; defaults to dataset manifest")
@@ -70,9 +75,11 @@ def log_line(stream, record):
     stream.flush()
 
 
-def evaluate_critic(critic, actions, rewards, split, chunk=256):
+def evaluate_critic(critic, actions, rewards, split, chunk=256, seal_heldout=False):
     output = {}
     for value, name in [(0, "train"), (1, "validation"), (2, "heldout")]:
+        if value == 2 and seal_heldout:
+            continue
         idx = np.flatnonzero(split == value)
         with torch.no_grad():
             predictions = torch.cat([critic(actions[batch]) for batch in np.array_split(idx, max(1, (len(idx)+chunk-1)//chunk))])
@@ -80,7 +87,8 @@ def evaluate_critic(critic, actions, rewards, split, chunk=256):
     return output
 
 
-def train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl=None, analytic_alphas=()):
+def train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl=None, analytic_alphas=(), critic_widths=None,
+                   source_provenance=None, gate_provenance=None):
     start = time.monotonic()
     out = root / f"seed_{seed}"
     out.mkdir(parents=True, exist_ok=False)
@@ -96,12 +104,29 @@ def train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl
     teacher_val = np.flatnonzero(data.split == 1)
     dim = data.noise.shape[1]
     actor = OneStepActor(dim, widths, data.movable_mask, data.fixed_action).to(device)
-    critic = Critics(dim, widths).to(device)
+    critic_widths = widths if critic_widths is None else critic_widths
+    critic = Critics(dim, critic_widths).to(device)
+    critic_checkpoint = None
+    if args.pretrained_critic_dir:
+        path = Path(args.pretrained_critic_dir) / f"seed_{seed}" / "critic.pt"
+        if checkpoint_provenance(path) != gate_provenance[str(seed)]:
+            raise ValueError("Gate checkpoint changed since startup capture")
+        critic_checkpoint = torch.load(path, map_location=device, weights_only=False)
+        if critic_checkpoint["dataset_sha256"] != data.metadata["sha256"] or critic_checkpoint["seed"] != seed:
+            raise ValueError("Pretrained critic dataset or seed mismatch")
+        if critic_checkpoint.get("critic_widths", critic_checkpoint["widths"]) != critic_widths or critic_checkpoint["dim"] != dim:
+            raise ValueError("Pretrained critic architecture mismatch")
+        if critic_checkpoint.get("reward_stage") != "global_route_only":
+            raise ValueError("Pretrained critic must come from the GRT validation gate")
+        critic.load_state_dict(critic_checkpoint["critic_state"], strict=True)
     critic_optimizer = torch.optim.Adam(critic.parameters(), lr=args.lr)
     rng = np.random.default_rng(seed + 10000)
     with (out / "training.jsonl").open("w") as logs:
         critic.train()
-        for step in range(args.critic_steps):
+        if critic_checkpoint is not None:
+            log_line(logs, {"phase": "critic_loaded_from_gate", "source": str(Path(args.pretrained_critic_dir).resolve()),
+                            "seed": seed, "training_steps_this_run": 0})
+        for step in range(0 if critic_checkpoint is not None else args.critic_steps):
             idx = batch_indices(critic_train, args.batch_size, rng, device)
             pred = critic(actions[idx])
             loss = (pred - rewards[idx, None]).square().mean()
@@ -119,7 +144,7 @@ def train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl
         critic.eval()
         for parameter in critic.parameters():
             parameter.requires_grad_(False)
-        diagnostics = evaluate_critic(critic, actions, rewards, data.critic_split)
+        diagnostics = evaluate_critic(critic, actions, rewards, data.critic_split, seal_heldout=args.seal_heldout)
         write_json(out / "critic_diagnostics.json", diagnostics)
 
         # Shared warmup controls initialization and distillation history across variants.
@@ -194,6 +219,8 @@ def train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl
                                 movable_mask=data.movable_mask, fixed_action=data.fixed_action)
             scores = {}
             for value, label in [(0, "train"), (1, "validation"), (2, "heldout")]:
+                if value == 2 and args.seal_heldout:
+                    continue
                 mask = data.split == value
                 scores[label] = {
                     "count": int(mask.sum()),
@@ -218,9 +245,12 @@ def train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl
                                "selection": "fixed final iteration; no heldout metric used for selection"}
             write_json(method_dir / "diagnostics.json", results[method])
             torch.save({"actor_state": actor.state_dict(), "critic_state": critic.state_dict(),
-                        "widths": widths, "dim": dim, "movable_mask": data.movable_mask.tolist(),
+                        "widths": widths, "actor_widths": widths, "critic_widths": critic_widths,
+                        "dim": dim, "movable_mask": data.movable_mask.tolist(),
                         "fixed_action": data.fixed_action.tolist(), "coordinate_shape": data.coordinate_shape,
-                        "seed": seed, "method": method, "objective": objective, "args": vars(args), "data": data.metadata},
+                        "seed": seed, "method": method, "objective": objective, "args": vars(args), "data": data.metadata,
+                        "source_provenance": source_provenance,
+                        "gate_checkpoint_provenance": None if gate_provenance is None else gate_provenance[str(seed)]},
                        method_dir / "checkpoint.pt")
         result = {"seed": seed, "seconds": time.monotonic() - start, "critic": diagnostics, "methods": results}
         write_json(out / "summary.json", result)
@@ -231,8 +261,22 @@ def main():
     args = parse_args()
     if not os.environ.get("SLURM_JOB_ID") and not args.allow_local_smoke:
         raise RuntimeError("Use a Slurm allocation/job for training; --allow-local-smoke is only a bounded synthetic check")
+    root = Path(args.output).resolve()
+    root.mkdir(parents=True, exist_ok=True)
+    if (root / "run.json").exists() or (root / "source_snapshot").exists():
+        raise FileExistsError("Choose a new run directory; existing source snapshots are immutable")
+    source_provenance = capture_source_provenance(root / "source_snapshot")
     widths = [int(x) for x in args.widths.split(",")]
     seeds = [int(x) for x in args.seeds.split(",")]
+    gate_provenance = {str(seed): checkpoint_provenance(Path(args.pretrained_critic_dir) / f"seed_{seed}" / "critic.pt")
+                       for seed in seeds} if args.pretrained_critic_dir else None
+    if args.critic_widths:
+        critic_widths = [int(x) for x in args.critic_widths.split(",")]
+    elif args.pretrained_critic_dir:
+        reference = torch.load(Path(args.pretrained_critic_dir) / f"seed_{seeds[0]}" / "critic.pt", map_location="cpu", weights_only=False)
+        critic_widths = reference.get("critic_widths", reference["widths"])
+    else:
+        critic_widths = widths
     alphas = [float(x) for x in args.alphas.split(",") if x]
     analytic_alphas = [float(x) for x in args.analytic_alphas.split(",") if x]
     if any(alpha <= 0 for alpha in alphas) or len(set(alphas)) != len(alphas):
@@ -250,6 +294,9 @@ def main():
     torch.backends.cudnn.allow_tf32 = False
     torch.set_num_threads(args.threads)
     data = PlacementData.load(args.dataset, args.split_seed, args.allow_random_split)
+    source_manifest_path = Path(args.dataset).with_name("manifest.json")
+    if source_manifest_path.exists() and json.loads(source_manifest_path.read_text()).get("reward_stage") == "global_route_only":
+        args.seal_heldout = True
     if args.allow_local_smoke and not os.environ.get("SLURM_JOB_ID"):
         if max(args.critic_steps, args.warmup_steps, args.actor_steps) > 20 or len(data.noise) > 1024 or len(data.reward) > 1024 or max(widths) > 64 or data.noise.shape[1] > 64 or len(seeds) > 1:
             raise RuntimeError("Local smoke budget exceeded; use Slurm")
@@ -270,6 +317,8 @@ def main():
         raise FileExistsError("Output contains a run.json; choose a new directory rather than overwrite evidence")
     run = {"kind": "FQL-style fixed-circuit contextual-bandit adaptation", "args": vars(args),
            "data": data.metadata, "torch_version": torch.__version__, "numpy_version": np.__version__,
+           "architectures": {"actor_widths": widths, "critic_widths": critic_widths},
+           "source_provenance": source_provenance, "gate_checkpoint_provenance": gate_provenance,
            "python": platform.python_version(), "device": str(device), "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
            "determinism": {"torch_deterministic_algorithms": torch.are_deterministic_algorithms_enabled(),
                            "cublas_workspace_config": os.environ.get("CUBLAS_WORKSPACE_CONFIG"),
@@ -286,7 +335,8 @@ def main():
            "evaluation_warning": "proposals.npz requires external legalization and measured reward; predicted Q is not quality evidence"}
     write_json(root / "run.json", run)
     try:
-        summaries = [train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl, analytic_alphas) for seed in seeds]
+        summaries = [train_one_seed(args, data, seed, widths, alphas, device, root, analytic_hpwl, analytic_alphas,
+                                    critic_widths, source_provenance, gate_provenance) for seed in seeds]
         write_json(root / "summary.json", {"status": "training_completed_external_evaluation_required", "seeds": summaries})
     except Exception as exc:
         write_json(root / "failure.json", {"type": type(exc).__name__, "message": str(exc)})

@@ -64,7 +64,7 @@ sbatch --array=0-95%2 scripts/label_grt_batch.slurm /absolute/tasks.jsonl
 
 The batch script **is not submitted automatically**. Each task requests 8 CPUs/12GB, max 2 concurrent (as submitted above), and disables automatic requeue to prevent ambiguous duplicate artifacts. Failed tasks remain explicit and can be resubmitted under new run IDs.
 
-New GRT runs default to the existing home-backed `results` directory and retain all intermediates. Ceph quota checks found approximately 573 GB of user headroom on `/fact_home/bohanli` versus 59 GB on `/fact_data/bohanli`, despite much more aggregate filesystem free space. The default therefore stays on home storage. Each new run records current quota usage and requires at least 8 GiB headroom. Optional `--storage bulk` creates a compatibility symlink under `results` to `/fact_data/bohanli/flowplace_fql_backend/grt_results`; it is not the batch default, and no existing run is moved. The measured 96-run bp_fe batch uses approximately 34 GB with all intermediates retained.
+New GRT runs default to the existing home-backed `results` directory and retain all intermediates. Ceph quota checks found approximately 573 GB of user headroom on `/fact_home/bohanli` versus 59 GB on `/fact_data/bohanli`, despite much more aggregate filesystem free space. The default therefore stays on home storage. Each new run records current quota usage and requires at least 8 GiB headroom. Optional `--storage bulk` creates a compatibility symlink under `results` to `/fact_data/bohanli/flowplace_fql_backend/grt_results`; it is not the batch default, and no existing run is moved. At approximately 350 MB per measured bp_fe run, a 96-run batch is expected to use about 34 GB with all intermediates retained.
 
 For final fullflow comparisons on a selected subset, `scripts/evaluate_batch.slurm` accepts the same JSONL schema and array override. It requests 8 CPUs/24GB per task, max 2 concurrent, and retains the original detailed-route iteration limit. This helper is also not submitted automatically.
 
@@ -74,7 +74,7 @@ Per-task reusable outputs:
 - `results/<run_id>/manifest.json`: input hash, scheduling ID, tool/config provenance, stage runtimes, completion flag.
 - `results/<run_id>/orfs_work/logs/nangate45/<design_nickname>/eval/5_grt_label.json`: raw OpenROAD metrics.
 - `results/<run_id>/orfs_work/reports/nangate45/<design_nickname>/eval/5_fql_global_route_label.rpt`: timing/power report.
-- `.../reports/.../congestion_post_recover_power.rpt`: final global-routing overflow regions.
+- `.../reports/.../fql_grt_marker_status.json` and, when markers exist, `fql_final_congestion.rpt`: final global-routing overflow evidence. Legacy positive cases also retain `congestion_post_recover_power.rpt`; see the parser correction below.
 
 Required fields are checked; an absent metric causes failure rather than being replaced by an invented zero. A completed cheap-label run is explicitly marked `stage=global_route_only` and `not_final_table2=true`. Validation against the matching fullflow GRT checkpoint is required before launching an offline label dataset.
 
@@ -102,3 +102,26 @@ Validated cheap labels: rWL 2,491,854 um; WNS -0.405417 ns; TNS -226.623 ns; rep
 Job **1783970**, `results/generated_bp_fe_seed300_01`, evaluates the independent original-GPU-mode sample saved at `../baseline/artifacts/pretrained_original/bp_fe/seed_300`. It is distinct from the later deterministic stream. Coordinate export and all 11 macro geometry checks passed. Fullflow took 461.80 seconds and reported detailed-route wirelength 2.152282 million um, WNS -0.669114 ns, TNS -419.931 ns, power 0.175 W, standard-cell area 60,285.2 um², and 12 DRC violations. Relative to the released DEF, this single sample has 0.79% lower wirelength but worse timing and higher power/area; it is not a FQL improvement result and is not DRC clean. See `released_comparison.json` and the raw retained reports.
 
 All six original-mode stream placements were also exported and geometry-checked successfully under `results/official_stream_seed300_exports`; no fullflow jobs were automatically submitted for those six exports.
+
+## GRT parser correction during the 96-label collection
+
+Array 1784047 initially exposed a reporting edge case: tasks 0 and 1 completed routing and timing analysis, but parser v1 failed because no congestion report existed. Missing files are **not** a valid zero label. Pending tasks were briefly held while the saved final ODBs were inspected under Slurm. Job 1784105 established directly that both final databases have no `Global route` marker category; their zero overflow labels are therefore backed by database evidence. Existing positive case row0003 had exactly 23 final markers, and its PPA and H/V overflow values agree exactly with the original parser.
+
+`write_grt_marker_status.tcl` now reads the final marker category/count and exports the marker report. These are report-only operations, executed after the unchanged global-routing optimization; no placement, routing, or optimization command was added or changed. `grt_metrics.py` checks finite PPA values, final checkpoint presence, the exact marker count, and each `usage - capacity = overflow` entry. It never substitutes an earlier `congestion.rpt` for missing final evidence. The first full task under this revision (task7/row0010) completed successfully in 147.72 seconds with live final marker evidence.
+
+Recovered results keep original failed manifests as `manifest.before_parser_v2.json`, preserve their original Slurm job IDs and terminal status, and record postprocessing recovery events. No routing computation was repeated. The first six tasks executed the timing-only reporting wrapper; remaining tasks use the marker-reporting wrapper. Physical-flow identity is recorded separately from reporting and parser revisions, so this distinction remains explicit. The archived `assets/global_route_label_v1.tcl` matches the recorded v1 hash. Tasks0/1 predated runtime wrapper hashing; their reconstructed revision is marked retrospective, rather than represented as a runtime capture.
+
+To audit every requested completed label, validate raw reports again and normalize missing metadata:
+
+```sh
+python3 scripts/audit_grt_tasks.py ../datasets/bp_fe_grt_request_v1/tasks.jsonl \
+  --stamp-complete --output results/bp_fe_grt_v1_audit.json
+```
+
+The audit distinguishes not-started/running/failed tasks from validated labels, checks input DEF hashes against the requested manifest, and reports physical-flow/reporting/parser revision counts. Final completeness requires all requested labels and one common physical-flow revision. Root owns collection/relabel jobs; the backend has not submitted the separate 36-layout proxy collection itself.
+
+## Separate detailed-route iteration diagnostic
+
+Authorized diagnostic array1784131 uses only the two already-evaluated bp_fe layouts and their saved, hash-verified global-route ODB/SDC checkpoints. It changes only `DETAILED_ROUTE_ARGS` from cap4 to cap20, then uses the same fill/final-report steps. No placement, CTS, or global routing is repeated; baseline directories are not overwritten. Resources are 8 CPUs/12GB/2 hours and one diagnostic task at a time. The released-DEF task was preempted after 5m04s on cpu-scavenger, with no final diagnostic metrics; its explicit interruption record is retained. Replacement array1784154 runs only that case on eda after the first array ends, preserving single-task concurrency.
+
+The generated-layout diagnostic completed in 357.58 seconds for DRT plus finish. Its DRC sequence was `10543,3210,2623,97,12,11,11,2,2,0`: first five iterations match the cap4 baseline, and iteration9 clears the reported routing violations. At the same final-report point, wirelength changes from 2,152,282 to 2,152,303 um; WNS from -0.669114 to -0.669164 ns; TNS from -419.931 to -419.959 ns. Power 0.175W and standard-cell area 60,285.2um² are unchanged. Original and copied GRT checkpoint hashes remain unchanged. This demonstrates premature routing termination for this particular sample; it is not a complete signoff or a replacement for the released-flow baseline. Results: `results/diagnostic_drt20_generated_bp_fe_seed300_01_job1784131`.

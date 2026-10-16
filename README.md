@@ -1,7 +1,12 @@
 # FlowPlace + FQL investigation
 
 This is a live research experiment, started 2026-10-16 (Hong Kong).
-No successful Table 2 reproduction or FQL improvement is asserted yet.
+The macro-proxy experiments and independent audits are complete. Exact Table 2
+numbers and a routed PPA improvement from FQL have not been established.
+
+Read the evolving [results report](docs/results_report.md) for measured outcomes,
+the [run ledger](docs/run_ledger.md) for Slurm jobs/failures, and the
+[evaluation protocol](docs/evaluation_protocol.md) for what each result means.
 
 ## Goal
 

@@ -122,3 +122,67 @@ All original `noise`, `teacher_action`, teacher splits and group identities rema
 The new stage is **global_route_only**, explicitly not final detailed-route Table 2 PPA. A macro-HPWL evaluator can still inspect proposals but cannot calibrate a critic trained on global-route rWL; Q-versus-measured comparisons require matching backend labels and this training reference. If adding an analytic HPWL control to the GRT experiment, explicitly use the original proxy training normalization with `--reward-scale`, and describe HPWL as a different objective; silently normalizing macro HPWL by the GRT scale changes its relative weight.
 
 Training defaults now enable deterministic PyTorch algorithms, configure cuBLAS before CUDA initialization, disable cuDNN benchmarking/TF32, and record these settings in `run.json`. Unsupported deterministic operations raise instead of silently switching algorithms. Reproducibility refers to the same seed, software and hardware; it does not promise identical outputs across PyTorch versions or GPU types.
+
+## Teacher sensitivity probe
+
+`sbatch experiments/flowplace_fql/fql/probe_teacher_sensitivity.slurm` runs a small paired diagnostic on one GPU using the shared pinned environment. The default output must be new. It uses the first eight **training** noise points, one fixed unit-RMS direction per point, both signs and epsilon `1e-5,1e-3,1e-2`. One model instance runs the original 20-step sampler with hard projection enabled/disabled. It checks exact repeated-noise trajectories and exact agreement with cached hard teacher outputs, then saves all perturbed inputs, outputs and trajectories. No training data is changed and no final external legalization or quality claim is made.
+
+The first run, Slurm `1784060`, completed `0:0` in 76 seconds on an NVIDIA L20 with `torch 2.2.1+cu121`. All 16 repeat comparisons and eight cache comparisons were bit-identical. Per-epsilon averages below use 16 paired perturbations, not 16 independent seeds:
+
+| Noise RMS epsilon | Hard-projection output MSE | No-hard-projection output MSE |
+|---|---:|---:|
+| `1e-5` | 0.313862 | 0.00000268377 |
+| `1e-3` | 0.325414 | 0.00000329651 |
+| `1e-2` | 0.423858 | 0.00000492576 |
+
+At epsilon `1e-5`, all 16 hard cases changed at least one coordinate by more than 0.01; none of the no-hard cases did. The largest changes were 1.59055 and 0.00911079, respectively, in normalized coordinates. This supports strong amplification by the hard-projection sampling branch and a plausible cause of poor paired-noise distillation generalization. It does not establish a global continuity theorem, rule out sample/capacity problems, or demonstrate that no-hard layouts are legal or useful. No-hard changes also show a finite-precision floor rather than ideal epsilon-proportional behavior.
+
+Artifacts: `../runs/teacher_sensitivity_v1/{report.json,arrays.npz}` (symlink to `/fact_data/bohanli/flowplace_fql/teacher_sensitivity_v1`); log `../logs/teacher_sensitivity_1784060.log`.
+
+## Real-GRT critic gate and candidate aggregation
+
+Before any actor/backend sweep, run the frozen small-critic gate under Slurm after successful relabeling:
+
+```sh
+python fql/critic_gate.py --dataset GRT/dataset.npz --output NEW_GATE \
+  --seeds 0,1,2 --widths 64,64 --steps 1000 --batch-size 64 \
+  --lr 0.0003 --weight-decay 0.0001 --device cpu
+```
+
+This configuration is distinct from the initial macro-proxy `256,256,256` critics. The gate reports only train/validation metrics, constant-predictor performance and label/prediction variance. It preserves `seed_N/critic.pt` and `best_train_layout.{json,npz}`. The latter is one training-selected executed layout and one original backend measurement; it must not be counted as many independent baselines by copying it across noises. The report gives an advisory continuation recommendation, never launches more work, and never selects from heldout outcomes.
+
+If the gate warrants the predeclared actor experiment, `train.py --pretrained-critic-dir NEW_GATE` loads and freezes its exact critic. Use `--widths` for the actor; critic widths are inferred from the gate or explicitly supplied with `--critic-widths`. New checkpoints retain `actor_widths` and `critic_widths` separately; prediction/latency use the former, coordinate-control diagnostics use the latter, and old checkpoints remain readable. GRT datasets automatically enable `--seal-heldout`: training reports no heldout critic error, distillation score or predicted-Q summary.
+
+The generic actual-backend aggregator consumes root exporter output directly:
+
+```sh
+python fql/aggregate_backend_candidates.py --tasks PLAN/tasks.jsonl \
+  --output NEW_AGGREGATE
+```
+
+Run under Slurm. `selection_plan.json` beside the tasks must contain either `methods` × `indices` or explicit `candidates[{method,index}]`. It may additionally bind exact `task_ids`, dataset SHA and upstream selection path/SHA. The tasks need `method,index,split,design,metrics_path,def_path,def_sha256,action_sha256` plus an action locator (`action_path,action_key,action_row,action_file_sha256`) or `normalized_action_flat`. If both action forms exist, both must match. DEF `.audit.json` must bind its output hash and prove legal rounded geometry; optional `normalized_sizes` enables another independent coordinate check. All requested failures are retained, the command exits nonzero and no survivor-only quality comparison is generated. Outputs separate method/seed metrics, paired noise deltas, and averages of seed means.
+
+`predicted_q` is diagnostic only unless tasks explicitly carry `q_reward_stage=global_route_only`, `q_reward_scale_train_only`, and a verified `q_source_manifest`/`q_source_manifest_sha256`. The source manifest must bind its actual GRT dataset and training-only scale. Macro-trained Q is never compared numerically with routed reward. The root proxy-transfer exporter uses `phase=exploratory`, so its GRT results cannot select hyperparameters.
+
+For a real GRT-trained comparison, the validation plan must additionally include `training_reward_stage=global_route_only` and a predeclared `heldout_indices` list. Include the best training layout once as `method=best_observed_train,role=fixed_training_baseline,split=0`, using its source training index and exact original backend artifacts. Use explicit `candidates` in the plan so this baseline is not multiplied across evaluation noises. After complete validation:
+
+```sh
+python fql/seal_grt_selection.py --validation-report VALIDATION/report.json \
+  --output NEW_SELECTION.json
+```
+
+Selection keeps one FQL alpha across all seeds, checks paired budgets, retains BC and both teacher/training baselines, and records whether the selected FQL actually beats them. It never launches heldout evaluation. A later heldout candidate plan must bind this selection's path/SHA and exactly match its `heldout_plan`; the aggregator checks those constraints and validation/backend provenance. The proposed bounded budget is 48 new validation candidates (BC plus FQL alpha 1, 10, 100; three seeds; four noises) and 24 new heldout candidates; it is not automatically executed by any module. The alpha=1 arm was added before seeing GRT validation labels, to retain the original normalized-reward guidance range. Paired summaries honor `plan.reference_method`, defaulting to `teacher_relegalized`; sampler-only exploratory comparisons can explicitly use `teacher_original`.
+
+The GRT-specific exporter runs under Slurm after the gate is reviewed and the predeclared actor sweep is finished:
+
+```sh
+python fql/prepare_grt_candidate_tasks.py --dataset-dir GRT --training-dir STUDENTS \
+  --gate-dir GATE --output NEW_VALIDATION_REQUEST --phase validation \
+  --seeds 0,1,2 --alphas 1,10,100 --prefix bp_fe_grt_actor_v1 --device cuda
+```
+
+Defaults freeze validation indices `192,193,194,195` and future heldout indices `240,241,242,243`. Every method is checked against the exact source dataset, teacher/noise pairing, actor checkpoint and unchanged gate critic; inference is recomputed to verify the proposal arrays. The legalizer and DEF exporter sources are hash-bound. New policy actions receive one external legalization and independent normalized/rounded-DEF legality audits. Teacher variant-0 and best-TRAIN references reuse their exact original executed action and bound backend measurement. An illegal or missing item fails the plan without replacing that candidate.
+
+`status.json` must say `completed`. Submit **only `pending_tasks.jsonl`** (48 new validation runs); aggregate **`tasks.jsonl`** (53 records including four reused teachers and one fixed best-TRAIN reference). A partial export is preserved as `tasks.partial.jsonl` but is not a runnable completed request. No exporter submits backend jobs. After complete validation aggregation and `seal_grt_selection.py`, run the same exporter with `--phase heldout --selection SEALED_SELECTION.json --output NEW_HELDOUT_REQUEST`; it checks unchanged validation source bindings and exports exactly the sealed methods, 24 new runs plus five reused references.
+
+Fixed controls carry `noise_conditioning=false` and never enter paired-noise statistics, even if their bookkeeping index matches a teacher index. Their one measured value appears in `fixed_measurements`, and `versus_fixed_references` compares it with each noise-conditioned method's mean/range without inventing baseline replicates.

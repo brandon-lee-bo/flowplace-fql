@@ -29,6 +29,27 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784019 | Predeclared backend-label export | 96 DEFs: 32/8/8 families per split, variants 0 and 1 |
 | 1784031 | Coordinate controls, validation selection, heldout proxy evaluation | Depends on training |
 | 1784047 | Real GRT labels | 96 tasks, maximum two concurrent, 8 CPUs / 12 GiB each |
+| 1784060 | Local teacher sensitivity probe | Exact repeats; intermediate hard projection strongly amplifies small input changes |
+| 1784068 / 1784070 / 1784092 | Independent dataset/evaluation audit and plots | Passed; 288 families, 864 labels, all selected heldout geometries and HPWL checked |
+| 1784098 | Predeclared proxy-to-GRT candidate export | 36 candidates: all 12 selected method/seed combinations × first 3 heldout families |
+| 1784102 / 1784104 / 1784108 / 1784112 | No-hard teacher plus final projection diagnostic | First failed during imports; GPU data completed on retry, CPU plot recovery; first 16 TRAIN families only |
+| 1784105 | Recover absent congestion reports | Read final ODB without rerouting; missing category explicitly proved zero markers |
+| 1784109 | Proxy-to-GRT cross-fidelity evaluation | 36 predeclared tasks, one concurrent; separate from 96-label array |
+| 1784119 | Strict GRT dataset relabeling | Queued after all 1784047 tasks end; requires all 96 verified metrics, including repaired failures |
+| 1784125 | Experimental standard Euler sampler | 16 TRAIN noises; exact same forward arithmetic verified; official code unchanged |
+| 1784133 | Fixed anchor controls | One zero-center and one TRAIN-mean layout; both legal; no replicated noise measurements |
+| 1784131 | Deeper detailed-route diagnostic | Two fixed bp_fe examples, cap20, one concurrent; reuse GRT, no new placement |
+| 1784135 | GRT workflow software tests | 11 passed, including critic loading and heldout isolation; synthetic software checks |
+| 1784147 | Resource accounting snapshot | Captured documented/local-log job allocation time; failed jobs included |
+| 1784154 | Released bp_fe deeper-DRT retry | First diagnostic was Slurm PREEMPTED; retry uses eda after the original array, no overwrite |
+| 1784155 | Sampler/anchor backend export | 8 new candidates plus 3 exact teacher results to reuse; all DEFs geometrically legal |
+| 1784156 | Three-seed GRT critic gate | Queued after verified relabeling; fixed 64×64 network, 1000 steps, validation only |
+| 1784157 | Validation-selection sealing check | Passed; rejects changed heldout plan |
+| 1784158 | Sampler/anchor backend evaluation | 8 new tasks, one concurrent, after proxy-transfer array |
+| 1784160 / 1784161 | Final GRT/proxy provenance audits | Queued after corresponding arrays, require all requested metrics valid |
+| 1784185 / 1784188 | Euler teacher BC learnability diagnostic | First launch failed before generation on optional mask fields; retry follows existing loader defaults and independently verifies no fixed ports |
+| 1784189 / 1784190 | Fixed-control pairing and GRT exporter tests | Both passed; fixed controls never become noise replicates; reuse/selection/checkpoint bindings verified |
+| 1784231 / 1784232 | Proxy and sampler GRT aggregation | Queued after respective arrays; require complete frozen candidate sets and refuse success-only averages |
 
 ## Interpretation fixes
 
@@ -51,3 +72,9 @@ points. Final DRT wirelength and GRT wirelength are kept separate throughout.
 Ceph quota checks found about 534 GiB free in the user's home quota, versus about
 55 GiB under fact_data. New GRT results remain in home, with all intermediates
 retained; no active run is moved and other project data is untouched.
+
+The first two tasks in array 1784047 completed global routing but failed during
+postprocessing because no congestion report file was emitted. Pending tasks were
+held while the backend parser was fixed. Missing reports must not be interpreted
+as zero congestion without evidence from the final saved database. Existing
+physical results and original failed Slurm statuses are retained for recovery.

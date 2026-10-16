@@ -98,7 +98,7 @@ def main():
         raise FileExistsError(args.output)
     torch.set_num_threads(args.threads)
     checkpoint = torch.load(args.checkpoint, map_location=args.device, weights_only=False)
-    actor = OneStepActor(checkpoint["dim"], checkpoint["widths"], checkpoint["movable_mask"], checkpoint["fixed_action"])
+    actor = OneStepActor(checkpoint["dim"], checkpoint.get("actor_widths", checkpoint["widths"]), checkpoint["movable_mask"], checkpoint["fixed_action"])
     actor.load_state_dict(checkpoint["actor_state"])
     actor.to(args.device).eval()
     archive = np.load(args.noise, allow_pickle=False)

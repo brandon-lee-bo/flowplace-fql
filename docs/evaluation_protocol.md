@@ -52,3 +52,21 @@ proxy does not establish routed wirelength, timing, power, or area improvement.
 Final Table 2 metrics require completed detailed routing and the documented
 report stage. Global-route labels, if used later, are a separate intermediate
 fidelity and must never be substituted silently for final routed results.
+
+## Backend experiment decisions after proxy results
+
+The initial macro-proxy heldout results are already inspected. Their subsequent
+GRT evaluation is explicitly an exploratory cross-fidelity check, not selection
+using a still-unseen GRT test set. All 12 validation-selected method/seed groups
+are evaluated on the same first three heldout noise families (36 requests).
+Do not choose a visually good layout or a favorable training seed for this check.
+
+For the separate GRT-reward experiment, retain the predeclared 96-label family
+split. Check critic validation error against a training-mean constant predictor
+and report rank correlation and reward variation before expanding policy search.
+A fixed-circuit bandit also needs a best-observed-training-layout baseline:
+select the minimum measured GRT wirelength among training labels only, reuse
+that exact legal layout, and charge its entire data collection budget. Reusing
+one deterministic backend result for several noise indices does not create
+independent experimental replicates. This control tests whether learning a
+policy adds value beyond storing the best layout already evaluated.
