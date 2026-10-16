@@ -6,20 +6,31 @@ import json
 from pathlib import Path
 from grt_metrics import atomic_json, parse_grt_metrics, reparse, PARSER_VERSION
 from grt_provenance import stamp_provenance
+from infrastructure_retry import load_retry_map, resolve_successful_retry
 
 parser = argparse.ArgumentParser()
 parser.add_argument('tasks', type=Path)
 parser.add_argument('--stamp-complete', action='store_true')
 parser.add_argument('--output', type=Path)
 parser.add_argument('--require-complete', action='store_true')
+parser.add_argument('--infrastructure-retry-map', type=Path)
 args = parser.parse_args()
 base = Path(__file__).resolve().parents[1]
 rows = [json.loads(line) for line in args.tasks.read_text().splitlines() if line.strip()]
+retry_map = load_retry_map(args.infrastructure_retry_map, args.tasks, rows)
 result = {'requested': len(rows), 'validated': [], 'incomplete': [], 'errors': [],
-          'physical_revisions': {}, 'reporting_revisions': {}, 'parser_revisions': {}}
+          'physical_revisions': {}, 'reporting_revisions': {}, 'parser_revisions': {},
+          'infrastructure_retries': []}
 groups = {key: collections.Counter() for key in ['physical_revisions', 'reporting_revisions', 'parser_revisions']}
 for row in rows:
     work = base / 'results' / row['run_id']
+    try:
+        work, retry_proof = resolve_successful_retry(row, args.tasks, work, retry_map)
+    except (OSError, ValueError, KeyError) as exc:
+        result['errors'].append({'run_id': row['run_id'], 'error': f'invalid_infrastructure_retry: {exc}'})
+        continue
+    if retry_proof:
+        result['infrastructure_retries'].append(retry_proof)
     manifest_path = work / 'manifest.json'
     if not manifest_path.exists():
         result['incomplete'].append({'run_id': row['run_id'], 'state': 'not_started'})
@@ -39,6 +50,8 @@ for row in rows:
             if metrics[key] != parsed[key]:
                 raise RuntimeError(f'Reparsed metric mismatch: {key}')
         if args.stamp_complete:
+            if retry_proof and (metrics.get('parser_version') != PARSER_VERSION or 'physical_flow_revision' not in manifest):
+                raise RuntimeError('Frozen retry metadata cannot be changed; bind a complete retry manifest first')
             if metrics.get('parser_version') != PARSER_VERSION:
                 reparse(work)
                 manifest = json.loads(manifest_path.read_text())

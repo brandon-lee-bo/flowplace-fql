@@ -1,8 +1,10 @@
 # FlowPlace + FQL investigation
 
 This is a live research experiment, started 2026-10-16 (Hong Kong).
-The macro-proxy experiments and independent audits are complete. Exact Table 2
-numbers and a routed PPA improvement from FQL have not been established.
+Macro-proxy and real-GRT pilot experiments are complete. The macro-reward FQL
+gain did not transfer to the tested backend cases; the real-GRT critic failed
+its predefined validation gate, so conditional actor expansion was not launched.
+Exact Table 2 numbers and a routed PPA improvement from FQL have not been established.
 
 Read the evolving [results report](docs/results_report.md) for measured outcomes,
 the [run ledger](docs/run_ledger.md) for Slurm jobs/failures, and the

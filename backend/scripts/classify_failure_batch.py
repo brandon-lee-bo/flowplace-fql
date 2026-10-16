@@ -7,20 +7,31 @@ from pathlib import Path
 import subprocess
 import sys
 from grt_metrics import atomic_json
+from infrastructure_retry import load_retry_map, resolve_successful_retry
 
 p = argparse.ArgumentParser()
 p.add_argument('tasks', type=Path)
 p.add_argument('--output', type=Path, required=True)
+p.add_argument('--infrastructure-retry-map', type=Path)
 a = p.parse_args()
 base = Path(__file__).resolve().parents[1]
 tasks = a.tasks.resolve()
 rows = [json.loads(line) for line in tasks.read_text().splitlines() if line.strip()]
+retry_map = load_retry_map(a.infrastructure_retry_map, tasks, rows)
 result = {'tasks_path': str(tasks), 'tasks_sha256': hashlib.sha256(tasks.read_bytes()).hexdigest(),
           'requested': len(rows), 'success_manifests': [], 'verified_physical_failures': [],
           'unknown_or_incomplete': [],
+          'infrastructure_retries': [],
           'note': 'Success manifests are counted here; numerical metrics remain subject to independent audit/aggregation.'}
 for row in rows:
     run = base / 'results' / row['run_id']
+    try:
+        run, retry_proof = resolve_successful_retry(row, tasks, run, retry_map)
+    except (OSError, ValueError, KeyError) as exc:
+        result['unknown_or_incomplete'].append({'run_id': row['run_id'], 'reason': f'invalid_infrastructure_retry: {exc}'})
+        continue
+    if retry_proof:
+        result['infrastructure_retries'].append(retry_proof)
     manifest_path = run / 'manifest.json'
     if not manifest_path.exists():
         result['unknown_or_incomplete'].append({'run_id': row['run_id'], 'reason': 'missing_manifest'})

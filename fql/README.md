@@ -214,3 +214,14 @@ python fql/aggregate_backend_candidates.py --tasks NEW_HELDOUT_REQUEST/tasks.jso
 Between export and aggregation, execute the 24 new pending backend requests and classify terminal outcomes against the full 29-record task list. Heldout uses the already sealed methods and policy, preserves any physical failures and incomplete means, and **never reselects alpha**. See [the protocol amendment](../docs/fql_integration_design.md#pre-actor-amendment-bounded-physical-failure-eligibility-and-grt-input-isolation) for evidence requirements and limits.
 
 Fixed controls carry `noise_conditioning=false` and never enter paired-noise statistics, even if their bookkeeping index matches a teacher index. Their one measured value appears in `fixed_measurements`, and `versus_fixed_references` compares it with each noise-conditioned method's mean/range without inventing baseline replicates.
+
+The sampler exploratory request has one explicit infrastructure recovery. Keep its original tasks and selection plan unchanged, and use:
+
+```sh
+python fql/aggregate_backend_candidates.py \
+  --tasks datasets/bp_fe_sampler_transfer_request_v1/tasks.jsonl \
+  --output NEW_SAMPLER_AGGREGATE --allow-exploratory-physical-failures \
+  --infrastructure-retry-map backend/assets/sampler_infrastructure_retry_map_v1.json
+```
+
+This optional exploratory-only map accepts a completed successful rerun of an independently verified PREEMPTED attempt, with the same action, actual DEF, physical flow, tool/configuration hashes and core count. It preserves the original run ID and attempt evidence, records the executed retry separately, and leaves the 11-candidate denominator unchanged. It neither retries physical failures nor admits unknown/incomplete reruns. All other candidates retain the existing strict or explicitly enabled physical-failure rules. Run the focused artifact and rejection checks with `sbatch --partition=cpu-scavenger --qos=cpu-scavenger run_cpu.slurm fql/test_infrastructure_retry.py`.

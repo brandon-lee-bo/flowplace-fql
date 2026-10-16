@@ -1,72 +1,57 @@
 # Overnight pipeline handoff
 
-Snapshot: 2026-10-17, before the 96-label collection finishes. This is an
-operational checklist, not a result report. See `results_report.md` for evidence.
-All computation uses FactLab Slurm. Do not change unrelated jobs.
+Snapshot:2026-10-17 about02:45HKT. All computation uses FactLab Slurm.
+Do not change unrelated jobs. See results_report.md for scientific interpretation.
 
-## Already queued
+## Completed
 
-- GRT labels: `1784047` (96 tasks, concurrency initially 2, raised to 4 around
-  02:05 HKT after scheduler/resource checks) → audit `1784160` → relabel
-  `1784119` → critic gate `1784156`. Relabel waits for both the array and audit.
-  First two Slurm failures were postprocessing failures, recovered without
-  rerouting; original failures and parser-recovery evidence remain preserved.
-- Exploratory proxy transfer: `1784109` → strict audit `1784161` and terminal
-  classification `1784450` → aggregate `1784481` → plots `1784485`.
-  Known physical CTS failure is retained; strict audit is expected to flag it.
-- Sampler transfer: `1784158` (after proxy array) → classification `1784451`
-  → aggregate `1784482` → plots `1784486`.
-- Released fullflows: `1783836` → original-attempt audit `1784328` (failed for
-  interrupted bp and physically invalid swerv). Original summary `1784311` was
-  cancelled while pending. bp recovery `1785220` → six-design summary `1785253`,
-  using `analysis/table2_retry_map_v1.json`. Released swerv fails raw macro overlap, so the summary must
-  preserve an incomplete comparison rather than claim six successful circuits.
-- Original bp was PREEMPTED after59m02, then its unstarted automatic requeue was
-  held/cancelled to preserve evidence and avoid repeating placement/GRT. Recovery
-  uses its unchanged GRT checkpoint and original cap4 in a fresh directory on
-  eda; elapsed recovery time is not a complete fresh fullflow time.
-- Separate diagnostics: released bp_fe cap20 DRT `1784154` completed, audit
-  `1785142` passed, DRC1904→192; deterministic generated swerv fullflow `1784543`
-  remains running. Neither replaces the original table row.
+- GRT96 labels1784047 → audit1784160 → relabel1784119 → gate1784156 completed.
+  All96 labels verified; first two parser-only failures recovered without reroute.
+- **Real-GRT critic gate failed0/3. Do not launch the conditional actor or48+24
+  candidate backend expansion.** All validation MAEs exceed the TRAIN-mean
+  baseline0.03913. No heldout scoring or tuning. This is the predeclared pilot
+  stop decision, not proof that all FQL approaches are ineffective.
+- Proxy36 outcomes:35success+1verified CTS failure. Classifier1784450,
+  aggregate1784481 and plots1784485 complete and checked. Strict all-success
+  audit1784161 correctly failed. CSV retains36 cases; failed seed/config means
+  null. Actual GRT does not support the macro-reward FQL improvement.
+- Released bp_fe cap20 DRT1784154 completed, audit1785142 passed,DRC1904→192.
+  Generated cap20 example reached0DRC atiteration9. Neither changes cap4 rows.
+- Generated swerv1784543 completed fullflow+audit:rWL4.163184Mum,DRC7282.
+  Independent fixed seed300; released swerv remains a failed Table2 row due to
+  macro overlaps already present in its raw DEF.
 
-## Conditional real-GRT actor experiment
+## Pending physical results
 
-Inspect `runs/bp_fe_grt_gate_v1/report.json` after completion. The advisory gate
-requires at least 2/3 seeds to beat the TRAIN-mean constant in validation MAE and
-have positive validation Spearman correlation. Only eight validation families
-are available; this does not guarantee actor-selected actions will be accurate.
-If weak, diagnose/report the negative pilot instead of blindly expanding sweeps.
+- Sampler1784158 continues8new tasks/11full records with3reused references.
+  Task0/raw1785399 was PREEMPTED after1m02 inCTS, noGRT. Original attempt and
+  preemption evidence preserved. SameDEF/flow fresh retry1785454 completed159s
+  innewrun bp_fe_sampler_transfer_v1_n00_i0240_retry1,eda8CPU12GiB/no-requeue.
+  Audit1785462 passed real raw-report checks and6negative binding tests.
+- Original downstream classifier1784451/aggregate1784482/plots1784486 were
+  canceled while pending. Classifier replacement1785468 is queued with explicit
+  infrastructure-retry map at backend/assets/sampler_infrastructure_retry_map_v1.json;
+  original tasks/selection/11-case denominator stay unchanged. fql_design is
+  finishing aggregate support; root must schedule aggregate/plot replacements
+  after1785468 and inspect actual outputs. No new physical samples are added.
+- Original bp1783836_2 was PREEMPTED after59m02. Its unstarted automatic requeue
+  was held/canceled; original work and manifest unchanged.
+- bp recovery1785220 started02:31:09 oneda8CPU/14GiB/2h30/no-requeue, adjusted
+  while pending from24GiB/6h based on original observed memory/time. Startup
+  actualimage/archive/patch/current-flow and5GRT checkpoint-copy checks passed.
+  It resumes originalcap4; runtime is resumedDRT/fill/finish,not freshfullflow.
+- Six-design summary1785253 waits for recovery and originalattempt audit1784328
+  (failed for interruptedbp and invalidswerv). It uses table2_retry_map_v1.json
+  and validates recovery evidence; swerv failure stays. Do not rerun merely
+  because completeness exit code is nonzero. Old summary1784311 canceled pending.
 
-If supported, train the predeclared three-seed BC/FQL experiment using
-`datasets/bp_fe_grt_v1/dataset.npz` and the gate's pretrained critics. Use
-256×3 actors, 64×64 critics, warmup1000/actor2000, batch128, lr0.0003,
-alphas1/10/100, `--seal-heldout`; `--critic-steps 1` is a parser placeholder,
-not a request to retrain loaded critics. Allocate one GPU via Slurm.
+## Remaining completion work
 
-Both candidate export phases must explicitly pass:
+Finish sampler recovery/aggregation and recoveredbp/Table2 summary; resolve real
+software/infrastructure issues without weakening physical constraints. Complete
+results/research interpretation, final Slurm accounting including all attempts,
+final code/doc commit and a whole-goal completion audit. Do not mark complete
+while these required physical results remain pending.
 
-```text
---physical-failure-policy fql/grt_actor_physical_policy_v1.json
---heldout-indices 244,245,246,247
-```
-
-Validation uses 192–195: 48 new backend tasks plus five exact reused references.
-Execute only `pending_tasks.jsonl`. Audit and classify with **full `tasks.jsonl`**;
-failure evidence hashes bind that complete manifest. Aggregate with
-`--allow-preregistered-physical-failures`. Keep all fixed cases and use the
-configuration-level summary, never a successful-seed-only mean.
-
-Run `fql/seal_grt_selection.py --validation-report REPORT/report.json --output
-runs/bp_fe_grt_actor_v1/grt_selection_v1.json` through `run_cpu.slurm`.
-`no_eligible_configuration` means stop, with no heldout plan. `selected` means
-export the locked alpha and BC on 244–247 (24 new tasks + five reused references),
-passing `--selection` and the same policy. Never reselect after heldout outcomes.
-
-## Finish
-
-Inspect actual aggregates/plots and resolve genuine software or infrastructure
-failures without weakening physical constraints. Update results, complete a
-Slurm resource-accounting snapshot including failed attempts, save final code,
-and assess whether learned Q/policy adds value over direct objectives and the
-best measured TRAIN layout. Mark the goal complete only after required results
-and final interpretation are delivered.
+The conditional GRT actor workflow/frozen failure policy remain implemented and
+software-tested in fql/README.md and docs/evaluation_protocol.md, but unexecuted.

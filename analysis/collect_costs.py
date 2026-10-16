@@ -28,7 +28,19 @@ def main():
     out = Path(args.output).resolve()
     out.mkdir(parents=True, exist_ok=False)
     sources = [ROOT / 'docs/run_ledger.md']
-    ids = set(re.findall(r'(?<!\d)(\d{7})(?!\d)', sources[0].read_text()))
+    ids = set()
+    in_job_table = False
+    for line in sources[0].read_text().splitlines():
+        cells = line.strip().split('|')
+        if not line.lstrip().startswith('|') or len(cells) < 3:
+            in_job_table = False
+            continue
+        first_column = cells[1].strip()
+        if first_column == 'Job':
+            in_job_table = True
+        if in_job_table:
+            # Outcome columns contain physical measurements, not Slurm IDs.
+            ids.update(re.findall(r'(?<!\d)(\d{7})(?!\d)', first_column))
     log_directories = [ROOT / 'logs', ROOT / 'backend/logs', ROOT / 'baseline/logs', ROOT / 'fql/logs']
     log_paths = [path for directory in log_directories for path in directory.glob('*') if path.is_file()]
     for path in log_paths:
@@ -87,7 +99,7 @@ def main():
         'slurm_job_id': os.environ['SLURM_JOB_ID'], 'query': command,
         'requested_job_ids': sorted(ids), 'job_id_sources': [str(p) for p in sources],
         'log_filename_sources': [str(p) for p in log_paths],
-        'coverage': 'Jobs named in the experiment ledger or experiment-local log filenames, plus explicit extras',
+        'coverage': 'Job-column IDs from the experiment ledger tables, experiment-local log filenames, and explicit extras; result columns and prose are not scanned for IDs',
         'resource_semantics': 'Reserved allocation time for every observed attempt, including failed/preempted attempts before requeue; running costs are partial snapshots',
         'allocation_attempt_key_fields': list(attempt_key_fields),
         'allocation_attempt_semantics': 'sacct -D retains historical requeue attempts sharing JobIDRaw; only identical (JobIDRaw, Submit, Start) rows are deduplicated. Counts are accounting attempts, not unique logical jobs.',

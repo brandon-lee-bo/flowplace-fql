@@ -21,6 +21,7 @@ sys.path.insert(0, str(ROOT))
 from analysis.placement_metrics import legality, summarize
 from fql.core import critic_diagnostics
 from fql.physical_failure_policy import validate_bound_policy
+from fql.infrastructure_retry import load_retry_map, resolve_successful_retry
 from fql.relabel_backend import STAGE, action_sha256, numeric, resolve_from, sha256_file, write_json
 
 
@@ -410,7 +411,7 @@ def quality_with_outcomes(records, reference_method):
 
 
 def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_failures=False,
-              allow_preregistered_physical_failures=False):
+              allow_preregistered_physical_failures=False, infrastructure_retry_map=None):
     tasks_path, output = Path(tasks_path).resolve(), Path(output).resolve()
     plan_path = Path(plan_path).resolve() if plan_path is not None else tasks_path.with_name("selection_plan.json")
     output.mkdir(parents=True, exist_ok=False)
@@ -419,12 +420,18 @@ def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_fai
               "failures": [], "physical_failures": [], "records": [], "quality": None,
               "allow_exploratory_physical_failures": allow_exploratory_physical_failures,
               "allow_preregistered_physical_failures": allow_preregistered_physical_failures,
+              "infrastructure_retry_map": None, "infrastructure_recoveries": [],
               "outcomes_complete": False, "comparison_complete": False}
     try:
         plan = json.loads(plan_path.read_text())
         expected = plan_keys(plan)
         report.update(tasks_sha256=sha256_file(tasks_path), plan_sha256=sha256_file(plan_path), plan=plan,
                       phase=plan.get("phase", "exploratory"), expected_count=len(expected))
+        retry_map = load_retry_map(infrastructure_retry_map, tasks_path)
+        if retry_map is not None:
+            if report["phase"] != "exploratory":
+                raise ValueError("This narrow infrastructure-recovery interface is exploratory-only")
+            report["infrastructure_retry_map"] = retry_map
         if report["phase"] not in ("validation", "heldout", "exploratory"):
             raise ValueError("Unknown evaluation phase")
         if allow_exploratory_physical_failures and allow_preregistered_physical_failures:
@@ -472,14 +479,18 @@ def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_fai
                     raise ValueError("Validation tasks must use split 1 only")
                 if report["phase"] == "heldout" and not fixed_training and entry.get("split") != 2:
                     raise ValueError("Heldout tasks must use split 2 only")
-                sidecar = resolve_from(entry["metrics_path"], tasks_path.parent).with_name("physical_failure.json")
+                effective, recovery = resolve_successful_retry(entry, tasks_path, retry_map)
+                sidecar = resolve_from(effective["metrics_path"], tasks_path.parent).with_name("physical_failure.json")
                 if (allow_exploratory_physical_failures or allow_preregistered_physical_failures) and sidecar.exists():
                     if allow_preregistered_physical_failures and (entry.get("role") != "candidate" or entry.get("requires_backend_execution") is not True):
                         raise ValueError("Policy failures apply to new actor requests, not reused successful references")
                     record = validate_physical_failure(entry, tasks_path.parent, tasks_path)
                     report["physical_failures"].append(record)
                 else:
-                    record = validate_task(entry, tasks_path.parent)
+                    record = validate_task(effective, tasks_path.parent)
+                if recovery is not None:
+                    record.update(executed_run_id=recovery["executed_run_id"], infrastructure_recovery=recovery)
+                    report["infrastructure_recoveries"].append(recovery)
                 record.update(task_manifest_path=str(tasks_path), task_mapping_line=line_number)
                 report["records"].append(record)
             except Exception as exc:
@@ -506,6 +517,7 @@ def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_fai
         report["physical_failure_count"] = len(report["physical_failures"])
         report["total_count"] = len(expected)
         report["verified_outcome_count"] = len(records)
+        report["infrastructure_recovery_count"] = len(report["infrastructure_recoveries"])
         if report["failures"] or len(records) != len(expected):
             raise ValueError("Incomplete or invalid backend comparison; no success-only aggregate generated")
         report["quality"] = quality_with_outcomes(records, plan.get("reference_method", "teacher_relegalized"))
@@ -531,6 +543,7 @@ def main():
     parser.add_argument("--tasks", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--plan")
+    parser.add_argument("--infrastructure-retry-map", help="Explicit same-input successful retry of a hash-bound Slurm preemption")
     parser.add_argument("--allow-exploratory-physical-failures", action="store_true",
                         help="Explicit exploratory-only verified CTS physical-failure outcomes; no incomplete-method means")
     parser.add_argument("--allow-preregistered-physical-failures", action="store_true",
@@ -539,7 +552,7 @@ def main():
     if "SLURM_JOB_ID" not in os.environ:
         raise RuntimeError("Use Slurm for numeric aggregation")
     report = aggregate(args.tasks, args.output, args.plan, args.allow_exploratory_physical_failures,
-                       args.allow_preregistered_physical_failures)
+                       args.allow_preregistered_physical_failures, args.infrastructure_retry_map)
     print(json.dumps({"status": report["status"], "phase": report["phase"],
                       "count": report["successful_count"], "output": str(Path(args.output).resolve())}), flush=True)
 

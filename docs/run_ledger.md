@@ -43,7 +43,7 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784147 | Resource accounting snapshot | Captured documented/local-log job allocation time; failed jobs included |
 | 1784154 | Released bp_fe deeper-DRT retry | First diagnostic was Slurm PREEMPTED; retry uses eda after the original array, no overwrite |
 | 1784155 | Sampler/anchor backend export | 8 new candidates plus 3 exact teacher results to reuse; all DEFs geometrically legal |
-| 1784156 | Three-seed GRT critic gate | Queued after verified relabeling; fixed 64×64 network, 1000 steps, validation only |
+| 1784156 | Three-seed GRT critic gate | Completed:0/3 pass predeclared rule, all validation MAEs worse than TRAIN-mean constant; no heldout scoring or subsequent actor expansion |
 | 1784157 | Validation-selection sealing check | Passed; rejects changed heldout plan |
 | 1784158 | Sampler/anchor backend evaluation | 8 new tasks, one concurrent, after proxy-transfer array |
 | 1784160 / 1784161 | Final GRT/proxy provenance audits | Training96/96 validated with one physical revision and no errors; reporting v1=6/v2=90 preserved. Proxy1784161 correctly failed the all-success requirement, with35 consistent numerical results and no parser/hash errors |
@@ -56,18 +56,28 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784344 | Generation-plus-legalization latency | Completed in 45s; 16 fixed noises ×3 rounds ×7 paths, original saved final coordinates reproduced exactly |
 | 1784384 | Physical CTS failure evidence | Binds retained RSZ-0060 log, original manifest, frozen task, DEF and action; does not modify failure or rerun layout |
 | 1784418 | Ariane136 fullflow raw-report audit | Queued after completed route; no optimization |
-| 1784450 / 1784451 | Final exploratory outcome classification | Proxy1784450 completed:35success+1verified CTS failure, all36 outcomes classified and no unknown/infra errors; sampler classification follows its array |
+| 1784450 / 1784451 | Initial exploratory outcome classification | Proxy1784450 completed:35success+1verified CTS failure, all36 classified. Sampler1784451 canceled while pending after a task was preempted; explicit recovery-aware replacement1785468 |
 | 1784472 | Physical-failure reporting tests | Five passed; real retained failure recognized, corrupt/unknown failures rejected, denominators and seed/fixed-control rules verified |
-| 1784481 / 1784482 | Exploratory GRT outcome reports | Proxy1784481 completed35success+1failure, full36 denominator and incomplete-configuration means suppressed; sampler pending |
-| 1784485 / 1784486 | Failure-aware GRT plots | Proxy1784485 completed and visually checked: all36 CSV rows, failure label and no incomplete-method mean/pooled correlation; sampler pending |
+| 1784481 / 1784482 | Initial exploratory GRT outcome reports | Proxy1784481 completed35success+1failure, full36 denominator and incomplete-configuration means suppressed; sampler1784482 canceled while pending for explicit infrastructure recovery support |
+| 1784485 / 1784486 | Initial failure-aware GRT plots | Proxy1784485 completed and visually checked; sampler1784486 canceled while pending with its old aggregation |
 | 1784533 | Released DEF geometry audit | All six checked against released LEFs; swerv has three raw macro overlaps, other five have none; no coordinates changed |
 | 1784534 | bp_be fullflow raw-report audit | Completed and passed; DRC247 retained separately from flow completion |
-| 1784543 | Generated deterministic swerv fullflow | Independent official-checkpoint baseline after released input failed macro overlap; original failed Table 2 row remains unchanged |
+| 1784543 | Generated deterministic swerv fullflow | Completed3146.42s and raw-report audit passed; rWL4.163184Mum,WNS-.588714ns,TNS-681.557ns,DRC7282. Independent seed300 control; original failed Table2 row unchanged |
 | 1784699 / 1784706 | Preregistered actor physical-outcome policy tests | First run 8/9 passed, exporter mock mishandled provenance git metadata; test fixture corrected, retry 9/9 passed. No physical outcomes or backend constraints changed |
 | 1785220 | bp original-cap4 recovery | Original1783836_2 was PREEMPTED after59m02, automatically requeued then held/cancelled before restart; resume saved GRT in a new run on eda, no physical-parameter changes. Pending resource request reduced from24GiB/6h to14GiB/2h30 based on original observed peak/progress; started02:31:09 |
 | 1785243 | Requeue-aware resource snapshot | Uses sacct-D and distinct allocation attempts; original bp PREEMPTED contributes7.871111 reserved CPUh, unstarted cancelled requeue contributes0 |
 | 1785253 | Six-design summary after infrastructure recovery | Waits for1785220; explicit retry map verifies original/source/checkpoint/tool/config hashes and original cap4; stage-only recovery timing remains separate |
 | 1785142 | Released bp_fe cap20 final raw-report audit | Passed; 1784154 completed with DRC1904→192, rWL+199um, unchanged WNS/power/area and slightly worse TNS; resumed-stage runtime about4781s |
+| 1785454 | Same-input sampler infrastructure retry | Original1784158_0/raw1785399 PREEMPTED after1m02 inCTS; newrun n00_i0240_retry1 completed159.02s oneda8CPU12GiB, sameDEF/physical flow; original attempt retained |
+| 1785462 | Sampler retry evidence audit | Passed actual GRT raw-report comparison and6negative binding checks; original PREEMPTED plus successful same-input retry independently bound |
+| 1785468 | Recovery-aware sampler outcome classification | Completed:11 outcomes,10success+1fixed-zero CTS failure,1infrastructure recovery; original11-row tasks/selection unchanged |
+| 1785486 | Independent FQL infrastructure-retry tests | Completed6/6 checks: real11-request recovery plus tampered preemption/raw-job/run-ID/DEF/core-cap rejection |
+| 1785491 / 1785496 | Recovered sampler aggregation and plots | Completed10success+1physical failure with full11 denominator; same-input retry does not add a candidate |
+
+The initial submission of1785491 with afterok1785468:1785486 was rejected by
+Slurm with “Job dependency problem” and created no job. Both prerequisites were
+independently verified COMPLETED0:0 with passing artifacts before submitting
+without the expired dependency references;1785496 used afterok1785491.
 
 ## Interpretation fixes
 
