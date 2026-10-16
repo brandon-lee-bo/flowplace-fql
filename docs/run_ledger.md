@@ -51,7 +51,7 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784189 / 1784190 | Fixed-control pairing and GRT exporter tests | Both passed; fixed controls never become noise replicates; reuse/selection/checkpoint bindings verified |
 | 1784231 / 1784232 | Initial proxy and sampler aggregation schedule | Cancelled while pending after a real CTS failure required explicit physical-failure outcome reporting; no metrics discarded |
 | 1784233 / 1784234 | Initial GRT plots schedule | Cancelled while pending with parent aggregations; replacements will preserve incomplete methods without success-only means |
-| 1784311 | Six-design Table 2 summary | Queued after fullflow array; retain any failures and report every declared circuit |
+| 1784311 | Initial six-design Table 2 summary | Cancelled while pending after bp was preempted; replacement1785253 waits for unchanged-flow recovery and preserves its original attempt |
 | 1784327 / 1784328 | Fullflow numerical consistency audits | Already-completed examples and all six released runs; summary additionally waits for final audit |
 | 1784344 | Generation-plus-legalization latency | Completed in 45s; 16 fixed noises ×3 rounds ×7 paths, original saved final coordinates reproduced exactly |
 | 1784384 | Physical CTS failure evidence | Binds retained RSZ-0060 log, original manifest, frozen task, DEF and action; does not modify failure or rerun layout |
@@ -64,6 +64,10 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784534 | bp_be fullflow raw-report audit | Completed and passed; DRC247 retained separately from flow completion |
 | 1784543 | Generated deterministic swerv fullflow | Independent official-checkpoint baseline after released input failed macro overlap; original failed Table 2 row remains unchanged |
 | 1784699 / 1784706 | Preregistered actor physical-outcome policy tests | First run 8/9 passed, exporter mock mishandled provenance git metadata; test fixture corrected, retry 9/9 passed. No physical outcomes or backend constraints changed |
+| 1785220 | bp original-cap4 recovery | Original1783836_2 was PREEMPTED after59m02, automatically requeued then held/cancelled before restart; resume saved GRT in a new run on eda, no physical-parameter changes |
+| 1785243 | Requeue-aware resource snapshot | Uses sacct-D and distinct allocation attempts; original bp PREEMPTED contributes7.871111 reserved CPUh, unstarted cancelled requeue contributes0 |
+| 1785253 | Six-design summary after infrastructure recovery | Waits for1785220; explicit retry map verifies original/source/checkpoint/tool/config hashes and original cap4; stage-only recovery timing remains separate |
+| 1785142 | Released bp_fe cap20 final raw-report audit | Passed; 1784154 completed with DRC1904→192, rWL+199um, unchanged WNS/power/area and slightly worse TNS; resumed-stage runtime about4781s |
 
 ## Interpretation fixes
 

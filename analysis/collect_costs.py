@@ -2,7 +2,9 @@
 
 Accounting here reports allocated CPU/GPU time, not measured utilization, energy,
 or a monetary cost. Pending array ranges have zero allocated resources. Never
-count batch/extern steps a second time.
+count batch/extern steps a second time. Requeued jobs retain their JobIDRaw but
+create distinct allocation attempts: query all records with sacct -D and identify
+attempts by (JobIDRaw, Submit, Start), rather than discarding earlier attempts.
 """
 import argparse
 import csv
@@ -36,33 +38,44 @@ def main():
         raise ValueError('Invalid job IDs')
     fields = ['JobIDRaw', 'JobID', 'JobName', 'State', 'ExitCode', 'ElapsedRaw',
               'AllocCPUS', 'AllocTRES', 'CPUTimeRAW', 'NodeList', 'Submit', 'Start', 'End']
-    command = ['sacct', '-X', '-P', '--noheader', '-j', ','.join(sorted(ids)),
+    command = ['sacct', '-D', '-X', '-P', '--noheader', '-j', ','.join(sorted(ids)),
                '--format=' + ','.join(fields)]
     raw = subprocess.check_output(command, text=True)
     (out / 'sacct.txt').write_text(raw)
     rows = []
-    seen = set()
+    attempt_key_fields = ('JobIDRaw', 'Submit', 'Start')
+    seen = {}
+    duplicate_attempt_rows = 0
     for line in raw.splitlines():
         values = line.split('|')
         if len(values) != len(fields):
             raise ValueError(f'Unexpected accounting row: {line}')
         row = dict(zip(fields, values))
-        identity = row['JobIDRaw']
-        if '.' in identity:
+        identity = tuple(row[key] for key in attempt_key_fields)
+        if '.' in row['JobIDRaw']:
             raise ValueError('Allocation-only query unexpectedly included steps')
         if identity in seen:
+            if row != seen[identity]:
+                raise ValueError(f'Conflicting accounting records for one allocation attempt: {identity}')
+            duplicate_attempt_rows += 1
             continue  # Array parent and explicitly listed child can overlap.
-        seen.add(identity)
+        seen[identity] = row.copy()
         elapsed, cpu_time = int(row['ElapsedRaw']), int(row['CPUTimeRAW'])
+        has_started = row['Start'] not in ('', 'Unknown', 'None', 'N/A')
+        if not has_started and (elapsed != 0 or cpu_time != 0):
+            raise ValueError(f'Unstarted attempt has nonzero allocated time: {identity}')
         tres = dict(item.split('=', 1) for item in row['AllocTRES'].split(',') if '=' in item)
         gpu_count = int(tres.get('gres/gpu', '0'))
-        row.update(reserved_cpu_hours=cpu_time / 3600,
+        row.update(allocation_attempt_key=json.dumps(identity),
+                   has_started=has_started,
+                   reserved_cpu_hours=cpu_time / 3600,
                    reserved_gpu_hours=gpu_count * elapsed / 3600,
                    allocated_gpu_count=gpu_count,
                    allocated_wall_seconds=elapsed)
         rows.append(row)
-    by_state, by_name = {}, {}
+    by_state, by_name, attempts_by_job_id = {}, {}, {}
     for row in rows:
+        attempts_by_job_id[row['JobIDRaw']] = attempts_by_job_id.get(row['JobIDRaw'], 0) + 1
         for destination, key in [(by_state, row['State']), (by_name, row['JobName'])]:
             group = destination.setdefault(key, {'allocation_rows': 0, 'reserved_cpu_hours': 0,
                                                   'reserved_gpu_hours': 0})
@@ -75,7 +88,12 @@ def main():
         'requested_job_ids': sorted(ids), 'job_id_sources': [str(p) for p in sources],
         'log_filename_sources': [str(p) for p in log_paths],
         'coverage': 'Jobs named in the experiment ledger or experiment-local log filenames, plus explicit extras',
-        'resource_semantics': 'Reserved allocation time, including failed jobs; running costs are partial snapshots',
+        'resource_semantics': 'Reserved allocation time for every observed attempt, including failed/preempted attempts before requeue; running costs are partial snapshots',
+        'allocation_attempt_key_fields': list(attempt_key_fields),
+        'allocation_attempt_semantics': 'sacct -D retains historical requeue attempts sharing JobIDRaw; only identical (JobIDRaw, Submit, Start) rows are deduplicated. Counts are accounting attempts, not unique logical jobs.',
+        'duplicate_attempt_rows_skipped': duplicate_attempt_rows,
+        'attempt_counts_by_job_id_raw': attempts_by_job_id,
+        'requeue_cost_policy': 'Sum each started attempt exactly once; a new unstarted/pending attempt contributes zero and does not erase its earlier preempted allocation.',
         'actual_utilization': 'Not inferred. Cluster accounting returned zero TotalCPU and no MaxRSS in inspected jobs.',
         'pending_arrays': 'One compressed pending-range row can represent multiple tasks; allocation_rows is not task count',
         'wall_time_warning': 'Parallel task elapsed times cannot be summed into experiment wall-clock duration',

@@ -160,7 +160,7 @@ python fql/aggregate_backend_candidates.py --tasks PLAN/tasks.jsonl \
   --output NEW_AGGREGATE
 ```
 
-Run under Slurm. `selection_plan.json` beside the tasks must contain either `methods` × `indices` or explicit `candidates[{method,index}]`. It may additionally bind exact `task_ids`, dataset SHA and upstream selection path/SHA. The tasks need `method,index,split,design,metrics_path,def_path,def_sha256,action_sha256` plus an action locator (`action_path,action_key,action_row,action_file_sha256`) or `normalized_action_flat`. If both action forms exist, both must match. DEF `.audit.json` must bind its output hash and prove legal rounded geometry; optional `normalized_sizes` enables another independent coordinate check. All requested failures are retained, the command exits nonzero and no survivor-only quality comparison is generated. Outputs separate method/seed metrics, paired noise deltas, and averages of seed means.
+Run under Slurm. `selection_plan.json` beside the tasks must contain either `methods` × `indices` or explicit `candidates[{method,index}]`. It may additionally bind exact `task_ids`, dataset SHA and upstream selection path/SHA. The tasks need `method,index,split,design,metrics_path,def_path,def_sha256,action_sha256` plus an action locator (`action_path,action_key,action_row,action_file_sha256`) or `normalized_action_flat`. If both action forms exist, both must match. DEF `.audit.json` must bind its output hash and prove legal rounded geometry; optional `normalized_sizes` enables another independent coordinate check. **The default is strict:** any requested failure makes the command exit nonzero, with no survivor-only quality comparison. The explicitly frozen GRT actor policy below separately permits verified terminal physical-failure outcomes. Outputs separate method/seed metrics, paired noise deltas, and averages of seed means.
 
 `predicted_q` is diagnostic only unless tasks explicitly carry `q_reward_stage=global_route_only`, `q_reward_scale_train_only`, and a verified `q_source_manifest`/`q_source_manifest_sha256`. The source manifest must bind its actual GRT dataset and training-only scale. Macro-trained Q is never compared numerically with routed reward. The root proxy-transfer exporter uses `phase=exploratory`, so its GRT results cannot select hyperparameters.
 
@@ -178,11 +178,39 @@ The GRT-specific exporter runs under Slurm after the gate is reviewed and the pr
 ```sh
 python fql/prepare_grt_candidate_tasks.py --dataset-dir GRT --training-dir STUDENTS \
   --gate-dir GATE --output NEW_VALIDATION_REQUEST --phase validation \
-  --seeds 0,1,2 --alphas 1,10,100 --prefix bp_fe_grt_actor_v1 --device cuda
+  --seeds 0,1,2 --alphas 1,10,100 --prefix bp_fe_grt_actor_v1 --device cuda \
+  --physical-failure-policy fql/grt_actor_physical_policy_v1.json \
+  --heldout-indices 244,245,246,247
 ```
 
-Defaults freeze validation indices `192,193,194,195` and future heldout indices `240,241,242,243`. Every method is checked against the exact source dataset, teacher/noise pairing, actor checkpoint and unchanged gate critic; inference is recomputed to verify the proposal arrays. The legalizer and DEF exporter sources are hash-bound. New policy actions receive one external legalization and independent normalized/rounded-DEF legality audits. Teacher variant-0 and best-TRAIN references reuse their exact original executed action and bound backend measurement. An illegal or missing item fails the plan without replacing that candidate.
+The CLI retains historical defaults: validation `192,193,194,195`, heldout `240,241,242,243`, and no physical-failure policy. **This experiment explicitly overrides heldout to `244,245,246,247` and binds the frozen policy file above.** The policy rejects the historical heldout IDs. This pre-actor amendment avoids the GRT proxy/sampler exploratory inputs `240–242`; it does not select IDs by their quality or change historical artifacts. Macro diagnostics already inspected all heldout noises, so the isolation claim concerns GRT cross-fidelity exploratory inputs only. Every method is checked against the exact source dataset, teacher/noise pairing, actor checkpoint and unchanged gate critic; inference is recomputed to verify the proposal arrays. The legalizer and DEF exporter sources are hash-bound. New policy actions receive one external legalization and independent normalized/rounded-DEF legality audits. Teacher variant-0 and best-TRAIN references reuse their exact original executed action and bound backend measurement. An illegal or missing item fails the plan without replacing that candidate.
 
-`status.json` must say `completed`. Submit **only `pending_tasks.jsonl`** (48 new validation runs); aggregate **`tasks.jsonl`** (53 records including four reused teachers and one fixed best-TRAIN reference). A partial export is preserved as `tasks.partial.jsonl` but is not a runnable completed request. No exporter submits backend jobs. After complete validation aggregation and `seal_grt_selection.py`, run the same exporter with `--phase heldout --selection SEALED_SELECTION.json --output NEW_HELDOUT_REQUEST`; it checks unchanged validation source bindings and exports exactly the sealed methods, 24 new runs plus five reused references.
+`status.json` must say `completed`. Execute **only `pending_tasks.jsonl`** (48 new validation runs), but use the **full `tasks.jsonl` for both failure classification and aggregation** (53 records including four reused teachers and one fixed best-TRAIN reference). Physical-failure sidecars must bind this full task-manifest SHA. A partial export is preserved as `tasks.partial.jsonl` but is not a runnable completed request. No exporter submits backend jobs.
+
+For this policy-bound actor experiment, aggregate validation under Slurm with:
+
+```sh
+python fql/aggregate_backend_candidates.py --tasks NEW_VALIDATION_REQUEST/tasks.jsonl \
+  --output NEW_VALIDATION_AGGREGATE --allow-preregistered-physical-failures
+python fql/seal_grt_selection.py --validation-report NEW_VALIDATION_AGGREGATE/report.json \
+  --output SEALED_SELECTION.json
+```
+
+All frozen cases must have verified terminal outcomes. An alpha is eligible only if all **three seeds × four validation noises** succeed; select the lowest mean rWL among eligible alphas, with one alpha shared by every seed and the fixed lexical tie-break. A physical failure retains the full denominator but suppresses the configuration mean. If BC fails, `validation_beats_BC` is `null`, not a win. If every alpha is ineligible, the selector writes **`status=no_eligible_configuration`, `kind=sealed_GRT_validation_stop`, `heldout_plan=null`**: stop, with no heldout export or new search. Unknown, infrastructure, missing and parser errors remain hard errors. This opt-in does not relax training relabeling or the critic gate; `--allow-exploratory-physical-failures` remains a separate exploratory-only mode and cannot be combined with it.
+
+Only a `selected` decision permits the heldout export, using the same sources and policy:
+
+```sh
+python fql/prepare_grt_candidate_tasks.py --dataset-dir GRT --training-dir STUDENTS \
+  --gate-dir GATE --output NEW_HELDOUT_REQUEST --phase heldout \
+  --selection SEALED_SELECTION.json --seeds 0,1,2 --alphas 1,10,100 \
+  --prefix bp_fe_grt_actor_v1 --device cuda \
+  --physical-failure-policy fql/grt_actor_physical_policy_v1.json \
+  --heldout-indices 244,245,246,247
+python fql/aggregate_backend_candidates.py --tasks NEW_HELDOUT_REQUEST/tasks.jsonl \
+  --output NEW_HELDOUT_AGGREGATE --allow-preregistered-physical-failures
+```
+
+Between export and aggregation, execute the 24 new pending backend requests and classify terminal outcomes against the full 29-record task list. Heldout uses the already sealed methods and policy, preserves any physical failures and incomplete means, and **never reselects alpha**. See [the protocol amendment](../docs/fql_integration_design.md#pre-actor-amendment-bounded-physical-failure-eligibility-and-grt-input-isolation) for evidence requirements and limits.
 
 Fixed controls carry `noise_conditioning=false` and never enter paired-noise statistics, even if their bookkeeping index matches a teacher index. Their one measured value appears in `fixed_measurements`, and `versus_fixed_references` compares it with each noise-conditioned method's mean/range without inventing baseline replicates.

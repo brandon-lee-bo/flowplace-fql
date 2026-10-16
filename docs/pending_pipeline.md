@@ -16,11 +16,18 @@ All computation uses FactLab Slurm. Do not change unrelated jobs.
   Known physical CTS failure is retained; strict audit is expected to flag it.
 - Sampler transfer: `1784158` (after proxy array) → classification `1784451`
   → aggregate `1784482` → plots `1784486`.
-- Released fullflows: `1783836` → final audit `1784328` → six-design summary
-  `1784311`. Released swerv fails raw macro overlap, so the audit/summary must
+- Released fullflows: `1783836` → original-attempt audit `1784328` (failed for
+  interrupted bp and physically invalid swerv). Original summary `1784311` was
+  cancelled while pending. bp recovery `1785220` → six-design summary `1785253`,
+  using `analysis/table2_retry_map_v1.json`. Released swerv fails raw macro overlap, so the summary must
   preserve an incomplete comparison rather than claim six successful circuits.
-- Separate diagnostics: released bp_fe cap20 DRT `1784154`; deterministic
-  generated swerv fullflow `1784543`. Neither replaces the original table row.
+- Original bp was PREEMPTED after59m02, then its unstarted automatic requeue was
+  held/cancelled to preserve evidence and avoid repeating placement/GRT. Recovery
+  uses its unchanged GRT checkpoint and original cap4 in a fresh directory on
+  eda; elapsed recovery time is not a complete fresh fullflow time.
+- Separate diagnostics: released bp_fe cap20 DRT `1784154` completed, audit
+  `1785142` passed, DRC1904→192; deterministic generated swerv fullflow `1784543`
+  remains running. Neither replaces the original table row.
 
 ## Conditional real-GRT actor experiment
 
