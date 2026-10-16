@@ -8,6 +8,9 @@
 # Job1785220 was submitted with the 6h line above, then changed while pending to
 # 02:30:00 via scontrol for backfill. The spooled script is unchanged; see
 # assets/resume_schedule_1785220.json for before/after scheduler evidence.
+# While still pending, memory was subsequently changed from the submitted 24G
+# to 14G (14336 MiB) via scontrol; see assets/resume_memory_1785220.json. The
+# interrupted DRT reported peak9786.64 MB, giving at least46.5% observed margin.
 #SBATCH --no-requeue
 #SBATCH --output=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/resume_bp_%j.log
 set -euo pipefail

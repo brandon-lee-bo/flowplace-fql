@@ -25,3 +25,15 @@ per-task 8-CPU/12GB requests, labels, physical parameters, and other arrays stay
 unchanged. The update returned exit1 for already-finished array children, while
 `squeue` authoritatively confirmed the remaining range as `[56-95%4]`.
 No work was restarted as a result of that scheduler-command warning.
+
+Recovery1785220 was submitted to eda with8CPUs/24GiB/6h and no automatic requeue.
+While still pending, its limit was reduced to2h30 and memory to14GiB after
+checking the interrupted route: it reached iteration3 at90% after about36min,
+with reported peak9786.64MB. Each update used a temporary hold to avoid changing
+a started allocation. The eda node then had only about14.9GiB of schedulable
+memory despite idle CPUs; the14GiB request retained at least46.5% margin over
+the observed peak, and Slurm started it at02:31:09 HKT. This is an observed
+resource estimate, not a guarantee of its future peak. The original submitted
+batch settings and before/after scheduler records are retained in
+`backend/assets/resume_{schedule,memory}_1785220.json`. Physical inputs and
+optimization parameters were not changed.
