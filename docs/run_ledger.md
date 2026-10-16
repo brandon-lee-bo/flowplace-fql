@@ -28,7 +28,7 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784018 | Three-seed macro-reward training | BC, FQL alpha 1/10/100, direct analytic student controls |
 | 1784019 | Predeclared backend-label export | 96 DEFs: 32/8/8 families per split, variants 0 and 1 |
 | 1784031 | Coordinate controls, validation selection, heldout proxy evaluation | Depends on training |
-| 1784047 | Real GRT labels | 96 tasks, maximum two concurrent, 8 CPUs / 12 GiB each |
+| 1784047 | Real GRT labels | 96 tasks, initially two concurrent, raised to four at about 02:05 HKT after checking idle CPU capacity; still 8 CPUs / 12 GiB each |
 | 1784060 | Local teacher sensitivity probe | Exact repeats; intermediate hard projection strongly amplifies small input changes |
 | 1784068 / 1784070 / 1784092 | Independent dataset/evaluation audit and plots | Passed; 288 families, 864 labels, all selected heldout geometries and HPWL checked |
 | 1784098 | Predeclared proxy-to-GRT candidate export | 36 candidates: all 12 selected method/seed combinations × first 3 heldout families |

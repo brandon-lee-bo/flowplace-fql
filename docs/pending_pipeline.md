@@ -6,7 +6,8 @@ All computation uses FactLab Slurm. Do not change unrelated jobs.
 
 ## Already queued
 
-- GRT labels: `1784047` (96 tasks, concurrency 2) → audit `1784160` → relabel
+- GRT labels: `1784047` (96 tasks, concurrency initially 2, raised to 4 around
+  02:05 HKT after scheduler/resource checks) → audit `1784160` → relabel
   `1784119` → critic gate `1784156`. Relabel waits for both the array and audit.
   First two Slurm failures were postprocessing failures, recovered without
   rerouting; original failures and parser-recovery evidence remain preserved.

@@ -17,3 +17,11 @@ Record job IDs, scripts, logs, exit codes and elapsed times for our jobs.
 Lightweight source inspection, editing, downloads, package preparation and
 scheduler queries are performed from the interactive session. Initial host
 GPU query found all eight H20 GPUs busy; no inference/training was run there.
+
+At about 02:05 HKT, `sinfo` showed idle CPU capacity on several nodes and
+`sacctmgr` confirmed the user's matching cpu-scavenger association. The existing
+96-label array 1784047 was changed from throttle2 to throttle4 with `scontrol`;
+per-task 8-CPU/12GB requests, labels, physical parameters, and other arrays stayed
+unchanged. The update returned exit1 for already-finished array children, while
+`squeue` authoritatively confirmed the remaining range as `[56-95%4]`.
+No work was restarted as a result of that scheduler-command warning.
