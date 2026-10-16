@@ -64,20 +64,28 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784534 | bp_be fullflow raw-report audit | Completed and passed; DRC247 retained separately from flow completion |
 | 1784543 | Generated deterministic swerv fullflow | Completed3146.42s and raw-report audit passed; rWL4.163184Mum,WNS-.588714ns,TNS-681.557ns,DRC7282. Independent seed300 control; original failed Table2 row unchanged |
 | 1784699 / 1784706 | Preregistered actor physical-outcome policy tests | First run 8/9 passed, exporter mock mishandled provenance git metadata; test fixture corrected, retry 9/9 passed. No physical outcomes or backend constraints changed |
-| 1785220 | bp original-cap4 recovery | Original1783836_2 was PREEMPTED after59m02, automatically requeued then held/cancelled before restart; resume saved GRT in a new run on eda, no physical-parameter changes. Pending resource request reduced from24GiB/6h to14GiB/2h30 based on original observed peak/progress; started02:31:09 |
+| 1785220 | bp original-cap4 recovery | Completed0:0,2302.36s resumedDRT/fill/finish; raw-report/checkpoint/runtime-source audits passed,DRC45. Original1783836_2 PREEMPTED59m02 preserved. Newrun used savedGRT, unchanged cap4 and physical parameters; pending resource request adjusted24GiB/6h→14GiB/2h30 before02:31:09start |
 | 1785243 | Requeue-aware resource snapshot | Uses sacct-D and distinct allocation attempts; original bp PREEMPTED contributes7.871111 reserved CPUh, unstarted cancelled requeue contributes0 |
-| 1785253 | Six-design summary after infrastructure recovery | Waits for1785220; explicit retry map verifies original/source/checkpoint/tool/config hashes and original cap4; stage-only recovery timing remains separate |
+| 1785253 | Six-design summary after infrastructure recovery | Complete report of6outcomes:5success+originalswervfailure. Exit1/incomplete intentionally preserves failedrow; all5numerical/report/recovery bindings passed, no outstanding physical run |
 | 1785142 | Released bp_fe cap20 final raw-report audit | Passed; 1784154 completed with DRC1904→192, rWL+199um, unchanged WNS/power/area and slightly worse TNS; resumed-stage runtime about4781s |
 | 1785454 | Same-input sampler infrastructure retry | Original1784158_0/raw1785399 PREEMPTED after1m02 inCTS; newrun n00_i0240_retry1 completed159.02s oneda8CPU12GiB, sameDEF/physical flow; original attempt retained |
 | 1785462 | Sampler retry evidence audit | Passed actual GRT raw-report comparison and6negative binding checks; original PREEMPTED plus successful same-input retry independently bound |
 | 1785468 | Recovery-aware sampler outcome classification | Completed:11 outcomes,10success+1fixed-zero CTS failure,1infrastructure recovery; original11-row tasks/selection unchanged |
 | 1785486 | Independent FQL infrastructure-retry tests | Completed6/6 checks: real11-request recovery plus tampered preemption/raw-job/run-ID/DEF/core-cap rejection |
 | 1785491 / 1785496 | Recovered sampler aggregation and plots | Completed10success+1physical failure with full11 denominator; same-input retry does not add a candidate |
+| 1785504 | Table2 metric/audit binding regression | Isolated real-data fixture checks unchanged audited metrics accepted and rewritten wirelength rejected; original results never modified |
+| 1785509 | Final Slurm allocation snapshot | After all physical runs and binding regression; includes failed/preempted attempts and reports reserved resources rather than actual utilization |
 
 The initial submission of1785491 with afterok1785468:1785486 was rejected by
 Slurm with “Job dependency problem” and created no job. Both prerequisites were
 independently verified COMPLETED0:0 with passing artifacts before submitting
 without the expired dependency references;1785496 used afterok1785491.
+
+Final read review found the Table2 summary checked audit/raw-report hashes but
+did not compare its current metric values to those actually audited.1785253 was
+temporarily held while PENDING; the six-metric equality check was added and the
+job released before startup. It then produced the5/6 report above. This changes
+validation only, not physical data, selection or routing constraints.
 
 ## Interpretation fixes
 

@@ -127,6 +127,14 @@ def main():
             audit = json.loads(audit_path.read_text())
             if audit.get("all_checks_pass") is not True or audit.get("stage") != "finish_after_detailed_route":
                 raise ValueError("Final-report consistency audit did not pass")
+            # Bind the values used below to the values the raw-report audit checked.
+            # A successful old audit alone must not validate rewritten metrics.
+            for key in ["DRT_WL", "WNS", "TNS", "Power", "StdCellArea", "DRC"]:
+                checked = audit["checks"][key]
+                value = float(metrics[key])
+                if (checked.get("agrees") is not True or not math.isfinite(value)
+                        or value != float(checked["author_value"])):
+                    raise ValueError(f"Current {key} differs from the audited metric")
             for relative, bound_hash in audit["source_report_sha256"].items():
                 if digest(run / relative) != bound_hash:
                     raise ValueError("Raw final report changed after audit")
