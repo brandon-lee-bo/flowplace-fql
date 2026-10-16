@@ -1,8 +1,9 @@
 """Aggregate actual GRT results without mixing macro proxies or hiding failures.
 
-Every method/index in the frozen plan must be present exactly once. Failures are
-written to report.json, then the command fails; no success-only comparison is
-produced. This module never launches backend evaluation or trains a model.
+Every method/index in the frozen plan must be present exactly once. Strict mode
+rejects failures. An explicit exploratory-only mode admits tightly verified
+terminal physical failures, preserving denominators and suppressing incomplete
+method/configuration means. This module never launches backends or training.
 """
 from __future__ import annotations
 
@@ -115,7 +116,7 @@ def q_information(task, base, measured_rwl):
     return info
 
 
-def validate_task(task, base, expected_stage=STAGE):
+def validated_input(task, base):
     method, index = task_key(task)
     configuration, seed = method_identity(method, task.get("training_seed"))
     if task.get("status", "ready") not in ("ready", "success", "completed"):
@@ -140,6 +141,33 @@ def validate_task(task, base, expected_stage=STAGE):
         raise ValueError("DEF lacks a successful matching rounded-geometry audit")
     metrics_path = resolve_from(task["metrics_path"], base)
     manifest_path = resolve_from(task["manifest_path"], base) if "manifest_path" in task else metrics_path.with_name("manifest.json")
+    record = {"method": method, "configuration": configuration, "training_seed": seed, "index": index,
+              "role": task.get("role", "candidate"), "reused_backend_measurement": task.get("reused_backend_measurement", False),
+              "noise_conditioning": task.get("noise_conditioning", task.get("role") not in ("fixed_control", "fixed_training_baseline")),
+              "split": task["split"], "task_id": task.get("task_id"), "run_id": task.get("run_id"),
+              "coordinate_legality": coordinate_legality, "rounded_def_legal_no_halo": True,
+              "action_sha256": task["action_sha256"], "def_sha256": def_hash, "def_path": str(def_path),
+              "def_audit_sha256": sha256_file(audit_path), "metrics_path": str(metrics_path),
+              "backend_manifest_path": str(manifest_path)}
+    return record, def_path, audit_path, metrics_path, manifest_path
+
+
+def backend_identity(task, manifest, manifest_path, def_hash, expected_stage):
+    if manifest.get("stage") != expected_stage or manifest.get("not_final_table2") is not True:
+        raise ValueError("Expected explicitly intermediate global-route backend")
+    if manifest.get("def_sha256") != def_hash or sha256_file(resolve_from(manifest["def_path"], manifest_path.parent)) != def_hash:
+        raise ValueError("Backend did not use the bound executed DEF")
+    if task.get("design") != manifest.get("design"):
+        raise ValueError("Task and backend designs differ")
+    consistency = {key: manifest.get(key) for key in ["design", "openroad_sha256", "design_config_sha256", "flow_script_patch"]}
+    if not all(consistency.values()):
+        raise ValueError("Incomplete backend implementation provenance")
+    return consistency
+
+
+def validate_task(task, base, expected_stage=STAGE):
+    record, def_path, audit_path, metrics_path, manifest_path = validated_input(task, base)
+    method, index, def_hash = record["method"], record["index"], record["def_sha256"]
     for key, path in [("metrics_sha256", metrics_path), ("manifest_sha256", manifest_path)]:
         if key in task and sha256_file(path) != task[key]:
             raise ValueError("Reused backend measurement changed after candidate export")
@@ -150,10 +178,7 @@ def validate_task(task, base, expected_stage=STAGE):
         raise ValueError("Wrong backend stage; global route is not final Table 2")
     if metrics.get("not_final_table2") is not True or manifest.get("not_final_table2") is not True:
         raise ValueError("GRT labels must explicitly identify not_final_table2")
-    if manifest.get("def_sha256") != def_hash or sha256_file(resolve_from(manifest["def_path"], manifest_path.parent)) != def_hash:
-        raise ValueError("Backend did not use the bound executed DEF")
-    if task.get("design") != manifest.get("design"):
-        raise ValueError("Task and backend designs differ")
+    consistency = backend_identity(task, manifest, manifest_path, def_hash, expected_stage)
     values = {key: numeric(metrics.get(key), key, required=key in ("rWL_um", "WNS_ns", "TNS_ns"), positive=key == "rWL_um")
               for key in ["rWL_um", "WNS_ns", "TNS_ns", "Power_W", "StdCellArea_um2"]}
     fixed_baseline_provenance = None
@@ -170,20 +195,74 @@ def validate_task(task, base, expected_stage=STAGE):
         if reference.get("action_sha256") != task["action_sha256"] or bound.get("def_sha256") != def_hash or bound.get("metrics_sha256") != sha256_file(metrics_path):
             raise ValueError("Fixed baseline must reuse its exact executed action/DEF/backend measurement")
         fixed_baseline_provenance = {"path": str(reference_path), "sha256": sha256_file(reference_path)}
-    consistency = {key: manifest.get(key) for key in ["design", "openroad_sha256", "design_config_sha256", "flow_script_patch"]}
-    if not all(consistency.values()):
-        raise ValueError("Incomplete backend implementation provenance")
-    record = {"method": method, "configuration": configuration, "training_seed": seed, "index": index,
-              "role": task.get("role", "candidate"), "reused_backend_measurement": task.get("reused_backend_measurement", False),
-              "noise_conditioning": task.get("noise_conditioning", task.get("role") not in ("fixed_control", "fixed_training_baseline")),
-              "split": task["split"], "task_id": task.get("task_id"), "run_id": task.get("run_id"),
-              "status": "success", "values": values, "q": q_information(task, base, values["rWL_um"]),
-              "coordinate_legality": coordinate_legality, "rounded_def_legal_no_halo": True,
-              "fixed_training_baseline_provenance": fixed_baseline_provenance,
-              "action_sha256": task["action_sha256"], "def_sha256": def_hash,
-              "def_audit_sha256": sha256_file(audit_path), "metrics_path": str(metrics_path),
-              "metrics_sha256": sha256_file(metrics_path), "backend_manifest_sha256": sha256_file(manifest_path),
-              "backend_consistency": consistency, "backend_metrics": metrics, "backend_manifest": manifest}
+    record.update(status="success", values=values, q=q_information(task, base, values["rWL_um"]),
+                  fixed_training_baseline_provenance=fixed_baseline_provenance,
+                  metrics_sha256=sha256_file(metrics_path), backend_manifest_sha256=sha256_file(manifest_path),
+                  backend_consistency=consistency, backend_metrics=metrics, backend_manifest=manifest)
+    json.dumps(record, allow_nan=False)
+    return record
+
+
+def validate_physical_failure(task, base, tasks_path, expected_stage=STAGE):
+    """Only the independently diagnosed CTS RSZ-0060 outcome is authorized."""
+    record, def_path, audit_path, metrics_path, manifest_path = validated_input(task, base)
+    if task.get("role") == "fixed_training_baseline":
+        raise ValueError("A reused successful best-TRAIN label cannot become a new physical-failure observation")
+    sidecar_path = metrics_path.with_name("physical_failure.json")
+    sidecar, manifest = json.loads(sidecar_path.read_text()), json.loads(manifest_path.read_text())
+    if sidecar.get("schema_version") != 1 or sidecar.get("status") != "physical_failure":
+        raise ValueError("Unknown physical-failure sidecar schema/status")
+    expected = {"failure_class": "cts_hold_repair_max_buffer_count", "error_code": "RSZ-0060",
+                "error_line": "[ERROR RSZ-0060] Max buffer count reached.",
+                "stage": "floorplan_place_cts", "substage": "clock_tree_synthesis_hold_repair",
+                "make_exit_code": 2, "openroad_exit_code": 1, "slurm_state": "FAILED",
+                "original_manifest_unchanged": True, "grt_metrics_available": False,
+                "not_parser_failure": True, "not_preemption": True}
+    if any(sidecar.get(key) != value for key, value in expected.items()):
+        raise ValueError("Unrecognized or nonterminal physical failure; parser/preemption failures are not admissible")
+    if manifest.get("success") is not False or metrics_path.exists():
+        raise ValueError("Physical failure requires unsuccessful original manifest and no GRT metrics")
+    if "floorplan_place_cts exited 2" not in str(manifest.get("failure", "")):
+        raise ValueError("Original manifest does not identify the failed CTS subprocess")
+    start = numeric(manifest.get("time_start"), "time_start", required=True, positive=True)
+    end = numeric(manifest.get("time_end"), "time_end", required=True, positive=True)
+    if end < start or sidecar.get("time_end") != end or not sidecar.get("slurm_end"):
+        raise ValueError("Missing/mismatched terminal timing evidence")
+    if not re.fullmatch(r"[1-9]\d*:0", str(sidecar.get("slurm_exit_code", ""))):
+        raise ValueError("Sidecar lacks a normal nonzero process exit (signals/preemption rejected)")
+    if sidecar.get("slurm_job_id") != manifest.get("slurm_job_id") or sidecar.get("run_id") != task.get("run_id"):
+        raise ValueError("Sidecar refers to another backend execution")
+    if sidecar.get("physical_flow_revision") != manifest.get("physical_flow_revision") or not manifest.get("physical_flow_revision"):
+        raise ValueError("Missing/mismatched physical-flow identity")
+    action_path = resolve_from(task["action_path"], base)
+    bindings = {"manifest": manifest_path, "def": def_path, "log": metrics_path.with_name("floorplan_place_cts.log"),
+                "task_manifest": Path(tasks_path).resolve(), "def_audit": audit_path}
+    for name, path in bindings.items():
+        if resolve_from(sidecar[name + "_path"], sidecar_path.parent) != path.resolve() or sha256_file(path) != sidecar.get(name + "_sha256"):
+            raise ValueError(f"Physical failure {name} path/hash binding mismatch")
+    if resolve_from(sidecar["run_path"], sidecar_path.parent) != metrics_path.parent.resolve():
+        raise ValueError("Sidecar run directory mismatch")
+    if resolve_from(sidecar["action_path"], sidecar_path.parent) != action_path or sha256_file(action_path) != sidecar.get("action_file_sha256"):
+        raise ValueError("Physical failure action file binding mismatch")
+    for key in ["task_id", "method", "index", "dataset_sha256", "action_sha256"]:
+        if key not in task or sidecar.get(key) != task[key]:
+            raise ValueError(f"Physical failure task/action identity mismatch: {key}")
+    if sidecar.get("action_key") != task.get("action_key", "action") or sidecar.get("action_row") != task["action_row"]:
+        raise ValueError("Physical failure action locator mismatch")
+    lines = bindings["log"].read_text(errors="replace").splitlines()
+    line_number = sidecar.get("error_line_number")
+    if isinstance(line_number, bool) or not isinstance(line_number, int) or not 1 <= line_number <= len(lines) or lines[line_number - 1].strip() != expected["error_line"]:
+        raise ValueError("Classified error is absent at its bound raw log location")
+    if not any("do-4_1_cts] Error 1" in line for line in lines) or not any("do-cts] Error 2" in line for line in lines):
+        raise ValueError("Raw log does not prove terminal CTS make failure")
+    consistency = backend_identity(task, manifest, manifest_path, record["def_sha256"], expected_stage)
+    record.update(status="physical_failure", values={key: None for key in ["rWL_um", "WNS_ns", "TNS_ns", "Power_W", "StdCellArea_um2"]},
+                  q={"prediction": task.get("predicted_q"), "calibration_allowed": False,
+                     "reason": "No terminal GRT reward exists for this physical failure"},
+                  metrics_sha256=None, backend_manifest_sha256=sha256_file(manifest_path),
+                  backend_consistency=consistency, backend_metrics=None, backend_manifest=manifest,
+                  physical_failure_path=str(sidecar_path), physical_failure_sha256=sha256_file(sidecar_path),
+                  physical_failure=sidecar)
     json.dumps(record, allow_nan=False)
     return record
 
@@ -278,13 +357,66 @@ def quality_summary(records, reference_method="teacher_relegalized"):
             "directions": "Positive rWL reduction and positive WNS/TNS changes indicate improvement; report timing separately from wirelength"}
 
 
-def aggregate(tasks_path, output, plan_path=None):
+def quality_with_outcomes(records, reference_method):
+    """Keep failure denominators, without success-only method or seed means."""
+    by_method = {}
+    for method in sorted({row["method"] for row in records}):
+        rows = sorted((row for row in records if row["method"] == method), key=lambda row: row["index"])
+        conditioned = [is_noise_conditioned(row) for row in rows]
+        if len(set(conditioned)) != 1 or (not conditioned[0] and len(rows) != 1):
+            raise ValueError("Fixed methods must have exactly one outcome, not copied noise replicates")
+        success = sum(row["status"] == "success" for row in rows)
+        physical = sum(row["status"] == "physical_failure" for row in rows)
+        by_method[method] = {"configuration": rows[0]["configuration"], "training_seed": rows[0]["training_seed"],
+                             "indices": [row["index"] for row in rows], "count": len(rows), "total_count": len(rows),
+                             "success_count": success, "physical_failure_count": physical,
+                             "physical_failure_fraction": physical / len(rows), "comparison_complete": success == len(rows),
+                             "noise_conditioning": conditioned[0], "independent_fixed_measurements": 0 if conditioned[0] else success}
+    complete_methods = {method for method, counts in by_method.items() if counts["comparison_complete"]}
+    quality = quality_summary([row for row in records if row["method"] in complete_methods], reference_method)
+    for method, counts in by_method.items():
+        if method in complete_methods:
+            quality["by_method"][method].update(counts)
+        else:
+            quality["by_method"][method] = {**counts, **{key: None for key in
+                ["rWL_um", "WNS_ns", "TNS_ns", "Power_W", "StdCellArea_um2", "q_calibration"]},
+                "reason": "Physical failure in the frozen method budget; successful-only metric means are prohibited"}
+    for config in sorted({row["configuration"] for row in records}):
+        methods = {name: counts for name, counts in by_method.items() if counts["configuration"] == config}
+        indices = [value["indices"] for value in methods.values()]
+        if any(index != indices[0] for index in indices):
+            raise ValueError("Training seeds have unequal requested noise sets")
+        seeds = [value["training_seed"] for value in methods.values()]
+        if len(set(seeds)) != len(seeds):
+            raise ValueError("Duplicate training seed within a configuration")
+        complete = all(value["comparison_complete"] for value in methods.values())
+        total = sum(value["total_count"] for value in methods.values())
+        physical = sum(value["physical_failure_count"] for value in methods.values())
+        counts = {"methods": sorted(methods), "training_seeds": seeds, "total_count": total,
+                  "success_count": sum(value["success_count"] for value in methods.values()),
+                  "physical_failure_count": physical, "physical_failure_fraction": physical / total,
+                  "comparison_complete": complete,
+                  "noise_conditioning": all(value["noise_conditioning"] for value in methods.values()),
+                  "noise_count_per_seed": len(indices[0]) if all(value["noise_conditioning"] for value in methods.values()) else 0}
+        if complete:
+            quality["by_configuration"][config].update(counts)
+        else:
+            quality["by_configuration"][config] = {**counts, "rwl_mean_across_seed_means": None,
+                "note": "At least one seed failed a requested physical evaluation; no successful-seed-only configuration mean"}
+    quality["complete_methods_for_numerical_summaries"] = sorted(complete_methods)
+    quality["numerical_scope"] = "Numerical means/pairs only for complete methods; configuration means require every predeclared seed complete"
+    return quality
+
+
+def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_failures=False):
     tasks_path, output = Path(tasks_path).resolve(), Path(output).resolve()
     plan_path = Path(plan_path).resolve() if plan_path is not None else tasks_path.with_name("selection_plan.json")
     output.mkdir(parents=True, exist_ok=False)
     report = {"status": "validating", "stage": STAGE, "not_final_table2": True,
               "tasks_path": str(tasks_path), "plan_path": str(plan_path),
-              "failures": [], "records": [], "quality": None}
+              "failures": [], "physical_failures": [], "records": [], "quality": None,
+              "allow_exploratory_physical_failures": allow_exploratory_physical_failures,
+              "outcomes_complete": False, "comparison_complete": False}
     try:
         plan = json.loads(plan_path.read_text())
         expected = plan_keys(plan)
@@ -292,6 +424,8 @@ def aggregate(tasks_path, output, plan_path=None):
                       phase=plan.get("phase", "exploratory"), expected_count=len(expected))
         if report["phase"] not in ("validation", "heldout", "exploratory"):
             raise ValueError("Unknown evaluation phase")
+        if allow_exploratory_physical_failures and report["phase"] != "exploratory":
+            raise ValueError("Physical-failure reporting mode is permitted only for exploratory comparisons")
         for name, binding in plan.get("source_bindings", {}).items():
             if sha256_file(resolve_from(binding["path"], plan_path.parent)) != binding["sha256"]:
                 raise ValueError(f"Frozen candidate source changed: {name}")
@@ -329,7 +463,14 @@ def aggregate(tasks_path, output, plan_path=None):
                     raise ValueError("Validation tasks must use split 1 only")
                 if report["phase"] == "heldout" and not fixed_training and entry.get("split") != 2:
                     raise ValueError("Heldout tasks must use split 2 only")
-                report["records"].append(validate_task(entry, tasks_path.parent))
+                sidecar = resolve_from(entry["metrics_path"], tasks_path.parent).with_name("physical_failure.json")
+                if allow_exploratory_physical_failures and sidecar.exists():
+                    record = validate_physical_failure(entry, tasks_path.parent, tasks_path)
+                    report["physical_failures"].append(record)
+                else:
+                    record = validate_task(entry, tasks_path.parent)
+                record.update(task_manifest_path=str(tasks_path), task_mapping_line=line_number)
+                report["records"].append(record)
             except Exception as exc:
                 report["failures"].append({"mapping_line": line_number, "task": entry,
                                             "error_type": type(exc).__name__, "message": str(exc)})
@@ -350,14 +491,20 @@ def aggregate(tasks_path, output, plan_path=None):
                 report["failures"].append({"message": "Backend implementation differs from frozen candidate plan"})
             if report["phase"] == "heldout" and consistency != selection["backend_consistency"]:
                 report["failures"].append({"message": "Backend implementation differs from validation selection"})
-        report["successful_count"] = len(records)
+        report["successful_count"] = sum(row["status"] == "success" for row in records)
+        report["physical_failure_count"] = len(report["physical_failures"])
+        report["total_count"] = len(expected)
+        report["verified_outcome_count"] = len(records)
         if report["failures"] or len(records) != len(expected):
             raise ValueError("Incomplete or invalid backend comparison; no success-only aggregate generated")
-        report["quality"] = quality_summary(records, plan.get("reference_method", "teacher_relegalized"))
-        report.update(status="completed", selection_allowed=report["phase"] == "validation",
+        report["quality"] = quality_with_outcomes(records, plan.get("reference_method", "teacher_relegalized"))
+        report.update(status="completed_with_physical_failures" if report["physical_failures"] else "completed",
+                      outcomes_complete=True, comparison_complete=not report["physical_failures"],
+                      selection_allowed=report["phase"] == "validation",
                       notes=["GRT is an intermediate backend stage, not final detailed-route Table 2",
                              "No Q calibration against rWL unless GRT reward stage and training-only scale are verified",
                              "Method/seed and paired-noise records remain separate; no seed cherry-picking",
+                             "Verified physical failures retain the full requested denominator; incomplete method/configuration numerical means are null",
                              "Exploratory cross-fidelity results cannot be relabeled as GRT validation selection"])
         write_json(output / "report.json", report)
         return report
@@ -373,10 +520,12 @@ def main():
     parser.add_argument("--tasks", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--plan")
+    parser.add_argument("--allow-exploratory-physical-failures", action="store_true",
+                        help="Explicit exploratory-only verified CTS physical-failure outcomes; no incomplete-method means")
     args = parser.parse_args()
     if "SLURM_JOB_ID" not in os.environ:
         raise RuntimeError("Use Slurm for numeric aggregation")
-    report = aggregate(args.tasks, args.output, args.plan)
+    report = aggregate(args.tasks, args.output, args.plan, args.allow_exploratory_physical_failures)
     print(json.dumps({"status": report["status"], "phase": report["phase"],
                       "count": report["successful_count"], "output": str(Path(args.output).resolve())}), flush=True)
 

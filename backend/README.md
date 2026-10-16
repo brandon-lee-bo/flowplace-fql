@@ -31,6 +31,7 @@ Use unique run IDs; the wrapper refuses to overwrite existing run directories. T
 5. bp_fe: 11 SRAM macros, DEF database units 2000 per micron, die 800 by 600 microns, nominal core [5,5,795,595]. Macro orientations are mixed N/FS and affect pin positions.
 6. The released platform config limits detailed routing to iterations 0–4 (`-droute_end_iter 4`). The first full bp_fe replay retains 1,904 DRC violations. A completed flow with metrics is **not** a DRC-clean implementation. Keep this limit fixed in comparisons; do not tune it to recover the published numbers.
 7. The author's evaluator takes the first logged global-route wirelength, before incremental repair. Cheap-label `rWL_um` instead reads the final global-route JSON value, and is explicitly an intermediate-stage metric. Detailed-route wirelength remains the Table 2 comparison metric.
+8. The released PDN stage emits `PDN-0113: Cannot find shapes to connect to on metal4`, catches the error, and continues in both successful bp_fe fullflows and the released GRT validation. Completed signal-routing/PPA results therefore do not establish a valid power-distribution network or complete signoff. This common limitation is distinct from a terminal CTS failure.
 
 ## Failures retained
 
@@ -121,6 +122,8 @@ python3 scripts/audit_grt_tasks.py ../datasets/bp_fe_grt_request_v1/tasks.jsonl 
 ```
 
 The audit distinguishes not-started/running/failed tasks from validated labels, checks input DEF hashes against the requested manifest, and reports physical-flow/reporting/parser revision counts. Final completeness requires all requested labels and one common physical-flow revision. Root owns collection/relabel jobs; the backend has not submitted the separate 36-layout proxy collection itself.
+
+The proxy candidate `bp_fe_proxy_transfer_v1_m02_i0242` failed during CTS hold repair with terminal `RSZ-0060: Max buffer count reached` after inserting 8,208 hold buffers. This is a physical-flow failure, not a parser failure or preemption. No GRT metric or penalty value is invented. `physical_failure.json` binds the original failed manifest, DEF, action/task, audit, and error log by hash, preserves Slurm terminal evidence, and leaves the original manifest unchanged. Only this specific proven failure class is currently recognized by `scripts/classify_physical_failure.py`; exploratory summaries must report feasibility alongside any conditional PPA statistics. Strict all-success audits remain unsatisfied when such a failure occurs.
 
 ## Separate detailed-route iteration diagnostic
 

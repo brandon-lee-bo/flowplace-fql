@@ -27,7 +27,8 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     sources = [ROOT / 'docs/run_ledger.md']
     ids = set(re.findall(r'(?<!\d)(\d{7})(?!\d)', sources[0].read_text()))
-    log_paths = list((ROOT / 'logs').glob('*'))
+    log_directories = [ROOT / 'logs', ROOT / 'backend/logs', ROOT / 'baseline/logs', ROOT / 'fql/logs']
+    log_paths = [path for directory in log_directories for path in directory.glob('*') if path.is_file()]
     for path in log_paths:
         ids.update(re.findall(r'(?<!\d)(\d{7})(?!\d)', path.name))
     ids.update(value for value in args.extra_jobs.split(',') if value)

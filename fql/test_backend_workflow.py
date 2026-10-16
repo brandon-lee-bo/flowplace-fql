@@ -13,7 +13,7 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from fql.aggregate_backend_candidates import aggregate
+from fql.aggregate_backend_candidates import aggregate, validate_physical_failure
 from fql.critic_gate import load_train_validation, run_gate
 from fql.relabel_backend import action_sha256, relabel, sha256_file
 from fql import test_relabel_backend
@@ -117,6 +117,104 @@ class BackendWorkflowTests(unittest.TestCase):
             after = aggregate(tasks, root / "after")["quality"]
             for key in ["paired_records", "paired_summary", "fixed_measurements", "versus_fixed_references"]:
                 self.assertEqual(before[key], after[key])
+
+    def physical_failure_fixture(self, root):
+        tasks, rows = self.candidate_fixture(root)
+        for i, row in enumerate(rows):
+            row.update(run_id=f"fixture_{i}", dataset_sha256="d" * 64)
+        tasks.write_text("".join(json.dumps(row) + "\n" for row in rows))
+        plan_path = root / "selection_plan.json"
+        plan = json.loads(plan_path.read_text()); plan["phase"] = "exploratory"
+        plan_path.write_text(json.dumps(plan))
+        failed = next(row for row in rows if row["method"] == "seed_0/fql_alpha_10" and row["index"] == 2)
+        metrics_path = Path(failed["metrics_path"])
+        metrics_path.unlink()
+        manifest_path = metrics_path.with_name("manifest.json")
+        manifest = json.loads(manifest_path.read_text())
+        manifest.update(success=False, time_start=10., time_end=11., slurm_job_id="123",
+                        failure="RuntimeError('floorplan_place_cts exited 2; see retained log')",
+                        physical_flow_revision="c" * 64)
+        manifest_path.write_text(json.dumps(manifest))
+        log_path = metrics_path.with_name("floorplan_place_cts.log")
+        log_path.write_text("[ERROR RSZ-0060] Max buffer count reached.\n"
+                            "make[1]: *** [Makefile:750: do-4_1_cts] Error 1\n"
+                            "make: *** [Makefile:756: do-cts] Error 2\n")
+        sidecar = {"schema_version": 1, "status": "physical_failure", "failure_class": "cts_hold_repair_max_buffer_count",
+            "error_code": "RSZ-0060", "error_line": "[ERROR RSZ-0060] Max buffer count reached.", "error_line_number": 1,
+            "stage": "floorplan_place_cts", "substage": "clock_tree_synthesis_hold_repair", "make_exit_code": 2,
+            "openroad_exit_code": 1, "slurm_job_id": "123", "slurm_state": "FAILED", "slurm_exit_code": "1:0",
+            "slurm_end": "2026-10-17T01:12:36", "time_end": 11., "physical_flow_revision": "c" * 64,
+            "original_manifest_unchanged": True, "grt_metrics_available": False, "not_parser_failure": True,
+            "not_preemption": True, "run_id": failed["run_id"], "run_path": str(metrics_path.parent),
+            "action_path": failed["action_path"], "action_file_sha256": failed["action_file_sha256"],
+            "action_key": "action", "action_row": 0,
+            **{key: failed[key] for key in ["task_id", "method", "index", "dataset_sha256", "action_sha256"]}}
+        for name, path in {"manifest": manifest_path, "def": Path(failed["def_path"]), "log": log_path,
+                           "task_manifest": tasks, "def_audit": Path(failed["def_path"]).with_suffix(".audit.json")}.items():
+            sidecar[name + "_path"] = str(path)
+            sidecar[name + "_sha256"] = sha256_file(path)
+        sidecar_path = metrics_path.with_name("physical_failure.json")
+        sidecar_path.write_text(json.dumps(sidecar))
+        return tasks, sidecar_path
+
+    def test_exploratory_physical_failure_preserves_denominator(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            tasks, _ = self.physical_failure_fixture(root)
+            with self.assertRaisesRegex(ValueError, "Incomplete"):
+                aggregate(tasks, root / "strict")
+            report = aggregate(tasks, root / "explicit", allow_exploratory_physical_failures=True)
+            self.assertEqual(report["status"], "completed_with_physical_failures")
+            self.assertTrue(report["outcomes_complete"])
+            self.assertFalse(report["comparison_complete"])
+            self.assertEqual((report["total_count"], report["successful_count"], report["physical_failure_count"]), (10, 9, 1))
+            self.assertEqual(len(report["records"]), 10)
+            method = report["quality"]["by_method"]["seed_0/fql_alpha_10"]
+            self.assertEqual((method["total_count"], method["success_count"], method["physical_failure_count"]), (2, 1, 1))
+            self.assertIsNone(method["rWL_um"])
+            config = report["quality"]["by_configuration"]["fql_alpha_10"]
+            self.assertEqual((config["total_count"], config["success_count"], config["physical_failure_count"]), (4, 3, 1))
+            self.assertIsNone(config["rwl_mean_across_seed_means"])
+            self.assertIsNotNone(report["quality"]["by_method"]["seed_1/fql_alpha_10"]["rWL_um"])
+            self.assertFalse(any(row["method"] == "seed_0/fql_alpha_10" for row in report["quality"]["paired_records"]))
+            self.assertFalse(report["selection_allowed"])
+
+    def test_unknown_or_corrupt_physical_failure_remains_hard_error(self):
+        for mutation in ["unknown", "preempted", "log_changed", "validation", "missing_sidecar"]:
+            with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                tasks, sidecar_path = self.physical_failure_fixture(root)
+                sidecar = json.loads(sidecar_path.read_text())
+                if mutation == "unknown":
+                    sidecar["error_code"] = "UNKNOWN"
+                elif mutation == "preempted":
+                    sidecar["slurm_state"] = "PREEMPTED"
+                elif mutation == "log_changed":
+                    Path(sidecar["log_path"]).write_text("Missing physical error evidence\n")
+                elif mutation == "validation":
+                    path = root / "selection_plan.json"
+                    plan = json.loads(path.read_text()); plan["phase"] = "validation"
+                    path.write_text(json.dumps(plan))
+                sidecar_path.write_text(json.dumps(sidecar))
+                if mutation == "missing_sidecar":
+                    sidecar_path.unlink()
+                with self.assertRaises(ValueError):
+                    aggregate(tasks, root / "rejected", allow_exploratory_physical_failures=True)
+                report = json.loads((root / "rejected/report.json").read_text())
+                self.assertEqual(report["status"], "failed")
+                self.assertFalse(report["outcomes_complete"])
+                self.assertIsNone(report["quality"])
+
+    def test_real_bound_cts_failure_is_recognized(self):
+        tasks = ROOT / "datasets/bp_fe_proxy_transfer_request_v1/tasks.jsonl"
+        if not tasks.exists():
+            self.skipTest("Local real diagnostic artifact is not available")
+        rows = [json.loads(line) for line in tasks.read_text().splitlines()]
+        task = next(row for row in rows if row["run_id"] == "bp_fe_proxy_transfer_v1_m02_i0242")
+        result = validate_physical_failure(task, tasks.parent, tasks)
+        self.assertEqual(result["status"], "physical_failure")
+        self.assertEqual(result["physical_failure"]["error_code"], "RSZ-0060")
+        self.assertTrue(all(value is None for value in result["values"].values()))
 
     def make_grt(self, root):
         source, labels, _, _ = test_relabel_backend.RelabelTests().create_fixture(root)

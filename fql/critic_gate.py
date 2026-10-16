@@ -97,7 +97,8 @@ def best_training_baseline(data, manifest, dataset_path, output):
               "label_budget_total": manifest["num_critic"], "teacher_data_count": manifest["num_teacher"],
               "reuse_policy": "Reuse exact executed action and matching DEF/backend provenance; do not relegalize and silently reuse old reward",
               "replication": "One previously measured layout; not an independent replicate for each noise or training seed",
-              "cost_policy": "Charge the complete eligible training-label search and original teacher/data collection; it is not a zero-data baseline"}
+              "teacher_data_count_semantics": "Full collected dataset metadata, not this fixed baseline's minimum data requirement",
+              "cost_policy": "The minimum-data best-TRAIN baseline requires every eligible_training_layout_count TRAIN backend label and the training_noise_families parent teacher generations, including their perturbation/legalization work. For the predeclared real experiment these are 64 labels and 32 parent teachers; FQL additionally uses 192 training teacher/noise pairs. Report the entire actual experiment separately, including the collected 288 teacher pairs and validation/heldout costs. The baseline does not intrinsically require 192 or 288 teacher generations."}
     write_json(output / "best_train_layout.json", report)
     return report
 

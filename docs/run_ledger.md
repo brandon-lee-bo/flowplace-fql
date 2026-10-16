@@ -49,10 +49,17 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784160 / 1784161 | Final GRT/proxy provenance audits | Queued after corresponding arrays, require all requested metrics valid |
 | 1784185 / 1784188 | Euler teacher BC learnability diagnostic | First failed before generation on optional mask fields; retry completed in 3m14s, three seeds, identical original hard-BC layouts verified |
 | 1784189 / 1784190 | Fixed-control pairing and GRT exporter tests | Both passed; fixed controls never become noise replicates; reuse/selection/checkpoint bindings verified |
-| 1784231 / 1784232 | Proxy and sampler GRT aggregation | Queued after respective arrays; require complete frozen candidate sets and refuse success-only averages |
-| 1784233 / 1784234 | GRT comparison plots | Queued after complete validated reports; raw points and fixed controls remain distinct |
+| 1784231 / 1784232 | Initial proxy and sampler aggregation schedule | Cancelled while pending after a real CTS failure required explicit physical-failure outcome reporting; no metrics discarded |
+| 1784233 / 1784234 | Initial GRT plots schedule | Cancelled while pending with parent aggregations; replacements will preserve incomplete methods without success-only means |
 | 1784311 | Six-design Table 2 summary | Queued after fullflow array; retain any failures and report every declared circuit |
 | 1784327 / 1784328 | Fullflow numerical consistency audits | Already-completed examples and all six released runs; summary additionally waits for final audit |
+| 1784344 | Generation-plus-legalization latency | Completed in 45s; 16 fixed noises ×3 rounds ×7 paths, original saved final coordinates reproduced exactly |
+| 1784384 | Physical CTS failure evidence | Binds retained RSZ-0060 log, original manifest, frozen task, DEF and action; does not modify failure or rerun layout |
+| 1784418 | Ariane136 fullflow raw-report audit | Queued after completed route; no optimization |
+| 1784450 / 1784451 | Final exploratory outcome classification | Depend on proxy/sampler arrays; definite physical failure is an outcome, while unknown/infra/parser failures remain unresolved |
+| 1784472 | Physical-failure reporting tests | Five passed; real retained failure recognized, corrupt/unknown failures rejected, denominators and seed/fixed-control rules verified |
+| 1784481 / 1784482 | Exploratory GRT outcome reports | After final outcome classification; preserve physical failures and suppress incomplete-method/configuration means |
+| 1784485 / 1784486 | Failure-aware GRT plots | After verified outcome reports; show failure counts, all candidate CSV rows, and no incomplete-method mean or pooled correlation |
 
 ## Interpretation fixes
 
