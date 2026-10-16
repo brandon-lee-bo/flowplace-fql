@@ -1,0 +1,18 @@
+{
+  "started_at": "2026-10-16T23:58:02.166292+08:00",
+  "sources": {
+    "flowplace": {
+      "commit": "da4a10fc1a68c66dfa0ec31dd10f75b75e2e5547"
+    },
+    "fql": {
+      "commit": "e8cd16eb490332924dfa2492097219f181765933"
+    }
+  },
+  "paper_versions": {
+    "flowplace": "https://arxiv.org/pdf/2604.23658v1",
+    "fql": "https://arxiv.org/pdf/2502.02538"
+  },
+  "scope": "Reproduce FlowPlace Table 2, then FQL-style whole-layout adaptation with measured physical evaluation",
+  "baseline_policy": "Official pretrained checkpoint + official sampling; independently check legality; preserve backend versions and seeds",
+  "gpu_policy": "Use Slurm allocation, never interrupt other workloads"
+}

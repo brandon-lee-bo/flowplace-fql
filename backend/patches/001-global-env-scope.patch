@@ -1,0 +1,11 @@
+--- patches/write_ref_sdc.tcl.original	2026-10-17 00:09:06.802521032 +0800
++++ thirdparty/OpenROAD-flow-scripts/scripts/write_ref_sdc.tcl	2026-10-17 00:09:06.818520755 +0800
+@@ -25,7 +25,7 @@
+       create_clock -name $clk_name -period $ref_period $sources
+       # Undo the set_propagated_clock so SDC at beginning of flow uses ideal clocks.
+       unset_propagated_clock [all_clocks]
+-      write_sdc -no_timestamp [file join $env(RESULTS_DIR) "updated_clks.sdc"]
++      write_sdc -no_timestamp [file join $::env(RESULTS_DIR) "updated_clks.sdc"]
+       # Reset
+       create_clock -name $clk_name -period $period $sources
+       set_propagated_clock [all_clocks]
