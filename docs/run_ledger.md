@@ -63,6 +63,7 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784533 | Released DEF geometry audit | All six checked against released LEFs; swerv has three raw macro overlaps, other five have none; no coordinates changed |
 | 1784534 | bp_be fullflow raw-report audit | Completed and passed; DRC247 retained separately from flow completion |
 | 1784543 | Generated deterministic swerv fullflow | Independent official-checkpoint baseline after released input failed macro overlap; original failed Table 2 row remains unchanged |
+| 1784699 / 1784706 | Preregistered actor physical-outcome policy tests | First run 8/9 passed, exporter mock mishandled provenance git metadata; test fixture corrected, retry 9/9 passed. No physical outcomes or backend constraints changed |
 
 ## Interpretation fixes
 

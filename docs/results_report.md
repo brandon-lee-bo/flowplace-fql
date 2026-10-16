@@ -187,6 +187,11 @@ Slurm 作业 1784533 独立检查原始 DEF 和发布的 LEF，确认在 OpenROA
 若 critic 的验证表现支持继续，将预先固定 alpha=1/10/100、3 个训练 seed、
 4 个 validation noise：BC 加三个 FQL 配置共 48 个新后端布局。
 统一选一个 alpha 后，再测固定的 4 个 heldout noise，共 24 个新布局。
+每个 alpha 须在 3 个 seed × 4 个 validation noise 上全部完成后端，才参与
+平均线长排名；失败配置保留完整案例，若无合格配置则不扩展 heldout。
+后续 actor heldout 固定为 244–247，避开 proxy/sampler 后端探索的 240–242；
+这是 actor 结果生成前按输入 ID 做的隔离修订，不是按质量挑选样本。
+宏指标诊断此前仍看过全部 heldout noise，这一限制继续保留。
 Teacher 和最佳训练布局只有在动作、DEF 和后端来源完全匹配时复用结果。
 
 ## 速度与成本

@@ -1,0 +1,41 @@
+{
+  "policy_id": "grt_actor_all_cases_success_v1",
+  "schema_version": 1,
+  "training_reward_stage": "global_route_only",
+  "training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "alphas": [
+    1,
+    10,
+    100
+  ],
+  "validation_indices": [
+    192,
+    193,
+    194,
+    195
+  ],
+  "heldout_indices": [
+    244,
+    245,
+    246,
+    247
+  ],
+  "eligible_rule": "all_12_validation_cases_successful",
+  "ranking_rule": "minimum_mean_rwl_across_seed_means_lexical_tie_break",
+  "incomplete_configuration_mean": null,
+  "incomplete_bc_comparison": null,
+  "all_ineligible_action": "stop_without_heldout",
+  "heldout_action": "report_locked_choice_without_reselection",
+  "unknown_infrastructure_parser_action": "hard_error",
+  "permitted_physical_failure_classes": [
+    "cts_hold_repair_max_buffer_count"
+  ],
+  "frozen_at_utc": "2026-10-16T17:48:54.445849+00:00",
+  "amendment": "Before any real-GRT actor result: retain validation 192-195; change future actor heldout from historical 240-243 to 244-247 solely to avoid proxy/sampler GRT exploration at 240-242, not based on quality. Prior plans remain unchanged.",
+  "isolation_limit": "Macro diagnostics already inspected all heldout noises. This isolates GRT cross-fidelity exploration inputs only, not all prior information.",
+  "reliability_limit": "12/12 validation successes are a small-budget eligibility condition, not evidence of population zero failure probability."
+}

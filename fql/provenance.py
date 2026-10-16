@@ -17,7 +17,8 @@ def capture_source_provenance(archive_dir=None, extra_paths=None, capture_event=
     directory = Path(__file__).resolve().parent
     files = ["train.py", "core.py", "analytic.py", "latency.py", "critic_gate.py",
              "predict.py", "coordinate_control.py", "relabel_backend.py", "provenance.py",
-             "prepare_grt_candidate_tasks.py", "aggregate_backend_candidates.py", "seal_grt_selection.py"]
+             "prepare_grt_candidate_tasks.py", "aggregate_backend_candidates.py", "seal_grt_selection.py",
+             "physical_failure_policy.py", "grt_actor_physical_policy_v1.json"]
     paths = {name: directory / name for name in files}
     paths.update(extra_paths or {})
     archive = Path(archive_dir).resolve() if archive_dir is not None else None

@@ -16,6 +16,8 @@ from unittest.mock import patch
 import numpy as np
 import torch
 
+REAL_SUBPROCESS_RUN = subprocess.run
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from fql.aggregate_backend_candidates import aggregate
@@ -60,6 +62,9 @@ class GRTExportTests(unittest.TestCase):
 
     @staticmethod
     def fake_def_export(command, **kwargs):
+        if command[0] == "git":
+            # Source snapshots query real git metadata; only mock the DEF tool.
+            return REAL_SUBPROCESS_RUN(command, **kwargs)
         path = Path(command[command.index("--output") + 1])
         path.write_text("SYNTHETIC DEF EXPORT FIXTURE ONLY\n")
         path.with_suffix(".audit.json").write_text(json.dumps({"output_sha256": sha256_file(path), "legal_no_halo": True}))

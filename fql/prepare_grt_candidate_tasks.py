@@ -24,6 +24,7 @@ from analysis.placement_metrics import legality
 from fql.aggregate_backend_candidates import plan_keys, validate_task
 from fql.core import Critics, OneStepActor
 from fql.provenance import capture_source_provenance, checkpoint_provenance
+from fql.physical_failure_policy import bind_policy, validate_bound_policy
 from fql.relabel_backend import STAGE, action_sha256, sha256_file, write_json
 
 
@@ -101,6 +102,10 @@ def prepare_plan(args):
         "legalizer": ROOT / "upstream/flowplace/flow_matching/hard_constraint_legalizer.py",
         "def_exporter": ROOT / "backend/scripts/export_macro_def.py"}.items()}
     bindings["benchmark_cache"] = record_binding(benchmark_cache_path(manifest["args"]["design"]))
+    policy_path = getattr(args, "physical_failure_policy", None)
+    policy_binding = bind_policy(policy_path) if policy_path else None
+    if policy_binding is not None:
+        bindings["physical_failure_policy"] = {key: policy_binding[key] for key in ["path", "sha256"]}
     best = read_json(gate_dir / "best_train_layout.json")
     if best.get("selection_split") != "train_only" or best.get("dataset_sha256") != dataset_hash:
         raise ValueError("Best-TRAIN baseline must be selected using this dataset's training rows only")
@@ -125,6 +130,8 @@ def prepare_plan(args):
         selection = read_json(selection_path)
         if selection.get("kind") != "sealed_GRT_validation_selection" or selection.get("selection_stage") != STAGE:
             raise ValueError("Wrong heldout selection kind/stage")
+        if selection.get("physical_failure_policy") != policy_binding:
+            raise ValueError("Heldout must explicitly bind the identical validation physical-failure policy")
         if sha256_file(selection["source_report"]) != selection.get("source_report_sha256"):
             raise ValueError("Validation report changed after selection")
         if selection.get("dataset_sha256") != dataset_hash or Path(selection["training_dir"]).resolve() != training:
@@ -181,6 +188,9 @@ def prepare_plan(args):
                       "Actual GRT rWL selects alpha; WNS/TNS/power remain separate diagnostics"]}
     if selection is not None:
         plan.update(selection_path=bindings["selection"]["path"], selection_sha256=bindings["selection"]["sha256"])
+    if policy_binding is not None:
+        plan["physical_failure_policy"] = policy_binding
+        validate_bound_policy(plan, Path(args.output).resolve())
     return plan, arrays, manifest, best
 
 
@@ -373,6 +383,7 @@ def main():
         parser.add_argument("--" + name, required=True)
     parser.add_argument("--phase", choices=["validation", "heldout"], default="validation")
     parser.add_argument("--selection")
+    parser.add_argument("--physical-failure-policy", help="Explicit pre-outcome GRT actor policy JSON; omitted means strict")
     parser.add_argument("--seeds", default="0,1,2")
     parser.add_argument("--alphas", default="1,10,100")
     parser.add_argument("--validation-indices", default="192,193,194,195")

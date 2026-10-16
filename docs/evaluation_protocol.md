@@ -38,8 +38,10 @@ offline validation examples. Predicted Q is never reported as measured reward.
 Report teacher generation, student inference, legalization, data collection,
 training, and backend costs separately. Do not compare a warmed actor's compute
 against a teacher's compilation-inclusive first call as an end-to-end speedup.
-Backend candidates are the first predeclared heldout indices, rather than the
-best layout selected after viewing outcomes. Repeated training seeds and paired
+Backend candidates use indices declared in the corresponding frozen plan, rather than the
+best layout selected after viewing outcomes. The initial proxy transfer uses the
+first three heldout families; the later GRT actor amendment below reserves different IDs.
+Repeated training seeds and paired
 noise samples are different sources of variation, not interchangeable replicates.
 
 ## Metrics
@@ -70,3 +72,22 @@ that exact legal layout, and charge its entire data collection budget. Reusing
 one deterministic backend result for several noise indices does not create
 independent experimental replicates. This control tests whether learning a
 policy adds value beyond storing the best layout already evaluated.
+
+## GRT actor amendment before actor results
+
+The timestamped [v1 physical-failure policy](../fql/grt_actor_physical_policy_v1.json)
+keeps validation families 192–195 and reserves heldout families 244–247, replacing
+the historical future-actor default 240–243. This change avoids proxy/sampler GRT
+exploration at 240–242 and is based only on disjoint IDs, not measured quality.
+Earlier plans remain unchanged. Macro diagnostics already examined all heldout
+noise families, so this isolates GRT exploration inputs rather than making a
+claim that these noises have never been inspected in any experiment.
+
+Every alpha must succeed on all 3 seeds × 4 validation families to be eligible
+for mean-rWL ranking. Verified physical failures retain the complete denominator;
+incomplete configurations and incomplete BC comparisons have no numerical mean.
+If no alpha is eligible, record that outcome and do not execute a heldout sweep.
+Heldout evaluates the sealed choice without reselection. Unknown, infrastructure,
+and parser failures remain errors requiring diagnosis. See the implementation
+details in [the integration design](fql_integration_design.md). Twelve successes
+are an eligibility rule for this pilot, not proof of population-level reliability.

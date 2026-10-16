@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from analysis.placement_metrics import legality, summarize
 from fql.core import critic_diagnostics
+from fql.physical_failure_policy import validate_bound_policy
 from fql.relabel_backend import STAGE, action_sha256, numeric, resolve_from, sha256_file, write_json
 
 
@@ -408,7 +409,8 @@ def quality_with_outcomes(records, reference_method):
     return quality
 
 
-def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_failures=False):
+def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_failures=False,
+              allow_preregistered_physical_failures=False):
     tasks_path, output = Path(tasks_path).resolve(), Path(output).resolve()
     plan_path = Path(plan_path).resolve() if plan_path is not None else tasks_path.with_name("selection_plan.json")
     output.mkdir(parents=True, exist_ok=False)
@@ -416,6 +418,7 @@ def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_fai
               "tasks_path": str(tasks_path), "plan_path": str(plan_path),
               "failures": [], "physical_failures": [], "records": [], "quality": None,
               "allow_exploratory_physical_failures": allow_exploratory_physical_failures,
+              "allow_preregistered_physical_failures": allow_preregistered_physical_failures,
               "outcomes_complete": False, "comparison_complete": False}
     try:
         plan = json.loads(plan_path.read_text())
@@ -424,8 +427,12 @@ def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_fai
                       phase=plan.get("phase", "exploratory"), expected_count=len(expected))
         if report["phase"] not in ("validation", "heldout", "exploratory"):
             raise ValueError("Unknown evaluation phase")
+        if allow_exploratory_physical_failures and allow_preregistered_physical_failures:
+            raise ValueError("Exploratory and preregistered physical-failure modes are mutually exclusive")
         if allow_exploratory_physical_failures and report["phase"] != "exploratory":
             raise ValueError("Physical-failure reporting mode is permitted only for exploratory comparisons")
+        if allow_preregistered_physical_failures or "physical_failure_policy" in plan:
+            report["physical_failure_policy"] = validate_bound_policy(plan, plan_path.parent)
         for name, binding in plan.get("source_bindings", {}).items():
             if sha256_file(resolve_from(binding["path"], plan_path.parent)) != binding["sha256"]:
                 raise ValueError(f"Frozen candidate source changed: {name}")
@@ -441,6 +448,8 @@ def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_fai
                 raise ValueError("Validation source report changed after selection")
             if expected != plan_keys(selection["heldout_plan"]):
                 raise ValueError("Heldout methods/noises differ from the sealed plan")
+            if selection.get("physical_failure_policy") != plan.get("physical_failure_policy"):
+                raise ValueError("Heldout physical-failure policy differs from the sealed selection")
         seen = set()
         for line_number, line in enumerate(tasks_path.read_text().splitlines(), start=1):
             if not line.strip():
@@ -464,7 +473,9 @@ def aggregate(tasks_path, output, plan_path=None, allow_exploratory_physical_fai
                 if report["phase"] == "heldout" and not fixed_training and entry.get("split") != 2:
                     raise ValueError("Heldout tasks must use split 2 only")
                 sidecar = resolve_from(entry["metrics_path"], tasks_path.parent).with_name("physical_failure.json")
-                if allow_exploratory_physical_failures and sidecar.exists():
+                if (allow_exploratory_physical_failures or allow_preregistered_physical_failures) and sidecar.exists():
+                    if allow_preregistered_physical_failures and (entry.get("role") != "candidate" or entry.get("requires_backend_execution") is not True):
+                        raise ValueError("Policy failures apply to new actor requests, not reused successful references")
                     record = validate_physical_failure(entry, tasks_path.parent, tasks_path)
                     report["physical_failures"].append(record)
                 else:
@@ -522,10 +533,13 @@ def main():
     parser.add_argument("--plan")
     parser.add_argument("--allow-exploratory-physical-failures", action="store_true",
                         help="Explicit exploratory-only verified CTS physical-failure outcomes; no incomplete-method means")
+    parser.add_argument("--allow-preregistered-physical-failures", action="store_true",
+                        help="Real-GRT actor validation/heldout only, with the exact frozen policy bound in its plan")
     args = parser.parse_args()
     if "SLURM_JOB_ID" not in os.environ:
         raise RuntimeError("Use Slurm for numeric aggregation")
-    report = aggregate(args.tasks, args.output, args.plan, args.allow_exploratory_physical_failures)
+    report = aggregate(args.tasks, args.output, args.plan, args.allow_exploratory_physical_failures,
+                       args.allow_preregistered_physical_failures)
     print(json.dumps({"status": report["status"], "phase": report["phase"],
                       "count": report["successful_count"], "output": str(Path(args.output).resolve())}), flush=True)
 
