@@ -6,7 +6,7 @@
 
 现有诊断揭示了真实困难：seed0 的 BC 训练坐标 MSE 约4.4e-5，验证约0.486，说明拟合训练集不等于学会教师映射。8个训练点的确定性扰动实验中，噪声扰动1e-5时，带硬投影教师的输出 MSE 约0.314，关闭投影约2.7e-6；重复输入输出完全一致。这支持硬投影放大局部扰动这一解释，不能证明关闭投影质量更好，也不能排除数据覆盖或模型结构的影响。见[蒸馏记录](../runs/bp_fe_macro_deterministic_v1/seed_0/distill_only/diagnostics.json)及[敏感度报告](../runs/teacher_sensitivity_v1/report.json)。
 
-积极结果是：固定验证选择后，FQL 的实测 macro HPWL 优于 BC；但直接优化解析 HPWL 的控制组更强，尚未证明 learned critic 的独特价值。全部合法也只说明几何检查通过。宏 HPWL、GRT 的 rWL 和完整详细布线后的 Table 2 PPA 是不同层次；写作时 GRT 对比仍未完成。见[已完成的逐种子结果](../analysis/artifacts/bp_fe_macro_deterministic_v1/heldout/per_seed_metrics.csv)。
+固定宏验证集选择后，FQL 的实测 macro HPWL 优于 BC，但这个优势没有转移到预定的真实GRT小样本：同一电路3个noise上，宏奖励FQL的3-seed平均线长为2411152µm，BC为2318026µm，teacher再合法化为2311649µm；FQL的各seed平均WNS也都更差。直接坐标优化的线长更低，但WNS更差；解析HPWL学生还出现1/9的真实CTS失败，完整配置不能计算质量均值。全部宏合法只说明几何检查通过，不能保证物理流程成功。宏HPWL、GRT的rWL和完整详细布线后的Table2PPA是不同层次。见[宏逐种子结果](../analysis/artifacts/bp_fe_macro_deterministic_v1/heldout/per_seed_metrics.csv)与[真实GRT报告](../analysis/artifacts/proxy_transfer_grt_v1/report.json)。
 
 后续按优先级检验三个假设：
 

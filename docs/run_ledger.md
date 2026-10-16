@@ -28,14 +28,14 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784018 | Three-seed macro-reward training | BC, FQL alpha 1/10/100, direct analytic student controls |
 | 1784019 | Predeclared backend-label export | 96 DEFs: 32/8/8 families per split, variants 0 and 1 |
 | 1784031 | Coordinate controls, validation selection, heldout proxy evaluation | Depends on training |
-| 1784047 | Real GRT labels | 96 tasks, initially two concurrent, raised to four at about 02:05 HKT after checking idle CPU capacity; still 8 CPUs / 12 GiB each |
+| 1784047 | Real GRT labels | All96 labels now verified; first two parser-only failures recovered without rerouting. Initially two concurrent, raised to four at about02:05 HKT after idle-capacity checks; 8CPUs/12GiB each |
 | 1784060 | Local teacher sensitivity probe | Exact repeats; intermediate hard projection strongly amplifies small input changes |
 | 1784068 / 1784070 / 1784092 | Independent dataset/evaluation audit and plots | Passed; 288 families, 864 labels, all selected heldout geometries and HPWL checked |
 | 1784098 | Predeclared proxy-to-GRT candidate export | 36 candidates: all 12 selected method/seed combinations × first 3 heldout families |
 | 1784102 / 1784104 / 1784108 / 1784112 | No-hard teacher plus final projection diagnostic | First failed during imports; GPU data completed on retry, CPU plot recovery; first 16 TRAIN families only |
 | 1784105 | Recover absent congestion reports | Read final ODB without rerouting; missing category explicitly proved zero markers |
-| 1784109 | Proxy-to-GRT cross-fidelity evaluation | 36 predeclared tasks, one concurrent; separate from 96-label array |
-| 1784119 | Strict GRT dataset relabeling | Queued after all 1784047 tasks end; requires all 96 verified metrics, including repaired failures |
+| 1784109 | Proxy-to-GRT cross-fidelity evaluation | All36 predeclared tasks terminal:35 successful, one retained analytic-actor CTS failure; one concurrent, separate from96-label array |
+| 1784119 | Strict GRT dataset relabeling | Completed with96 verified labels, train-only reward scale2341121.25um; moved pending short CPU job to cpu-scavenger after eda capacity wait |
 | 1784125 | Experimental standard Euler sampler | 16 TRAIN noises; exact same forward arithmetic verified; official code unchanged |
 | 1784133 | Fixed anchor controls | One zero-center and one TRAIN-mean layout; both legal; no replicated noise measurements |
 | 1784131 | Deeper detailed-route diagnostic | Two fixed bp_fe examples, cap20, one concurrent; reuse GRT, no new placement |
@@ -46,7 +46,7 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784156 | Three-seed GRT critic gate | Queued after verified relabeling; fixed 64×64 network, 1000 steps, validation only |
 | 1784157 | Validation-selection sealing check | Passed; rejects changed heldout plan |
 | 1784158 | Sampler/anchor backend evaluation | 8 new tasks, one concurrent, after proxy-transfer array |
-| 1784160 / 1784161 | Final GRT/proxy provenance audits | Queued after corresponding arrays, require all requested metrics valid |
+| 1784160 / 1784161 | Final GRT/proxy provenance audits | Training96/96 validated with one physical revision and no errors; reporting v1=6/v2=90 preserved. Proxy1784161 correctly failed the all-success requirement, with35 consistent numerical results and no parser/hash errors |
 | 1784185 / 1784188 | Euler teacher BC learnability diagnostic | First failed before generation on optional mask fields; retry completed in 3m14s, three seeds, identical original hard-BC layouts verified |
 | 1784189 / 1784190 | Fixed-control pairing and GRT exporter tests | Both passed; fixed controls never become noise replicates; reuse/selection/checkpoint bindings verified |
 | 1784231 / 1784232 | Initial proxy and sampler aggregation schedule | Cancelled while pending after a real CTS failure required explicit physical-failure outcome reporting; no metrics discarded |
@@ -56,10 +56,10 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784344 | Generation-plus-legalization latency | Completed in 45s; 16 fixed noises ×3 rounds ×7 paths, original saved final coordinates reproduced exactly |
 | 1784384 | Physical CTS failure evidence | Binds retained RSZ-0060 log, original manifest, frozen task, DEF and action; does not modify failure or rerun layout |
 | 1784418 | Ariane136 fullflow raw-report audit | Queued after completed route; no optimization |
-| 1784450 / 1784451 | Final exploratory outcome classification | Depend on proxy/sampler arrays; definite physical failure is an outcome, while unknown/infra/parser failures remain unresolved |
+| 1784450 / 1784451 | Final exploratory outcome classification | Proxy1784450 completed:35success+1verified CTS failure, all36 outcomes classified and no unknown/infra errors; sampler classification follows its array |
 | 1784472 | Physical-failure reporting tests | Five passed; real retained failure recognized, corrupt/unknown failures rejected, denominators and seed/fixed-control rules verified |
-| 1784481 / 1784482 | Exploratory GRT outcome reports | After final outcome classification; preserve physical failures and suppress incomplete-method/configuration means |
-| 1784485 / 1784486 | Failure-aware GRT plots | After verified outcome reports; show failure counts, all candidate CSV rows, and no incomplete-method mean or pooled correlation |
+| 1784481 / 1784482 | Exploratory GRT outcome reports | Proxy1784481 completed35success+1failure, full36 denominator and incomplete-configuration means suppressed; sampler pending |
+| 1784485 / 1784486 | Failure-aware GRT plots | Proxy1784485 completed and visually checked: all36 CSV rows, failure label and no incomplete-method mean/pooled correlation; sampler pending |
 | 1784533 | Released DEF geometry audit | All six checked against released LEFs; swerv has three raw macro overlaps, other five have none; no coordinates changed |
 | 1784534 | bp_be fullflow raw-report audit | Completed and passed; DRC247 retained separately from flow completion |
 | 1784543 | Generated deterministic swerv fullflow | Independent official-checkpoint baseline after released input failed macro overlap; original failed Table 2 row remains unchanged |

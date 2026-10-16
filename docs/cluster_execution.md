@@ -37,3 +37,11 @@ resource estimate, not a guarantee of its future peak. The original submitted
 batch settings and before/after scheduler records are retained in
 `backend/assets/resume_{schedule,memory}_1785220.json`. Physical inputs and
 optimization parameters were not changed.
+
+After dependencies cleared, short CPU aggregation/relabeling/gate/plot jobs
+1784481,1784485,1784119,1784156 were still pending for eda capacity. They were
+moved, before startup, to cpu-scavenger with its matching QOS; their2CPUs,
+8GiB,30min, commands and dependencies stayed unchanged. Before/after scheduler
+records are in `logs/scheduler_migration_*.json` or the corresponding text
+files. This frees the eda allocation for long physical implementation work;
+these short jobs remain Slurm-scheduled and preemptible.
