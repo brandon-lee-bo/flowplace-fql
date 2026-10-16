@@ -252,7 +252,9 @@ def main():
                 final, seconds = timed(lambda: final_projection(clipped, problem))
                 method_report = {"raw_error": error_report(raw, target, mean, train_variance, mask, split),
                                  "clipped_error": error_report(clipped, target, mean, train_variance, mask, split),
-                                 "legalization_seconds_total": seconds, "raw": {}, "final": {}}
+                                 "legalization_seconds_total": seconds, "raw": {}, "final": {},
+                                 "noise_conditioning": method != "train_mean",
+                                 "layout_sampling_note": "TRAIN mean is one fixed layout broadcast for paired error calculation; repeated geometry rows are not independent replicates" if method == "train_mean" else "One layout per supplied noise"}
                 for value, label in SPLITS:
                     rows = split == value
                     method_report["raw"][label], _ = stage_report(clipped[rows].reshape(-1, len(metric.names), 2), metric)

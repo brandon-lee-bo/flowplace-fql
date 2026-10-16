@@ -7,6 +7,8 @@ numbers and a routed PPA improvement from FQL have not been established.
 Read the evolving [results report](docs/results_report.md) for measured outcomes,
 the [run ledger](docs/run_ledger.md) for Slurm jobs/failures, and the
 [evaluation protocol](docs/evaluation_protocol.md) for what each result means.
+The concise Chinese [research interpretation](docs/research_interpretation.md)
+explains what was adapted from FQL and which hypotheses remain unproven.
 
 ## Goal
 

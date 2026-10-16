@@ -48,3 +48,25 @@ Artifacts:
 Use the explicit `--deterministic` flag and export the CuBLAS setting before the Python process starts for reproducible scientific comparisons. Preserve the original-mode generation separately as the released-inference attempt. Runtime increases from roughly 0.36 seconds to 0.66 seconds per bp_fe generation in this environment after warmup; first-run setup is separately recorded. No algorithmic update to the released sampler was made.
 
 `artifacts/official_stream_seed300/summary.json` contains successful original-mode generation of all six OpenROAD circuits with zero independent overlap/boundary violations. The `official_stream_deterministic_seed300` counterpart records the explicit deterministic-runtime variant. These are **macro-generation** results, not Table 2 backend PPA; the backend experiment owns DEF conversion, global/detailed route and PPA reporting.
+
+## Experimental Euler BC learnability diagnostic
+
+`diagnose_euler_bc.py` and `diagnose_euler_bc.slurm` implement a bounded, exploratory comparison on the same 288 original noises and 192/48/48 family split. The experimental target is the **raw standard-Euler teacher output clipped to [-1,1]**; the original target was the **official hard-projected output**. These target semantics differ. Both use an MLP with three 256-wide hidden layers, seeds 0/1/2, 1,000 warmup steps followed by a fresh Adam for 2,000 BC steps, batch size 128, learning rate 3e-4, gradient cap 10, and the original per-seed NumPy batch RNG offsets 20000/30000. There is no Q training, alpha selection, or backend evaluation. Original hard BC predictions are reused without retraining.
+
+Completed artifact: `artifacts/euler_bc_learnability_v2/`, Slurm **1784188**, NVIDIA L20, elapsed allocation 3m14s. The first 16 Euler outputs exactly match the previous bounded sampler diagnostic. All original hard BC validation/heldout final coordinates match the saved evaluator outputs exactly. The initial job 1784185 failed in three seconds before generation/training because the original dataset omits all-movable mask arrays; v2 mirrors `PlacementData.load` defaults and independently verifies them against the graph. The failed v1 startup snapshot and logs remain intact.
+
+For the 48 previously inspected heldout noises, all three seeds give:
+
+| Target / predictor | Unclipped network MSE | MSE / TRAIN-mean predictor error on these noises |
+|---|---:|---:|
+| Original hard BC, seeds 0/1/2 | 0.532984 / 0.505501 / 0.546878 | 1.74781 / 1.65769 / 1.79337 |
+| Experimental Euler raw BC, seeds 0/1/2 | 0.035882 / 0.038050 / 0.037113 | 0.16154 / 0.17130 / 0.16709 |
+| Euler `noise + mean_TRAIN(target - noise)` | 0.045247 | 0.20371 |
+
+`raw_error` measures the unbounded network output against the specified target; `clipped_error` measures the actual clipped proposal. The earlier `diagnose_distillation.py` uses clipped proposals. Its hard seed-0 MSE **0.48722043765** is reproduced exactly here; the corresponding unbounded MSE **0.53298384271** is a different measurement of the same checkpoint, not a warmup/final-checkpoint mismatch. Both error definitions and normalization by the fixed TRAIN target variance are saved.
+
+After one identical final legalizer, the Euler teacher has mean macro HPWL **71,430.18**, while Euler BC has seed-mean **70,857.70**, with standard deviation **745.69 across the three seed means**. Each teacher/student heldout set is 48/48 geometrically legal with 48 distinct layouts. Final across-noise coordinate standard-deviation RMS is **0.52844** for the teacher and **0.50947 / 0.50682 / 0.50412** for the students. The identity-plus-TRAIN-residual baseline gives macro HPWL **75,143.76**. These are macro-only proxy measurements, not PPA. In particular, the fixed Euler TRAIN-mean layout has still lower HPWL **48,497.07**, but is exactly one unique layout: its repeated rows only align prediction errors to the noise list and are not independent measurements.
+
+The result supports improved empirical learnability of this raw Euler target under the matched BC budget; it does not prove a superior FlowPlace sampler, better FQL, or better physical implementation. Training MSE remains much lower than validation/heldout MSE. The same heldout split had already informed earlier exploration, so these comparisons are explicitly exploratory.
+
+The artifact includes all teacher unclipped/clipped outputs and trajectories, student checkpoints and initial states, geometry/HPWL/diversity for each split, exact original-output hashes, and PNG/PDF figures. `source_snapshot/` contains startup copies of all local executed Python dependencies and upstream Python/config files. The separately copied `fql/train.py` comparison reference changed during the run; the diagnostic never imports or executes it, and its startup copy remains available. `interpretation_notes.json` records this and the fixed-control/error-definition caveats without changing the original result report.

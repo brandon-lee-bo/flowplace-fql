@@ -47,9 +47,12 @@ This ledger records key jobs; individual outputs/manifests contain exact argumen
 | 1784157 | Validation-selection sealing check | Passed; rejects changed heldout plan |
 | 1784158 | Sampler/anchor backend evaluation | 8 new tasks, one concurrent, after proxy-transfer array |
 | 1784160 / 1784161 | Final GRT/proxy provenance audits | Queued after corresponding arrays, require all requested metrics valid |
-| 1784185 / 1784188 | Euler teacher BC learnability diagnostic | First launch failed before generation on optional mask fields; retry follows existing loader defaults and independently verifies no fixed ports |
+| 1784185 / 1784188 | Euler teacher BC learnability diagnostic | First failed before generation on optional mask fields; retry completed in 3m14s, three seeds, identical original hard-BC layouts verified |
 | 1784189 / 1784190 | Fixed-control pairing and GRT exporter tests | Both passed; fixed controls never become noise replicates; reuse/selection/checkpoint bindings verified |
 | 1784231 / 1784232 | Proxy and sampler GRT aggregation | Queued after respective arrays; require complete frozen candidate sets and refuse success-only averages |
+| 1784233 / 1784234 | GRT comparison plots | Queued after complete validated reports; raw points and fixed controls remain distinct |
+| 1784311 | Six-design Table 2 summary | Queued after fullflow array; retain any failures and report every declared circuit |
+| 1784327 / 1784328 | Fullflow numerical consistency audits | Already-completed examples and all six released runs; summary additionally waits for final audit |
 
 ## Interpretation fixes
 
