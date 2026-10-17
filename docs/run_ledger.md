@@ -1862,3 +1862,33 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   children remain live; final reports/consolidation remain correctly pending.
   Goal stays active; neither native PPA completion nor positive RL advantage
   follows from completed training or evidence preservation.
+
+### 07:24 HKT — register native-result retention after the actual final audits
+
+- Added a small completion-preservation driver; native auditing/compression
+  still uses the already-executed preserver, without changing any training,
+  physical flow, layout selection or pending producer dependencies. It pins
+  study/config/route-plan/source identity and confirms the actual final-audit
+  job COMPLETED0:0 before freezing as-yet-unavailable output hashes.
+- Expanded preservation1794899 waits afterok1792868. Registration SHA
+  df16a7e6fadca3830a20ffdad398cf07473f19e4e8e4902616c826c36710db2d,
+  graph_o2o_native_evidence_preservation_v1/batch_expanded384/plan.json.
+  Scope:21 declared route results, final report/plots, plus separately
+  re-audited two best400 controls' native DEF/log/report evidence.
+- bp_be preservation1794901 waits afterok1793511. Registration SHA
+  a6d3393735b20a1dd553ae5d2eba74d59ec72076419342aeddfaab6b0d747304,
+  graph_o2o_native_evidence_preservation_v1/batch_bp_be/plan.json.
+  Scope:all23 declared final requests, including three measured-layout
+  references, and the completed report/individual-layout table.
+- Python AST and Slurm shell syntax passed. Actual boundary check1794900
+  COMPLETED1s: the existing same-implementation expanded GRT-only report
+  is explicitly rejected as final native PPA. Input SHA
+  42a375e578155b938d403468803a70b447b5d714ab85abf5b019762a0429cf61.
+  This rejection check does not prove the future archives already exist.
+- Both archives retain all per-file hash/decode/source-stability checks and
+  8GiB reserve guard. Full OpenDB/SPEF/optimizer states stay at source.
+  At07:24, both preservation jobs remain correctly pending; actual route
+  controllers remain live with17/21 expanded and9/23 bp_be completed.
+  Final bp_be GRT has eight completed and eight live children, with eight
+  further requests pending under its fixed8-way throttle. No restart,
+  checkpoint selection, new training or old Table2 resumption occurred.

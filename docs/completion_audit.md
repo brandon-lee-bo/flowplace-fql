@@ -158,6 +158,9 @@ workers and eight GRT array children were actually live. Only array1794869
 throttle changed4→8 after observing100 eligible idle scavenger threads;
 actual8CPU/24GiB per task, frozen actions/config/backend unchanged. Final
 reports1792868/1793511 and consolidation1794697 retain pending dependencies.
+Native-evidence retention1794899/1794901 is registered after the corresponding
+final audits, not counted as completed. Actual1794900 rejects the existing
+same-implementation GRT-only report as final PPA before any archival work.
 Previous prompt-only response is not counted as scientific progress; this
 continuation re-read the full objective and moved actual audit/preservation
 and documentation state forward. No jobs were restarted because a poll
