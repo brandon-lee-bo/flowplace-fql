@@ -1598,3 +1598,65 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   controllers are live; each route controller has two actual DRT workers
   running, with its already-fixed training reference completed. Online
   parameter updates and new full policy means are not yet claimed.
+
+### 06:35–06:38 HKT — first expanded online update and frozen feedback evidence
+
+- The intervening prompt-only answer did not advance experimental state.
+  This continuation reread the full objective and actual live Slurm handles;
+  the previous experimental turn had made progress with real consolidation
+  checks and bound-source reporting. No job was restarted on a timeout.
+- Expanded initial GRT requests completed28/28 successfully. Replay SHA
+  dcf759659a4829a884a272797b4b9a262418ab7b83c0e8a51e35cf6d0e52b8e8
+  contains exactly eight own collect outcomes per arm and no evaluation
+  feedback. Actual first online1794707 started06:31:22 HKT on L20. By06:36,
+  BC completed600 updates with392 critic labels; flow/actor/critic changed
+  207/207/16 parameter tensors. FQL remained live; no whole-round completion
+  or downstream improvement was inferred from this partial training record.
+- Independent replay snapshot1794720 COMPLETED1s. It reread all28 actual
+  outcomes, checked action/checkpoint/backend/reward bindings and each replay
+  row, then copied91 small files with exact source/destination hashes,
+  411529bytes. Evidence and exact snapshot source live under
+  `graph_o2o_replay_snapshots_v1/expanded_seed0_round1/evidence/`.
+  Manifest SHA fd32191c9b0f73d3119efcf93e079ece04ad064fd8747b858fd83bf0de1db5cb.
+  Native EDA databases and whole-training completion are not claimed.
+- bp_be original feedback array1794630 and controller1793204 remain live;
+  both existing detailed-route controllers continue their fixed task lists.
+  All new final comparisons remain pending actual results.
+
+- At06:39 HKT, actual bp_be array1794630 completed all27 remaining children;
+  with the original first result,28/28 initial requests are successful.
+  Controller1793204 submitted online1794723, authoritatively RUNNING on L20
+  since06:37:54. Replay SHA
+  391a44f60776da4ba046110217b15b76268982fc2234be2c5bad2449f072fa88
+  contains eight own collect records per arm. Snapshot1794724 COMPLETED,
+  rebound all28 actual outcomes and copied91 small files420757bytes under
+  `graph_o2o_replay_snapshots_v1/bp_be_seed0_round1/evidence/`.
+  No online completion or new policy-quality claim yet.
+
+### 06:40–06:42 HKT — expanded first-online training actually completed
+
+- Actual1794707 COMPLETED8m52. Both BC/FQL completed600 updates using
+  384 original and eight own new labels. Both completion records bind their
+  actual round0 parents; flow/actor/critic each changed207/207/16 tensors.
+  All24 fixed next requests were exported, task SHA
+  ad76c4ec419945bf92a51f9984e8eae7f1bd3797aae9163b03a392888f5dbc02.
+- Preserved both first-online inference states before their new downstream
+  evaluation completed. Plan SHA
+  cf07f0921bfaecf99f031f4bc566818a91506dfcfdc3ecfa4ab4b45c53fa87b7.
+  Actual1794732 COMPLETED4s,101336173bytes,954 exact tensors and all other
+  non-optimizer fields. Manifest SHA
+  bbbd02b0a60d8a0b19e0e50a5b07c69e3dcc5e039b92ddcb8c37c8bf82634b09,
+  under `graph_o2o_model_preservation_v1/batch_06/weights/`. Source checkpoints
+  and optimizer/resume states remain unchanged on scratch; no new GPU reload
+  or native EDA backup is claimed by this CPU exact-state preservation.
+- Controller1792853 started actual24-request array1794728. After checking
+  current distributed scavenger capacity, raised only this array's throttle
+  2→8. Each task retains its actual default8CPU/12GiB, excluded nodes,
+  original config07f47e7c and task SHA; no physical or learning edit occurred.
+  Exact before/after/capacity record SHA
+  3e5cd23df7323eb8fd4bd1b096a2c9db085e1f6211953ffffefc95435d9176a3,
+  `graph_o2o_scheduler_overrides_v1/array_1794728_throttle8.json`.
+- At06:41:31, bp_be online1794723 and both original policy/route controllers
+  remain actually live, without last_error. Expanded first-online layout
+  comparison and both campaigns' final PPA remain incomplete; full goal stays
+  active. Fixed-cohort1792947 and final summaries retain their dependencies.
