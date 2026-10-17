@@ -1660,3 +1660,80 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   remain actually live, without last_error. Expanded first-online layout
   comparison and both campaigns' final PPA remain incomplete; full goal stays
   active. Fixed-cohort1792947 and final summaries retain their dependencies.
+
+### 06:43–06:50 HKT — second-design first-online completion and report scope
+
+- Previous goal turn made progress: both actual first feedback sets were
+  independently verified/preserved and expanded first-online1794707 completed
+  with exact model preservation. This continuation reread the objective and
+  confirmed the same live handles, without interpreting a timeout as failure.
+- Commitd0531cf adds only two scope lines to each historical pilot report,
+  directing readers to the active graph study and whole-goal audit. Existing
+  uncommitted historical/Table2 bodies were preserved byte for byte and were
+  not included in that commit. Exact before-state and staging checks are in
+  `graph_o2o_whole_study_v1/historical_document_scope_20261018_0645.json`.
+- Actual bp_be first-online1794723 COMPLETED11m15 on L20. Both arms trained
+  600 updates on64 original plus8 own measured labels, with207/207/16 changed
+  flow/actor/critic parameter tensors. Exported24 fixed requests, task SHA
+  92256ccd3f0ec20216fe73b27582cc0bd78e6103473cc59d56f9a3ea08dcecf9.
+- Both inference states preserved before downstream selection: batch_07 plan
+  SHA f9f870d6ee5513154721eac5dcfd92f2104808c2299c3b253a3423ddf6502ccf.
+  Actual1794767 COMPLETED5s,101328287bytes,954 exact tensors and all other
+  non-optimizer fields; original checkpoints/optimizers remain unchanged.
+  Manifest SHA3c792f8a9428c0abd6f4c5cec0d4354f15f1b6f2e6066dcea76aac6bb4e4a995,
+  `graph_o2o_model_preservation_v1/batch_07/weights/`.
+- Original controller1793204 submitted actual24-request array1794768.
+  After checking current distributed scavenger capacity, changed only its
+  throttle4→8; actual8CPU/24GiB, excluded nodes, inputs and learning/physical
+  parameters remain unchanged. Exact before/after/capacity record SHA
+  0db02b63c0d88f43aa7a20a94584cc77f13dee845ac8110e4fc2075f2ffc104a,
+  `graph_o2o_scheduler_overrides_v1/array_1794768_throttle8.json`.
+- Authoritatively checked all seven existing final-report/reference/Q
+  dependencies; none form a cycle or have an unsatisfiable terminal parent.
+  The original route controllers remain live. Expanded first-online scoring
+  is in its final batch; no complete new policy-PPA result is claimed yet.
+
+### 06:57–07:01 HKT — expanded final online update and used-feedback archive
+
+- The immediately preceding response only supplied a requested prompt and
+  did not change project state. This continuation reread the full active
+  objective, checked current Slurm handles and resumed actual pending work.
+  No live process was restarted because an observation timed out.
+- Expanded second online1794779 actually COMPLETED8m55 at06:59:08.
+  Both arms updated600 steps with384 original+16 own measured labels;
+  flow/actor/critic changed207/207/16 tensors. BC final SHA
+  2074ac1b0562601821312760231b73fcc9cbf6be431dac3a059821859b9c4801;
+  FQL9205567d6b1ab9fb1e149d13f94fc584b6bb21d10fa96c409e8971ac6c21a4ac.
+  These are completed training states, not evidence of PPA improvement.
+- Registered both final inference states before downstream selection:
+  batch_08 plan SHA
+  e58454f70d691ba54759f431b06fdf60758c4d28f3c64f847a8542bf872a9cfd.
+  Actual1794813 COMPLETED4s,101335083bytes,954 exact tensors/all other
+  non-optimizer fields. Manifest SHA
+  416aa2b5324944c2ae53000ea892343e42de6038832a7f3df192b09ada4ebd88.
+- Added a separately pinned used-feedback preserver. It requires both
+  actual final training arms to be complete,16 own collect labels per arm
+  at exact round/index coordinates, frozen replay/config/action/reward and
+  native GRT/DEF/tool bindings. Archives preserve successful native logs
+  and report folders; missing evidence is rejected. Full per-file decode,
+  pre/post source hashes and the8GiB durable-storage reserve are enforced.
+  Python AST and shell syntax checks passed before the actual128-observation
+  archive; no training, learning source or EDA was changed by preservation.
+- Actual1794812 COMPLETED17s: all128 used logical observations successful,
+  5647 files,1230043204 source bytes→4906959 archive bytes. Plan SHA
+  0f1ff014518ae09942d07e667e55a4fd3e546a6b9609349082e5a614864e47dd;
+  archive SHAfb71649f702c9be74d059df99ede423f7ca17cd17bdb6bfb2e95eaa0d27bfee9;
+  manifest SHA34001417cc81a29d22c175917882cd036f36372089d29004ba1bbf97ea9a1721.
+  Durable location:graph_o2o_used_feedback_preservation_v1/batch_01/evidence.
+  Logical observations may share geometry; no unique-layout count is implied.
+  Full OpenDB/SPEF and optimizer states remain at their original locations.
+- Existing controller1792853 started final24-request array1794808, task
+  SHAbbe3ebe013d766a11886f0fc17a1776ea4dabca831f22ba8fe67eaa38e72b0da.
+  After observing78 eligible idle threads, changed only array throttle2→8.
+  Per-task8CPU/12GiB, excluded nodes, all inputs/config and physical/learning
+  settings unchanged. Exact scheduler record SHA
+  74216ed216e1d60ee96ad85d07547b4d51b4d6269dcd33fd00d92555f95db565,
+  graph_o2o_scheduler_overrides_v1/array_1794808_throttle8.json.
+- bp_be first-online feedback1794768 remains actually live without error;
+  second online training, both final PPA campaigns, fixed-cohort diagnostic
+  and overall consolidation still remain incomplete. Goal stays active.
