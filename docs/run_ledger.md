@@ -1957,3 +1957,31 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   has actual DRC0. No live job was restarted just because it ran longer;
   old Table2 and unrelated work remain untouched. Goal stays active until
   final outcomes, native retention and complete scientific consolidation.
+
+### 07:40 HKT — consolidate the Notion record around current verified scope
+
+- Previous goal turn was progress:342a6ad/833abab preserve all completed
+  training curves, add actual fixed-validation evidence and record the new
+  completed GRT/declared-route stages. This turn re-read the full objective
+  and confirmed the same remaining physical/controller handles are live.
+- Reorganized the Chinese experiment page into method, data/training,
+  physical flow, complete three-seed final PPA, new GRT studies, controlled
+  mechanism findings and preservation/cost. Removed obsolete intermediate
+  statuses from the main narrative; original chronology/failures remain in
+  this ledger and Git history. No source/data/model/selection changed.
+- Checked actual model/training source against the public configuration:
+  GATv2 and global attention heads4, hidden256, dropout0, time encoding32;
+  graph policies each6285058parameters. Clarified optimizer and batch details:
+  graph modules Adam1e-5, critic AdamW3e-4/weight_decay1e-4, grad clip1,
+  normal batch16 and critic common-warmup batch64. Evaluation remains fixed
+  last-step checkpoints rather than validation or PPA-selected snapshots.
+- At07:40, expanded BC best400 physical1794925 actually COMPLETED5m10;
+  FQL control1794933 remains live under reference controller1792867. bp_be
+  physical1794919 COMPLETED9m30 and its controller has11/23 results complete;
+  current workers are best80_bc1794935 and long fql_r0_n0_1794853. Native
+  repair logs of the latter show actual progress from16922 initial violations
+  into the second repair iteration with5130remaining at the observed point.
+  Intermediate repair counts are not final DRC or a terminal physical failure.
+- Final new native audits, archives and three-study consolidation still wait
+  on actual remaining outcomes. Goal remains active; no paused Table2 work,
+  unrelated job, live worker or scientific hyperparameter was changed.
