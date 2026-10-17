@@ -268,9 +268,13 @@ online outcomes. It is one fixed reference, not four independent replicates.
 The complete main three-seed study now includes offline training, two actual
 online updates per seed and63/63 cap20 final requests, all DRC0. Online FQL
 mean rWL is0.308% lower than matched BC, but two of three seeds are worse and
-between-seed variation is greater. The expanded384-label and second-circuit
-bp_be studies also completed both actual online updates; their complete final
-PPA comparisons remain pending. All30 completed arm/stage logs were preserved
+between-seed variation is greater. Expanded384-label final PPA is now natively
+audited:21/21 declared routes plus both best400 controls are DRC0; online FQL
+mean rWL is1.388% below matched BC, with slightly better WNS but worse TNS.
+Its native evidence is durably preserved; this single seed does not establish
+stable superiority. Second-circuit bp_be completed both actual online updates
+and all76 GRT requests, with its final detailed-route comparison still pending.
+All30 completed arm/stage logs were preserved
 and plotted by1794923. Distillation error falls, but fixed-validation Q error
 does not consistently improve; bp_be validation ranking remains negative.
 These are optimization/generalization observations, not a convergence or

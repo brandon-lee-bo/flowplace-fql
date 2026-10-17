@@ -1985,3 +1985,42 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
 - Final new native audits, archives and three-study consolidation still wait
   on actual remaining outcomes. Goal remains active; no paused Table2 work,
   unrelated job, live worker or scientific hyperparameter was changed.
+
+### 07:51–07:53 HKT — expanded final PPA and durable native evidence verified
+
+- Previous goal turn was progress:5dac866 consolidated the current Chinese
+  experiment record, while observed live jobs continued without restart.
+  This turn re-read the full objective and actual Slurm terminal states;
+  observer cell1655 finished on the same handles. Expanded final report1792868
+  actually COMPLETED52s, and native preservation1794899 COMPLETED20s.
+- Actual expanded report SHA
+  55dc0eb7e5df7e10120efb52148f73f33aadcfc82b2531bbf1df8bc4a960edba
+  binds the registered source59075785b47a0b64321cc127169729521a3a6384978896fc644b4f5f978387cb
+  and full route summaryf0b4d503a33a1600721674113e7d7729bf8e4b28041faaca07f5d8650184efb6.
+  It includes21/21 declared expanded routes and both best400 controls, all
+  successful and DRC0. All46 logical native audits across original64 and
+  expanded384 reparse actual macro DEFs, preserve11 macros, and bind native
+  DRC0, cap20 and8CPU; no GRT-only report was used as final-PPA proof.
+- Expanded final BC/FQL policy means are2.00794525/1.9800835m, FQL lower
+  by1.3875752%. WNS−0.58917175/−0.58270775 slightly improves, while
+  TNS−357.261/−369.89075 worsens3.5351606% in magnitude. FQL power/area
+  are0.17258175W/59788.7um2. These four paired noises use one training seed,
+  not independent replications or evidence of comprehensive PPA advantage.
+- best400 physical controls1794925/1794933 COMPLETED5m10/5m21. Actual
+  BC/FQL final rWL1.802668/1.783591m, both DRC0. FQL WNS/TNS are
+  −0.657318/−389.712, power0.169089W, area59750.8um2. These are individually
+  selected existing measurements, not policy averages; both are substantially
+  shorter than the generated-policy means and stay visible as strong controls.
+- Native archive2213 files,1267822045 source bytes→135934086 bytes,
+  archive SHA2a806f6d7e8af297501a16e68c6f5b7764bc930c6742c492d57ef5d95ae1a775;
+  manifest SHAa515ce8d0e3070e63d10dd6686be2e209bbd47e086f2a4f8600583a0424f59d5.
+  Completed full decoding and source/copy verification;21 declared audits
+  plus both separately audited supplemental native controls are preserved.
+  Supplemental audit SHAebf23367974f8ec9a47c352caa65e947c8edd7dad346fea7761519e9608ce5d5;
+  neither supplemental control uses the historical-fingerprint repeat path.
+  This is not a full OpenDB/SPEF/optimizer resume archive; new EDA runs0.
+- bp_be long physical1794853 actually COMPLETED38m59; best80_bc1794935
+  COMPLETED10m25. Its controller currently has13 complete/2 running/8 waiting
+  of23, with actual workers1794947 and1794951 live. No live job was restarted
+  for elapsed time. bp_be final report1793511, archive1794901 and unified
+  summary1794697 retain their existing dependencies. Goal remains active.

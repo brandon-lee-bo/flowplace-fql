@@ -11,8 +11,11 @@ completed offline and both measured-feedback online updates. All eight new
 online arm/stage pairs have independent actual parent/child tensor and replay
 checks. Expanded final GRT wirelength is1.255% lower than matched BC, but
 timing is worse; identical-proposal Q diagnostics do not show better critic
-generalization. Expanded21/21 predeclared final routes have completed; its
-best400 controls and complete native audit remain pending. bp_be's76/76 GRT
+generalization. Expanded21/21 predeclared final routes and both best400 controls
+have completed, all DRC0, with the full native audit and durable evidence
+archive verified. Its final FQL wirelength is1.388% lower than matched BC,
+with slightly better WNS but worse TNS; this is one training seed.
+bp_be's76/76 GRT
 requests have now succeeded: final FQL mean GRT wirelength is0.709% below
 matched BC, but worse than its own offline stage. Its final detailed-route
 comparison also remains incomplete. The
