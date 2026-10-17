@@ -1386,3 +1386,98 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   This preserves final DEFs/native reports/logs/imported actions and bindings;
   large OpenDB/SPEF/intermediate archives remain at their original locations.
   It is not a complete EDA resume archive or full-goal completion.
+
+### 05:55–05:58 HKT — commit evidence preservation and start expanded training
+
+- Local commit68c176b contains the actual native-evidence utility and current
+  data/GRT records. All seven registered preservation source files match its
+  committed bytes, verified in
+  `graph_o2o_native_evidence_preservation_v1/batch_seed1/code_version.json`.
+  This commit was made after the actual archive job; no runtime Git identity
+  or source provenance was backfilled into the completed experiment.
+- Recovery1794475 completed its59 exact missing requests. The existing
+  controller1792874 COMPLETED40m15; all320 fixed offline TRAIN scores are
+  successful and independently audited, with no validation/test families or
+  online-feedback relabeling. Replay SHA
+  `6358ea1fa4b4803edf9f6be6c535186bcf695a41848a3d0bd97613eb7c301180`.
+- Freeze1792864 completed and validated the registered reporting amendment
+  against actual frozen learning/controller sources. The384-row training
+  binding SHA is
+  `05b87166dada1545529d54d23556142706ca878d60a75e3e630cbb88cd889224`;
+  reward scale remains2341121.25 and behavior targets remain256. Fixed best384
+  is still original TRAIN row12/GRT2159262um, not a newly improved search
+  result. Its final-route plan SHA is
+  `ce455e9539a71c4a04e8d7d2d91de99b4db59d8fa62a9893ffb0e2fcdd92970c`.
+- Actual expanded offline GPU training1792852 started on deep-space, alongside
+  the continuing independent bp_be training1793203. Expanded route
+  controller1792865 also started; two online rounds and all final policy PPA
+  still await real training/measurements. No algorithm setting was selected
+  from partial seed2 detailed-route results. Full goal remains active.
+
+### 05:59 HKT — preserve the complete newly frozen data evidence
+
+- Seventeen completed report/data/binding files2300177bytes copied to durable
+  `graph_o2o_evidence_snapshots_v1/20261018_0559/`, checking each source before
+  and after copying and the exact destination SHA. Scope includes the full
+  three-seed GRT aggregate, bp_be initial64TRAIN/16validation plus behavior
+  data, the320-label replay/audit, and384-label binding/reference/route plan.
+  Manifest SHA
+  `ef821e8f25cd2347532cc5320fffdf998775164053d9720bc68c7473090097ce`.
+  Quota remaining before copy10189551361bytes, above the8GiB reserve.
+  This is not new policy training evidence or a full EDA/model backup.
+- Actual final check confirms1792852 and1793203 live on their allocated
+  GPUs, and1792876 continuing the last seed2 detailed routes. Existing online
+  controllers and aggregations retain their dependencies. No old Table2 hold
+  or unrelated job changed. Remaining full-goal requirements are still the
+  actual expanded/bp_be offline-to-online outcomes, complete multi-seed final
+  PPA and final scientific/provenance reconciliation.
+
+### 06:03–06:07 HKT — complete main three-seed PPA and physical-reward audit
+
+- Previous goal turn classification: progress, from completed80/320-label
+  audits, actual new GPU training and durable native evidence. This turn
+  reread the full objective and verified the existing live Slurm handles;
+  no process was restarted merely because an observation expired.
+- Final seed2 routes1794602/1794604 completed normally. Controller1792876
+  COMPLETED2h35m30 and independent native aggregation1792811 COMPLETED22s.
+  All63 predeclared logical requests succeeded with DRC0; these map to61
+  physical final-route directories because the shared TRAIN reference is
+  reused. Frozen FlowPlace evaluations are not independent model trainings.
+  Online mean final rWL is BC2.037714333m versus FQL2.031444667m, a0.30768%
+  difference. FQL is worse in seed0/1 by1.302%/1.838% and better in seed2
+  by4.002%; its across-seed SD0.0509875m exceeds BC0.0273397m. The complete
+  plotted result was inspected. No stable RL-superiority claim or selection
+  based on final PPA was made. Canonical evidence:
+  `graph_o2o_replication_v1/reports/route_job_1792811/`.
+- Complete GRT-to-DRT diagnostic1794044 COMPLETED30s,83/83 requests accounted.
+  Eighty policy measurements reduce to72 distinct macro layouts. Pearson
+  r0.99841855, Spearman0.99733102;35/36 BC/FQL paired directions agree.
+  The exception is seed2 round2 noise2: GRT predicts0.0780% worse FQL but
+  final route is0.0939% better. High overall correlation therefore does not
+  certify tiny local gains. The diagnostic never changes replay or chooses
+  policy checkpoints. Its rendered scatter plot was inspected.
+- Seven completed diagnostic files280661bytes were copied to durable
+  `graph_o2o_evidence_snapshots_v1/20261018_0607/`, checking source SHA before
+  and after copying and exact destination SHA. Manifest SHA
+  c416665e9bab084bc9bce47b731c1ec3bd3bc8cc8610215eef714cfe582822c7.
+  This preserves the complete diagnostic, not new EDA/model resume files.
+- Seed2 native preservation1794612 COMPLETED19s. The source-bound plan SHA
+  is185049c50a32ddb3b2d2fc5d1926e74240d75c88e277282b202cb36bfe461c5e.
+  All2063 files1201057959bytes fully decode against original SHA values;
+  durable archive129669343bytes SHA
+  54143483fd8847cfcc357d2e7dd3c4b5f4afaaeb6aa0364779c6599c7d1ddaf4.
+  There are21 logical results plus one required legacy exact-repeat audit.
+  Originals are unchanged; full intermediate databases/resume state remain
+  at their original locations.
+- Added optional explicit-manifest accounting to existing `collect_costs.py`
+  without changing legacy discovery. Slurm1794610 COMPLETED1s verifies all33
+  registered main training/GRT/controller parent IDs, including279 actual
+  allocation attempts and39 preempted records. Total101.71917CPUh/1.69083GPUh.
+  Scope explicitly excludes shared initial data/pretraining, final routing,
+  diagnostics and other campaigns; joint BC/FQL GPU jobs are not individually
+  assigned to an arm. The manifest, raw sacct output, exact collector and CSV
+  are durable under `graph_o2o_cost_accounting_v1/main_three_seed_training_grt/`.
+- Expanded384 and bp_be offline GPU jobs1792852/1793203 remain actually live
+  on deep-space; both have finite training logs. Their downstream online
+  controllers and final PPA remain pending. Full objective remains active;
+  completed main-seed results do not substitute for those experiments.

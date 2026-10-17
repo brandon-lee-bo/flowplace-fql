@@ -9,6 +9,7 @@ attempts by (JobIDRaw, Submit, Start), rather than discarding earlier attempts.
 import argparse
 import csv
 import datetime
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -22,29 +23,50 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', required=True)
     parser.add_argument('--extra-jobs', default='')
+    parser.add_argument('--jobs-file', type=Path,
+                        help='Explicit JSON job_ids manifest; disables ledger/log discovery')
     args = parser.parse_args()
     if 'SLURM_JOB_ID' not in os.environ:
         raise RuntimeError('Run accounting aggregation through Slurm')
     out = Path(args.output).resolve()
     out.mkdir(parents=True, exist_ok=False)
-    sources = [ROOT / 'docs/run_ledger.md']
+    sources = []
+    log_paths = []
+    manifest_binding = None
     ids = set()
-    in_job_table = False
-    for line in sources[0].read_text().splitlines():
-        cells = line.strip().split('|')
-        if not line.lstrip().startswith('|') or len(cells) < 3:
-            in_job_table = False
-            continue
-        first_column = cells[1].strip()
-        if first_column == 'Job':
-            in_job_table = True
-        if in_job_table:
-            # Outcome columns contain physical measurements, not Slurm IDs.
-            ids.update(re.findall(r'(?<!\d)(\d{7})(?!\d)', first_column))
-    log_directories = [ROOT / 'logs', ROOT / 'backend/logs', ROOT / 'baseline/logs', ROOT / 'fql/logs']
-    log_paths = [path for directory in log_directories for path in directory.glob('*') if path.is_file()]
-    for path in log_paths:
-        ids.update(re.findall(r'(?<!\d)(\d{7})(?!\d)', path.name))
+    if args.jobs_file:
+        source = args.jobs_file.resolve(strict=True)
+        manifest_bytes = source.read_bytes()
+        manifest = json.loads(manifest_bytes)
+        values = manifest['job_ids']
+        if not isinstance(values, list) or not values or any(
+                not isinstance(value, str) or not value.isdigit() for value in values):
+            raise ValueError('Explicit manifest job_ids must be nonempty numeric strings')
+        ids.update(values)
+        sources.append(source)
+        manifest_binding = dict(path=str(source),
+            sha256=hashlib.sha256(manifest_bytes).hexdigest(), scope=manifest.get('scope'))
+        (out / 'jobs_manifest.json').write_bytes(manifest_bytes)
+        coverage = 'Explicit manifest job_ids and explicit extras only; no ledger or log discovery'
+    else:
+        sources = [ROOT / 'docs/run_ledger.md']
+        in_job_table = False
+        for line in sources[0].read_text().splitlines():
+            cells = line.strip().split('|')
+            if not line.lstrip().startswith('|') or len(cells) < 3:
+                in_job_table = False
+                continue
+            first_column = cells[1].strip()
+            if first_column == 'Job':
+                in_job_table = True
+            if in_job_table:
+                # Outcome columns contain physical measurements, not Slurm IDs.
+                ids.update(re.findall(r'(?<!\d)(\d{7})(?!\d)', first_column))
+        log_directories = [ROOT / 'logs', ROOT / 'backend/logs', ROOT / 'baseline/logs', ROOT / 'fql/logs']
+        log_paths = [path for directory in log_directories for path in directory.glob('*') if path.is_file()]
+        for path in log_paths:
+            ids.update(re.findall(r'(?<!\d)(\d{7})(?!\d)', path.name))
+        coverage = 'Job-column IDs from the experiment ledger tables, experiment-local log filenames, and explicit extras; result columns and prose are not scanned for IDs'
     ids.update(value for value in args.extra_jobs.split(',') if value)
     if not ids or any(not value.isdigit() for value in ids):
         raise ValueError('Invalid job IDs')
@@ -53,6 +75,8 @@ def main():
     command = ['sacct', '-D', '-X', '-P', '--noheader', '-j', ','.join(sorted(ids)),
                '--format=' + ','.join(fields)]
     raw = subprocess.check_output(command, text=True)
+    if manifest_binding and hashlib.sha256(source.read_bytes()).hexdigest() != manifest_binding['sha256']:
+        raise ValueError('Explicit job manifest changed during accounting')
     (out / 'sacct.txt').write_text(raw)
     rows = []
     attempt_key_fields = ('JobIDRaw', 'Submit', 'Start')
@@ -99,7 +123,9 @@ def main():
         'slurm_job_id': os.environ['SLURM_JOB_ID'], 'query': command,
         'requested_job_ids': sorted(ids), 'job_id_sources': [str(p) for p in sources],
         'log_filename_sources': [str(p) for p in log_paths],
-        'coverage': 'Job-column IDs from the experiment ledger tables, experiment-local log filenames, and explicit extras; result columns and prose are not scanned for IDs',
+        'coverage': coverage, 'explicit_manifest': manifest_binding,
+        'collector_source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'unobserved_requested_job_ids': sorted(ids - {r['JobID'].split('_')[0] for r in rows}),
         'resource_semantics': 'Reserved allocation time for every observed attempt, including failed/preempted attempts before requeue; running costs are partial snapshots',
         'allocation_attempt_key_fields': list(attempt_key_fields),
         'allocation_attempt_semantics': 'sacct -D retains historical requeue attempts sharing JobIDRaw; only identical (JobIDRaw, Submit, Start) rows are deduplicated. Counts are accounting attempts, not unique logical jobs.',
@@ -114,6 +140,7 @@ def main():
         'by_state': by_state, 'by_job_name': by_name, 'allocations': rows,
     }
     (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
+    (out / 'collect_costs.py').write_bytes(Path(__file__).read_bytes())
     with (out / 'allocations.csv').open('w', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]) if rows else fields)
         writer.writeheader(); writer.writerows(rows)
