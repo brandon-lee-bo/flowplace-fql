@@ -10,16 +10,34 @@ it does not establish completion of this graph-policy offline-to-online goal.
 | Current requirement | Actual evidence and scope | State |
 | --- | --- | --- |
 | Check both official methods and reuse the FlowPlace graph backbone | Pinned official revisions and explicit adaptations in `fql_integration_design.md`; `graph_o2o_models.py` retains GATv2/attention for the behavior flow and independent one-step actor | Implemented; fixed-circuit terminal adaptation, not an unchanged multi-step FQL benchmark |
-| Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and 16 validation labels; family splits and TRAIN-only normalization checked | Verified for the original circuit; second-design scale still awaits its complete 80-label collection |
-| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; seed2 round2 training1794430 COMPLETED8m45; changed flow/actor/critic weights recorded | Actual bp_fe training complete; full multi-seed final PPA and bp_be training remain in progress |
+| Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and 16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes independently audited by1793202; bp_be reward scale3537708.3125 uses successful TRAIN only | Verified for both circuits' initial datasets; actual second-design training and online feedback remain in progress |
+| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; seed2 round2 training1794430 COMPLETED8m45; changed flow/actor/critic weights recorded. bp_be offline training1793203 actually started after the80-label audit | Actual bp_fe training complete; full multi-seed final PPA and bp_be offline-to-online training remain in progress |
 | Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained; current seed0 online FQL does not beat matched BC | Actual negative result; expanded 384-label policy has not trained yet |
 | Compare methods fairly and check seed/circuit variation | All three predeclared offline seeds0/1/2 have native-audited final PPA:12 BC and12 FQL layouts, all DRC0. Offline mean FQL rWL is0.405% lower, with one seed worse and worse mean timing. Frozen FlowPlace layouts are not counted as independent trainings; bp_be import probes completed | Multiple-seed online final results and actual second-design RL/PPA are incomplete |
 | Use one physical flow and report legality, DRC and final PPA honestly | Native OpenROAD/Nangate45, eight threads and cap20; original 21 requested routes completed with DRC0; source/final DEF and native DRC independently audited | Complete for the original cohort; not complete for all current experiments |
 | Investigate failures and useful placement-specific improvements | Q transfer and local-gradient diagnostics, added-feedback experiment, and actual GRT-to-DRT fidelity checks distinguish critic error from reward-stage transfer | Real evidence exists; larger-data and second-design checks remain open; no positive RL claim |
 | Preserve provenance, report results and obey FactLab rules | Config/source/data/weight/job bindings, immutable failed attempts and route evidence retained; heavy work runs through Slurm; `graph_fql_offline_to_online.md` contains the current Notion-ready record | Ongoing; live jobs and scratch assets still require final reconciliation and evidence preservation |
 
+At05:52 HKT, all three bp_fe policy controllers and all76 GRT requests per
+seed have actually completed. Aggregate1792735 independently accounts for
+the full three-seed GRT experiment: two-round FQL mean rWL2.351921083m versus
+BC2.354198833m, only0.09675% lower, with greater between-seed variation.
+This does not prove final PPA improvement or stable RL superiority. Seed1's
+21 final results are now independently native-audited and durably preserved
+by1794588, including the required legacy exact-repeat evidence. Its compact
+archive fully decodes2053 original files; it is not a full OpenDB/SPEF resume
+archive. Seed2 final routes, expanded-data training and bp_be offline-to-online
+training/final PPA still prevent a whole-goal completion claim.
+
 Current authoritative handles include the independent-seed controllers
 1792766/1792794, 320-label expansion1792874 and second-design labels1793035.
+At05:49 HKT,1792766 and its route controller1792778 have completed all76 GRT
+and21 detailed-route requests for seed1, all21 reporting DRC0. The complete
+three-seed native aggregate is still waiting for seed2. Second-design labels
+1793035 and audit1793202 have completed; actual offline training1793203 and
+the23-request route controller1793205 are now live. The frozen second-design
+dataset binding is
+`da826d9d5d614bc5b7f54248506b03b6696e9f47c540a1b7745a8b724a55226e`.
 Feedback-channel training1794210, eight new GRT results1794211, routing1794212
 and final report1794213 have completed. All20 diagnostic layouts have DRC0;
 adding behavior data alone worsens final rWL by1.108%, adding Q data alone
@@ -31,8 +49,9 @@ online metrics or changing selection. Coverage routing1792875 and report1792565 
 completed all20 requested layouts with DRC0; native evidence audit1794208
 also passed. The added-feedback FQL still underperforms BC on final rWL.
 Other handles' later terminal status must be read from
-Slurm, not inferred from this dated document. Second-design training and the
-expanded-data policy are queued behind real label collection.
+Slurm, not inferred from this dated document. Second-design training has
+started after its complete label audit; the expanded-data policy is still
+queued behind its remaining fixed-label collection.
 
 The goal is **not complete**. Completion requires actual downstream results
 for the pending comparisons and circuits, a consolidated scientific judgment,

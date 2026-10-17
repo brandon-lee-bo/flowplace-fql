@@ -1310,3 +1310,79 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   `f713aa2241e6c5d188d26fa119dd10a3ea268f6e8dca17b80d33314d5b59c798`.
   Full optimizer-resume states remain on scratch and were not claimed backed
   up by these inference-state copies.
+
+### 05:38–05:40 HKT — version the actual graph implementation
+
+- Previous goal turn made progress: final channel PPA/native checks were
+  recorded, two independent-seed final model pairs preserved and GPU-reloaded,
+  and actual recovery/evaluation arrays advanced. Reread the objective and
+  revalidated all continuing handles; current label/route controllers are
+  live, so no duplicate recovery controller or old Table2 job was launched.
+- Saved local commit `e9b1e5e` for graph flow/actor/Q training, actual feedback
+  controllers, native GRT/DRT evidence helpers and the current experiment
+  records.135 changed files;145 selected source/helper/document files were
+  compared byte for byte both in the worktree and in the resulting commit.
+  Import dependencies and the two existing shared-runner changes are included;
+  unrelated historical Table2 work remains unstaged. This is a code snapshot,
+  not a whole-goal completion or new physical result.
+- The first commit command failed because this environment lacked Git author
+  identity. A following shell command mistakenly produced metadata pointing
+  to the old HEAD; that exact file is retained as
+  `code_snapshot_20261018_0539.failed_identity_attempt.json` and explicitly
+  invalidated in the identity-recovery record. The corrected commit used the
+  prior repository's Codex identity as command-local configuration, checked
+  the actual changed HEAD and verified all145 committed source bytes.
+  Canonical evidence is now
+  `graph_o2o_replication_v1/code_snapshot_20261018_0539.json`; no global user
+  identity, model bytes, source bytes or ongoing experiment parameters changed.
+
+### 05:48–05:49 HKT — complete second-design data and start actual training
+
+- Previous conversation turn supplied a requested prompt, with no experiment
+  change. Reread the full objective and revalidated the actual live scheduler
+  handles before proceeding; no controller was restarted because its journal
+  counts lagged real worker outputs.
+- Seed1 route controller1792778 COMPLETED1h51m21. Its21/21 predeclared outcomes
+  are accounted for and report DRC0; all76 seed1 GRT requests also completed.
+  The complete three-seed native evidence audit remains queued behind seed2,
+  so no partial online aggregate is used to choose models or hyperparameters.
+- Enumerated all80 exact bp_be requests:80 successful, no physical failures.
+  Controller1793035 then completed and audit1793202 COMPLETED4s independently
+  checked all outcomes and froze64TRAIN/16validation. Reward normalization
+  uses successful TRAIN only,3537708.3125um; dataset binding SHA
+  `da826d9d5d614bc5b7f54248506b03b6696e9f47c540a1b7745a8b724a55226e`.
+  best64 retains all64 candidates and selects GRT3283134um without consulting
+  validation, evaluation or final-route outcomes. No earlier outcome changed.
+- Actual bp_be offline GPU training1793203 and23-request cap20 route
+  controller1793205 started after that audit. Online updates and final PPA
+  are still pending; queue admission is not treated as trained evidence.
+  Extra fixed offline labels reached298/320 at05:48; recovery1794475 is
+  actually live and retains the22 uncompleted requests, not fictitious
+  physical failure utilities. Updated the Chinese record and completion audit.
+
+### 05:52–05:53 HKT — complete three-seed GRT and preserve native final evidence
+
+- Seed2 policy controller1792794 COMPLETED34m03 after its last actual array,
+  and aggregate1792735 COMPLETED5s. All three independent seeds actually
+  trained offline and twice online; all76 GRT requests per seed are accounted
+  for. Two-round evaluation means across seed means are BC2.354198833m and
+  FQL2.351921083m, a0.09675% mean line-length difference, with respective
+  across-seed sample SD0.0279632m and0.0574261m. This is GRT, not final PPA,
+  and does not establish stable RL superiority. Seed2 detailed route remains
+  live; no partial final aggregate selected models or hyperparameters.
+- Added a narrowly scoped native-evidence preservation utility and ran it
+  through Slurm1794588, COMPLETED21s. It reads all21 completed seed1 logical
+  final results, independently audits actual final DEF/DRC, bound GRT source,
+  image/physical fingerprints/eight threads/cap20, and includes one exact
+  legacy repeat in22 native audits.2053 exact files1199336347bytes become
+ 129547960bytes; the staged and durable archives were both fully decoded
+  and every file checked against its original SHA. No training or EDA reran,
+  and original files stayed unchanged. Plan SHA
+  `1e31d3baa797070863668901e4becdf13465bd218ec2d620f66633d90d52e4d1`;
+  archive SHA
+  `572300211c4c839ee188ff4ad5e86a34a7b4645e24c82371be3608ccc9af0c63`.
+  Durable evidence is in
+  `graph_o2o_native_evidence_preservation_v1/batch_seed1/evidence/`.
+  This preserves final DEFs/native reports/logs/imported actions and bindings;
+  large OpenDB/SPEF/intermediate archives remain at their original locations.
+  It is not a complete EDA resume archive or full-goal completion.
