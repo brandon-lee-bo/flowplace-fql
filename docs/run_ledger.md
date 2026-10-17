@@ -1758,3 +1758,29 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   feedback workers1794768_22/_23 remain actually RUNNING; original policy and
   route controllers remain live. Pending final audits/consolidation retain
   their original dependencies; old Table2 tasks remain held.
+
+### 07:07 HKT — bp_be second online starts; paired budget-control identity
+
+- All24 bp_be first-online GRT feedback requests1794768 completed
+  successfully. Original controller1793204 started actual1794848 at07:06:43,
+  RUNNING on allocated NVIDIA L20 via gpu-scavenger,2CPU/16GiB. Each arm
+  uses16 own round0/1 collect observations; replay SHA
+  a7a2a0aa10fc4bbe1ffc1fe3ab2583328f1e6405e5282e01bcc448a13117cc83.
+  This is the second real online update, not a completed training claim.
+- The complete first-online bp_be GRT report has SHA
+  869914cf6c40f93c8ef1343e65ea78fc52141d9ae341d5358f2b77e70a313262.
+  Four fixed evaluation noises give BC/FQL rWL3.486332/3.483815m;
+  FQL mean wirelength is only0.072% lower while WNS/TNS are worse.
+  Expanded first-online GRT means are BC2.35036125/FQL2.359231m,
+  with FQL0.377% worse by ratio of means. These are not final DRT PPA.
+- Read-only frozen-request comparison covers three stages and both arms
+  across original64 and expanded384 label budgets at training seed0.
+  All36 BC raw/executed coordinate lists and registered DEF hashes match;
+  all36 FQL requests differ. The checks bind six task manifests/markers and
+  both configs, without tensor loading, large-DEF hashing or new EDA.
+  Paired BC runs cannot be counted as independent seed replication.
+- Exact comparison source and JSON are retained in
+  graph_o2o_cross_budget_request_identity_v1/; JSON parses successfully,
+  evidence SHA0964525c19f1facb0165a534c1a358ee69f9ccd805c7c57986226e36b3c77305,
+  source SHAddca9b2b98c73ea8ec320ec2d788327254e12c5c1145b32ac2db945520790be0.
+  No inference about complete final-PPA equality or RL superiority follows.

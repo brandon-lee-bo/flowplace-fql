@@ -11,7 +11,7 @@ it does not establish completion of this graph-policy offline-to-online goal.
 | --- | --- | --- |
 | Check both official methods and reuse the FlowPlace graph backbone | Pinned official revisions and explicit adaptations in `fql_integration_design.md`; `graph_o2o_models.py` retains GATv2/attention for the behavior flow and independent one-step actor | Implemented; fixed-circuit terminal adaptation, not an unchanged multi-step FQL benchmark |
 | Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and 16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes independently audited by1793202; bp_be reward scale3537708.3125 uses successful TRAIN only | Verified for both circuits' initial datasets; second-design online feedback remains in progress |
-| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; changed flow/actor/critic weights recorded. bp_be offline1793203 COMPLETED23m41; first28/28 fixed GRT requests successful, first actual online1794723 COMPLETED11m15 with own8-row replay per arm, next24-request scoring1794768 live | Actual main and bp_be first online update complete; second-design final update and downstream outcomes remain incomplete |
+| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; actual changed flow/actor/critic weights checked. bp_be first online1794723 completed and next24/24 GRT requests succeeded; actual second online1794848 is RUNNING on L20 with own16-row replay per arm | Actual main and bp_be first online update verified; second-design final update and downstream outcomes remain incomplete |
 | Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained; current seed0 online FQL does not beat matched BC. All320 added offline scores independently audited;384-label offline1792852 and both online1794707/1794779 complete, final update uses16 own labels per arm; final24-request scoring1794808 live | Actual original negative result; expanded final scoring, fixed-cohort Q diagnosis and downstream outcomes remain incomplete |
 | Compare methods fairly and check seed/circuit variation | Complete three-seed native aggregate1792811:63/63 logical requests successful, all DRC0. Online FQL mean final rWL0.308% lower than BC, but worse in two of three seeds and greater between-seed variation. Frozen FlowPlace is not independently retrained | Multiple-seed main result complete without stable RL superiority; actual second-design RL/PPA remains incomplete |
 | Use one physical flow and report legality, DRC and final PPA honestly | Native OpenROAD/Nangate45, eight threads and cap20; all63 main requests independently audited against actual source/final DEF and native DRC; expanded/bp_be outcomes pending | Complete for all main three-seed cohorts; not complete for all current experiments |
@@ -116,6 +116,18 @@ completion records alone. Evidence SHA
 `f316963c999014863699c9dd5c6f42a96042a38ee06aea2eec231d4346bb194c`,
 `graph_o2o_actual_online_audit_v1/phase_01/job_1794837/evidence.json`.
 Final layout quality and bp_be round2 remain unverified and incomplete.
+
+At07:07 HKT, bp_be first-online feedback1794768 has actually completed
+all24 GRT observations successfully. Its controller started second online
+1794848 at07:06:43, with actual L20 allocation and16 own observations per
+arm, replay SHA
+`a7a2a0aa10fc4bbe1ffc1fe3ab2583328f1e6405e5282e01bcc448a13117cc83`.
+The first-online FQL GRT mean rWL is only0.072% lower than BC while WNS/TNS
+are worse; this does not establish a final or comprehensive PPA benefit.
+Cross-budget frozen-request metadata also confirms all36 BC proposals and
+executed coordinates match across64/384-label seed0 runs, while all36 FQL
+proposals differ. The BC runs are paired controls, not independent seeds;
+this metadata-only identity check does not prove final physical equality.
 
 Current authoritative handles include the independent-seed controllers
 1792766/1792794, 320-label expansion1792874 and second-design labels1793035.
