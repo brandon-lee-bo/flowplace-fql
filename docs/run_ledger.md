@@ -1481,3 +1481,54 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   on deep-space; both have finite training logs. Their downstream online
   controllers and final PPA remain pending. Full objective remains active;
   completed main-seed results do not substitute for those experiments.
+
+### 06:08–06:12 HKT — preserve new offline validation evidence while training
+
+- Previous goal turn: progress. It completed the full main three-seed native
+  PPA and83-request fidelity reports, preserved final evidence and executed
+  scoped Slurm cost accounting; code/report update is commit2c03179.
+  This turn reread the full objective and confirmed1792852/1793203 live
+  through Slurm; their existing controller dependencies remain intact.
+- Actual completed BC substage of the expanded384-label run has validation
+  MAE0.0240268 versus0.0255821 for the original64-label model on the same16
+  validation rows, a6.08% reduction. Pearson0.735→0.824, Spearman0.747→0.718;
+  this is not a demonstrated actor/downstream improvement. Both records'
+  actual runtime original-dataset, graph-cache and pretrained SHA values,
+  and reward normalization, match. No configuration or selection changed.
+- bp_be completed BC substage fits TRAIN MAE0.0001666, but validation
+  MAE0.0370346 and Spearman−0.6804 show poor out-of-sample ranking. Its FQL
+  training and real policy evaluation remain pending; training loss alone
+  does not establish reliable Q guidance.
+- Snapshot evidence SHA
+  e850b6423574e716089cb3121e884bfe9d081b34fe2562a8c958ceffe474d017
+  is durable in
+  `graph_o2o_q_validation_snapshots_v1/offline_bc_20261018_0611/`.
+  Six exact original completion/config copies13148bytes are also retained.
+  Scope is three completed offline BC critic records only, not finished
+  FQL/online/PPA campaigns.
+- Actual fixed references1794575/1794601 both completed with DRC0. bp_be
+  best64 final rWL2.805265m/WNS−1.09263ns/TNS−857.763ns. Expanded best384
+  remains the same original TRAIN row12: final rWL1.851443m, all six metrics
+  exactly matching the earlier reference. These choices were frozen from
+  GRT before detailed routing and are not new policy-generation gains.
+
+### 06:12–06:14 HKT — second-design offline completed and real feedback started
+
+- Actual offline training1793203 COMPLETED23m41. Both BC/FQL completion
+  records and28 exported requests are present, with no heldout labels used.
+  Export task SHA
+  4f2195c17b336bce9cd47dfb12b0ea41a95f4180cd92d457ae30bd053e14bea4.
+  Each arm has8 collect/4 evaluation requests, plus4 frozen FlowPlace
+  references. Controller1793204 and first real GRT1794621 are actually live;
+  second-design online parameter updates are still pending these outcomes.
+- Registered both completed bp_be offline models for preservation before
+  their downstream outcomes; plan SHA
+  4f16429087d56ce3067ad9f8d9954a5c4c4336633306fa32ae1f5edd63f0aa6f.
+  Slurm1794623 COMPLETED4s, preserving101328031bytes and954 exact tensors,
+  all other non-optimizer fields included. Canonical files:
+  `graph_o2o_model_preservation_v1/batch_04/weights/`. Optimizer/resume state
+  remains in source checkpoints. This is a CPU exact-state check, without
+  a new GPU reload comparison or new training/EDA.
+- Expanded offline training1792852 remains live on its allocated GPU and
+  has entered the FQL arm. Both live controller dependencies remain intact;
+  no paused Table2 jobs or unrelated jobs were resumed or modified.

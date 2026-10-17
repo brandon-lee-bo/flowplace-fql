@@ -10,8 +10,8 @@ it does not establish completion of this graph-policy offline-to-online goal.
 | Current requirement | Actual evidence and scope | State |
 | --- | --- | --- |
 | Check both official methods and reuse the FlowPlace graph backbone | Pinned official revisions and explicit adaptations in `fql_integration_design.md`; `graph_o2o_models.py` retains GATv2/attention for the behavior flow and independent one-step actor | Implemented; fixed-circuit terminal adaptation, not an unchanged multi-step FQL benchmark |
-| Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and 16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes independently audited by1793202; bp_be reward scale3537708.3125 uses successful TRAIN only | Verified for both circuits' initial datasets; actual second-design training and online feedback remain in progress |
-| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; seed2 round2 training1794430 COMPLETED8m45; changed flow/actor/critic weights recorded. bp_be offline training1793203 actually started after the80-label audit | Actual bp_fe training and final PPA complete; bp_be offline-to-online training remains in progress |
+| Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and 16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes independently audited by1793202; bp_be reward scale3537708.3125 uses successful TRAIN only | Verified for both circuits' initial datasets; second-design online feedback remains in progress |
+| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; changed flow/actor/critic weights recorded. bp_be offline1793203 COMPLETED23m41 and exported28 fixed requests; controller1793204 and first real GRT1794621 are live | Actual bp_fe training/final PPA and bp_be offline complete; bp_be actual online updates remain pending |
 | Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained; current seed0 online FQL does not beat matched BC. All320 added offline scores independently audited;384-label offline training1792852 actually started after freeze1792864 | Actual original negative result; expanded-policy learning and downstream outcomes remain incomplete |
 | Compare methods fairly and check seed/circuit variation | Complete three-seed native aggregate1792811:63/63 logical requests successful, all DRC0. Online FQL mean final rWL0.308% lower than BC, but worse in two of three seeds and greater between-seed variation. Frozen FlowPlace is not independently retrained | Multiple-seed main result complete without stable RL superiority; actual second-design RL/PPA remains incomplete |
 | Use one physical flow and report legality, DRC and final PPA honestly | Native OpenROAD/Nangate45, eight threads and cap20; all63 main requests independently audited against actual source/final DEF and native DRC; expanded/bp_be outcomes pending | Complete for all main three-seed cohorts; not complete for all current experiments |
@@ -30,6 +30,16 @@ checks; these are not full OpenDB/SPEF resume archives. Scoped Slurm accounting
 and GRT, not a whole-project cost or independent per-arm GPU measurement.
 Expanded-data training and bp_be offline-to-online training/final PPA still
 prevent a whole-goal completion claim.
+
+At06:13 HKT, bp_be offline1793203 has actually completed both arms and
+exported28 requests. Its controller1793204 is live and the first real GRT
+1794621 is running; actual second-design online parameter updates have not
+yet happened. Both completed offline inference states were durably preserved
+by1794623, with954 tensors and all non-optimizer fields exactly checked.
+Expanded-label BC offline substage has completed, but FQL/export and all
+expanded online/final-PPA results are still pending. Its validation Q MAE is
+6.08% lower on the same16 rows, with no improved Spearman ranking; this does
+not substitute for the predeclared fixed-cohort or downstream comparisons.
 
 Current authoritative handles include the independent-seed controllers
 1792766/1792794, 320-label expansion1792874 and second-design labels1793035.
