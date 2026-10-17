@@ -265,11 +265,14 @@ and nonzero DRC remain explicit. The best-TRAIN reference is source row12,
 GRT rWL 2,159,262 um, selected solely among the 64 TRAIN labels before new
 online outcomes. It is one fixed reference, not four independent replicates.
 
-The original graph pilot actually completed all76 measured GRT requests, both
-online updates and21 cap20 final routes, all DRC0. Its final online FQL mean
-rWL is1.30% worse than matched BC. Three predeclared offline training seeds
-also completed native final evaluation: mean rWL is0.405% lower for FQL, with
-one seed worse and worse average WNS/TNS. The complete multiseed online and
-second-circuit comparisons remain in progress; see the current experiment
-record for exact denominators and source evidence. Lower losses or these
-partial comparisons do not establish completion or a stable RL advantage.
+The complete main three-seed study now includes offline training, two actual
+online updates per seed and63/63 cap20 final requests, all DRC0. Online FQL
+mean rWL is0.308% lower than matched BC, but two of three seeds are worse and
+between-seed variation is greater. The expanded384-label and second-circuit
+bp_be studies also completed both actual online updates; their complete final
+PPA comparisons remain pending. All30 completed arm/stage logs were preserved
+and plotted by1794923. Distillation error falls, but fixed-validation Q error
+does not consistently improve; bp_be validation ranking remains negative.
+These are optimization/generalization observations, not a convergence or
+stable-RL-superiority claim. See the current experiment record for complete
+denominators, actual outcome bindings and subsequent native results.

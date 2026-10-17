@@ -1892,3 +1892,35 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   Final bp_be GRT has eight completed and eight live children, with eight
   further requests pending under its fixed8-way throttle. No restart,
   checkpoint selection, new training or old Table2 resumption occurred.
+
+### 07:33 HKT — completed training curves and fixed-validation evidence
+
+- Re-read the complete active objective before work. The immediately previous
+  prompt-only assistant turn made no authoritative experiment progress; this
+  turn resumed actual work and polled the same Slurm handles, without treating
+  observation timeouts or elapsed route time as a reason to restart.
+- Added read-only training-curve analysis for all five completed studies:
+  main bp_fe seeds0/1/2, expanded384 bp_fe seed0 and bp_be seed0. Frozen plan
+  graph_o2o_training_curves_v1/plan.json SHA
+  7c5cdf9e2e2ff232d62487e1b86571be1df9c0582b49d4e351009daf951a84ba.
+  Actual1794923 COMPLETED6s in cpu-scavenger,1CPU/2GiB, excluded enterprise
+  and natural-selection. It checked all15 actual training jobs COMPLETED0:0,
+  30 arm/stage completion records,440 finite logged measurements and the
+  configured distillation/Q objective and per-stage used feedback counts.
+- All65 bound raw log/completion/config inputs were copied and source/copy
+  hashes checked. Output76files/1103166bytes includes full CSVs,30-stage
+  metrics, raw sacct and two PNG/PDF figure pairs. Evidence SHA
+  1f1ef7d493559905e4beaaa24c5e8e95eb693b845012aaa271732ebe338108e2,
+  graph_o2o_training_curves_v1/reports/job_1794923/evidence.json.
+  Both figures were visually inspected: stage boundaries and labels readable.
+- One-step distillation error declines, while fixed-validation Q error does
+  not consistently improve. Final bp_be FQL TRAIN MAE0.000196525 versus
+  fixed16-layout validation MAE0.0415183, Spearman−0.810016. This is a small
+  fixed validation distribution, not independent evidence of universal
+  failure; the same-proposal policy diagnostics remain separately reported.
+  Mini-batch loss is not full-dataset MAE, PPA or proof of convergence.
+- No training, EDA, new checkpoint choice or weight reload was performed by
+  this report. Actual tensor/replay audits remain the weight-change evidence.
+  Corrected the stale design-document statement that main online replication
+  was incomplete. Final new native-PPA and preservation jobs remain pending;
+  goal stays active, with the paused old Table2 jobs untouched.
