@@ -11,8 +11,11 @@ completed offline and both measured-feedback online updates. All eight new
 online arm/stage pairs have independent actual parent/child tensor and replay
 checks. Expanded final GRT wirelength is1.255% lower than matched BC, but
 timing is worse; identical-proposal Q diagnostics do not show better critic
-generalization. Both final PPA comparisons and bp_be's final GRT scoring
-remain incomplete. The
+generalization. Expanded21/21 predeclared final routes have completed; its
+best400 controls and complete native audit remain pending. bp_be's76/76 GRT
+requests have now succeeded: final FQL mean GRT wirelength is0.709% below
+matched BC, but worse than its own offline stage. Its final detailed-route
+comparison also remains incomplete. The
 current Chinese [experiment record](docs/graph_fql_offline_to_online.md),
 [completion audit](docs/completion_audit.md) and [run ledger](docs/run_ledger.md)
 separate measured results from pending work. No stable RL PPA advantage is claimed.

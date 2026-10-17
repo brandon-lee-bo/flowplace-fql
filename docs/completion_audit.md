@@ -13,9 +13,9 @@ it does not establish completion of this graph-policy offline-to-online goal.
 | Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes audited by1793202; reward scale3537708.3125 uses successful TRAIN only. Actual used feedback preserved and rebound by1794812/1794876,160 logical observations in total | Verified for both initial datasets and all five completed final online replay scopes; final extra collection is not counted as used training data |
 | Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds, expanded384 bp_fe and bp_be completed offline and two measured-feedback updates. Independent actual parent/child audits1794837/1794882 verify all eight new online arm/stages and exact replay use; each phase changes207/207/16 flow/actor/critic tensors | Actual offline-to-online training verified in all registered studies; final new downstream outcomes remain incomplete |
 | Inspect optimization and critic generalization rather than only completion flags | Actual1794923 preserves65 source files and plots440 records across30 arm/stages; all15 actual training jobs completed. Checks logged feedback counts and configured actor objective. Fixed validation is16 layouts per design and excludes training; bp_be final FQL TRAIN/validation MAE0.000197/0.041518, validation Spearman−0.810 | Training curves and stage-generalization evidence inspected; not a convergence, independent weight-reload or downstream-quality proof |
-| Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained. Expanded all76 GRT requests and audit1792866 completed: final FQL wirelength1.255% below BC but timing worse. Fixed-cohort1792947 and deduplicated624-prediction audit1794868 show40 unique proposals, no improved Q ranking | Actual measured main negative/stability result and expanded GRT signal; expanded final PPA and bp_be final scoring/PPA remain incomplete |
+| Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained. Expanded all76 GRT requests and audit1792866 completed: final FQL wirelength1.255% below BC but timing worse. Fixed-cohort1792947 and deduplicated624-prediction audit1794868 show40 unique proposals, no improved Q ranking. bp_be all76 GRT requests now successful, final FQL0.709% below BC but worse than its own offline stage | Actual measured main negative/stability result and both new GRT signals; final new native-PPA audits remain incomplete |
 | Compare methods fairly and check seed/circuit variation | Complete three-seed native aggregate1792811:63/63 logical requests successful, all DRC0. Online FQL mean final rWL0.308% lower than BC, but worse in two of three seeds and greater between-seed variation. Frozen FlowPlace is not independently retrained | Multiple-seed main result complete without stable RL superiority; actual second-design RL/PPA remains incomplete |
-| Use one physical flow and report legality, DRC and final PPA honestly | Native OpenROAD/Nangate45, eight threads and cap20; all63 main requests independently audited against actual source/final DEF and native DRC; expanded/bp_be outcomes pending | Complete for all main three-seed cohorts; not complete for all current experiments |
+| Use one physical flow and report legality, DRC and final PPA honestly | Native OpenROAD/Nangate45, eight threads and cap20; all63 main requests independently audited against actual source/final DEF and native DRC. Expanded21/21 declared routes now complete, best400 controls and full independent report pending; bp_be routes still active | Complete for all main three-seed cohorts; not complete for all current experiments |
 | Investigate failures and useful placement-specific improvements | Q transfer/local-gradient diagnostics, added-feedback and2×2 data-path controls, native GRT-to-DRT fidelity and larger-label same-proposal comparisons distinguish critic error from reward-stage transfer | Actual mechanism evidence; larger-data final PPA and second-design effects remain open; no stable RL or comprehensive PPA claim |
 | Preserve provenance, report results and obey FactLab rules | Config/source/data/weight/job bindings, immutable failed attempts and route evidence retained; heavy work runs through Slurm; `graph_fql_offline_to_online.md` contains the current Notion-ready record | Ongoing; live jobs and scratch assets still require final reconciliation and evidence preservation |
 
@@ -166,6 +166,20 @@ Previous prompt-only response is not counted as scientific progress; this
 continuation re-read the full objective and moved actual audit/preservation
 and documentation state forward. No jobs were restarted because a poll
 expired, and the paused old Table2 jobs were not resumed.
+
+At07:34 HKT, expanded route controller1792865 actually COMPLETED1h34m52
+and its21 requested route outcomes are accounted. Same-budget reference
+controller1792867 is now live, with actual physical control1794925; final
+audit1792868 and native archive1794899 correctly remain dependent. bp_be
+final scoring array1794869 has completed all24 children, giving76/76 actual
+GRT successes across three stages. Controller1793204 and best80 selection
+1793206 completed. Final FQL GRT rWL3.4905155m is0.70875% below BC3.51543125m,
+but1.016% worse than its own offline mean; this is one training seed and not
+final routed PPA. Its23-request native-route controller remains live.
+Thirteen completed small reports/configs were source/copy SHA checked into
+graph_o2o_evidence_snapshots_v1/20261018_0736,144385bytes, manifest SHA
+`3d6465e8be667de230cbe158838d1b79c677b16c5b287a0803431fd6fdda4cab`.
+This is a compact report snapshot, not a full native evidence archive.
 
 The goal is **not complete**. Completion requires actual downstream results
 for the pending comparisons and circuits, a consolidated scientific judgment,

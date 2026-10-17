@@ -1924,3 +1924,36 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   Corrected the stale design-document statement that main online replication
   was incomplete. Final new native-PPA and preservation jobs remain pending;
   goal stays active, with the paused old Table2 jobs untouched.
+
+### 07:34–07:36 HKT — expanded declared routes and second-design GRT complete
+
+- Expanded native-route controller1792865 actually COMPLETED1h34m52.
+  full_route/summary.json accounts21/21 successful requests, all DRC0;
+  summary SHA f0b4d503a33a1600721674113e7d7729bf8e4b28041faaca07f5d8650184efb6.
+  Full independent final report1792868 is still waiting for both same-budget
+  best400 controls. Actual controller1792867 started physical control1794925
+  for BC; no queued control or raw summary is claimed as a completed final
+  native audit. These are measured-layout references, not new policy seeds.
+- bp_be final array1794869 completed all24 children; all76 requested GRT
+  cases across28+24+24 succeeded. Actual policy controller1793204 COMPLETED
+  1h21m14. Final summary SHA
+  2a26d908cac45cb473a826f4b2f7ce105e5e4a14ac22a6a078d59bdf9d5dc2e4.
+  Final BC/FQL GRT means3.51543125/3.4905155m; FQL−0.7087537% by ratio
+  of group means, not the mean paired percentage−0.7075152%. Final FQL
+  WNS/TNS−1.118625/−647.508 are better than BC−1.1839125/−789.62475,
+  but FQL wirelength is1.016% worse than its own offline stage. One seed,
+  four paired noises, not independent repeat evidence or final routed PPA.
+- best80 selection1793206 COMPLETED3s. BC/FQL best measured GRT values
+  3.257453/3.245289m use exactly64 TRAIN+16 actually used own collect rows,
+  excluding evaluation, validation and final unused collection. Detailed
+  routing and final23-request native audit are still incomplete.
+- Snapshot13 completed small reports/configs,144385bytes, source/copy SHA
+  checked into graph_o2o_evidence_snapshots_v1/20261018_0736. Manifest SHA
+  3d6465e8be667de230cbe158838d1b79c677b16c5b287a0803431fd6fdda4cab.
+  It preserves all three bp_be GRT summaries, completed controller and best80
+  choice plus expanded21-route summary/plan; not a full native archive.
+- Long bp_be physical1794853 is still actually RUNNING and native routing
+  logs show progressing repair iterations. Completed1794862 took15m35 and
+  has actual DRC0. No live job was restarted just because it ran longer;
+  old Table2 and unrelated work remain untouched. Goal stays active until
+  final outcomes, native retention and complete scientific consolidation.
