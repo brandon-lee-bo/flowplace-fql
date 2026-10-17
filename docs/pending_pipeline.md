@@ -1,3 +1,5 @@
+> 当前 Graph Flow-Q offline-to-online 研究见 [最新实验记录](graph_fql_offline_to_online.md) 与 [完整目标核验](completion_audit.md)。下文保留早期实验和任务快照，其中的“已完成”“尚未启动”只适用于对应历史阶段，不能作为当前目标或队列状态。
+
 # Pipeline end state
 
 2026-10-17, Hong Kong. All planned physical experiments are terminal; no

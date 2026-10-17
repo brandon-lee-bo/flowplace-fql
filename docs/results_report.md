@@ -1,3 +1,5 @@
+> 当前 Graph Flow-Q offline-to-online 研究见 [最新实验记录](graph_fql_offline_to_online.md) 与 [完整目标核验](completion_audit.md)。下文保留早期实验和任务快照，其中的“已完成”“尚未启动”只适用于对应历史阶段，不能作为当前目标或队列状态。
+
 # FlowPlace × FQL 实验报告（2026-10-16/17）
 
 本轮已经完成官方 checkpoint 的布局生成、作者发布的 OpenROAD 流程复跑和

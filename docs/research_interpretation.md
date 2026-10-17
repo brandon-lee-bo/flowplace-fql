@@ -1,3 +1,5 @@
+> 当前 Graph Flow-Q offline-to-online 研究见 [最新实验记录](graph_fql_offline_to_online.md) 与 [完整目标核验](completion_audit.md)。下文保留早期实验和任务快照，其中的“已完成”“尚未启动”只适用于对应历史阶段，不能作为当前目标或队列状态。
+
 这里“把 Flow-Q 换进去”，具体指借用 [FQL](https://arxiv.org/pdf/2502.02538) 式(7)、(9)及算法1：保留 FlowPlace 作为教师，训练另一个**一步生成整张布局的学生**；学生一边匹配同一噪声对应的教师布局，一边提高 critic 预测的收益。部署时使用学生加最终合法化。当前没有用 Q 梯度直接修改 FlowPlace 的速度网络，也没有把其每次积分当作一次放置决策。论文依据见[本地 FQL 文本](../artifacts/fql.txt)与 [FlowPlace 原文](https://arxiv.org/pdf/2604.23658v1)。
 
 这个简化成立的条件是：电路作为固定上下文，一次动作给出全部宏单元坐标，经合法化和后端评价后任务结束。因此它是**单步终止的 bandit 问题**，Q 的标签就是本次实测奖励，不需要下一状态的 Bellman bootstrap。critic 输入未合法化提案，学习“提案→合法化后收益”；学生损失为“α×同噪声蒸馏误差−Q”，不对离散合法化求导。见 [core.py](../fql/core.py) 和 [train.py](../fql/train.py)。
