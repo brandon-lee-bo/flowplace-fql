@@ -106,6 +106,17 @@ archive or new detailed-route result. Its manifest SHA is
 bp_be final update, both new-campaign final PPA and consolidated judgment
 still prevent whole-goal completion.
 
+At07:04 HKT, independent actual-tensor audit1794837 COMPLETED9s for all
+six newly completed arm/stage pairs: expanded384 rounds1/2 and bp_be round1.
+It reread each real parent/child checkpoint, recomputed exact parameter
+changes, checked600 iterations/config and checkpoint-bound replay SHA, and
+confirmed the three actual training jobs COMPLETED0:0. Every stage has
+207/207/16 changed flow/actor/critic tensors; this is stronger than reading
+completion records alone. Evidence SHA
+`f316963c999014863699c9dd5c6f42a96042a38ee06aea2eec231d4346bb194c`,
+`graph_o2o_actual_online_audit_v1/phase_01/job_1794837/evidence.json`.
+Final layout quality and bp_be round2 remain unverified and incomplete.
+
 Current authoritative handles include the independent-seed controllers
 1792766/1792794, 320-label expansion1792874 and second-design labels1793035.
 At05:49 HKT,1792766 and its route controller1792778 have completed all76 GRT

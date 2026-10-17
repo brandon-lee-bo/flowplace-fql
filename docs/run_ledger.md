@@ -1737,3 +1737,24 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
 - bp_be first-online feedback1794768 remains actually live without error;
   second online training, both final PPA campaigns, fixed-cohort diagnostic
   and overall consolidation still remain incomplete. Goal stays active.
+
+### 07:04 HKT — independently verify new online tensors and replay use
+
+- Registered an actual-checkpoint audit for expanded384 rounds1/2 and bp_be
+  round1, each BC/FQL: six newly completed stages. Exact one-shot source and
+  Slurm wrapper are retained beside the plan in
+  graph_o2o_actual_online_audit_v1/phase_01; plan SHA
+  dc43d4c2eee3ae18ad82aa5a7eba34d1f6179c4adcb068ccd0883782b426e334.
+  Config/completion/parent/child/source bindings were registered before run.
+- Actual1794837 COMPLETED9s. It reads real parent and child tensors through
+  the independently audited reporter, recomputes207/207/16 changed tensors
+  and exact deltas, verifies actual600 iterations and replay/config SHA in
+  each checkpoint, and checks all three source training jobs COMPLETED0:0.
+  No new training, EDA, selection or learning-source edit occurred.
+- Evidence SHAf316963c999014863699c9dd5c6f42a96042a38ee06aea2eec231d4346bb194c,
+  graph_o2o_actual_online_audit_v1/phase_01/job_1794837/evidence.json.
+  This verifies the actual new online updates, not improved layout quality.
+- At07:04, final expanded GRT scoring1794808 and last two bp_be first-online
+  feedback workers1794768_22/_23 remain actually RUNNING; original policy and
+  route controllers remain live. Pending final audits/consolidation retain
+  their original dependencies; old Table2 tasks remain held.
