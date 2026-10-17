@@ -309,3 +309,5 @@ seed2相同范围的证据备份1794612也已完成：2063个文件、1201057959
 83请求的完整 GRT→DRT 诊断另保存7个文件、280661字节，位于 `graph_o2o_evidence_snapshots_v1/20261018_0607/`，包含逐布局/配对表、图、汇总及实际诊断源码，复制前后 SHA 一致。三 seed 最终 PPA 与计算预算报告本身已写入持久目录。
 
 第二电路的数据与策略计划分别在 `/fact_data/bohanli/flowplace_fql/graph_o2o_second_design_v1`、`graph_o2o_second_design_policy_v1`；实际大文件使用 `/scratch/bohanli/flowplace_graph/` 下对应目录。策略配置 SHA 为`57959103f56e193c642b40f542586a1b28b49d6bcd6fe86a6ac2df05d7c21812`，37个源文件的冻结实现计划 SHA 为`bf630ef8c1d86345a4778d48344b6a3fcb460a3f839edf7e2e9c737a9cfb867a`。`submissions.json`保留所有实际提交指令；旧版 bp_fe 训练器与其数据保持不变。
+
+三组已登记研究的统一汇总另由1794697等待两组最终审计后执行，计划与检查证据在 `graph_o2o_whole_study_v1/`。它从绑定的逐布局记录重算完整分母及均值，区分三个训练seed与四个生成噪声，并检查跨电路的共同工具和物理设置。1794687已复现主实验统计，1794694通过五项缺失/篡改/失败处理检查；这些检查不产生新的 PPA，也不表示新增研究的最终结果已齐全。

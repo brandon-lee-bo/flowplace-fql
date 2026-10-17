@@ -1564,3 +1564,37 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
 - Independently rehashed all three fixed-cohort Q diagnostic sources; all
   match the predeclared plan0e087f98a6aef53e92cf5296b1036d90ce8c29d7b3cc69f4441cc938405b0aea.
   No diagnostic or learning code changed in this continuation.
+
+### 06:23–06:29 HKT — completed-study consolidation and continued real scoring
+
+- Previous goal turn: progress. Expanded offline completion was verified,
+  both inference states were actually preserved, existing feedback arrays
+  received recorded scheduler-only throttle changes, and current evidence
+  was committed as15ef807. This continuation reread the complete objective
+  and authoritatively confirmed the same live Slurm handles; no retry was
+  inferred from elapsed observation time.
+- Added `analysis/summarize_graph_o2o_studies.py` and its one-CPU Slurm
+  wrapper. The future report combines the already-declared three studies,
+  rebuilds final-PPA groups from bound layout records and preserves failures,
+  training-seed statistics and frozen-generator identity. Across circuits,
+  comparison permits the design configuration to differ while requiring
+  the same tool, platform, flow scripts, eight threads and cap20.
+- Actual main-data check1794687 COMPLETED1s: reproduced all three seed
+  aggregates and online FQL/BC ratio−0.3076813351%. Failure-contract check
+  1794694 COMPLETED1s: rejects a missing layout, an altered aggregate,
+  an infrastructure failure relabeled as PPA and numerical PPA attached to
+  a physical failure; a real-shaped failed layout retains4 requested,
+  3 completed and a null full-cohort mean. No new training or EDA was run
+  by these checks. The not-yet-available new-study branches remain untested
+  until their actual final audits complete.
+- Frozen consolidation plan SHA
+  d5363e35e8dbdfc8efca5d5a58bab031d86139369fb1f4eecdd249fd6ea63970
+  and exact submission/check evidence are durable in
+  `graph_o2o_whole_study_v1/`. Full summary1794697 is PENDING on actual
+  final audits1792868/1793511. It does not replace the leaf native audits
+  or establish completion by being queued.
+- At06:28:50 HKT, initial physical scoring reached24/28 expanded requests
+  and14/28 bp_be requests, all successful so far. Both original policy
+  controllers are live; each route controller has two actual DRT workers
+  running, with its already-fixed training reference completed. Online
+  parameter updates and new full policy means are not yet claimed.
