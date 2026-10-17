@@ -6,7 +6,7 @@ from result_storage import create_grt_run_dir
 from grt_metrics import parse_grt_metrics, atomic_json, PARSER_VERSION
 from grt_provenance import stamp_provenance
 BASE=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--design',default='bp_fe');p.add_argument('--def-path',type=Path);p.add_argument('--run-id',required=True);p.add_argument('--storage',choices=['home','bulk'],default='home')
+p=argparse.ArgumentParser();p.add_argument('--design',default='bp_fe');p.add_argument('--def-path',type=Path);p.add_argument('--run-id',required=True);p.add_argument('--storage',choices=['home','bulk','scratch'],default='home')
 a=p.parse_args();flow=BASE/'thirdparty'/'OpenROAD-flow-scripts'
 def_path=(a.def_path or BASE/'releases'/'flowplace_DEFS'/'openroad'/f'{a.design}.def').resolve()
 work,storage=create_grt_run_dir(BASE,a.run_id,a.storage);fw=work/'orfs_work'

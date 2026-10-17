@@ -5,6 +5,7 @@ import shutil
 from pathlib import Path
 
 BULK_ROOT = Path('/fact_data/bohanli/flowplace_fql_backend/grt_results')
+SCRATCH_ROOT = Path('/scratch/bohanli/flowplace_graph/physical_results')
 MIN_HEADROOM = 8 * 1024**3
 
 
@@ -30,12 +31,16 @@ def create_grt_run_dir(base, run_id, storage='home'):
     alias = base / 'results' / run_id
     if os.path.lexists(alias):
         raise FileExistsError(f'Refusing to overwrite existing result: {alias}')
-    if storage not in ['home', 'bulk']:
-        raise ValueError('storage must be home or bulk')
-    result_root = base / 'results' if storage == 'home' else BULK_ROOT
-    quota_root = Path('/fact_home/bohanli' if storage == 'home' else '/fact_data/bohanli')
+    roots = {'home': (base / 'results', Path('/fact_home/bohanli')),
+             'bulk': (BULK_ROOT, Path('/fact_data/bohanli')),
+             'scratch': (SCRATCH_ROOT, Path('/scratch/bohanli'))}
+    if storage not in roots:
+        raise ValueError('storage must be home, bulk or scratch')
+    result_root, quota_root = roots[storage]
     status = storage_status(quota_root, result_root)
     status['storage_policy'] = storage
+    if storage == 'scratch':
+        status['storage_notice'] = 'Approved shared scratch, without bulk redundancy; preserve verified experiment evidence before cleanup'
     for key in ['filesystem_free_bytes', 'quota_remaining_bytes']:
         if key in status and status[key] < MIN_HEADROOM:
             raise RuntimeError(f'{storage} storage headroom below 8 GiB: {key}={status[key]}; no run created')

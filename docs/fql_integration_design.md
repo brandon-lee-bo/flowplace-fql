@@ -1,6 +1,46 @@
 # Minimal FlowPlace / FQL integration
 
-Status: implementation design, not an experimental result. Read against FlowPlace `da4a10fc1a68c66dfa0ec31dd10f75b75e2e5547` and FQL `e8cd16eb490332924dfa2492097219f181765933` on 2026-10-16/17.
+Status: the current graph implementation and actual offline-to-online results are described in [graph_fql_offline_to_online.md](graph_fql_offline_to_online.md), with its method below under "Graph FQL offline-to-online pilot". The earlier MLP designs and gates remain historical records. Read against FlowPlace `da4a10fc1a68c66dfa0ec31dd10f75b75e2e5547` and FQL `e8cd16eb490332924dfa2492097219f181765933` on 2026-10-16/17.
+
+## Fresh-flow follow-up, 2026-10-17 evening
+
+The user authorized a careful new attempt after pausing Table 2. The earlier
+cached-teacher design below remains as historical context. The new bounded
+adaptation is implemented in `fql/fresh_flow.py`, `run_fresh_flow.py`, and
+`train_physical_actor.py`:
+
+1. Train a behavior velocity network on offline raw layout proposals with
+   Gaussian-to-action conditional flow matching. Integrate for 10 Euler steps;
+   there is no intermediate hard projection in this learned behavior model.
+2. Train the one-step policy on freshly sampled Gaussian noise throughout,
+   matching the current behavior flow for exactly the same noise. Freeze the
+   teacher targets. Actor Q gradients do not cross the flow or hard legalizer.
+3. For terminal placement, the critic fits measured final rewards directly.
+   A low-dimensional physical-feature ridge critic is diagnosed using the
+   existing real GRT labels, with penalty selection on TRAIN-family CV. Raw
+   features permit actor gradients; executed-layout features are score-only.
+4. From identical BC checkpoints, compare a fixed 1500-step BC continuation
+   and one fixed alpha=1 GRT-Q continuation at three training seeds and two
+   predeclared validation noises. All twelve layouts receive the same GRT
+   backend; no candidate is selected by Q and no heldout work is launched.
+
+This fixes the missing fresh learned-flow component of the earlier experiment.
+It remains a single-design terminal-action adaptation, with MLP networks and a
+fixed circuit context. It does **not** replace the graph-conditioned velocity
+network of the released FlowPlace checkpoint, establish cross-design
+generalization, or reproduce the original multi-step FQL benchmark. Improved
+distillation is a combined change of teacher/prior/training procedure, not an
+isolated ablation proving a single cause. Source snapshots and predeclared
+budgets are in `fresh_flow_plan_v2.json` and `physical_actor_plan_v1.json`.
+
+The next general implementation, if measured physical outcomes justify it,
+would condition both behavior flow and one-step policy on the same netlist
+graph. FlowPlace's GAT/attention blocks can then encode circuit structure while
+the one-step head directly outputs all macro coordinates. Final hard
+legalization remains an explicit external stage. Reliable Q on actor-chosen
+proposals, timing tradeoffs, the fixed best-TRAIN layout, and additional circuits
+must be checked before a larger comparison. These are future requirements,
+not claims that this small MLP pilot already satisfies them.
 
 ## What transfers from the papers
 
@@ -146,3 +186,90 @@ The **future actor heldout IDs change to 244–247**, within the already budgete
 Use `prepare_grt_candidate_tasks.py --physical-failure-policy fql/grt_actor_physical_policy_v1.json --heldout-indices 244,245,246,247` for both phases, retaining the same policy file and source bindings. Aggregate with `--allow-preregistered-physical-failures`; this flag cannot be combined with `--allow-exploratory-physical-failures`. Seal validation through the existing `seal_grt_selection.py` command. A selected decision carries the policy SHA and locked methods into heldout; a stop decision is rejected by heldout export. Successful references are reused once with their original provenance, never reinterpreted as new failed actor runs.
 
 Execute only `pending_tasks.jsonl`, but pass the **full `tasks.jsonl` to terminal-failure classification and aggregation**: the physical-failure sidecar's task-manifest SHA must bind the exact full requested comparison, including reused references. Binding a sidecar to the pending-only manifest will correctly fail aggregation. Complete individual seeds may still have diagnostic means/pairs even when their alpha is ineligible; these are not a substitute for the suppressed whole-alpha mean.
+
+
+## Graph FQL offline-to-online pilot (2026-10-18 HKT)
+
+This is a new experiment under `/fact_data/bohanli/flowplace_fql/graph_o2o_v1`.
+The old Table 2 tasks remain paused. It supersedes neither the old ridge-Q/MLP
+results nor their negative calibration findings. Official FlowPlace is pinned at
+`da4a10fc1a68c66dfa0ec31dd10f75b75e2e5547`; FQL at
+`e8cd16eb490332924dfa2492097219f181765933`.
+
+The environment is a fixed-netlist terminal placement task. A raw bounded action
+contains all 11 macro centers. Its reward is obtained after the released
+legalizer, DEF rounding, native track snapping, standard-cell placement, CTS,
+and global routing. Flow integration steps are not environment transitions.
+The terminal Bellman mask is zero, so target-network bootstrapping vanishes.
+The measured Q target is `-GRT_rWL_um / 2341121.25`, with that TRAIN-only scale
+frozen throughout online learning. A declared utility of -4 is reserved for
+verified terminal physical/geometry failures, with no invented PPA values.
+Unknown tool, parser, storage and infrastructure failures do not receive it.
+
+`fql/graph_o2o_models.py` uses independent BC-flow and one-step actor policies,
+each retaining FlowPlace's 6,285,058-parameter GATv2/global-attention backbone.
+The BC flow uses flow-matching regression and ten Euler integration steps for
+distillation; the one-step actor minimizes `10 * distill_MSE - mean(twin_Q)`.
+Its matched BC control sets the Q coefficient to zero. Twin critics are separate
+128-wide feature MLPs with TRAIN-standardized coordinates and 17 physical
+features. Uniform [-1,1] noise, graph weights, fixed-graph critics and the
+external legalizer are explicit placement adaptations of official FQL, not an
+unchanged run of its Gaussian/MLP implementation. No derivative through the
+hard legalizer is asserted: Q learns the reward of the entire execution map.
+
+The initial critic dataset contains 64 measured TRAIN and 16 validation rows.
+BC-flow training also uses 192 unlabeled TRAIN teacher layouts. Heldout labels
+are not used. Common warmup is 300 flow steps, 800 actor-distillation steps and
+2,000 critic steps. Both arms then receive 1,000 offline updates. Two subsequent
+online rounds each use 600 updates per arm, incorporating their own newly
+measured collection actions. Q and BC-flow batches mix online data at 50% when
+available, matching the official code's optional balanced_sampling=1 mode;
+the FQL paper instead defaults to unbalanced append-and-sample replay. Failed actions train Q but are not imitation targets. Learning rates
+are 1e-5 for each graph policy and 3e-4 for twin critics; batch size 16.
+These are a bounded pilot configuration, not a claim of convergence.
+
+Each stage emits eight fresh collection and four fixed evaluation noises per
+arm. The original FlowPlace also emits the four paired evaluation noises at
+round zero. All predeclared samples count; no Q/noise selection is performed.
+Only collection samples enter arm-local replay. After online round two, each
+arm has actually trained on 16 new measurements; its final eight collection
+samples are retained for diagnostics/possible continuation, not retroactively
+claimed as training data. The complete three-stage pilot requests 76 new GRT
+outcomes. Four noises are not four independent training seeds.
+
+`graph_o2o_controller.py` journals Slurm handles and resumes only after actual
+scheduler evidence. It first tests one physical sample, then uses cpu-scavenger
+arrays with eight CPUs per task and concurrency four; later GPU updates use
+GPU scavenger. `graph_o2o_backend.py` binds actions, checkpoints, DEFs, measured
+metrics and the offline physical-flow revision. `graph_o2o_collect.py` builds
+replay and complete-denominator summaries. Physical metrics are reparsed from
+raw output; fixed evaluation samples never enter replay. The official native
+track snapping can move macros: read-only ODB audits preserve actual macro
+boxes and check overlap/bounds at zero DBU tolerance. The offline TRAIN and
+validation audit passed 80/80 saved GRT layouts (job 1792376).
+
+Durable compression preserves every results/objects file, with a full decoded
+per-file SHA audit before replacing intermediate directories with scratch cache
+links. Logs, reports and original physical manifests remain durable. Archive
+checks passed in job 1792365; that synthetic storage fixture is not a physical
+measurement. Job 1792367 separately validated the real saved-ODB geometry audit.
+
+Full-route comparison is separately frozen in `full_route_plan.json`: four
+paired evaluation noises for original FlowPlace, BC offline, FQL offline, BC
+online round two and FQL online round two, plus one best-observed TRAIN reference
+(21 total requested layouts). All use the same source GRT checkpoint, tool,
+Nangate45 files and common detailed-route cap20. This deliberately differs from
+the historical released cap4 and must not be mixed with those Table 2 rows.
+Native DRC counts, canonical raw JSON PPA, final macro preservation, failures,
+and nonzero DRC remain explicit. The best-TRAIN reference is source row12,
+GRT rWL 2,159,262 um, selected solely among the 64 TRAIN labels before new
+online outcomes. It is one fixed reference, not four independent replicates.
+
+The original graph pilot actually completed all76 measured GRT requests, both
+online updates and21 cap20 final routes, all DRC0. Its final online FQL mean
+rWL is1.30% worse than matched BC. Three predeclared offline training seeds
+also completed native final evaluation: mean rWL is0.405% lower for FQL, with
+one seed worse and worse average WNS/TNS. The complete multiseed online and
+second-circuit comparisons remain in progress; see the current experiment
+record for exact denominators and source evidence. Lower losses or these
+partial comparisons do not establish completion or a stable RL advantage.
