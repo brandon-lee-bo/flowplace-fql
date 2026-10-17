@@ -2,11 +2,13 @@
 
 The active goal is **graph-based FlowPlace + Flow Q-learning (FQL), with actual
 offline-to-online training and native downstream evaluation**. It remains in
-progress. On bp_fe, seed0 completed offline training, two measured-feedback
-updates and final routing. All three predeclared training seeds have audited
-offline final PPA: FQL mean wirelength is0.405% lower than matched BC, with one
-seed worse and worse mean timing. Full independent-seed online results, the
-expanded-data policy and bp_be training/evaluation remain incomplete. The
+progress. All three bp_fe training seeds have completed offline training, two
+measured-feedback updates and native final routing:63/63 predeclared requests
+passed, all with DRC0. Online FQL mean final wirelength is0.308% lower than
+matched BC, but is worse in two of three seeds and has greater between-seed
+variation. The expanded384-label and second-circuit bp_be offline models have
+also completed; both are collecting their first actual online feedback. Their
+online updates and final PPA comparisons remain incomplete. The
 current Chinese [experiment record](docs/graph_fql_offline_to_online.md),
 [completion audit](docs/completion_audit.md) and [run ledger](docs/run_ledger.md)
 separate measured results from pending work. No stable RL PPA advantage is claimed.

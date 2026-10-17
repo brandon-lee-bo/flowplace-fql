@@ -1532,3 +1532,35 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
 - Expanded offline training1792852 remains live on its allocated GPU and
   has entered the FQL arm. Both live controller dependencies remain intact;
   no paused Table2 jobs or unrelated jobs were resumed or modified.
+
+### 06:18–06:21 HKT — expanded offline completed; both feedback batches live
+
+- Previous conversational turn only supplied the requested execution prompt;
+  it did not advance experimental state. This continuation reread the full
+  objective, cluster rules and current tree, then revalidated the exact Slurm
+  handles before acting. No old or observation-expired job was restarted.
+- Expanded offline1792852 COMPLETED19m04. BC/FQL each completed1000 updates
+  with384 critic rows and256 unchanged behavior targets, then exported28
+  fixed requests. Both flow/actor/critic states changed from their actual
+  common parent; raw completion records and source snapshots are retained.
+  Task SHA fe4afd4fb2af1186a6593d2210c016adbead5dc2530fb3341183d5bd1079c784.
+- Registered both expanded offline checkpoints before downstream selection;
+  batch_05 plan SHA
+  aefc6cc6aae1587de53dcd78d76dfa67fd6813c1c065fb5654ffeff34963c95b.
+  Actual1794636 COMPLETED4s,101336045bytes,954 exact tensors and all
+  non-optimizer fields checked. Original checkpoints remain unchanged;
+  this is inference-state preservation, not full resume or native EDA backup.
+- First actual GRT candidates1794621(bp_be)/1794628(expanded bp_fe)
+  completed successfully. Controllers1793204/1792853 started arrays
+  1794630/1794639 for each remaining27 requests. These labels must finish
+  and pass replay binding before the first actual online parameter updates.
+- After checking actual spare node capacity and the PDF's scavenger policy,
+  raised only these two existing array throttles4→8 and2→8. Each task still
+  requests8CPU/24GiB, excludesenterprise/natural-selection, and retains its
+  fixed actions, learning configuration and physics. Exact before/after
+  records and original config hashes are in
+  `graph_o2o_scheduler_overrides_v1/array_{1794630,1794639}_throttle8.json`.
+  Other projects and paused Table2 jobs were not changed.
+- Independently rehashed all three fixed-cohort Q diagnostic sources; all
+  match the predeclared plan0e087f98a6aef53e92cf5296b1036d90ce8c29d7b3cc69f4441cc938405b0aea.
+  No diagnostic or learning code changed in this continuation.

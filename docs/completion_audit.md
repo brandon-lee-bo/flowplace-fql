@@ -11,8 +11,8 @@ it does not establish completion of this graph-policy offline-to-online goal.
 | --- | --- | --- |
 | Check both official methods and reuse the FlowPlace graph backbone | Pinned official revisions and explicit adaptations in `fql_integration_design.md`; `graph_o2o_models.py` retains GATv2/attention for the behavior flow and independent one-step actor | Implemented; fixed-circuit terminal adaptation, not an unchanged multi-step FQL benchmark |
 | Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and 16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes independently audited by1793202; bp_be reward scale3537708.3125 uses successful TRAIN only | Verified for both circuits' initial datasets; second-design online feedback remains in progress |
-| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; changed flow/actor/critic weights recorded. bp_be offline1793203 COMPLETED23m41 and exported28 fixed requests; controller1793204 and first real GRT1794621 are live | Actual bp_fe training/final PPA and bp_be offline complete; bp_be actual online updates remain pending |
-| Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained; current seed0 online FQL does not beat matched BC. All320 added offline scores independently audited;384-label offline training1792852 actually started after freeze1792864 | Actual original negative result; expanded-policy learning and downstream outcomes remain incomplete |
+| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; changed flow/actor/critic weights recorded. bp_be offline1793203 COMPLETED23m41 and exported28 fixed requests; first GRT1794621 succeeded and array1794630 is live | Actual bp_fe training/final PPA and bp_be offline complete; bp_be actual online updates remain pending |
+| Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained; current seed0 online FQL does not beat matched BC. All320 added offline scores independently audited;384-label offline1792852 COMPLETED19m04 and exported28 requests; first GRT1794628 succeeded and array1794639 is live | Actual original negative result; expanded-policy online learning and downstream outcomes remain incomplete |
 | Compare methods fairly and check seed/circuit variation | Complete three-seed native aggregate1792811:63/63 logical requests successful, all DRC0. Online FQL mean final rWL0.308% lower than BC, but worse in two of three seeds and greater between-seed variation. Frozen FlowPlace is not independently retrained | Multiple-seed main result complete without stable RL superiority; actual second-design RL/PPA remains incomplete |
 | Use one physical flow and report legality, DRC and final PPA honestly | Native OpenROAD/Nangate45, eight threads and cap20; all63 main requests independently audited against actual source/final DEF and native DRC; expanded/bp_be outcomes pending | Complete for all main three-seed cohorts; not complete for all current experiments |
 | Investigate failures and useful placement-specific improvements | Q transfer and local-gradient diagnostics, added-feedback experiment, and actual GRT-to-DRT fidelity checks distinguish critic error from reward-stage transfer | Real evidence exists; larger-data and second-design checks remain open; no positive RL claim |
@@ -40,6 +40,16 @@ Expanded-label BC offline substage has completed, but FQL/export and all
 expanded online/final-PPA results are still pending. Its validation Q MAE is
 6.08% lower on the same16 rows, with no improved Spearman ranking; this does
 not substitute for the predeclared fixed-cohort or downstream comparisons.
+
+At06:20 HKT, expanded offline1792852 has completed both arms and all28
+exports. Both corresponding inference states were exactly preserved by
+1794636:101336045bytes and954 tensors, with optimizer states remaining in
+the original scratch files. The first actual GRT candidate succeeded in both
+new campaigns; existing arrays1794630/1794639 now collect the remaining27
+requests each. Only their scavenger array throttle changed to8, retaining
+eight threads,24GiB, fixed action lists and all learning/physical settings.
+No new-campaign online parameter update or final policy comparison is yet
+claimed. Fixed-cohort diagnostic source hashes still match their frozen plan.
 
 Current authoritative handles include the independent-seed controllers
 1792766/1792794, 320-label expansion1792874 and second-design labels1793035.
