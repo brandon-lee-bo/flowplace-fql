@@ -6,11 +6,13 @@ progress. All three bp_fe training seeds have completed offline training, two
 measured-feedback updates and native final routing:63/63 predeclared requests
 passed, all with DRC0. Online FQL mean final wirelength is0.308% lower than
 matched BC, but is worse in two of three seeds and has greater between-seed
-variation. The expanded384-label models have also completed offline and both
-measured-feedback online updates; second-circuit bp_be has completed offline
-and its first online update. Six new arm/stage pairs have independent actual
-parent/child tensor and replay-binding checks. Their final PPA comparisons,
-and bp_be's final update, remain incomplete. The
+variation. The expanded384-label and second-circuit bp_be models have also
+completed offline and both measured-feedback online updates. All eight new
+online arm/stage pairs have independent actual parent/child tensor and replay
+checks. Expanded final GRT wirelength is1.255% lower than matched BC, but
+timing is worse; identical-proposal Q diagnostics do not show better critic
+generalization. Both final PPA comparisons and bp_be's final GRT scoring
+remain incomplete. The
 current Chinese [experiment record](docs/graph_fql_offline_to_online.md),
 [completion audit](docs/completion_audit.md) and [run ledger](docs/run_ledger.md)
 separate measured results from pending work. No stable RL PPA advantage is claimed.

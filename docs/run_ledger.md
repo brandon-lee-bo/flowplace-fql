@@ -1784,3 +1784,81 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   evidence SHA0964525c19f1facb0165a534c1a358ee69f9ccd805c7c57986226e36b3c77305,
   source SHAddca9b2b98c73ea8ec320ec2d788327254e12c5c1145b32ac2db945520790be0.
   No inference about complete final-PPA equality or RL superiority follows.
+
+### 07:20 HKT — completed expanded GRT and same-proposal Q diagnosis
+
+- The immediately preceding prompt-only response supplied the user's requested
+  text; no experiment progress is attributed to that response. This continuation
+  re-read the complete active objective and verified actual Slurm handles before
+  making changes. Main three-seed final PPA remains complete, not repeated.
+- Actual1792866 COMPLETED41s and expanded controller1792853 completed all76
+  GRT requests. It independently audited12 original/expanded BC/FQL training
+  phases. Expanded final four-noise means:BC2.324416m/FQL2.2952435m, FQL
+  1.255046% lower by ratio of means, with3/4 paired improvements. WNS/TNS
+  are worse:BC−0.412503/−223.153 versus FQL−0.4169345/−239.7125.
+  These are GRT, not final DRT results or a multi-seed data-size conclusion.
+- Visually inspected the complete GRT figure. Eight report/code/config files
+  were copied and hash-verified,218906bytes, to
+  graph_o2o_evidence_snapshots_v1/20261018_0717. Manifest SHA
+  eb3ba70c3806709f96d868d362bde70df148f6bc75109b02f35e947c596534a6.
+- Actual fixed-cohort1792947 COMPLETED33s,12 critics×13 four-case cohorts,
+  624 saved predictions with real outcome binding and reproduced CPU TRAIN
+  MAE. Added a separately pinned independent summary retaining all declared
+  cohorts and the original expanded384/fql/r2 four-case primary.
+- First summary1794859 authoritatively FAILED1:0 due to a local root path
+  variable overwritten by an experiment string during dependency copying.
+  Source, plan, submission and failure log preserved in
+  graph_o2o_fixed_critic_transfer_v1/failed_attempt_1794859. The metric and
+  proposal checks had already run; this failure did not train or run EDA.
+- Renamed only the shadowing variable; actual1794866 COMPLETED2s on plan
+  0635dd64b6040583b4ff979bd81a78cfe653e3afe63b1c0fa89130a74ca4d853.
+  Recomputed all156 cohort metrics and624 saved predictions against bound
+  real outcomes.52 logical cases reduce to40 raw proposals because12 BC
+  observations repeat across data budgets; duplicate proposals must match
+  execution, input DEF hash, reward and same-Q predictions.
+- Plot-only tick-density revision1794868 COMPLETED2s on plan
+  720fd867c9377ad476ad6a91f52bb82bd86de8ac69d69e999a685f2f0f1798e7.
+  Readable plot visually inspected; all scientific fields exactly equal
+  to1794866. Durable evidence SHA
+  3e8ff6f7ddfd1a797ada22126b4dc6f675bc386dc0372195f68ef1555bc99292,
+  graph_o2o_fixed_critic_transfer_v1/reports/job_1794868/evidence.json.
+  Final original/expanded Q on the same40 proposals:MAE0.045450/0.049214,
+  Spearman0.0792/0.0236. Primary four-case MAE0.029627/0.043069 and both
+  rank−0.4. No better-Q or stable-policy conclusion; no diagnostic replay.
+
+### 07:20 HKT — bp_be final online completed, independently audited and saved
+
+- Actual1794848 COMPLETED10m35, BC/FQL each600 updates using64 original
+  TRAIN+16 own measured outcomes, with207/207/16 changed flow/actor/critic
+  tensors. BC checkpoint SHA
+  4d542c0eb65951b22e55355293e66b9b024e9496738078d480cef982708d0f0c;
+  FQL e333334a1615d96a4064d3b2430107b1109f31d9f1a5bcd4441f4760ba68f82e.
+- Independent actual parent/child audit1794882 COMPLETED7s, using the same
+  already-validated audit implementation. It verifies600 actual iterations,
+  all three modules' exact changes, replay/config identity and source job
+  COMPLETED0:0. Phase02 plan SHA
+  b3072c683e3a7b626d97616b0d5267dbd9fcbfe338707745281d43a933e84e35;
+  evidence f521bfd8e4bef08ce554db5fc40d3d88c6681691d8ea078245641ee7ee737ef3.
+- Exact inference preservation1794875 COMPLETED3s:101328287bytes,954
+  tensors and all other non-optimizer fields. Batch09 plan SHA
+  81779c9e732e05c195a99dfcd725722dfa67bb3ad73fef50bbd43f4ae6c9d914;
+  manifest f3d30303cad4fed9c31c884151f05d478b2d265dc5279013a1776f06e0744b2d.
+  Source optimizer checkpoints remain on scratch; no PPA-based selection.
+- Actual-used-feedback preservation1794876 COMPLETED5s,32/32 successful
+  logical collect observations,1452files,510468889bytes→2745531bytes,
+  full staged/durable decode and per-source hashes checked. Design config
+  bound from actual bp_be native GRT manifest, not copied from bp_fe.
+  Batch02 plan SHA e60dd473f98e240b5d4a0fa9d40c2dd9dd7f9e7158bf8b9ab73fd74eca60b0b4;
+  manifest ea90e795a674a09b282175167706d9b8fb0e1953be62f464a5f4d7c7d3d85be8;
+  archive10d4250b7ce1a7a00d80ec4c732afeb5bf3b8ef656aadc79938990181e461bbc.
+  Native DEF/actions/replay/GRT reports retained; not a full EDA resume archive.
+- Original controller submitted final24-request scoring array1794869, tasks
+  SHA743175bfb15452dbb7d1762ffd361159d637de2525daec8fc96a69995cc71337.
+  After observing100 eligible idle threads with sufficient memory, changed
+  only its throttle4→8, actual8CPU/24GiB, same exclusions/actions/config.
+  Scheduler record SHA
+  ddd976f802e637d8b69c259904a476f5f50da2fe24934e1c12fd5cc480784ef8.
+- At07:20 actual route controllers1792865/1793205 and eight final GRT
+  children remain live; final reports/consolidation remain correctly pending.
+  Goal stays active; neither native PPA completion nor positive RL advantage
+  follows from completed training or evidence preservation.

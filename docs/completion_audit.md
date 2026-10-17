@@ -10,12 +10,12 @@ it does not establish completion of this graph-policy offline-to-online goal.
 | Current requirement | Actual evidence and scope | State |
 | --- | --- | --- |
 | Check both official methods and reuse the FlowPlace graph backbone | Pinned official revisions and explicit adaptations in `fql_integration_design.md`; `graph_o2o_models.py` retains GATv2/attention for the behavior flow and independent one-step actor | Implemented; fixed-circuit terminal adaptation, not an unchanged multi-step FQL benchmark |
-| Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and 16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes independently audited by1793202; bp_be reward scale3537708.3125 uses successful TRAIN only | Verified for both circuits' initial datasets; second-design online feedback remains in progress |
-| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds completed offline and two measured-feedback online updates; actual changed flow/actor/critic weights checked. bp_be first online1794723 completed and next24/24 GRT requests succeeded; actual second online1794848 is RUNNING on L20 with own16-row replay per arm | Actual main and bp_be first online update verified; second-design final update and downstream outcomes remain incomplete |
-| Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained; current seed0 online FQL does not beat matched BC. All320 added offline scores independently audited;384-label offline1792852 and both online1794707/1794779 complete, final update uses16 own labels per arm; final24-request scoring1794808 live | Actual original negative result; expanded final scoring, fixed-cohort Q diagnosis and downstream outcomes remain incomplete |
+| Define real actions, reward, data and termination | Raw proposal predicts the measured result after legalization and native backend import; terminal mask is zero; 64 initial TRAIN and16 validation labels; family splits and TRAIN-only normalization checked. Second-design80/80 outcomes audited by1793202; reward scale3537708.3125 uses successful TRAIN only. Actual used feedback preserved and rebound by1794812/1794876,160 logical observations in total | Verified for both initial datasets and all five completed final online replay scopes; final extra collection is not counted as used training data |
+| Actually train offline and then collect feedback and update both policy and Q | All three bp_fe seeds, expanded384 bp_fe and bp_be completed offline and two measured-feedback updates. Independent actual parent/child audits1794837/1794882 verify all eight new online arm/stages and exact replay use; each phase changes207/207/16 flow/actor/critic tensors | Actual offline-to-online training verified in all registered studies; final new downstream outcomes remain incomplete |
+| Pursue downstream quality rather than only lower loss | Original final PPA and fixed-replay, best-measured-layout and larger-feedback controls retained. Expanded all76 GRT requests and audit1792866 completed: final FQL wirelength1.255% below BC but timing worse. Fixed-cohort1792947 and deduplicated624-prediction audit1794868 show40 unique proposals, no improved Q ranking | Actual measured main negative/stability result and expanded GRT signal; expanded final PPA and bp_be final scoring/PPA remain incomplete |
 | Compare methods fairly and check seed/circuit variation | Complete three-seed native aggregate1792811:63/63 logical requests successful, all DRC0. Online FQL mean final rWL0.308% lower than BC, but worse in two of three seeds and greater between-seed variation. Frozen FlowPlace is not independently retrained | Multiple-seed main result complete without stable RL superiority; actual second-design RL/PPA remains incomplete |
 | Use one physical flow and report legality, DRC and final PPA honestly | Native OpenROAD/Nangate45, eight threads and cap20; all63 main requests independently audited against actual source/final DEF and native DRC; expanded/bp_be outcomes pending | Complete for all main three-seed cohorts; not complete for all current experiments |
-| Investigate failures and useful placement-specific improvements | Q transfer and local-gradient diagnostics, added-feedback experiment, and actual GRT-to-DRT fidelity checks distinguish critic error from reward-stage transfer | Real evidence exists; larger-data and second-design checks remain open; no positive RL claim |
+| Investigate failures and useful placement-specific improvements | Q transfer/local-gradient diagnostics, added-feedback and2×2 data-path controls, native GRT-to-DRT fidelity and larger-label same-proposal comparisons distinguish critic error from reward-stage transfer | Actual mechanism evidence; larger-data final PPA and second-design effects remain open; no stable RL or comprehensive PPA claim |
 | Preserve provenance, report results and obey FactLab rules | Config/source/data/weight/job bindings, immutable failed attempts and route evidence retained; heavy work runs through Slurm; `graph_fql_offline_to_online.md` contains the current Notion-ready record | Ongoing; live jobs and scratch assets still require final reconciliation and evidence preservation |
 
 At06:05 HKT, all three bp_fe policy controllers, all76 GRT requests per
@@ -129,31 +129,39 @@ executed coordinates match across64/384-label seed0 runs, while all36 FQL
 proposals differ. The BC runs are paired controls, not independent seeds;
 this metadata-only identity check does not prove final physical equality.
 
-Current authoritative handles include the independent-seed controllers
-1792766/1792794, 320-label expansion1792874 and second-design labels1793035.
-At05:49 HKT,1792766 and its route controller1792778 have completed all76 GRT
-and21 detailed-route requests for seed1, all21 reporting DRC0. The complete
-three-seed native aggregate is still waiting for seed2. Second-design labels
-1793035 and audit1793202 have completed; actual offline training1793203 and
-the23-request route controller1793205 are now live. The frozen second-design
-dataset binding is
-`da826d9d5d614bc5b7f54248506b03b6696e9f47c540a1b7745a8b724a55226e`.
-Feedback-channel training1794210, eight new GRT results1794211, routing1794212
-and final report1794213 have completed. All20 diagnostic layouts have DRC0;
-adding behavior data alone worsens final rWL by1.108%, adding Q data alone
-by0.070%, and adding both by1.549%, relative to the same-parent fixed-replay
-control. These are four already-observed evaluation noises from one parent,
-not independent multi-seed algorithm validation.
-Offline three-seed native-evidence report1794338 completed without reading
-online metrics or changing selection. Coverage routing1792875 and report1792565 have
-completed all20 requested layouts with DRC0; native evidence audit1794208
-also passed. The added-feedback FQL still underperforms BC on final rWL.
-Other handles' later terminal status must be read from
-Slurm, not inferred from this dated document. Second-design training and the
-expanded-data policy have both started after their complete label audits.
-At05:58 HKT all320 added labels are successful and independently audited;
-the expanded training binding is
-`05b87166dada1545529d54d23556142706ca878d60a75e3e630cbb88cd889224`.
+At07:20 HKT, expanded all76 GRT observations and actual-training comparison
+1792866 have completed. Final FQL mean GRT wirelength2.2952435m is1.255%
+below paired BC2.324416m, with worse WNS/TNS. Fixed-Q audit1792947 and
+independent recomputation1794868 cover624 predictions on52 logical cases,
+40 unique raw proposals after removing cross-budget duplicate BC. On the
+same40 proposals, final original/expanded Q MAE is0.045450/0.049214 and
+Spearman0.0792/0.0236; the declared four-case primary remains unchanged.
+Neither critic accuracy nor stable policy benefit is established. First
+summary1794859 failed only while copying dependency evidence because of a
+shadowed path variable; failure and source/plan retained, repaired1794866
+passed. Plot-only readability revision1794868 passed with exactly identical
+scientific values, and both final figures were visually inspected.
+
+bp_be final online1794848 actually COMPLETED10m35, with16 own observations
+per arm. Independent actual-tensor/replay audit1794882 passed both phases;
+inference-state backup1794875 preserved101328287bytes and954 exact tensors.
+Used-feedback backup1794876 preserved all32 actual logical collect outcomes,
+1452files/510468889 source bytes, fully decoded and source-checked. All five
+completed final online replay scopes now have durable native feedback and
+both model arms retained. Optimizer/full OpenDB/SPEF remain at source; no
+claim of a complete training/EDA resume archive is made.
+
+Current live handles were actually polled: bp_be controller1793204 and its
+24-request final GRT array1794869; native-route controllers1792865/1793205
+with16/21 and9/23 requests complete, respectively. Four physical route
+workers and eight GRT array children were actually live. Only array1794869
+throttle changed4→8 after observing100 eligible idle scavenger threads;
+actual8CPU/24GiB per task, frozen actions/config/backend unchanged. Final
+reports1792868/1793511 and consolidation1794697 retain pending dependencies.
+Previous prompt-only response is not counted as scientific progress; this
+continuation re-read the full objective and moved actual audit/preservation
+and documentation state forward. No jobs were restarted because a poll
+expired, and the paused old Table2 jobs were not resumed.
 
 The goal is **not complete**. Completion requires actual downstream results
 for the pending comparisons and circuits, a consolidated scientific judgment,
