@@ -101,3 +101,81 @@ Keep the first objective comparison focused on WL/timing/congestion while
 checking whether these outcomes deteriorate; do not add two more arbitrary
 weights merely to consume every available label. These are GRT-stage values,
 not the later final-route power/area reference.
+
+## Completed development result
+
+The saved-only report job1796866 completed on2026-10-18. Its artifact is
+`/fact_data/bohanli/flowplace_fql/qstudy_v1/bounded_actor_native_report_v1/20261018T132750.979106Z_job1796866/report.json`,
+SHA256 `0ce81b4ef635d0d6def02d751a809a3459bc1ed23d6003dd02167bae63d4ddfb`.
+The three bounded arms each have24/24 successful GRT outcomes. The unchanged
+existing BC reference also has24/24:72 new bounded measurements plus24 reused
+reference measurements, not96 new measurements. There are no missing,
+unexported, invalid, geometry-failed or physically failed requests. Every
+seed uses the same eight saved actual development noise arrays; all24 pairs
+are admitted for each contrast. These are complete GRT-stage summaries,
+without final detailed-route or DRC-zero claims.
+
+Each entry below is the equally weighted mean of three training-seed means
+plus/minus their sample SD. Each seed mean covers all eight requested outputs;
+the SD is not over24 independent training runs.
+
+| Native metric | Existing BC reference | Bounded WL | Bounded timing | Bounded timing + congestion |
+| --- | --- | --- | --- | --- |
+| Routed WL (m), lower | 2.31403 ± 0.01214 | 2.30427 ± 0.01421 | 2.28726 ± 0.01479 | 2.30349 ± 0.02089 |
+| WNS (ns), closer to0 | −0.40360 ± 0.01692 | −0.41856 ± 0.01218 | −0.41536 ± 0.00347 | −0.41485 ± 0.01291 |
+| TNS (ns), closer to0 | −217.40 ± 16.51 | −217.92 ± 10.34 | −231.04 ± 16.41 | −222.39 ± 14.37 |
+| Horizontal overflow, lower | 7.667 ± 2.504 | 2.000 ± 1.317 | 11.333 ± 3.403 | 4.083 ± 1.371 |
+| Vertical overflow, lower | 1.375 ± 0.451 | 0.792 ± 0.382 | 2.000 ± 1.750 | 1.167 ± 0.473 |
+| Power (W), lower | 0.170010 ± 0.000151 | 0.170021 ± 0.000150 | 0.169886 ± 0.000282 | 0.169842 ± 0.000277 |
+| Standard-cell area (µm²), lower | 61,200.2 ± 347.0 | 61,525.2 ± 330.8 | 61,027.3 ± 46.2 | 61,011.4 ± 46.6 |
+
+Paired WL differences are candidate minus reference, inµm; negative is better.
+The final column is the mean and sample SD of the three paired seed differences,
+which must not be inferred by subtracting the marginal SDs above.
+
+| Contrast | Seed0 | Seed1 | Seed2 | Paired mean ± SD |
+| --- | --- | --- | --- | --- |
+| Bounded WL − BC | −9,257.875 | −7,982.375 | −12,021.000 | −9,753.750 ± 2,064.471 |
+| Bounded timing − BC | −13,268.875 | −49,379.625 | −17,645.750 | −26,764.750 ± 19,706.945 |
+| Bounded timing + congestion − BC | +7,118.375 | −42,104.500 | +3,382.000 | −10,534.708 ± 27,403.995 |
+| Bounded timing − bounded WL | −4,011.000 | −41,397.250 | −5,624.750 | −17,011.000 ± 21,134.520 |
+
+The within-bounded contrasts are controlled objective interventions under this
+protocol. Comparisons with existing BC remain descriptive paired physical
+references: the report explicitly sets
+`controlled_effective_update_eligible=false` for those contrasts. The earlier
+source-actor BC certificate does not establish bounded zero-Q update
+equivalence. Reusing the same actual noises and native BC layouts establishes
+pairing, but does not extend that certificate.
+
+The timing arm has shorter WL in all three seeds than bounded WL, with a0.738%
+mean reduction. It nevertheless increases TNS violation by13.120ns, horizontal
+overflow by9.333 and vertical overflow by1.208 relative to bounded WL. Under
+the same fixed timing utility specification, its measured mean B is1.202607,
+versus1.198283 for bounded WL and1.197221 for BC; lower B is better. Adding
+congestion terms reduces both overflows relative to the timing arm, but gives
+back16,230.042µm of mean WL and still has worse measured congestion utility
+than bounded WL. Thus the experiment shows physical tradeoffs, without reliable
+optimization of the intended timing/congestion utility. Its saved own-objective
+Q/native-utility rank correlations average−0.500 for timing and−0.579 for
+congestion, versus+0.611 for WL. These small, policy-conditional diagnostics
+identify prediction limitations; they do not prove a unique cause of the result.
+
+Against the locked development-promotion rules in
+`fql/qstudy_confirmation_rules_v1.json` (SHA256
+`b6553120d9a4f410740d9f45ee3214dfa62b48f27b0a75a8c4cfe262f9b940ab`):
+
+| Arm versus descriptive BC | Mean WL reduction | All three seeds lower WL? | Numerical gate outcome |
+| --- | --- | --- | --- |
+| Bounded WL | 0.422% | Yes | Below the required1% primary threshold |
+| Bounded timing | 1.157% | Yes | Primary passes numerically, but TNS and horizontal-overflow tolerances fail |
+| Bounded timing + congestion | 0.455% | No | Primary threshold and three-seed direction fail |
+
+For timing, TNS violation increases13.642ns versus the allowed10.870ns
+(`max(1ns,5% of BC)`); horizontal overflow increases3.667 versus the allowed1.
+Mean WNS, vertical overflow, power and area remain within their respective
+locked tolerances. The secondary failures remain even if a bounded BC
+equivalence certificate were later established. No bounded arm is eligible for
+promotion from this completed experiment. This is a development conclusion,
+not a fresh-confirmation result, and it creates no automatic new controls,
+online runs or candidate selection.
