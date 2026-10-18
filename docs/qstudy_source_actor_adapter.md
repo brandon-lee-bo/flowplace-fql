@@ -27,6 +27,9 @@ all and only that source's TRAIN rows. Initial TRAIN labels must be finite
 and successful; failed rows cannot silently disappear at actor setup. The
 original256 behavior targets and families must match exactly. T64/M64 still
 share one seed0 teacher; three actor seeds do not create independent sources.
+Byte-identical archived common checkpoints may have different paths. Both
+paths and actual file hashes are verified and retained; differing contents
+or a stale declared hash are rejected.
 
 The reference physical utility uses O64 TRAIN scales. Legacy `q_weight` is
 `S_source/S_O64`; multi-metric weights are `w_ref*S_source/S_O64` with

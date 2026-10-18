@@ -168,6 +168,15 @@ def checked_refit(task, matrix, declaration, cache, movable, data, costs):
         source_scale=scale, normalization=normalization)
 
 
+def teacher_identity(declared, matched):
+    """Allow byte-identical archived copies while binding both actual paths."""
+    declared = bind(declared["path"], declared["sha256"])
+    matched = bind(matched["path"], matched["sha256"])
+    if not declared["sha256"] or declared["sha256"] != matched["sha256"]:
+        raise ValueError("Current teacher source differs from the declared common seed0 content")
+    return dict(declared=declared, matched_common_seed0=matched, identical_content=True)
+
+
 def prepare(args):
     if "SLURM_JOB_ID" not in os.environ:
         raise RuntimeError("Source/checkpoint verification requires a Slurm CPU allocation")
@@ -209,8 +218,7 @@ def prepare(args):
         common[key].update(metadata=bind(status_path), original_config=bind(init_config, status["config_sha256"]))
     if len({c["checkpoint"]["sha256"] for c in common.values()}) != 3:
         raise ValueError("Three common initializations must be distinct independent-seed artifacts")
-    if declaration["teacher_common"] != common["0"]["checkpoint"]:
-        raise ValueError("Current teacher source must retain the declared common seed0 checkpoint")
+    teacher_initialization = teacher_identity(declaration["teacher_common"], common["0"]["checkpoint"])
     configs, selected_evidence = {}, []
     for selection in note["selections"]:
         arm, variant = selection["source_arm"], selection["variant"]
@@ -248,12 +256,14 @@ def prepare(args):
             limitation=("All legacy configs are offline-only. The frozen online legacy actor targets -4 in source Q units; after q_weight correction this becomes -4*S_source/S_ref, not common -4. A tested new actor must target -4/q_weight before source-matched online replay." if variant == "legacy" else
                         "Corrected native-unit metric weights and q_weight=1 preserve the frozen -4 utility failure target.")))
     protected = [study, base_path.parent, Path(base["dataset_path"]).parent, cache_path.parent,
+        Path(teacher_initialization["declared"]["path"]).parent,
         *[Path(c["checkpoint"]["path"]).parent for c in common.values()]]
     if any(output == p or output.is_relative_to(p) or p.is_relative_to(output) for p in protected):
         raise ValueError("New config output must be disjoint from all preserved source artifacts")
     manifest = dict(schema="qstudy_reviewed_source_actor_configs_v1", status="prepared_configs_only",
         review_note=bind(note_path), source_report=bind(report_path), matrix=bind(study/"matrix.json"),
         plan=matrix["plan"], base_config=bind(base_path), common_initializations=common,
+        teacher_initialization=teacher_initialization,
         reference=dict(source="O64 initial TRAIN only", dataset=bind(reference_path),
             scales=reference_scale.tolist(), weights=reference_weights.tolist(),
             note="Objective magnitude scales, never heldout scales or target regression z-scores"),

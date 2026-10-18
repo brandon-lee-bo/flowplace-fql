@@ -66,11 +66,14 @@ class SourceActorConfigTests(unittest.TestCase):
                 graph_cache_sha256=source.sha(self.cache_path), no_heldout_labels_used=True,
                 config_sha256=source.sha(experiment/"config.json")))
             self.common[str(seed)] = source.bind(folder/"common.pt")
+        self.teacher_archive = self.root/"teacher_archive/common.pt"
+        self.teacher_archive.parent.mkdir()
+        self.teacher_archive.write_bytes(Path(self.common["0"]["path"]).read_bytes())
         self.teacher = self.root/"teacher.json"
         source.atomic_json(self.teacher, dict(common_seed=0, synthetic=True))
         declaration = dict(design="bp_fe", cache=source.bind(self.cache_path),
             old_source=datasets["O64"], teacher_config=source.bind(self.teacher),
-            teacher_common=self.common["0"], teacher_reference=datasets["O64"]["dataset"],
+            teacher_common=source.bind(self.teacher_archive), teacher_reference=datasets["O64"]["dataset"],
             steps=2, folds=3, batch_size=64, lr=3e-4, weight_decay=1e-4)
         source.atomic_json(self.study/"plan.json", dict(declaration=declaration,
             declaration_sha256=source.object_sha(declaration)))
@@ -196,6 +199,10 @@ class SourceActorConfigTests(unittest.TestCase):
         self.assertEqual(manifest["backend_calls"], 0)
         self.assertFalse(manifest["automatic_selection"])
         self.assertIn("seed0 only", manifest["teacher_source_limitation"])
+        teacher = manifest["teacher_initialization"]
+        self.assertNotEqual(teacher["declared"]["path"], teacher["matched_common_seed0"]["path"])
+        self.assertEqual(teacher["declared"]["sha256"], teacher["matched_common_seed0"]["sha256"])
+        self.assertTrue(teacher["identical_content"])
         sref = manifest["reference"]["scales"][0]
         for selected in manifest["selected"]:
             cfg = source.read_json(self.args.output/selected["selection"]["actor_arm"]/"config.json")
@@ -216,6 +223,16 @@ class SourceActorConfigTests(unittest.TestCase):
                 self.assertEqual(cfg["q_weight"], 1.)
                 self.assertAlmostEqual(cfg["weights"][0]/selected["source_scale"][0], 1./sref)
         self.assertEqual({str(p):source.sha(p) for p in (self.base_path, Path(self.base["dataset_path"]), self.cache_path)}, before)
+
+    def test_teacher_alias_rejects_different_content_and_stale_hash(self):
+        wrong = self.root/"wrong_teacher.pt"
+        wrong.write_bytes(b"Different but independently hash-bound teacher")
+        with self.assertRaisesRegex(ValueError, "common seed0 content"):
+            adapter.teacher_identity(source.bind(wrong), self.common["0"])
+        self.teacher_archive.write_bytes(b"Changed archived teacher after declaration")
+        with self.assertRaises(ValueError):
+            self.perform()
+        self.assertFalse(self.args.output.exists())
 
     def test_multi_metric_weight_correction_preserves_native_utility_and_failure(self):
         self.note["selections"] = [self.note["selections"][-1]]
