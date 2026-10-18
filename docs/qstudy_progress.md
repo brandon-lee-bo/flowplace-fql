@@ -1861,3 +1861,41 @@ new gated jobs plus three actual weighted-route workers/retries, for173 parents.
 `a4d701b6f699fe391eb6234e390627f96cb170a33e2f231dca49e566741d06cc`.
 It is a point-in-time inventory, not a final resource total; array children are
 not counted again as extra parent submissions.
+
+## 2026-10-18 18:42 UTC: scalar replay/continuation core passes bounded software checks
+
+`fql/qstudy_scalar_online.py` is an independent, prospective first-cycle core,
+not a production online runner. It reuses the frozen rule/final target helpers,
+accepts only the complete predeclared own-collect population, preserves native
+reward/PPA, and derives separate B targets under the original full-TRAIN spec.
+Final-target successes require actual completed DRT and native power/geometry
+evidence; non-completed or unclassified final-route failures are refused, not
+automatically treated as B4. Confirmed GRT physical/geometry failures and
+measured final DRC violations retain their distinct status and native fields.
+
+Final2CPU/8GiB fixture job1799360 completed in3s with15 tests passing, including
+one scalar Huber path for success/B4, actual collect-request gates, missing DRT
+and changed QA conditions, unchanged native failure reward, complete parent
+actor/critic/Adam/RNG identity, frozen teacher/normalizers, and exact split-run
+resume. Root and independent source review passed. The first fixture1799351
+failed an exact-resume check: loading an optimizer state on CPU reused the
+in-memory parent's state tensors. The new core now deep-copies optimizer state;
+intermediate1799354 and final1799360 pass, and failed software work stays in costs.
+The final core SHA256 is
+`505e6a3e6de2d717212793f2541b86c3557e10e3ccbae098346e8b691a0162e0`.
+
+At its first online boundary this core continues the verified parent's named
+RNG streams. The legacy online runner instead seeded streams per round; future
+matched controls must all use the new convention and cannot be described as
+reproducing the old exact training trajectory. Collect/export config bridging,
+GRT/DRT scheduling, periodic per-term gradient diagnostics, subsequent cycles
+and complete online evaluation remain to be integrated. No new-objective
+online policy has been trained or claimed successful by these software tests.
+
+Metadata plan1799361 is queued after actor preparation to freeze all72 final
+route identities before policy metrics, with the previously declared first four
+indices for every arm/seed. This is not physical route submission. Separately,
+one8CPU/16GiB/30min reference-only STA session1799365 is submitted on original
+TRAIN row0000. It must reproduce the original GRT WNS/TNS before any macro-path
+criticality is admitted; no placement, routing, repair or new reward training
+is authorized by that query. Its original results are mounted read-only.
