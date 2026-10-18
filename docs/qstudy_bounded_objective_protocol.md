@@ -92,3 +92,12 @@ No online extension or fresh confirmation follows automatically. Only a
 credible measured tradeoff, acceptable failures and a fixed method justify
 the subsequent matched own-feedback online test. Negative or inconclusive
 results can close this bounded objective experiment honestly.
+
+Power and area remain measured report outcomes in this bounded experiment.
+The existing bp_fe384 audit finds power 0.168985 +/- 0.001481 W and standard
+cell area 60052.2 +/- 655.8 square micrometers (sample SD across TRAIN rows).
+Their relative variation is narrow but not zero or inherently unimportant.
+Keep the first objective comparison focused on WL/timing/congestion while
+checking whether these outcomes deteriorate; do not add two more arbitrary
+weights merely to consume every available label. These are GRT-stage values,
+not the later final-route power/area reference.

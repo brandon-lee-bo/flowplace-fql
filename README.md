@@ -8,8 +8,10 @@ policy comparison. Read the [current plan](docs/qstudy_plan.md),
 [source-to-actor protocol](docs/qstudy_source_actor_protocol.md).
 The completed [source-control result](docs/qstudy_source_results.md) is negative
 for current-flow WL prediction; its fixed-budget physical policy test is
-separate. A prospective [bounded multiobjective comparison](docs/qstudy_bounded_objective_protocol.md)
-defines the next scalar-critic objective without changing existing runs.
+separate. The [bounded multiobjective comparison](docs/qstudy_bounded_objective_protocol.md)
+has completed its predictive screen; its fixed-budget physical policy test is
+queued. The [fresh confirmation protocol](docs/qstudy_fresh_confirmation_protocol.md)
+reserves new generation noises after development selection is locked.
 These new experiments have not established a stable PPA improvement. The old
 Table 2 reproduction remains paused. Results below describe completed earlier
 phases, rather than completion of the current study.

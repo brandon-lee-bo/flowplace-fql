@@ -527,3 +527,89 @@ grouped CV fits and one full-TRAIN refit. No objective actor has launched yet.
 The three objectives share splits and minibatch streams on the complete
 384-row TRAIN data; that matching does not automatically extend to datasets
 with objective-dependent missing labels.
+
+The source actors' first two pending GPU jobs, 1796604 and 1796605, received
+a scheduler-only time-limit change from three hours to 20 minutes. The six
+previous matched 1,000-update actors took 3m33s--6m08s. `scontrol` verified
+both new limits; hardware, code, checkpoints, updates and random streams are
+unchanged. All L20 GPUs were allocated at the scheduling inspection, so this
+does not guarantee an earlier start. The frozen worker script still declares
+three hours for future submissions and must not be edited during active runs.
+
+## Bounded-objective screen and offline policy launch
+
+All nine tasks in 1796737 completed, covering 36 grouped-CV/refit models.
+Read-only report 1796778 verified every fit with zero integrity errors; its
+immutable JSON is
+`qstudy_v1/bounded_screen_report_v1/20261018T095653437846Z_job1796778/report.json`
+(SHA `d66aadbbfe466ac7e66385ce66223b2bbde1e716ce9eecd5458810e4a6b2b68f`).
+Reporter tests 1796768 passed eight cases. Three-seed mean/sample SD below first
+average the three grouped TRAIN-CV folds within each critic seed. Every objective
+has a different scalar target; these are prediction diagnostics, not comparable
+cross-objective physical utilities.
+
+| Target | B MAE | Its constant-TRAIN baseline MAE | Spearman rho | Within-family pair accuracy |
+| --- | ---: | ---: | ---: | ---: |
+| WL | .01321 +/- .00029 | .01524 | .561 +/- .018 | .547 +/- .040 |
+| WL + timing | .03480 +/- .00068 | .02728 | .197 +/- .024 | .523 +/- .003 |
+| WL + timing + congestion | .07231 +/- .00184 | .06357 | .277 +/- .026 | .525 +/- .029 |
+
+Timing and congestion do not beat their own constant baseline in MAE, and local
+ordering remains weak. Historical 16-row development results are kept separate;
+none establishes correct physical actor gradients. The same alpha10 also does
+not equalize Q-gradient pressure across objectives. Power and area remain
+reported metrics, not optimized objectives; their TRAIN variation audit is in
+[the objective protocol](qstudy_bounded_objective_protocol.md).
+
+The new offline-only actor adapter retains the exact frozen train/export
+function code in a private namespace, with setup and reward overridden. Q is
+minus mean predicted B; no second TRAIN-mean normalization is performed.
+Tests 1796790 passed six cases, including exact model/optimizer/RNG continuation,
+private signal state, immutable full-TRAIN metadata and evaluation noise.
+Independent review found no current-scope blocker. Actual CPU integration
+1796829 checked all 36 fits and nine refits: 18 saved TRAIN/validation prediction
+comparisons were bitwise identical, frozen-input gradients were finite/nonzero,
+and a real common GraphPolicy teacher10/actor gradient check passed. Its report
+SHA is `798ee7f510879b5320bc9d1ee5b4d50b2f32a74a672b5c468e5fc09919747328`.
+This validates implementation, not PPA improvement.
+
+Preparation 1796833 published three immutable configs under
+`qstudy_v1/bounded_actors_v1/`. Their SHA values are WL
+`806c0093a235042e9e32c234fb2cdeb9a1b5fdc3b0d8046fa2ba8da660d40cc6`,
+timing `0b02b8bec3d6fcb30091f4aaf4eef56b3de58c662c5c902c5d189624a26a24e2`,
+and congestion `b05f3219672094d5e930c97f667bbae25adc576acc53854c137fadd249e07a98`.
+They share full-TRAIN physical scales, three independent common warmups, the
+same original 256 BC targets, alpha10, frozen flow and 1,000 actor updates.
+GPU jobs 1796839--1796847 form two dependency chains, limiting concurrency to
+two. Each uses the same L20 request and eight actual noise4600000 evaluations.
+No collect trajectories or online rounds are enabled. These are bounded actual
+negative-hypothesis tests, not automatic method promotion.
+
+Native finish job 1796852 waits for all nine successful GPU jobs and refuses
+missing/changed export markers before invoking the frozen backend controller.
+The declared budget is 72 native requests at concurrency two, eight CPUs and
+24GiB each. Its outer wrapper clears inherited SLURM_RESTART_COUNT before new
+child submissions; this prevents a controller restart count from being confused
+with a child's own requeue count. Its script and submission are recorded under
+`bounded_actors_v1/native_finish/`. Original physical metrics and rewards remain
+unchanged.
+
+Current/public flow native-finish controllers 1796791/1796792 wait for original
+arrays1796709/1796710 before verifying and recovering only missing outcomes.
+The new read-only baseline reporter passed 13 tests in1796826 and independent
+review; current24 and public8 keep distinct uncertainty units. A source-actor
+common-reference report1796793 waits for controller1796559 and recomputes
+utility under O64 TRAIN scales; it does not compare source-normalized scores.
+
+The matched controller1795764 stopped after array1796007 ended: 25 requeued
+children hit the duplicate-live-attempt guard. Their controller had exported
+SLURM_RESTART_COUNT=1 into initial children; the first real requeue also had1,
+so the frozen same-job restart test could not distinguish them. This is an
+infrastructure recovery problem, not25 physical failures. The affected attempts
+and manifests are being audited before same-job recovery;71 successful children
+will not be recomputed. Downstream reports triggered by afterany may be partial
+and cannot be treated as completed online-policy results.
+
+[Fresh confirmation](qstudy_fresh_confirmation_protocol.md) will use separately
+locked evaluation inputs only after development selection. The current actor
+noises, source labels, probes and historical validation are development data.
