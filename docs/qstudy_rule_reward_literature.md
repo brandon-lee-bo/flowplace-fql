@@ -52,3 +52,21 @@ EXPlace 的 [parser](https://github.com/lamda-bbo/EXPlace/blob/d5d534a5fbdbc1ab4
 3. **硬约束与软偏好分开**：边界、宏重叠、固定节点和正式设计 blockage 按实际执行检查；边缘偏好、分组紧凑、经验 I/O 预留和凹槽代理默认是软项。没有具体几何规则，不能声称某个“规则 reward”保证 DRC=0。
 4. **失败口径一致**：若延用有界成功成本，可使用 `B=2C/(1+C), r=−B`，已确认物理失败单独为 `−4`；这是本项目自定义变换，不是上述文献规定。未完成/工具故障不生成虚构 PPA 或失败 reward。DRC 非零的处理须预先声明，既不能偷偷删样本，也不能事后改作失败。
 5. **最终证据**：同一来源、同一 TRAIN 标签预算、同三训练 seed 与相同生成噪声对照；分别报告 policy mean、失败/缺失分母、最终六项 PPA/DRC，以及 GRT 拥塞诊断。最终 DRT 没有同定义拥塞输出时保持 NA。规则分数、预测相关、rank weight 或更高 Q 都不能替代真实后端改进。
+
+## 已覆盖的拥塞 reward 与当前范围
+
+[已完成的 bounded 三臂对照](qstudy_bounded_objective_protocol.md) 已将真实
+GRT H/V overflow 直接加入 reward，不能将当前工作概括为只有 channel 几何代理。
+加入 H/V 后，相对 timing 臂，水平溢出均值从11.333降到4.083、垂直从2.000
+降到1.167，但线长增加16,230.042µm；声明的拥塞 utility 仍差于 bounded WL。
+这些是三训练 seed 的完整结果，说明存在取舍，没有证明综合目标已稳定改善。
+
+这里的 H/V 是 OpenROAD GRT OpenDB marker 上正 demand−capacity 的边溢出总和，
+不是详细布线 DRC，也不直接等同 Innovus 的 rO-H/rO-V。当前八项专家目标中的
+channel 仅是几何代理；六项最终反馈目标没有同义最终拥塞标签。两套实验仍保留
+GRT H/V 作为评估诊断，不能把缺失的最终拥塞记为0。
+
+若完整结果支持进一步拆解，可另预先声明“仅 WL＋H/V 预算、关闭时序项”的
+匹配对照，辨别与时序项的干扰；阈值和尺度只从 TRAIN 确定。它仍是软惩罚，
+不构成硬约束保证或 COptiDICE 复现。目前不为覆盖要求新增此臂，也不修改已经
+冻结的八项专家与六项最终反馈矩阵。

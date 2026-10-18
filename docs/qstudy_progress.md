@@ -2133,3 +2133,29 @@ or online quality improvement is asserted at this snapshot.
 The eight expert-rule and six final-feedback objective protocols remain the
 scientific reward comparison. Their partial outcomes have not selected a
 winner, changed reward weights, or released reserved confirmation samples.
+
+The second-cycle integration subsequently closed: collect1799769 completed
+all three calls in3m04s/3m34s/3m01s; update1800075 completed all three seeds
+in9s each. Each saved completion records actor Adam1002, critic Adam2,
+teacher0, and the complete C0+C1 replay counts[1,1]. No evaluation backend
+feedback was collected or replayed. This verifies the second FQL state/replay
+interface only; it adds no scientific reward comparison or PPA benefit claim.
+The independent final metadata audit found zero errors across the three real
+T1 parents, C0+C1 identities, union evaluation exclusions, histories and
+completion counters. Report
+`qstudy_scalar_online_integration_audit_v1/20261018T195651Z_second_cycle_final_metadata_audit_v2.json`
+SHA256 is
+`e6d916f730627520ce96b4035a20819542dfe9935f2e7e2fd3cee5f618cf2e6b`.
+It inspected JSON bindings and checkpoint existence without reloading or
+rehashing model files; the actual training job performed full state audits.
+
+Append-only cost inventory v17 preserves all214 previous entries and adds
+exactly1799769,1799959 and1800075 as three parent records, for217 total.
+`bookkeeping_20261018T195345_v17.json` SHA256 is
+`540065fa10eb022421278199953a78a1043b0b7d4220bb597ae3ee2f9842db29`;
+the exact-three-parent scheduler snapshot SHA256 is
+`540b7f60794351619160cebbd64c9855bc336efd62a8438200331f4aa710b54f`.
+The captured scheduler view predates the above final completions and retains
+its original pending/running states. No final resource sum or durable bulk
+preservation is implied. Native outputs and unique checkpoints remain on
+scratch; final cost aggregation and preservation remain open.
