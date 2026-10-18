@@ -177,7 +177,7 @@ Plan and submission records live in `qstudy_v1/development_final_route_v1`.
 
 ## Direct current-flow evaluation control
 
-A separate eval-only exporter is being prepared for the current behavior flow:
+A separate eval-only exporter has been tested for the current behavior flow:
 three declared common-flow checkpoints, eight fixed evaluation noises each,
 24 GRT requests. It will read the actual saved noise arrays from matched BC
 and FQL round-0 requests and verify their hashes, rather than regenerate noise
@@ -190,5 +190,64 @@ it is not the released twenty-step hard-constrained FlowPlace sampler or the
 historical post-training four-noise flow probe. The common-flow checkpoints
 differ across the three seeds. With flow frozen, repeating the same noises in
 later rounds would generate the same layouts and does not justify new physical
-calls. Backend measurements remain pending until the new exporter is tested,
-its exact request declaration is reviewed, and production jobs are submitted.
+calls. Its eleven software tests passed in job 1796142. Metadata declaration
+1796149 verified the actual source arrays and sealed the 24-request plan;
+GPU export 1796150 is queued. Metadata-only native dispatch preparation
+1796201 depends on that export. It does not submit physical workers: native
+measurements still require review of the completed export and exact dispatch.
+Code is locally committed as `3b8e3fd`.
+
+## Source-to-actor preparation and candidate selection
+
+The source-critic configuration adapter passed eight tests in job 1796162
+and was committed as `9dec8c0`. A subsequent check against real declared paths
+found a byte-identical archived common-checkpoint alias: comparing full path
+dictionaries incorrectly rejected it. A narrow fix binds both files and
+compares content SHA, retaining both paths. All nine regression tests passed
+in 1796193; the fix is committed as `c8613da`. No production source-actor
+configurations have been prepared or submitted. Legacy source critics remain
+offline-only until source-scaled
+online physical-failure targets have a separately tested version.
+
+The current direction probes use original bp_fe384 and bp_be64 critics. Their
+results diagnose those critics, not new O64/T64 refits or a timing utility.
+Three actor seeds also do not create three independent teacher-data sources.
+The clean first source contrast remains O64 versus T64 with the same WL critic,
+original behavior targets, frozen flow and common physical utility. M64 tests
+a separate coverage hypothesis. These choices do not select whichever source
+happens to win on historical validation. Existing BC384 comparisons retain
+their descriptive/uncontrolled status when source dataset bindings differ;
+no historical artifact is rewritten to make a controlled comparison appear.
+
+The read-only eight-candidate selection reporter passed twelve tests in
+1796191 and is committed as `983b7a6`. It compares fixed index 0, executed
+macro-HPWL selection, recorded current-Q selection, measured GRT-WL oracle
+and common-utility oracle. Policy means remain separate. It requires complete
+audited pools, retains physical failures, reports all seven native metrics,
+and aggregates across three actor seeds. It performs no new inference or EDA.
+Current-Q selection compares generator-plus-scorer systems because online
+FQL updates its critic while BC's critic remains frozen. Imported branch
+round-zero exports are outside this reporter's standard-export scope and are
+withheld rather than silently treated as ordinary pools.
+
+Offline-only diagnostic report 1796184 completed for six round-zero actor
+streams, with zero integrity-invalid rounds. Its immutable snapshot is
+`offline_actor_diagnostics_v1/20261018T085649.517223Z_job1796184`.
+Only 10 of 96 native outcomes were present at capture; this is not a physical
+performance comparison. Across the three FQL seeds, mean logged Q/distillation
+action-gradient norm ratios are 0.2664, 0.2333 and 0.2552; parameter-gradient
+ratios are 0.4576, 0.3187 and 0.3106. Alpha is 10 and Q's weight is 1.
+Q therefore supplies nonzero gradients but is smaller in norm at these logged
+minibatches. This does not prove a correct physical direction or mean that
+increasing Q strength will help. Logged action-gradient cosines are near zero;
+the parameter-level means have positive sign, with the actor-objective sign
+interpretation stated above. These are unpreconditioned diagnostics, not Adam
+update vectors. No alpha or reward preference is selected from an unmeasured
+surrogate gain.
+
+A released-FlowPlace control is also being implemented separately: eight
+actual matched noise arrays, public checkpoint, official twenty-step hard
+sampling, then the same final legalizer and physical context. One fixed public
+checkpoint is not three independent training seeds, so this control has eight
+unique requests rather than duplicating them across three seed directories.
+It has not yet been declared or run, and does not resume paused Table 2 work.
