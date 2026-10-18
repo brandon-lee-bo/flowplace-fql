@@ -671,3 +671,56 @@ bp_be original probe array1795819 is now terminal:41 successful jobs and11
 preemptions, with no FAILED worker. Existing missing-only coordinator1796062
 was released by that dependency and will recover the missing requests without
 repeating completed labels. bp_fe probe recovery1796061 continues separately.
+
+## First restored native result and complete public-flow reference
+
+The first narrow recovery task1796906_0 completed successfully. Read-only audit
+1796929 validated72 native outcomes, including that restored request, and found
+the original71 outcome hashes and all25 original attempt hashes unchanged.
+The recovery admission records the genuine old scheduler state FAILED; the new
+physical attempt records restart0 and eight threads. This is recovery of an
+existing logical request, not an extra training example. An earlier external
+audit1796921 failed because the manifest stores num_cores as the string "8";
+the corrected read-only audit converts this metadata to an integer. Neither
+audit invoked EDA or changed physical outputs.
+
+The first source actor1796604 completed its1000 updates and eight evaluation
+exports in5m54s; seed1 actor1796605 finished in5m51s. Pending source actor1796924
+received a scheduler-only time-limit reduction from3h to20m, consistent with
+these measured runtimes, and excludes natural-selection/enterprise. The
+immutable worker, GPU type, configuration, updates and numerical settings are
+unchanged. Bounded-objective actor1796839 has started; no measured bounded
+policy gain is available yet.
+
+Public-flow finish1796792 completed all8 requested native outcomes. Baseline
+report1796919 initially failed at a reporting-only contract check: it rebuilt
+six dispatch fields but compared them with the original full15-field records.
+Commit4fb344f reconstructs all15 fields and preserves strict ordered equality.
+Missing/invalid/not-exported requests now also make PPA success-conditional,
+with an explicit successful-sample denominator. All17 tests passed in1796942,
+including the actual32 frozen export/dispatch records; independent review
+passed. No export, checkpoint or native measurement was changed or repeated.
+
+Corrected read-only report1796944 completed without integrity errors:
+`qstudy_v1/flow_baseline_report_contract_v2/20261018T103032.512619Z_job1796944`.
+At that immutable snapshot the current behavior-flow reference had16/24 native
+successes and8 unresolved requests, so its three-seed mean is withheld.
+The public released checkpoint had8/8 successes, no confirmed failure and no
+unresolved request. Its descriptive means and sample SDs across eight actual
+generation noises are:
+
+| Public released flow, one checkpoint | Mean | Noise sample SD |
+| --- | ---: | ---: |
+| GRT wirelength (um) | 2403073.375 | 88253.010 |
+| WNS (ns) | -0.41083725 | 0.05117051 |
+| TNS (ns) | -216.567625 | 25.832686 |
+| Horizontal overflow sum | 76.875 | 96.416415 |
+| Vertical overflow sum | 15.25 | 23.013971 |
+| Power (W) | 0.169719 | 0.001412872 |
+| Standard-cell area (um2) | 60188.8625 | 396.965662 |
+
+These are development GRT outcomes from one public checkpoint, not three
+independent public training seeds, final detailed-route results, or a resumed
+historical Table2 reproduction. They do not yet establish a matched policy
+improvement. The full report1796858 remains dependent on completion of both
+baseline finish controllers.
