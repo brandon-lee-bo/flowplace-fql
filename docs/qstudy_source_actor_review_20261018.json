@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-18",
+  "reason": "Fixed-budget negative-hypothesis test, not promotion: the completed36-task source study found that substituting current behavior-flow labels did not improve either critic on the identical teacher16 validation layouts. For the unchanged legacy variant, WL Spearman is O64 +0.500 versus T64 -0.346, with worse T64 in every critic seed; mixed-source labels are not promoted. Test only O64 versus T64 at the same64-label budget, common physical utility and alpha10, common independent actor seeds0/1/2, frozen flow, fixed1000 offline actor updates and all8 predetermined development samples per seed. Original384-label direction evidence is incomplete and concerning; it does not validate the source64 gradients. These actors are a bounded actual-effect diagnostic to determine whether the predictive source failure also changes measured policy layouts, not evidence that T64 should improve. No alpha reduction, M64 actor, online source update or fresh-confirmation claim is authorized by this review. A matched BC control remains the existing completed same-common-initialization, same256-target, sameupdate-stream BC, whose effective input identity must be separately certified before reuse in comparisons.",
+  "source_report_sha256": "858083a57a38dee6636f682277b2e89b7d634d7372361f85965a7427b541ed6d",
+  "reference_weights": [1, 0, 0, 0, 0],
+  "selections": [
+    {"source_arm": "O64", "variant": "legacy", "actor_arm": "o64_legacy", "run_prefix": "o64leg"},
+    {"source_arm": "T64", "variant": "legacy", "actor_arm": "t64_legacy", "run_prefix": "t64leg"}
+  ],
+  "diagnostic_review_provenance": [
+    {"role": "direction_probe", "path": "/fact_data/bohanli/flowplace_fql/qstudy_v1/probe_partial_snapshots/20261018T091049Z_job1796374/manifest.json", "sha256": "877b54be2440d40e10d31e1ea413560a08a6b3b998304a1bcc60951bc3d0285d"},
+    {"role": "bc_target_identity", "path": "/fact_data/bohanli/flowplace_fql/qstudy_v1/source_controls_v1/bc_target_identity/20261018T092750Z_job1796480.json", "sha256": "243752ce1580dfc2c476a542722b976d6f498e9b335e41b5e93c84c35d97e1b9"}
+  ]
+}

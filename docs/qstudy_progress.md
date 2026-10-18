@@ -5,6 +5,37 @@ This is an execution log, not a final result table. The frozen protocol is in
 Data and checkpoints live under `/fact_data/bohanli/flowplace_fql/qstudy_v1`.
 Old Table 2 reproduction jobs remain held.
 
+## 2026-10-18: measured behavior-flow source control completed
+
+All80 teacher-source requests completed with genuine native GRT results,
+including the three preempted requests recovered without replacing their
+inputs. The64 TRAIN and16 validation labels each contain all seven physical
+metrics. Source fitting1795841 and report1795842 completed all36 tasks with
+zero integrity errors. See `qstudy_source_results.md` for the immutable report,
+matched three-seed tables, base-only sensitivity and limits.
+
+The source result is negative for the current WL critics. On identical
+teacher16 validation layouts, legacy O64 Spearman is0.500 +/-0.091, whereas
+T64 is-0.346 +/-0.086 and M64 is-0.520 +/-0.093; substituting T64 worsens
+ranking in all three seeds. Residual critics also worsen. This does not
+invalidate measuring behavior-flow layouts, but it rules out claiming that
+this64-label source substitution alone has improved Q.
+
+Preparation1796553 completed, producing O64/T64 legacy configs with common
+physical Q scaling and offline-only semantics. Controller1796559 is submitted
+for a bounded actual-effect test: three seeds per source, common initialization,
+alpha10, frozen flow,1000 updates and eight development layouts per seed.
+Backend concurrency is2, with the same eight-CPU/24GB physical workers.
+No M64 actor, lower alpha or source-online run is launched. These are tests
+of the physical consequence of a negative predictor result, not a promoted
+method. A same-input certificate is needed before reusing BC as a controlled
+comparison; O64-versus-T64 does not depend on that certificate.
+
+A prospective shared utility helper is being implemented for later bounded
+multiobjective experiments. Existing linear WL actors, backend outcomes,
+labels and running controllers remain unchanged. No multiobjective policy
+result exists yet.
+
 ## 2026-10-18: behavior-flow labels and matched controls
 
 The current FQL behavior flow can generate complete layouts without an actor
