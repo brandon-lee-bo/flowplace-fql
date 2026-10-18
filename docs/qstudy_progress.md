@@ -136,3 +136,14 @@ change the teacher and actor, while Q's tensors remain paired until new
 policy-specific feedback arrives. At round 2 the collected layouts can differ;
 that comparison estimates the adaptive total effect of flow updates. All
 shared physical-run identities remain visible and are counted only once.
+
+Several scavenger backend attempts were preempted on blue-space before writing
+terminal native results. Missing-only recovery coordinators are queued as
+1796060 (teacher), 1796061 (bp_fe directions), and 1796062 (bp_be directions).
+They wait for the original arrays, preserve completed outcomes, and recover
+only interrupted missing indices using the same frozen eight-thread worker;
+recovery workers exclude blue-space after repeated interruptions there. The
+new coordinator's nine mock safety tests passed in 1796052. Teacher collection
+1795775 and the direction reports now depend on verified recovery completion,
+so an interrupted original array will not strand later source fitting.
+Recovery metadata is in `qstudy_v1/recovery_v1/submission_20261018_1635.json`.
