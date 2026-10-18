@@ -174,3 +174,21 @@ declared samples for all three seeds are available. DRT rWL, WNS, TNS, power,
 area and DRC are retained; GRT overflow is not relabeled as final routed
 congestion. These are development results, not fresh confirmation evidence.
 Plan and submission records live in `qstudy_v1/development_final_route_v1`.
+
+## Direct current-flow evaluation control
+
+A separate eval-only exporter is being prepared for the current behavior flow:
+three declared common-flow checkpoints, eight fixed evaluation noises each,
+24 GRT requests. It will read the actual saved noise arrays from matched BC
+and FQL round-0 requests and verify their hashes, rather than regenerate noise
+from its integer seed. CPU and CUDA generators need not produce the same
+array from the same integer seed. All samples are evaluation-only, with no
+perturbations or eligibility for TRAIN or online replay.
+
+This control measures the common behavior flow before further policy updates;
+it is not the released twenty-step hard-constrained FlowPlace sampler or the
+historical post-training four-noise flow probe. The common-flow checkpoints
+differ across the three seeds. With flow frozen, repeating the same noises in
+later rounds would generate the same layouts and does not justify new physical
+calls. Backend measurements remain pending until the new exporter is tested,
+its exact request declaration is reviewed, and production jobs are submitted.
