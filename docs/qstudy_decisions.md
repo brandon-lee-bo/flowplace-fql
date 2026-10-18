@@ -1,8 +1,14 @@
 # Q study: evidence and decisions
 
-Status: all declared development matrices are complete; evidence preservation
-and fresh confirmation remain pending. No stable PPA advantage is established.
+Status: all declared development matrices and native proof preservation are
+complete; fresh confirmation and final cost supplementation remain pending.
+No stable PPA advantage is established.
 This page summarizes verified reports, not a new analysis or candidate selection.
+User follow-up on 2026-10-18 requests a focused review of rewards in other
+offline RL methods. The [reward addendum](qstudy_literature.md#10-2026-10-18其他-offline-rl-怎样使用-reward)
+proposes measured-quality weighting, separate constraint costs and stage-label
+fidelity checks. These are not new completed experiments or a fresh selection;
+review this extension before locking the final scientific scope.
 The whole-layout action is a terminal contextual-bandit adaptation of FQL;
 there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 [plan](qstudy_plan.md) and [full progress record](qstudy_progress.md).

@@ -1444,3 +1444,35 @@ policies; update-ratio optimality, a causal legalizer explanation, multi-seed
 cross-design gains and isolated inference latency are unproved. Durable
 preservation and unchanged-rule fresh confirmation are still required;
 this section does not claim the Goal is complete or create fresh noise.
+## 2026-10-18 16:02 UTC: preservation admission and reward-literature follow-up
+
+The completed development proof stage1798247 and independent read-only
+review1798270 passed. After reviewing the exact stage and budget, root
+submitted preservation admission1798471: COMPLETED0:0, elapsed56s. The
+durable manifest is
+`/fact_data/bohanli/flowplace_fql/qstudy_v1/native_evidence_preservation_v1/batch_development_zstd19/manifest.json`,
+SHA256 `df630cc6c4d190f30beff99f139cb4e3d8c31256bad345d533354f6d119fd2ed`,
+status `native_evidence_durably_preserved_and_fully_decoded`.
+It binds648 successful new GRT records,48 completed DRT records and772
+native-attempt references;47,204 proof files/8,911,516,419 source bytes are
+represented by a200,764,767-byte archive. The archive is selected proof,
+not a complete EDA resume backup. Original HOME80 evidence, model/optimizer
+weights, and unfinished-run scratch remain preserved. Admission changed no
+global EDA guard and made no EDA call. Immediate post-copy quota remaining
+was733,967,387 bytes. The256MiB future-proof reserve is a spending cap, not
+proof of future sufficiency. Independent agent metadata review checked the
+durable references/status/counts without repeating the archive decode.
+
+The user then requested learning from rewards in other offline RL methods.
+Primary papers and official code were checked for FQL, IQL, AWAC, TD3+BC,
+COptiDICE and related placement work. The
+[reward-literature addendum](qstudy_literature.md#10-2026-10-18其他-offline-rl-怎样使用-reward)
+separates environment reward from actor/critic regularizers, and proposes
+measured-quality weighting, separate constraint budgets, and matched
+GRT/DRT label-fidelity diagnostics. These are new research suggestions,
+not completed training or proof of an improved method. Previously observed
+development DRT remains development evidence and has not entered Q/replay.
+No new candidate selection, fresh noise, or confirmation measurement was
+created. Review this user-directed extension before locking final scope;
+the completed original matrices and their negative/mixed conclusions remain
+unchanged. Admission1798471 must be included in the later cost addendum.

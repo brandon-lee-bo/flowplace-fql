@@ -156,3 +156,62 @@ MSE、对偶系数及上升候选；下面是适应当前有界成本、Huber �
 包括 β=0 与冻结控制的模型、Adam、随机数状态、minibatch 和预测逐项一致，
 以及真实保守项的中断恢复一致性。正式计划将绑定源代码、原控制产物及训练数据；
 这项实验不新增布局标签、actor 训练或后端调用。
+
+## 10. 2026-10-18：其他 offline RL 怎样使用 reward
+
+用户追加要求：查其他 offline RL 的 reward，再判断怎样用于 placement。
+本节是新的文献核查与实验建议；不改写前面已完成矩阵，不表示下面的适配
+已经训练，也不选择 fresh 候选。原来的开发结果仍为开发证据。
+
+先区分任务 reward、算法损失和评价指标。FQL/IQL/CQL 通常接收环境或数据集
+给出的 reward；行为正则、保守 Q 项、优势权重不等于额外的物理质量标签。
+我们当前一次输出整张布局、测一次终局结果，是终局 contextual bandit；
+因此 `Q(s,a)` 学的是该布局的期望终局 utility，不需要虚构宏块序列或 Bellman
+未来回报。flow 的积分时间也不是环境的决策步数。
+
+| 方法与一手来源 | 实际 reward / 使用方式 | 适合借鉴的内容 |
+| --- | --- | --- |
+| [FQL，附录 E.1](https://arxiv.org/html/2502.02538)，[OGBench v1.1.0 标签代码](https://github.com/seohongpark/ogbench/blob/v1.1.0/ogbench/relabel_utils.py) | 主要 OGBench 任务的 reward 是“尚未完成子目标数量”的负值；迷宫只有一个目标，未达成为−1，达成为0。算法另用 BC flow 蒸馏约束 one-step actor。 | 明确任务完成标准；不能把蒸馏误差当作布局质量。placement 连续指标仍有价值，不必只保留通过/失败。 |
+| [IQL 官方预处理](https://github.com/ikostrikov/implicit_q_learning/blob/master/train_offline.py)，[actor](https://github.com/ikostrikov/implicit_q_learning/blob/master/actor.py) | 沿用任务 reward；AntMaze 做 `r−1`，locomotion 按数据集轨迹回报范围缩放。actor 用截断的指数优势权重学习数据里的动作。 | 用实测质量对布局学习加权，作为与 FQL 匹配的数据利用控制；加权 flow-matching 是思想适配，不是原 IQL 似然目标。 |
+| [AWAC，附录 A-C](https://arxiv.org/html/2006.09359#A1.SS3)，[官方 actor 更新](https://github.com/rail-berkeley/rlkit/blob/master/rlkit/torch/sac/awac_trainer.py) | 使用任务原有连续或稀疏奖励；附录开门任务为成功指示量减1。用优势的指数权重加权数据动作的似然。 | 质量权重属于策略学习损失，不是新的环境 reward；应区分数据利用方式与物理目标改变。 |
+| [TD3+BC 官方实现](https://github.com/sfujim/TD3_BC/blob/main/TD3_BC.py) | 任务 reward 和 BC 正则分开；actor 的 `alpha / mean(abs(Q))` 用于平衡 Q 与模仿项。 | reward 单位或尺度变化会影响固定蒸馏系数的实际作用。继续记录两项梯度；不把动态 Q 缩放写成环境 reward。 |
+| [COptiDICE](https://arxiv.org/html/2204.08957) | 将任务 reward 和约束成本分开；RWRL 实验中违反指定安全约束产生成本1，策略优化受平均成本上限约束。 | 将线长作为主要目标，时序/拥塞作为独立有预算的成本，检验它是否减少“线长改善却明显恶化时序”的取舍。预测约束不保证每张布局实际通过。 |
+| [ChiPFormer，§3.4](https://proceedings.mlr.press/v202/lai23c/lai23c.pdf) | 专家离线预训练去掉 reward；在线阶段按轨迹回报的指数权重回归，并保留探索。 | 后端标签可以给已测布局分配学习权重，先检查不使用动作 Q 梯度能否改善；这同时检验 FQL 的 Q 梯度是否提供独立收益。 |
+| [LaMPlace](https://proceedings.iclr.cc/paper_files/paper/2025/hash/04c0399a47ee4107cd03b08f1f8c3eeb-Abstract-Conference.html)，[四指标训练代码](https://github.com/MIRALab-USTC/AI4EDA-LaMPlace/blob/main/02_graph_train.py) | 它是离线监督预测与搜索，不能叫 offline actor-critic。公开代码学习 HPWL、congestion、−TNS、−WNS，结合回归和排序。 | 后端各指标可以分别监督。需要标明标签生成阶段，不能将其全部叫最终 DRT PPA；排序好也不保证坐标梯度有用。 |
+
+另一个直接相关的非 RL 来源是 [PPAPlace，2026-08 预印本，§4](https://arxiv.org/html/2608.13790v1#S4)。
+它用同一批布局比较不同阶段标签与最终布线时序的排序关系，支持先验证标签
+保真度再决定训练阶段。该论文报告的 GRT/DRT 关系来自其布局来源和流程，
+不能外推成我们的相关系数。GRT 不应被预先判为无效，DRT 标签也不自动修复
+critic 对未见布局或坐标变化方向的错误。
+
+### 结合本轮证据，接下来怎样利用
+
+1. **先分清标签误差与 Q 误差。** 对已完成的同布局 GRT/DRT 配对，按电路、
+   指标和策略分别检查排序、改进方向是否一致。这48个 DRT 结果已经用于
+   开发比较；可以继续做开发诊断，不能再叫新的独立测试。若要训练最终布线
+   目标，另采 TRAIN 布局并提前保留 family 验证和最终测试，不直接把旧测试
+   标签塞入 replay 后继续沿用“未见测试”的说法。
+2. **优先补实测质量加权控制。** 在相同 TRAIN 标签、flow 初始权重和预算下，
+   比较 uniform BC、按实测 utility 截断加权的 BC/flow、原 FQL。对同一电路
+   用冻结的训练参考构造相对质量；温度、上限仅用 TRAIN/验证确定。它不要求
+   actor 沿可能错误的 Q 坐标梯度前进；能否改善仍须真实后端验证。
+3. **约束式目标作为独立假设。** 初始主要目标可以是
+   `r=(WL_ref−WL)/WL_ref`；时序成本取负 slack 幅度超出预定上限的正部，
+   拥塞也单独设置容许预算。参考值、尺度和预算事先固定，各成本单独预测与
+   报告。先与相同数据上的加权和 FQL 比较，再决定是否值得引入对偶更新；
+   这不是完整 COptiDICE 复现，也不继承其保证。DRC/宏合法性继续单独检查，
+   机器/许可证/超时等基础设施失败不能标成差布局 reward。
+4. **保持 FQL 主体和对照可解释。** 继续保留 flow BC、独立 one-step actor、
+   Q 引导及蒸馏正则。先固定 teacher，匹配三训练 seed、相同标签和后端预算。
+   新目标须同时报告各项原生 PPA、失败率及 Q 预测改进与实测改进的差距。
+   当前 timing/congestion Q 在自己提案上的排序已较差；这支持先核查质量
+   学习与输入覆盖，不支持仅增强 Q 权重或声称换 reward 就会解决。
+
+以上是来源支持的下一步假设，尚无新的多 seed 收益或创新结论。原确认规则
+保持不变；如推进新分支，应先记录新的开发范围，再锁定独立确认配置。
+
+对单步任务，`−WL/S` 改成 `1−WL/S` 在理想模型下不改变同电路动作排序或
+动作梯度。按固定参考写相对改善便于解释和跨电路尺度处理，单独不构成新
+优化目标或贡献。reward 缩放会改变固定蒸馏系数下 Q 项的相对影响，需与
+真正增加约束、改变目标取舍的实验分开。
