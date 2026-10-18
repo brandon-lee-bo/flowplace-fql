@@ -1,8 +1,19 @@
 # FlowPlace + FQL investigation
 
+The current Q/reward study is **in progress**. It tests critic inputs, losses,
+physical objectives and behavior-flow data sources before another matched
+policy comparison. Read the [current plan](docs/qstudy_plan.md),
+[measured progress](docs/qstudy_progress.md),
+[behavior-flow label protocol](docs/qstudy_behavior_source.md) and
+[source-to-actor protocol](docs/qstudy_source_actor_protocol.md).
+These new experiments have not established a stable PPA improvement. The old
+Table 2 reproduction remains paused. Results below describe completed earlier
+phases, rather than completion of the current study.
+
 This study implements **graph-based FlowPlace + Flow Q-learning (FQL), with
 actual offline-to-online training and native downstream evaluation**. It is
-complete, including final native evidence preservation. All three bp_fe
+the completed earlier evaluation phase, including final native evidence
+preservation. All three bp_fe
 training seeds completed offline training, two
 measured-feedback updates and native final routing:63/63 predeclared requests
 passed, all with DRC0. Online FQL mean final wirelength is0.308% lower than
@@ -61,7 +72,7 @@ retains five completed fullflows and the released swerv DEF's overlap failure.
 
 ## GitHub checkout
 
-Private repository: https://github.com/brandon-lee-bo/flowplace-fql
+Repository: https://github.com/brandon-lee-bo/flowplace-fql
 
 ```sh
 git clone https://github.com/brandon-lee-bo/flowplace-fql.git
