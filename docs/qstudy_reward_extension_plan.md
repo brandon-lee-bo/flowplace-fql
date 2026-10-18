@@ -17,7 +17,7 @@ collections below remain queued under their existing job handles.
 | Do timing and congestion rewards help? | Completed bounded WL / WL+timing / WL+timing+GRT H/V contrasts | Closed, three seeds. Congestion falls relative to timing-only, but WL worsens; no stable overall gain. |
 | Can inexpensive expertise replace or supplement backend feedback? | Eight fixed objectives: GRT WL, macro HPWL, four separate rules, HPWL+four rules, GRT WL+four rules | All24 actors trained;92/192 native GRT outcomes audited. Only the two base controls are fully measured. |
 | Does better macro HPWL mean better routing? | The two closed base controls,24 outputs each | Macro HPWL is lower, but GRT WL is about1.01% higher in all three seed means, with more congestion. This is a proxy/backend mismatch, not a conclusion about the six unfinished rule arms. |
-| Does final-stage feedback change the answer? | Matched64 TRAIN DRT labels, then six fixed GRT/DRT-WL/timing/power/multi-PPA/expert objectives |29/64 labels complete. The whole64-label admission and power-quality gate must pass before fits/actors; the already submitted dependency chain is not yet a result. |
+| Does final-stage feedback change the answer? | Matched64 TRAIN DRT labels, then six fixed GRT/DRT-WL/timing/power/multi-PPA/expert objectives |32/64 labels complete. The whole64-label admission and power-quality gate must pass before fits/actors; the already submitted dependency chain is not yet a result. |
 | Does return-weighted behavior learning avoid Q-gradient errors? | Uniform versus quality-weighted flow, same data and budget | GRT closed: weighted improves WL by about1.04% over uniform, but remains about2.30% worse than the common teacher. Final DRT9/24, unresolved. |
 
 The rules are explicit, measured-layout hypotheses: keep central space by
@@ -26,6 +26,15 @@ and reduce narrow facing channels. None is assumed to improve timing or routing
 universally. The unavailable-provenance I/O term is excluded, and graph/dataflow
 weights are not called STA criticality. No rule trial changes the legal action
 space or imports EXPlace's soft action pruning.
+
+The32/64 snapshot includes newly completed index42, `f142_v0`, original
+TRAIN row0426, array task1798635_42/raw allocation1800288. Root checked its
+source binding, exact native manifest/metrics hashes, unchanged repair cap20,
+preserved macro geometry, and recorded archive-decoder success. Its outcome
+SHA256 is `5a20af8f64848c2cff643ec121a2f7f83b09b3130b8b124bafc97baa1d83b8d2`.
+All32 completed labels currently have DRC0; the other32 requests are unresolved,
+not physical failures. No partial-label reward fit or final-policy result is
+inferred from this collection milestone.
 
 ### A measured decision against an extra reward run
 
