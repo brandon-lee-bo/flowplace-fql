@@ -2495,3 +2495,75 @@ driver implements prepare/export/native only. Continuation glue is being
 implemented separately, binding this manifest without modifying its source
 closure; no600-update scientific cycle is claimed complete here. The older
 eight-rule and six-final-feedback experiments remain separate pending work.
+
+## 2026-10-19: reviewed continuation, final-route admission and saved-only reporting
+
+The separate [continuation addendum](qstudy_scalar_online_control_continuation.md)
+is frozen at manifest SHA256
+`89404d7256ce5d78b7c63999f3728d32ec923dd95c2b4fca1e5a36c48346087f`,
+under `qstudy_scalar_online_control_v1/continuation_v1/manifest.json` in scratch.
+It implements the nine original train1/gate1/prepare1/export1/native1/train2/
+prepare2/export2/native2 stages through the unchanged first/second FQL and
+genuine-BC APIs. Independent source review confirmed shared true FQL T0/C0,
+own BC T0/C0, each arm's own T1/C1 for cycle2, actual state-audit field names,
+and private scheduling namespaces. The alpha10/30 gate requires the same
+600-step critic/critic-Adam/RNG trajectory, while allowing actor and actor-Adam
+to differ. CPU fixture job1800421 completed0:0 with9 tests. This is executable
+contract evidence, not a completed scientific600-update cycle.
+
+One bounded submitter,1800443, is scheduled afterok:1800396 to admit train1
+only when all original native0 tasks have finished successfully. Its exact
+intent and submission receipt are under `continuation_v1/launchers/`.
+At this checkpoint native0 remains Priority pending; the submitter has not
+trained a model. Infrastructure recovery, if needed, must continue through
+the same bounded missing-only journals rather than duplicate whole arrays.
+
+The separate [route addendum](qstudy_scalar_online_control_route.md) now binds
+both manifests and fixes all72 detailed-route inputs,24 T0 plus48 T2, at
+indices0..3. Its manifest SHA256 is
+`50d44c3a49221f3a929031801605dfbbefcc75953d73a788ce036d2ce96c4b82`.
+Preflight review caught two interface issues before any route invocation:
+export rows store `source_checkpoint` as a path string, and the original
+`socdrt1_` route IDs would be rejected by the unchanged `go2o_` archive scope.
+The new, prospective route declaration canonicalizes the saved checkpoint
+artifact and prefixes only execution run IDs with `go2o_`. It pins the
+canonical original task-inventory hash and exact mapping; all other fields,
+sources, outputs, counts and physical settings remain fixed. The original
+manifest and all original source closures are unchanged. Initial route
+fixture1800433 passed9 tests; after the namespace correction,1800440 passed
+the final9 tests. No production route request has been submitted.
+
+The new saved-only [results reader](../analysis/qstudy_scalar_control_results.py)
+independently audits all384 GRT/72 DRT requests, actual noise pairing and
+source checkpoint/native identities. It separates collection from evaluation,
+the two shared T0 roots from logical branch representations, and eight-noise
+GRT from first-four-noise final DRT. Missing outputs are never zero metrics
+or inferred physical failures. Conditional-success summaries and DRC counts
+remain explicit; unresolved groups cannot produce policy means, and matched
+contrasts require every same-noise pair. The reader checks existing geometry
+audits before native validation and cannot create them through EDA. It accepts
+only the exact prospective route namespace translation, not arbitrary task
+changes. Initial11 fixtures passed in1800432; the final reviewed12 passed in
+1800442. No actual science report was launched while the source outcomes
+were unchanged, and no new PPA improvement is claimed.
+
+All19 small source/declaration/submission files,422,325B, were SHA-verified
+under `/fact_home/bohanli/flowplace_fql_recovery/qstudy_scalar_control_glue_v1/`
+`frozen_after_job1800442/`. Preservation receipt SHA256 is
+`56811ed4bd57178bdad3a419f3727bc7ff55f8904d4ae780e579864da0942322`.
+This does not preserve weights, datasets, sampled arrays or native backend
+bulk, and does not close the existing durable-storage requirement. The eight
+expert-rule and six final-feedback reward matrices continue unchanged; these
+control/measurement additions do not replace either reward experiment.
+
+Cost metadata v22 preserves the exact237-entry v21 prefix and prior failures,
+adding only the five actual software fixture parents1800421/1800432/1800433/
+1800440/1800442 and bounded submitter1800443, for243 unique parents. Root
+independently checked the prefix and SHA. Bookkeeping
+`qstudy_cost_additional_jobs_v1/bookkeeping_20261018T212417_v22.json` under
+recovery has SHA256
+`69aacddca368322a9a0a8b62cead9ba69a89f983054560224f54c74fe498e8c0`;
+the scheduler snapshot SHA256 is
+`2b51d04d0f9b2fca5fcbcf2090f828cda76c27e7b7e7b95ea6f4f4ff06367574`.
+Initial and final fixture logs remain separate source-version evidence. These
+are point-in-time metadata, not final cost totals or completed PPA requests.
