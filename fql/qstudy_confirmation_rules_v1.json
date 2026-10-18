@@ -1,0 +1,81 @@
+{
+  "version": "qstudy_prospective_acceptance_v1",
+  "declared_date_utc": "2026-10-18",
+  "status": "rules_locked_before_remaining_development_results",
+  "not_a_candidate_selection": true,
+  "fresh_noise_created": false,
+  "reason": "Use explicit practical thresholds before the remaining main online, source-actor and multiobjective outcomes are inspected. These study thresholds are not community standards, significance tests or evidence of improvement.",
+  "default_confirmation": {
+    "candidate": "legacy_frozen",
+    "candidate_original_round": 2,
+    "baseline": "bc_frozen",
+    "baseline_original_round": 2,
+    "training_seeds": [0, 1, 2],
+    "references": ["current_behavior_flow10", "released_public_flow20_hard"],
+    "negative_result_is_valid": true
+  },
+  "development_promotion": {
+    "eligible_methods": ["declared_source64_actors_round0", "declared_bounded_objective_actors_round0", "declared_flow_updated_round2"],
+    "must_finish_declared_matrices_first": true,
+    "use_all_three_seeds": true,
+    "no_best_seed_or_round_selection": true,
+    "require_primary_and_secondary_rules_below": true,
+    "development_route_requirement": "Development promotion uses complete GRT, provenance and matched-budget gates. Detailed routing is a mandatory subsequent confirmation gate; it is not silently required for an otherwise unmeasured development candidate.",
+    "require_validated_candidate_specific_provenance": true,
+    "require_explicit_matched_control_and_budget_review": true,
+    "new_candidate_requires_legacy_anchor_in_fresh": true,
+    "tie_break": "Lowest complete development mean native GRT wirelength among eligible methods; retain the declared default anchor if no new method passes.",
+    "uncontrolled_comparisons": "A reused BC without an effective-update equivalence certificate is descriptive and cannot alone establish a controlled Q-treatment improvement. Different teacher evolution or replay must be reported as the total adaptive method effect."
+  },
+  "primary_endpoint": {
+    "metric": "rWL_um",
+    "stage": "global_route_only",
+    "aggregation": "Mean of eight predeclared outputs within each training seed, then equally weighted mean across all three training seeds.",
+    "minimum_mean_reduction_fraction_vs_matched_bc": 0.01,
+    "require_lower_mean_in_all_three_paired_training_seeds": true,
+    "no_selected_best_output_substitution": true
+  },
+  "secondary_acceptance_rules": {
+    "comparison": "Candidate minus the matched BC at its declared original round; all values are native metric means.",
+    "WNS_ns": "Candidate signed WNS may be no more than 0.02 ns below BC.",
+    "TNS_ns": "The increase in max(-TNS,0) may not exceed max(1 ns, 0.05 times the BC violation magnitude).",
+    "horizontal_overflow_sum": "The increase may not exceed max(1 native sum unit, 0.05 times the BC value).",
+    "vertical_overflow_sum": "The increase may not exceed max(1 native sum unit, 0.05 times the BC value).",
+    "Power_W": "No more than 1 percent above the BC mean.",
+    "StdCellArea_um2": "No more than 1 percent above the BC mean.",
+    "reference_claims": "Report current-flow and public-reference deltas separately. Passing the BC rule does not establish superiority to FlowPlace or its behavior flow."
+  },
+  "failure_accounting": {
+    "grt_requests_per_trained_arm": 24,
+    "drt_requests_per_trained_arm": 12,
+    "public_reference_grt_drt_requests": [8, 4],
+    "all_requests_must_be_resolved_for_acceptance": true,
+    "candidate_acceptance_requires_all_requested_layouts_physically_successful": true,
+    "unknown_infrastructure_outcomes": "Inconclusive; do not manufacture PPA or classify them as physical failures.",
+    "baseline_physical_failures": "Report feasibility and success-conditional PPA separately; conditional WL alone cannot establish superiority.",
+    "no_candidate_only_extra_repair": true
+  },
+  "detailed_route_gate": {
+    "noise_indices": [0, 1, 2, 3],
+    "repair_iteration_cap": 20,
+    "all_candidate_drc_counts_must_be_zero": true,
+    "mean_DRT_WL_must_not_exceed_BC_mean": true,
+    "timing_power_area_tolerances": "Use the same WNS, TNS, power and area tolerances above on the separately denominated first4 DRT outcomes.",
+    "no_final_congestion_inferred_from_GRT": true
+  },
+  "improvement_or_tradeoff_rule": {
+    "classification_precedence": ["inconclusive", "no_stable_gain", "tradeoff", "overall_improvement"],
+    "overall_improvement": "All primary, secondary, feasibility and detailed-route gates pass. This is an operational study classification, not statistical significance.",
+    "tradeoff": "The complete primary rule passes but any secondary or detailed-route quality gate fails; report the actual continuous changes without an overall PPA improvement claim.",
+    "no_stable_gain": "The primary rule fails, even if an individual output, seed or secondary metric improves.",
+    "inconclusive": "Any required request or integrity/provenance gate remains unresolved.",
+    "always_report": "All seven native GRT metrics, six final DRT metrics, failures, per-seed means, paired deltas and sample SD, including results that fail these gates."
+  },
+  "fresh_is_confirmation_only": {
+    "actual_cuda_noise_seed": 85000000,
+    "shared_saved_noise_arrays": 8,
+    "no_label_replay_or_checkpoint_selection": true,
+    "bind_this_file_in_final_selection_inventory": true,
+    "candidate_checkpoint_and_complete_development_inventory_lock_still_required": true
+  }
+}

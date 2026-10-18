@@ -22,6 +22,21 @@ fresh measurements, rather than selecting a favorable endpoint afterwards.
 Pin the design and graph/cache identity as well. Confirmation on bp_fe alone
 supports a claim about that design, not cross-design generalization.
 
+The prospective operational rules are recorded in
+[`qstudy_confirmation_rules_v1.json`](../fql/qstudy_confirmation_rules_v1.json).
+Bind that exact file and its SHA in the final selection inventory. These are
+practical study thresholds, not field standards, p-values or proof of a gain.
+The default is frozen-flow legacy round2 versus matched BC round2, all three
+training seeds; checkpoint selection still awaits the declared development
+matrices. Primary GRT WL must fall at least1% in the aggregate and fall in each
+paired seed mean. Secondary tolerances are WNS0.02ns, TNS max(1ns,5% of BC violation),
+each overflow max(1 native sum unit,5% of BC), and power/area1%. GRT uses eight
+outputs per seed; the separate cap20 DRT gate uses fixed indices0--3, requires
+candidate DRC0 and no worse mean routed WL, and applies its own first4 timing,
+power and area comparisons. Missing requests remain inconclusive, not physical
+failures. Failing an improvement threshold does not leave the research goal
+unfinished: an honestly reported negative or mixed confirmation is valid.
+
 Use CUDA noise seed 85000000 and eight actual saved noise arrays, shared across
 every method and all three independent policy-training seeds. Preserve and
 verify the actual arrays; an integer seed alone is insufficient. Do not feed
