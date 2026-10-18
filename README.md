@@ -5,8 +5,8 @@ training/evaluation entries and read-only report reproduction.
 
 The current Q/reward study is **in progress**, with **no stable PPA advantage
 established**. The [compact evidence/decision table](docs/qstudy_decisions.md)
-separates completed diagnostics and the complete main online GRT matrix from
-pending final routing and fresh confirmation. The study tests critic inputs, losses,
+separates completed diagnostics, the main online GRT matrix and48 completed
+final routes from pending evidence closure and fresh confirmation. The study tests critic inputs, losses,
 physical objectives and behavior-flow data sources. Read the [current plan](docs/qstudy_plan.md),
 [measured progress](docs/qstudy_progress.md),
 [behavior-flow label protocol](docs/qstudy_behavior_source.md) and

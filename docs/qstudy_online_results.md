@@ -3,7 +3,8 @@
 The full declared GRT comparison has completed. Frozen-flow FQL has a small
 mean advantage over matched BC after two measured-feedback rounds, but neither
 FQL branch meets the prospectively declared stable-improvement rule. Final
-detailed routing and fresh confirmation remain pending. This is development
+development detailed routing has also completed without meeting its WL gate;
+fresh confirmation and durable-evidence closure remain pending. This is development
 evidence on `bp_fe`, not completion of the paused FlowPlace Table2 reproduction.
 
 ## What was compared
@@ -119,6 +120,41 @@ round2 actor means remain higher; beating BC by a small amount is not
 superiority to the teacher. Comparisons use policy means rather than a best
 layout, and one-step versus10/20-step generation has different inference
 budgets. Isolated inference latency has not been measured.
+
+## Completed final detailed routing
+
+The declared48 tasks are complete: BC/FQL, rounds0/2, three training seeds
+and the same fixed first4 development noises. All48 are successful with zero
+final DRC; each policy/round has12/12 DRC0. Every run uses the same8-thread
+physical flow and repair cap20. This is an upper bound, not evidence that
+each run used20 repair iterations. Historical infrastructure failures and
+preempted attempts remain in the separate cost inventory.
+
+Entries are means and sample SDs across three seed means, each averaging all
+four predetermined layouts. DRT WL is converted from µm to m. GRT overflow
+is not a final detailed-route congestion measurement.
+
+| Method | Round | DRT WL(m)↓ | WNS(ns)↑ | TNS(ns)↑ | Power(W)↓ | Cell area(µm²)↓ | DRC0 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| BC |0 |1.979400±.013919 |−.579835±.044674 |−360.588±19.617 |.173064±.000326 |61050.3±190.7 |12/12 |
+| BC |2 |1.979115±.014215 |−.566682±.016188 |−342.916±16.727 |.173250±.000468 |61053.4±384.3 |12/12 |
+| Frozen FQL |0 |1.985801±.012415 |−.605671±.034482 |−372.023±18.654 |.173642±.000752 |61327.8±592.2 |12/12 |
+| Frozen FQL |2 |1.981381±.017251 |−.557507±.046030 |−325.349±29.581 |.172963±.000390 |60899.9±159.5 |12/12 |
+
+At round2, paired FQL−BC WL differences are+15584.75/−8052.00/−735.50µm
+for seeds0/1/2, averaging+2265.75±12100.81µm. Mean WL is0.114483% higher,
+so it fails the declared final-route mean-WL non-worsening gate. Mean WNS
+improves.009175ns, TNS improves17.567ns, power falls.16518% and area falls
+.25136%; those mean secondary tolerances pass. All signed slacks remain
+negative, so this is not timing closure. The smaller GRT mean WL on all8
+noises does not establish a final-route benefit on this fixed4 subset; the
+different denominators also prevent a causal routing-stage explanation.
+
+Authoritative final-route report, Slurm1797474:
+`/fact_data/bohanli/flowplace_fql/qstudy_v1/development_final_route_v1/development_report/snapshots/20261018T151657_688866_job1797474/report.json`,
+SHA256 `d41c8b88ac1d319d51fc59e7db1ec3926aead9e10af30ae53f2aac315411e3fa`.
+An independent record-level check reproduces all four groups, paired seed
+differences, actual shared-noise identities and fixed physical settings.
 
 ## Actor-loss diagnostics from saved states
 

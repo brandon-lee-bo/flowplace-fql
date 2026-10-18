@@ -125,7 +125,8 @@ def main():
         'log_filename_sources': [str(p) for p in log_paths],
         'coverage': coverage, 'explicit_manifest': manifest_binding,
         'collector_source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        'unobserved_requested_job_ids': sorted(ids - {r['JobID'].split('_')[0] for r in rows}),
+        'unobserved_requested_job_ids': sorted(ids - {identifier for row in rows
+            for identifier in (row['JobIDRaw'], row['JobID'].split('_', 1)[0])}),
         'resource_semantics': 'Reserved allocation time for every observed attempt, including failed/preempted attempts before requeue; running costs are partial snapshots',
         'allocation_attempt_key_fields': list(attempt_key_fields),
         'allocation_attempt_semantics': 'sacct -D retains historical requeue attempts sharing JobIDRaw; only identical (JobIDRaw, Submit, Start) rows are deduplicated. Counts are accounting attempts, not unique logical jobs.',
