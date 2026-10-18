@@ -16,7 +16,7 @@ there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 | TRAIN-time conservatism fixes optimistic Q | COM-inspired12 fits versus12 unchanged controls: WL CV rho .561→.502, family accuracy .547→.503 and top regret .0144→.0193, despite slightly lower MAE. | Close this fixed regularizer test; no COM actor or beta search. Historical development16 does not overturn grouped CV. |
 | Labels from current behavior flow improve Q | All80 native labels and36 source tasks completed. On the same current-flow16, legacy O64/T64 WL rho is .500/−.346; T64 worsens every critic seed. Base-only sensitivity does not rescue ranking. | Source substitution alone is negative. The declared O64/T64 actual-policy test remains pending; it tests physical consequences, not promotion. [Source results](qstudy_source_results.md). |
 | Q gradients improve nearby layouts | Both designs completed52/52 native probes. FE directions mostly fail; BE signs, ties and mean gains are mixed. Four bases and one critic seed per design. | Do not strengthen Q from these probes. They do not validate source64/bounded critics or identify a legalizer mechanism. |
-| Timing/congestion objectives improve policy tradeoffs | Nine bounded-objective tasks/36 fits completed. Timing/congestion CV MAE exceeds their own constant baselines; local ordering is weak. | The declared three-objective/three-seed physical matrix remains pending. Compare all native metrics and common-scale utilities; no automatic online extension. [Protocol](qstudy_bounded_objective_protocol.md). |
+| Timing/congestion objectives improve policy tradeoffs | Nine bounded-objective tasks/36 fits completed. Timing/congestion CV MAE exceeds their own constant baselines; local ordering is weak. Bounded-WL24/24 native outcomes are complete below; timing/congestion arms remain unmeasured. | Complete the declared matrix. WL improves versus the existing BC reference with timing/area tradeoffs; this is not a controlled bounded-formula effect. No alpha/grid expansion or automatic online extension. [Protocol](qstudy_bounded_objective_protocol.md). |
 | Q-based actor learning beats imitation and generate-and-rank | Offline GRT means and identical-initial-Q selection are complete below. Fixed-first4 offline DRT also completed: FQL has worse mean WL, timing, power and area than BC, despite better WL in two of three seeds. | No stable offline advantage. Ranking ability is not evidence of correct actor gradients. Complete the declared main online/final-route matrices before selection. |
 | One-step distillation is limited by training duration | Saved same-noise raw RMS to flow is .1000 for BC and .1009 for FQL; both have worse mean WL than flow in all three seeds. This is clipped export distance, not training MSE. | Use the already declared BC1000→1600→2200 continuation first: teacher stays fixed and Q weight is zero. No additional duration GPU/native jobs are launched. |
 
@@ -33,6 +33,14 @@ are in [progress](qstudy_progress.md#matched-offline-results-after-missing-only-
 | Current behavior flow | 2.279086 ± .013390 | −.406557 | −206.695 | 22.125 | 7.125 | .169797 | 60997.7 |
 | Matched BC | 2.314028 ± .012141 | −.403605 | −217.399 | 7.667 | 1.375 | .170010 | 61200.2 |
 | Legacy offline FQL | 2.307890 ± .003804 | −.407202 | −217.652 | 2.625 | .667 | .170140 | 61198.8 |
+| Bounded-WL offline actor | 2.304274 ± .014205 | −.418562 | −217.922 | 2.000 | .792 | .170021 | 61525.2 |
+
+Bounded-WL report1797061 verifies24/24 successes: WL−BC is −9753.75 ±2064.471um
+(paired-seed SD), lower in all three seeds. WNS worsens, TNS slightly worsens,
+and mean WL remains above current flow2.279086m. BC is an existing measured
+reference without a bounded zero-Q update-equivalence certificate; the gain
+cannot be attributed solely to the bounded formula. The overall report is
+partial because timing/congestion are unmeasured, not because WL is incomplete.
 
 For selection, the same frozen initial per-seed Q scores every generator's
 eight raw proposals. Each seed contributes **one selected output**, so its SD

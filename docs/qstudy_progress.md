@@ -933,6 +933,39 @@ Its same frozen controller and backend remain in use. Submission metadata is
 1797061 will report any complete WL comparison while explicitly retaining the
 other objectives as unresolved. Final reporting still waits for all72 requests.
 
+### Completed bounded-WL native comparison
+
+Controller1797058 and report1797061 completed all24 bounded-WL evaluations:
+three training seeds × eight actual development noises, all successful, with
+no missing or invalid WL outcomes. The existing BC reference also has24/24
+successful outcomes on the same noises. The report's overall `partial` status
+reflects unmeasured timing/congestion objective arms, not incomplete WL data.
+The immutable report is
+`qstudy_v1/bounded_wl_early_report_v1/20261018T114552.392983Z_job1797061/report.json`
+(SHA `0b7656e0507e60cb2b6980cd199f56b18595275ff018288d025438b5c5d4fc2b`);
+native means and paired differences come from `seed_aggregates.csv` and
+`matched_contrasts.csv`, without any new analysis or model/backend call.
+
+| GRT policy mean | WL (m) | WNS (ns) | TNS (ns) | H overflow | V overflow | Power (W) | Std-cell area (um2) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Existing BC reference | 2.314028167 | −.403604792 | −217.399438 | 7.666667 | 1.375000 | .170009542 | 61200.2417 |
+| Bounded-WL offline actor | 2.304274417 | −.418561833 | −217.921733 | 2.000000 | .791667 | .170021208 | 61525.1708 |
+
+Means first average eight outputs within each seed, then average the three
+training seeds. Paired WL−BC is −9753.75 +/-2064.471um (sample SD of three
+seed deltas); the individual WL deltas are −9257.875, −7982.375 and −12021um.
+All three improve WL. WNS worsens in all three seeds; mean TNS slightly
+worsens. Both mean overflows decrease, whereas mean power and area increase.
+Bounded-WL still has worse mean WL than current flow's same-noise2.279086m.
+
+The report admits a paired native reference, but explicitly rejects controlled
+effective-update eligibility: there is no bounded zero-Q update-equivalence
+certificate for the reused BC. This is descriptive measured evidence, not an
+isolated causal effect of the bounded utility formula. Timing/congestion
+objective policies remain unmeasured here. Finish their already-declared
+matrix before judging multiobjective tradeoffs; no alpha5/grid expansion or
+new online branch follows from this early WL result.
+
 ## Completed local physical-direction checks
 
 Recoveries1796061/1796062 and reports1795844/1795845 completed all52 native
