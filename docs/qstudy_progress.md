@@ -362,3 +362,12 @@ Repeated executed coordinates remain in their original family folds and their
 cross-fold counts must be disclosed. Historical validation is development
 evidence. Better prediction would neither establish backend-actual geometry
 nor validate gradients through the nondifferentiable legalizer.
+
+Declaration 1796428 completed with no physical calls. Plan SHA is
+`6cc2bf11e7e2a196643518ece38daa103758658e1c0d5fa54a399dcf060fa43b`;
+the six-task training array is 1796431, concurrency two, two CPUs/6 GiB each.
+The declared successful-row counts are 384/16 for bp_fe and 64/16 for bp_be
+(TRAIN/historical validation), with no excluded rows. Unique executed TRAIN
+layouts number 382 and 63 respectively; bp_be validation has 14 unique layouts
+among 16 logical records. Exact cross-fold overlap is recorded per fit, and
+these duplicates are not additional independent evidence.
