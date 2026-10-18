@@ -421,6 +421,10 @@ The intervention does not consistently improve timing prediction. bp_fe WNS
 improves modestly, but its TNS rank worsens; bp_be timing errors worsen.
 bp_be TNS within-family pair accuracy also falls from .612 to .384. WL is
 essentially unchanged on bp_fe, while bp_be WL rho falls from .522 to .281.
+Even bp_fe WNS has worse top-choice regret (.1097 to .1229 ns), despite its
+lower MAE; bp_fe TNS regret grows from 98.07 to 130.24 ns. Three critic seeds
+measure initialization/optimizer variation on shared folds, not independent
+data-sampling uncertainty.
 All five heads, paired seed deltas and undefined-statistic accounting remain
 available in the full report. The 16-row historical refit development results
 are separate and do not override the grouped-CV conclusion.
