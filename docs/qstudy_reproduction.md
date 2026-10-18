@@ -95,16 +95,20 @@ budget or winning checkpoint automatically.
 | Actual BC T1 export | `fql/qstudy_scalar_online_bc_child_export.slurm` | Genuine completed BC continuation, with its original BC actor prefix and separately attached frozen scalar critic; logical round1 collect/evaluation, unchanged physical process. |
 | Second measured BC continuation | `fql/qstudy_scalar_online_bc_second_train.slurm` | Same complete C0+C1 admission and cumulative actor-state accounting; Q weight0, no critic/teacher updates, and bitwise checks of their weights, optimizers and unused RNG streams. |
 | Actual FQL T2 evaluation export | `fql/qstudy_scalar_online_second_export.slurm` | Explicit three completed second-training requests/checkpoints and evaluation streams only. Loads actual T2 actor and T2 critic, retains the complete source history, and excludes every exported row from training. |
+| Actual BC T2 evaluation export | `fql/qstudy_scalar_online_bc_second_export.slurm` | Same evaluation-only contract for completed genuine BC T2 parents, with original BC prefix and separate frozen scalar refit explicit throughout. |
 
 The completed three-seed interface checks use one actual update per segment
 and one native collect per seed/segment; they validate implementation, not
 scientific online quality or the earlier600-update schedule. Their results
 must not be combined with the historical matrix as an additional independent
 policy-quality run. The BC T1 exporter, BC second trainer and FQL T2 exporter
-passed12,14 and12 CPU fixtures respectively; their actual graph integration
-is a separate check. The final BC T2 evaluation exporter is still being
-implemented. A scientific online trial needs its own explicit matched
-collection/update plan and all actual feedback before training can start.
+passed12,14 and12 CPU fixtures respectively. The BC T2 exporter passed another
+12. Actual graph integration is a separate check: the BC T1 and FQL T2
+three-seed exports completed with six and three legal DEFs respectively,
+without training or backend calls. The BC second measured continuation and
+its final T2 export are not yet claimed complete at this snapshot. A
+scientific online trial needs its own explicit matched collection/update plan
+and all actual feedback before training can start.
 
 ## Recompute a report without rerunning policies
 

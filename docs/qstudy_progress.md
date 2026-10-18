@@ -2222,3 +2222,42 @@ evaluation-only layout per seed, shared new noise77108000, no collect,
 training or native evaluation. Receipts and the immutable request are under
 `qstudy_scalar_online_t2_eval_smoke_v1` in recovery. This does not consume the
 reserved fresh-confirmation population.
+
+Both actual export checks subsequently completed: FQL T2 job1800186 produced
+three legal evaluation DEFs using the three real T2 checkpoints, with one
+shared generation-noise SHA; BC T1 job1800211 produced six legal DEFs, three
+collect and three evaluation, using the actual1799622 BC continuations. No
+training or EDA ran in either exporter. Independent metadata/DEF audits have
+zero errors. Recovery report
+`qstudy_scalar_online_t2_eval_smoke_v1/actual_final_metadata_audit_v1.json`
+SHA256 is
+`bef13b8f85dce7334748de8d2ceb92abdb16d69aae52a5c5d9b4fbbb8a90408b`;
+the BC report
+`qstudy_scalar_online_bc_child_smoke_v1/20261018T201703Z_final_metadata_audit.json`
+SHA256 is
+`fdac7c154d41fc568b2eed4ff8bc80cbc2072731d6cbb17b510d7e54f5ed7349`.
+
+The separate genuine BC T2 evaluation exporter passed12 fixtures1800239 and
+independent review. Failed fixture1800218 remains preserved: its test changed
+an already-bound ancestor and was correctly refused; the test was corrected
+without changing the exporter. The final module accepts actual BC second
+continuations only and strictly retains the original BC actor plus frozen
+scalar-refit identities. Actual BC C1 feedback, second update and T2 export
+are a separate bounded integration, not new scientific reward results.
+
+Cost inventory v18 retains all217 v17 entry dictionaries/order and appends
+exactly eight parents for225 total; root independently checked equality,
+uniqueness and SHA. Manifest
+`qstudy_cost_additional_jobs_v1/bookkeeping_20261018T201558_v18.json`
+SHA256 is
+`199aefb156df8b2d2c072da1db1d8f6b93d87e5696335887b3aef5ff6946cbd7`.
+It retains1800167 as a failed software allocation, makes no resource sum and
+does not include later1800218/1800239 or later integration jobs. Pending
+observations in earlier snapshots remain unchanged.
+
+A one-time saved-only partial192-request expert report was submitted1800252
+on cpu-scavenger. It keeps the full denominator and seven GRT metrics, with
+missing outcomes explicitly unresolved; it performs no forward pass, fit or
+backend call. The existing final report1798978 remains after all eight arms.
+Neither the partial report nor completed control arms can select a reward
+winner, change weights or trigger fresh confirmation before matrix closure.
