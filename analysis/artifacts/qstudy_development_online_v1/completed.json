@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "artifacts": {
+    "curves.csv": "e3e6091aeca47ea070e2294fe37d08b0c733e7f883903ebec6c43552fc483d6b",
+    "per_seed.csv": "411ccd11f8c534b077acb09cd0cba2425f076bc1fc6924365c1d7f3e3db2f4ea",
+    "policy_curves.png": "77c8ca0067e64ffe09eb34773cececf8e1101ca6ea48cdb7bddd5dd4530637c6",
+    "data.json": "ac504c0df296bc13a5fcacabd3f2f6d7ce9c451357a62fd7ffef0ce58030982f",
+    "policy_curves.svg": "de856f17647fa86af92a23b89a509185a6f9c40d3015c794b4f305c6d9e3b3d5"
+  }
+}

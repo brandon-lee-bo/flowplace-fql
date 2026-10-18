@@ -1,0 +1,12 @@
+{
+  "source_directory": "/fact_data/bohanli/flowplace_fql/qstudy_v1/actors_v1/flowfactor_curves_v1/20261018T141053292206Z_job1797689",
+  "slurm_job_id": "1797689",
+  "source_completion_sha256": "5cb51645e50df43260d25cdbfc10e4df9907f0013b7ca40253b6b7ad6dedff80",
+  "source_report": {
+    "path": "/fact_data/bohanli/flowplace_fql/qstudy_v1/actors_v1/flowfactor_report_v1/20261018T140923.407752Z_job1797506/report.json",
+    "sha256": "774612c45e3ab008c83f1e064a66e98a59e6cb82c859dcb7796d3a851a00d5ad"
+  },
+  "new_model_calls": 0,
+  "new_backend_calls": 0,
+  "scope": "completed development policy means, not fresh confirmation"
+}
