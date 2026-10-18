@@ -2567,3 +2567,53 @@ the scheduler snapshot SHA256 is
 `2b51d04d0f9b2fca5fcbcf2090f828cda76c27e7b7e7b95ea6f4f4ff06367574`.
 Initial and final fixture logs remain separate source-version evidence. These
 are point-in-time metadata, not final cost totals or completed PPA requests.
+
+### Nonresident continuation admitted, 2026-10-19 HKT
+
+The separate [advancement helper](qstudy_scalar_control_advance.md) now connects
+the original three base, nine continuation and two route stages. Each short
+allocation checks the original receipts/journals, submits or adopts the first
+unfinished stage, schedules one callback and exits. It preserves the original
+worker resources, scientific source closures, three-generation infrastructure
+recovery, physical flow and384 GRT/72 DRT inventory. It has bounded accounting
+delays and a128-callback limit; unknown failures require diagnosis rather than
+invented labels or a replacement experiment prefix.
+
+Independent review found two actual scheduler interfaces before admission:
+completed prepare/export jobs had left `squeue`, which returned an invalid-ID
+error before the original helper could query `sacct`; and `scontrol Command`
+does not include the script arguments. The addendum handles only that exact
+invalid-ID error through `sacct`, in private metadata namespaces, and verifies
+the old submitter443 through its exact bound request/submission records plus
+the fields actually exposed by `scontrol`. No frozen driver was edited.
+
+Dev fixture1800490 completed0:0 in1s with15/15 tests passing. The log SHA256 is
+`1da6857066196c8ffbe7a548911b37b7b55313ec49f18e946cd76b0609c28879`;
+the frozen completion proof is recovery
+`qstudy_scalar_advance_fixture_v1/completed.json`, SHA256
+`024ecd46905c1b5d2733940611fc99d33a85939b99dd263d9eb0eb5071da22c6`.
+The deployed helper source SHA256 is
+`c5e8262d5242c9bc7a83508bf14b72ff7aa966b4e38b28972acc9686122b3471`.
+
+The new admission under `qstudy_scalar_online_control_v1/advancement_v1/`
+has SHA256
+`c0340022a26541b0eda1a6cb0bd1e170c4875c7ede344c5dd543ee39dbaeae2b`.
+Actual initial allocation1800491 completed0:0 in1s, adopted the still-pending
+original96-task native0 array1800396, and queued callback1800493 with
+`afterany:1800396`. Its intent and submission are saved before/after sbatch;
+the immutable callback intent SHA256 is
+`bbdd53e26173274d5944909a2cf9fee6c2e98a70f3d3b2ead3f71fa659d1b797`.
+It did not submit a duplicate worker array, train a model or call the backend.
+The old submitter1800443 remains unchanged. This is actual scheduling evidence,
+not additional scientific outcomes: the reward matrices and their missing
+evaluations remain as reported above.
+
+Cost metadata v23 retains the exact243-entry v22 prefix and adds only actual
+parents1800490/1800491/1800493, for246 unique parents. Root independently
+verified the old/new file hashes and prefix. The new recovery bookkeeping
+`qstudy_cost_additional_jobs_v1/bookkeeping_20261018T214018_v23.json` has SHA256
+`20ca0b7244c7236c4f48146efd728179a924f9425e711729c95d0a7c0bbb6ddf`;
+its scheduler snapshot SHA256 is
+`7873b137306402f7e105dd2261471446705b05efce2ed8b082d062f39c4dc6dd`.
+Sixteen small sources/declarations/receipts/logs,49,635B, are captured there.
+This excludes model/data/native bulk and is not a final resource-cost closure.

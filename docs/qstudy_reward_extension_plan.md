@@ -71,20 +71,26 @@ critic and behavior constraints rather than prescribing a placement reward.
 COptiDICE motivates separating task reward from cost budgets, but our scalar
 mixtures do not reproduce its optimization or constraint guarantees.
 
-## Next scientific online contrast
+## Scalar online control and later reward-specific continuation
 
-This is a prospective design for the next scientific stage, not a submitted
-run, a selected new reward, or a claim that the integration smoke is an online
-quality experiment. Close the eight-rule and matched-final-feedback programs
-before choosing a new reward. Preserve negative results and use the declared
-physical guards rather than a high predicted Q or a favorable single layout.
+The separate [four-arm scalar control](qstudy_scalar_online_control_protocol.md)
+has now been admitted: its actual T0 preparation/export completed and96 native
+requests are queued. It tests the fixed scalar GRT-WL target, genuine BC,
+updated/frozen Q, and alpha30 versus alpha10. Its two600-update cycles and
+final PPA are not completed results. The one-update integration checks remain
+software evidence only; see the [execution map](qstudy_reproduction.md#frozen-four-arm-scalar-online-experiment).
+
+An expert/final-reward online continuation is still prospective. Close the
+eight-rule and matched-final-feedback programs before choosing that reward.
+Preserve negative results and use the declared physical guards rather than a
+high predicted Q or a favorable single layout.
 
 Use a genuine BC continuation, same-parent frozen-Q continuation and updated-Q
 continuation. For an expert/final candidate, also retain a matched scalar
 GRT-only online control; the historical legacy-WL matrix uses a different
 reward scale and round RNG convention and is not that control. Keep the
 teacher, original TRAIN normalizers, network, legalizer and physical flow fixed.
-The intended scientific budget is two cycles of600 actor updates and eight own
+The scalar control fixes two cycles of600 actor updates and eight own
 measured collects per cycle/seed, with eight evaluation noises per stage,
 three independent training seeds and complete cumulative replay. Final-feedback
 objectives require actual DRT/QA for their collects, not substituted GRT labels.
@@ -92,7 +98,7 @@ Evaluation labels and noises remain excluded from replay. Freeze the exact
 selected arms, source/checkpoint bindings and unique/reused call budget before
 execution; no extra final-round collect is implied.
 
-The sole proposed actor-loss intervention is alpha30 versus alpha10, with
+The sole admitted actor-loss intervention is alpha30 versus alpha10, with
 Q weight1 and unchanged1:1 critic/actor updates. It tests whether stronger
 behavior regularization reduces exploitation of imperfect Q directions. This
 direction is motivated by the recorded growth in Q/distillation gradient

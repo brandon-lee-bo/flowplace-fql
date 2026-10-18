@@ -117,6 +117,56 @@ A scientific online trial needs its own explicit matched collection/update
 plan and all actual feedback before training can start; these integrations
 do not supply600-update policy-quality results.
 
+## Frozen four-arm scalar-online experiment
+
+The [scientific protocol](qstudy_scalar_online_control_protocol.md) is distinct
+from the one-update interface checks above. It fixes genuine BC, updated-Q
+alpha10, frozen-Q alpha10 and updated-Q alpha30, three training seeds, and two
+eight-collect/600-update cycles. All FQL branches share one actual T0/C0;
+each later branch uses its own C1. The teacher and TRAIN scales remain frozen.
+The physical budget is384 unique GRT and72 fixed-first-four DRT requests;
+logical branch representations must not be counted as independent calls.
+
+The server-local immutable declarations are under
+`/scratch/bohanli/flowplace_graph/qstudy_scalar_online_control_v1`:
+
+| Component | Entry / declaration | SHA256 / scope |
+| --- | --- | --- |
+| T0 preparation/export/native | `tools/qstudy_scalar_online_control.slurm`; `manifest.json` | `d86e233577c600b095729eff34f466c725eab7fbe02ba60166fd7957667e9016`; original three stages |
+| Actual two-cycle continuation | `tools/qstudy_scalar_online_control_continue.slurm`; `continuation_v1/manifest.json` | `89404d7256ce5d78b7c63999f3728d32ec923dd95c2b4fca1e5a36c48346087f`; nine stages using original training/export APIs |
+| Final source admission and routing | `tools/qstudy_scalar_online_control_route.slurm`; `route/manifest.json` | `50d44c3a49221f3a929031801605dfbbefcc75953d73a788ce036d2ce96c4b82`;72 inputs, unchanged physical flow/cap20 |
+| Saved-only result reader | `analysis/qstudy_scalar_control_results.slurm` | Original base manifest required; explicit full-route-plan path and SHA required to admit DRT evidence |
+
+`status` is metadata only; `submit` admits the selected stage and preserves its
+original submission journal. A live stage is adopted, and only proved
+infrastructure-interrupted missing tasks can be recovered, at most three
+generations. An unresolved error needs diagnosis. Do not bypass these gates
+with a fresh run prefix or discard an unfavorable measured sample.
+
+The separate [nonresident advancement helper](qstudy_scalar_control_advance.md)
+connects these existing stages. It follows the actual worker job with a short
+`afterany` callback and exits, rather than holding a waiting allocation. Its
+own admission binds all three manifests and sources. Scheduler compatibility
+for completed jobs that have left `squeue` is confined to this metadata
+addendum; the frozen scientific drivers and their task receipts stay unchanged.
+Use the helper's saved `advancement_v1/state.json` for progression and the
+original per-stage submission journals for actual worker identities. Do not
+launch a second independent controller or treat queued callbacks as completed
+training or physical evaluations.
+
+Only after source preparation, `route/full_route_plan.json` exists with its
+hash bound by the preparation receipt. Pass that exact path/hash to the
+results reader's `--route-plan` and `--route-plan-sha256`; it accepts only
+the declared `go2o_` execution-prefix correction with all other task fields
+unchanged. Without an explicit plan it retains72 missing DRT entries. It
+reports GRT's eight noises and DRT's first four separately, all failures and
+DRC counts, and equal-weight training-seed means/SD. A successful reader or
+software fixture is not evidence of completed policy training or PPA gains.
+
+At admission, prepare/export completed and96 native T0 requests were queued.
+The [progress record](qstudy_progress.md) records subsequent actual jobs and
+measured results; this execution map is not a live scheduler-status source.
+
 ## Recompute a report without rerunning policies
 
 This reads the completed main matrix and writes a new project-scratch report.

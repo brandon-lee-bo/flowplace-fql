@@ -9,7 +9,12 @@ established**. The user-directed extension now tests eight
 [final-backend reward definitions](docs/qstudy_final_feedback_protocol.md).
 The expert critic matrix has completed; policy evaluation and the new TRAIN64
 detailed-route collection are still running or pending. These are experiments,
-not demonstrated improvements. The [compact evidence/decision table](docs/qstudy_decisions.md)
+not demonstrated improvements. The separately frozen
+[four-arm scalar-online control](docs/qstudy_scalar_online_control_protocol.md)
+tests updated/frozen Q and stronger distillation against genuine BC; its
+[execution map](docs/qstudy_reproduction.md#frozen-four-arm-scalar-online-experiment)
+distinguishes the scientific trial from completed one-update interface checks.
+The [compact evidence/decision table](docs/qstudy_decisions.md)
 separates completed diagnostics, the main online GRT matrix and48 completed
 final routes from pending evidence closure and fresh confirmation. The study tests critic inputs, losses,
 physical objectives and behavior-flow data sources. Read the [current plan](docs/qstudy_plan.md),
