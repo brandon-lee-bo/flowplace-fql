@@ -1,0 +1,11 @@
+{
+  "job": "1788537",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/admit_table2_exact_storage.slurm",
+    "31117a6f9971191478a6f009c5f6bc13c0d4e9a337b65e331fc259fb40c1777d"
+  ],
+  "source_sha256": "31117a6f9971191478a6f009c5f6bc13c0d4e9a337b65e331fc259fb40c1777d",
+  "time": 1792238696.383414
+}

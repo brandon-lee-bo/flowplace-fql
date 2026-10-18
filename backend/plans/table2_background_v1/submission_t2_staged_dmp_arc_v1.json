@@ -1,0 +1,15 @@
+{
+  "job": "1788218",
+  "command": [
+    "--array=1-5%1",
+    "--dependency=aftercorr:1788077",
+    "backend/scripts/archive_table2_staged_task.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+    "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+    "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+    "e5f974f6642dd568c130cf166650ceb904748a795080b12bf45014aa21ade5b4",
+    "commit-verified-artifacts"
+  ],
+  "name": "t2_staged_dmp_arc_v1",
+  "time": 1792226658.0193436
+}

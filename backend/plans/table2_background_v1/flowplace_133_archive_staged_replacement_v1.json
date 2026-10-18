@@ -1,0 +1,39 @@
+{
+  "created_unix": 1792230045.1672373,
+  "cancelled_pending": [
+    "1788212",
+    "1788213"
+  ],
+  "source_physical_job_unchanged": "1788211_0",
+  "reason": "Scratch-first verified compression requires only actual archive size plus 8 GiB persistent reserve; original conservative archive may reject otherwise safe operation.",
+  "create_job": "1788346",
+  "create_command": [
+    "sbatch",
+    "--parsable",
+    "--mem=12G",
+    "--exclude=enterprise",
+    "--dependency=afterok:1788211_0",
+    "backend/scripts/archive_table2_staged.slurm",
+    "create",
+    "--run",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_flowplace_ariane133_1",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_flowplace_ariane133_1/scratch_staged_v1"
+  ],
+  "commit_job": "1788347",
+  "commit_command": [
+    "sbatch",
+    "--parsable",
+    "--mem=12G",
+    "--exclude=enterprise",
+    "--dependency=afterok:1788346",
+    "backend/scripts/archive_table2_staged.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_flowplace_ariane133_1/scratch_staged_v1",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_flowplace_ariane133_1/scratch_staged_v1",
+    "--confirm-remove-bulk-backup"
+  ],
+  "helper_sha256": "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf"
+}

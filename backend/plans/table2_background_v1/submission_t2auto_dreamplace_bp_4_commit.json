@@ -1,0 +1,15 @@
+{
+  "job": "1788484",
+  "command": [
+    "--dependency=afterok:1788483",
+    "backend/scripts/archive_table2_artifacts.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_4/automatic",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_bp_4/automatic",
+    "--confirm-remove-bulk-backup"
+  ],
+  "name": "t2auto_dreamplace_bp_4_commit",
+  "time": 1792233775.0173836
+}

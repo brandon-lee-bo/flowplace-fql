@@ -1,0 +1,26 @@
+{
+  "plans": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/flowplace_tasks.jsonl",
+      "sha256": "9e73f228d7191e1596c08fea0a0bf0a9379b044fcb382aef82b252167669fc5d",
+      "array_job": "1788317"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/dreamplace_tasks.jsonl",
+      "sha256": "3c07a46749130f7643d548f4c3ecf47993bfdb08b7b06cd90da9fc37e3d7a4ce",
+      "array_job": "1788319"
+    }
+  ],
+  "infrastructure_retries": [],
+  "source_sha256": {
+    "analysis/summarize_table2_methods.py": "fea2542ee2690284acca63619cb7c0a97a5b98906e03bff6749f359717111c7f",
+    "analysis/summarize_table2_generated.py": "c88c6fc751985581904bf91eea951cb2f710056cab6152c2a120957113a5dcbd",
+    "backend/scripts/compare_table2_method.py": "c84aba5507cb5e93f38b7dc99259e45cd2285c8942e957a28e5cf97dcb9d31a3",
+    "analysis/run_table2_method_audit.py": "72934ab145b5ba74636d3a424c42bc64291c4029314a036775f70931ee6948bb"
+  },
+  "additional_accounting_jobs": [
+    "1788318",
+    "1788320"
+  ],
+  "output": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/exact_import_first_pair_v1"
+}

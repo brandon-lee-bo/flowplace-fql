@@ -1,0 +1,50 @@
+{
+  "source": "https://arxiv.org/pdf/2604.23658v1",
+  "page": 6,
+  "note": "Rounded published values, no claim of exact unreleased tool version or run seed.",
+  "designs": {
+    "ariane133": {
+      "rWL_million_um": 7.62,
+      "WNS_ns": -1.1,
+      "TNS_ns": -2874.29,
+      "Power_W": 0.44,
+      "CellArea_um2": 384905
+    },
+    "ariane136": {
+      "rWL_million_um": 8.14,
+      "WNS_ns": -1.37,
+      "TNS_ns": -3845.98,
+      "Power_W": 0.5,
+      "CellArea_um2": 397798
+    },
+    "bp": {
+      "rWL_million_um": 10.03,
+      "WNS_ns": -4.74,
+      "TNS_ns": -23.87,
+      "Power_W": 0.53,
+      "CellArea_um2": 531359
+    },
+    "bp_be": {
+      "rWL_million_um": 3.1,
+      "WNS_ns": -1.19,
+      "TNS_ns": -316.39,
+      "Power_W": 0.2,
+      "CellArea_um2": 121846
+    },
+    "bp_fe": {
+      "rWL_million_um": 2.33,
+      "WNS_ns": -0.56,
+      "TNS_ns": -124.48,
+      "Power_W": 0.21,
+      "CellArea_um2": 72407
+    },
+    "swerv_wrapper": {
+      "rWL_million_um": 4.54,
+      "WNS_ns": -0.66,
+      "TNS_ns": -586.54,
+      "Power_W": 0.27,
+      "CellArea_um2": 227567
+    }
+  },
+  "method": "FlowPlace"
+}

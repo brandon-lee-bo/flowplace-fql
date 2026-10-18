@@ -1,0 +1,83 @@
+{
+  "physical_array_job": "1788071",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--array=0-1%2",
+    "--nodelist=enterprise",
+    "--mem=16G",
+    "backend/scripts/table2_fresh.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/tasks.jsonl",
+    "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec"
+  ],
+  "tasks_sha256": "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec",
+  "retry_bindings": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_0.json",
+      "sha256": "10076a684fa1911653fcd6630f733ffd6786b29eaa15920979d1f7b5515a58ae"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+      "sha256": "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+    }
+  ],
+  "resource_note": "Same queue and8threads, enterprise node request,16GiB. All algorithm and input task keys identical except run_id.",
+  "archival": [
+    {
+      "task_index": 0,
+      "create_job": "1788072",
+      "commit_job": "1788073",
+      "create_command": [
+        "sbatch",
+        "--parsable",
+        "--dependency=afterok:1788071_0",
+        "backend/scripts/archive_table2_artifacts.slurm",
+        "create",
+        "--run",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_bp_fe_infra_retry2",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe_infra_retry2/infra_retry2"
+      ],
+      "commit_command": [
+        "sbatch",
+        "--parsable",
+        "--dependency=afterok:1788072",
+        "backend/scripts/archive_table2_artifacts.slurm",
+        "commit",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe_infra_retry2/infra_retry2",
+        "--scratch-dir",
+        "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_bp_fe_infra_retry2/infra_retry2",
+        "--confirm-remove-bulk-backup"
+      ]
+    },
+    {
+      "task_index": 1,
+      "create_job": "1788074",
+      "commit_job": "1788075",
+      "create_command": [
+        "sbatch",
+        "--parsable",
+        "--dependency=afterok:1788071_1",
+        "backend/scripts/archive_table2_artifacts.slurm",
+        "create",
+        "--run",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_bp_infra_retry2",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_infra_retry2/infra_retry2"
+      ],
+      "commit_command": [
+        "sbatch",
+        "--parsable",
+        "--dependency=afterok:1788074",
+        "backend/scripts/archive_table2_artifacts.slurm",
+        "commit",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_infra_retry2/infra_retry2",
+        "--scratch-dir",
+        "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_bp_infra_retry2/infra_retry2",
+        "--confirm-remove-bulk-backup"
+      ]
+    }
+  ]
+}

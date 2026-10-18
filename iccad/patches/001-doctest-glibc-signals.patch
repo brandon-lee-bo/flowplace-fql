@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ee18168..883c54a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -267,9 +267,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/unittest)
+ # Rename the executable from utility to util in order to avoid the
+ # name conflict with the library name in dreamplace.
+ add_executable(util unittest/utility.cpp)
++target_compile_definitions(util PRIVATE DOCTEST_CONFIG_NO_POSIX_SIGNALS)
+ target_link_libraries(util ${OT_LINK_FLAGS})
+ 
+ add_executable(path unittest/path.cpp)
++target_compile_definitions(path PRIVATE DOCTEST_CONFIG_NO_POSIX_SIGNALS)
+ target_link_libraries(path ${OT_LINK_FLAGS})
+ 
+ add_test(ut.utility ${OT_UNITTEST_DIR}/utility -d yes)

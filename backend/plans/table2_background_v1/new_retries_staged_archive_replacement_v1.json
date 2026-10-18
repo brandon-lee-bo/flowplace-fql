@@ -1,0 +1,86 @@
+{
+  "time": 1792232029.6150084,
+  "reason": "Replace pending conservative disk-duplicating 2G archive jobs with frozen scratch-staged helper and 20G memory. Physical jobs and frozen task contents unchanged.",
+  "rows": [
+    {
+      "run_id": "t2auto_dreamplace_bp_3",
+      "old_archive_jobs": [
+        "1788406",
+        "1788407"
+      ],
+      "create_job": "1788421",
+      "commit_job": "1788422",
+      "commands": [
+        [
+          "sbatch",
+          "--parsable",
+          "--mem=20G",
+          "--exclude=enterprise",
+          "--dependency=afterok:1788405",
+          "backend/scripts/archive_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_bp_3",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_3/scratch_staged_v1"
+        ],
+        [
+          "sbatch",
+          "--parsable",
+          "--mem=20G",
+          "--exclude=enterprise",
+          "--dependency=afterok:1788421",
+          "backend/scripts/archive_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_3/scratch_staged_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_bp_3/scratch_staged_v1",
+          "--confirm-remove-bulk-backup"
+        ]
+      ]
+    },
+    {
+      "run_id": "t2auto_dreamplace_ariane133_2",
+      "old_archive_jobs": [
+        "1788409",
+        "1788410"
+      ],
+      "create_job": "1788423",
+      "commit_job": "1788424",
+      "commands": [
+        [
+          "sbatch",
+          "--parsable",
+          "--mem=20G",
+          "--exclude=enterprise",
+          "--dependency=afterok:1788408",
+          "backend/scripts/archive_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_ariane133_2",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_2/scratch_staged_v1"
+        ],
+        [
+          "sbatch",
+          "--parsable",
+          "--mem=20G",
+          "--exclude=enterprise",
+          "--dependency=afterok:1788423",
+          "backend/scripts/archive_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_2/scratch_staged_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_ariane133_2/scratch_staged_v1",
+          "--confirm-remove-bulk-backup"
+        ]
+      ]
+    }
+  ],
+  "cancelled_impossible": [
+    "1788287",
+    "1788379"
+  ]
+}

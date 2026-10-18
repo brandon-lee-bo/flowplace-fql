@@ -1,0 +1,18 @@
+{
+  "job": "1788485",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/run_table2_capaware_audit.slurm",
+    "--invocation",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/interim_capaware_v2.json",
+    "--invocation-sha256",
+    "2b8846c13170effdbdc450b3534e6f2c133be9429fa33f2dcc78f5ffb4259011"
+  ],
+  "time": 1792233780.1090233,
+  "cancelled_impossible": [
+    "1788350",
+    "1788452_0",
+    "1788421"
+  ]
+}

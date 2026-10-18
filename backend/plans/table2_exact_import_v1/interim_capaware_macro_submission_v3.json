@@ -1,0 +1,13 @@
+{
+  "job": "1788506",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/audit_table2_exact_import.slurm",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/exact_import_capaware_progress_v3/report/summary.json",
+    "3f449cd2d05577015f13f3dd4ef55c6a06e454b9af1a477ba2c4363766245241",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/exact_import_macro_progress_v3",
+    "5f5ec388c03e9c513ee4a6656a82e3fc7bd05110db299b156a46cc5be7017403"
+  ],
+  "time": 1792234808.1456256
+}

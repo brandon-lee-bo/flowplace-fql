@@ -1,0 +1,14 @@
+{
+  "job": "1788540",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--exclude=quantum,infinite-frontier",
+    "analysis/run_table2_capacity_audit.slurm",
+    "--invocation",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/interim_capacity_v2.json",
+    "--invocation-sha256",
+    "4a4b11d35b98049643ab8d5829ee1b337520f8cd17a2d63b36bfa8fb65f13909"
+  ],
+  "time": 1792238886.1352942
+}

@@ -1,0 +1,18 @@
+{
+  "job": "1788542",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=table2_build_env",
+    "--partition=cpu-scavenger",
+    "--qos=cpu-scavenger",
+    "--cpus-per-task=1",
+    "--mem=1G",
+    "--time=00:05:00",
+    "--exclude=quantum,infinite-frontier",
+    "--output=backend/logs/openroad_build_env_%j.log",
+    "--wrap",
+    "singularity exec --cleanenv --bind /fact_data/bohanli,/scratch/bohanli /fact_data/bohanli/flowplace_fql_backend/containers/orfs_26Q4-151-g8b5e62fbb.sif bash -c 'cat /etc/os-release; command -v cmake gcc g++ ninja swig; cmake --version; gcc --version; ls /usr/local; ls /opt; ls /opt/ORFS/tools/install; dpkg-query -W libboost-dev libeigen3-dev libspdlog-dev libtcl8.6 libtcl8.6-dev swig libreadline-dev libzstd-dev 2>/dev/null || true'"
+  ],
+  "time": 1792239077.9622738
+}

@@ -1,0 +1,10 @@
+{
+  "created": "2026-10-17T14:30:41.967836+08:00",
+  "paper_evidence": "FlowPlace2604.23658v1 Sec4.1 p5 describes timing-driven and congestion-driven global placement",
+  "hypothesis": "Whether these documented disabled release flags explain the observed lower area/power and poorer TNS",
+  "comparison": "Same released bp_fe DEF and tool image as released_bp_fe_03; only two GPL flags turned on",
+  "inference_limit": "Combined switch diagnostic; cannot separately attribute timing/routability; not proof of author unpublished settings",
+  "other_settings": "Keep timingrepair code, route cap4, density, clock, library, synth netlist and macro coordinates unchanged",
+  "future": "Review actual command flags and per-stage reports; if valid confirm bp_be before broader comparisons",
+  "tasks_sha256": "1fd09a97c3d6d135c412eed2de99faa16c72a289e77070d90e7cb344ba2cae44"
+}

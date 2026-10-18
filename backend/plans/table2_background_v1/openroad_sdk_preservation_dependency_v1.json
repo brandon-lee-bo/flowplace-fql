@@ -1,0 +1,13 @@
+{
+  "time": 1792240860.543272,
+  "command": [
+    "scontrol",
+    "update",
+    "JobId=1788555",
+    "Dependency=afterok:1788556:1788517:1788399"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "reason": "SDK archival requires verified dependency setup and both completed physical cohorts, not compilation. Remove obsolete failed-builder dependency while retaining full storage gates."
+}

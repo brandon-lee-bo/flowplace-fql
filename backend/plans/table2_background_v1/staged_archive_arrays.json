@@ -1,0 +1,53 @@
+{
+  "status": "submitted",
+  "created_unix": 1792226637.042868,
+  "helper_sha256": "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+  "driver_sha256": "e5f974f6642dd568c130cf166650ceb904748a795080b12bf45014aa21ade5b4",
+  "cancelled_pending_old_jobs": [
+    "1788078_1",
+    "1788078_2",
+    "1788078_3",
+    "1788078_4",
+    "1788078_5",
+    "1788033_3",
+    "1788033_5"
+  ],
+  "new_archive_arrays": [
+    {
+      "name": "t2_staged_dmp_arc_v1",
+      "job": "1788218",
+      "source_array": "1788077",
+      "indexes": "1-5%1",
+      "args": [
+        "--array=1-5%1",
+        "--dependency=aftercorr:1788077",
+        "backend/scripts/archive_table2_staged_task.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+        "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+        "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+        "e5f974f6642dd568c130cf166650ceb904748a795080b12bf45014aa21ade5b4",
+        "commit-verified-artifacts"
+      ]
+    },
+    {
+      "name": "t2_staged_fp_arc_v1",
+      "job": "1788219",
+      "source_array": "1788030",
+      "indexes": "3,5%1",
+      "args": [
+        "--array=3,5%1",
+        "--dependency=aftercorr:1788030",
+        "backend/scripts/archive_table2_staged_task.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+        "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+        "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+        "e5f974f6642dd568c130cf166650ceb904748a795080b12bf45014aa21ade5b4",
+        "commit-verified-artifacts"
+      ]
+    }
+  ],
+  "note": "Storage-only replacement of pending archives; source physical jobs/plans remain unchanged. All original completion, identity, full-content verification and 8 GiB reserve gates remain.",
+  "cancelled_never_satisfied_jobs": [
+    "1788033_2"
+  ]
+}

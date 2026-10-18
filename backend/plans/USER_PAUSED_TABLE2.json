@@ -1,0 +1,7 @@
+{
+  "paused": true,
+  "time_hkt": "2026-10-17T21:39:50.519840+08:00",
+  "journal": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/user_pause_20261017_213950/pause.json",
+  "reason": "Pause Table 2 tasks and automatic continuation; prioritize studying Flow-Q integration into FlowPlace.",
+  "resume_policy": "Do not restart automatically. Preserve existing artifacts; cancelled physical jobs have intermediate files but may require restarting their incomplete flow. Rebind cancelled supervisor IDs on explicit resume."
+}

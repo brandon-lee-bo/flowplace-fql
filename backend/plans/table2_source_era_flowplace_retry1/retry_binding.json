@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "reason": "Slurm PREEMPTED; deterministic same-input fresh attempt, no PPA selection",
+  "old_tasks": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+  "old_tasks_sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+  "old_task_index": 0,
+  "old_run_id": "table2_source_era_flowplace_v1_bp_fe",
+  "old_array_job": "1788030",
+  "old_job": "1788030_0",
+  "scheduler_evidence": "1788030_0|PREEMPTED|0:0|00:02:40\n",
+  "new_tasks": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/tasks.jsonl",
+  "new_tasks_sha256": "bcd6c7e015570021a028e3c7cc87df34a32174c5e943bb9799a7db4a6234a5d1",
+  "new_task_index": 0,
+  "new_run_id": "table2_source_era_flowplace_v1_bp_fe_infra_retry1",
+  "only_changed_task_key": "run_id",
+  "created_unix": 1792222936.147076,
+  "new_array_job": "1788063"
+}

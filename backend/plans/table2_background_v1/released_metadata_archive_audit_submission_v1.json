@@ -1,0 +1,18 @@
+{
+  "job": "1788547",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=table2_metadata_archive_audit",
+    "--partition=cpu-scavenger",
+    "--qos=cpu-scavenger",
+    "--cpus-per-task=1",
+    "--mem=1G",
+    "--time=00:05:00",
+    "--exclude=quantum,infinite-frontier",
+    "--output=backend/logs/table2_metadata_archive_audit_%j.log",
+    "--wrap",
+    "python3 -c 'import hashlib,json,os,pathlib,tarfile,time\nassert os.environ.get(\"SLURM_JOB_ID\")\nroot=pathlib.Path(\"/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\")\np=root/\"backend/references/released_flow_embedded_versions_v1.json\"\nx=json.loads(p.read_text())\narchive=root/\"backend/assets/OpenROAD-flow-scripts.tar.gz\"\nh=hashlib.sha256()\nwith archive.open(\"rb\") as f:\n for b in iter(lambda:f.read(1024**2),b\"\"):h.update(b)\nassert h.hexdigest()==x[\"source_archive_sha256\"]\nrows=[]\nwith tarfile.open(archive,\"r:gz\") as tar:\n members=tar.getmembers()\n for row in x[\"rows\"]:\n  relative=row[\"metadata\"].split(\"OpenROAD-flow-scripts/\",1)[1]\n  choices=[m for m in members if m.name==relative or m.name.endswith(\"/\"+relative)]\n  assert len(choices)==1,(relative,len(choices))\n  data=tar.extractfile(choices[0]).read()\n  assert hashlib.sha256(data).hexdigest()==row[\"metadata_sha256\"]\n  suffix=\"results/nangate45/\"+row[\"design\"]+\"/eval/1_synth.v\"\n  candidates=[m for m in members if m.name==suffix or m.name.endswith(\"/\"+suffix)]\n  assert len(candidates)==1\n  header=tar.extractfile(candidates[0]).readline().decode().strip()\n  assert header==row[\"synth_netlist_header\"]\n  rows.append({\"design\":row[\"design\"],\"metadata_member\":choices[0].name,\"synth_member\":candidates[0].name,\"verified\":True})\nout=root/\"backend/references/released_flow_embedded_versions_archive_audit_v1.json\"\nassert not out.exists()\nout.write_text(json.dumps({\"source_reference_sha256\":hashlib.sha256(p.read_bytes()).hexdigest(),\"archive_sha256\":h.hexdigest(),\"slurm_job_id\":os.environ[\"SLURM_JOB_ID\"],\"time\":time.time(),\"rows\":rows,\"all_six_verified\":len(rows)==6},indent=2)+\"\\n\")\nprint(out)\n'"
+  ],
+  "time": 1792239472.9076655
+}

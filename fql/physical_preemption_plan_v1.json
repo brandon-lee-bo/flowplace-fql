@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "kind": "same_input_infrastructure_retries",
+  "source_tasks_path": "/fact_data/bohanli/flowplace_fql_backend/fql_physical_actor_1788587/exports/tasks.jsonl",
+  "source_tasks_sha256": "22d90fc21f13a31ae9a259d08bb9e5d27a175ced2b58bca23e65fe4da14c2af3",
+  "reason": "One original candidate was PREEMPTED before any GRT measurement; one identical-input retry after the remaining array, no new logical candidate.",
+  "retries": {
+    "fqlphys_1788587_s0_bc_continued_i192": {
+      "source_manifest_path": "/fact_data/bohanli/flowplace_fql_backend/grt_results/fqlphys_1788587_s0_bc_continued_i192/manifest.json",
+      "source_manifest_sha256": "16e388a1ab94451315be83f0e6dea946d54e7777f7e98263d8d6eee8b93a5e4d",
+      "preemption_path": "/fact_data/bohanli/flowplace_fql_backend/grt_results/fqlphys_1788587_s0_bc_continued_i192/preemption.json",
+      "preemption_sha256": "466100e01c62d518dca7ead585b7da12feea1defc9acee6b96a739ff90fb0aad",
+      "retry_run_id": "fqlphys_1788587_s0_bc_continued_i192_preempt_r1",
+      "retry_manifest_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/fqlphys_1788587_s0_bc_continued_i192_preempt_r1/manifest.json",
+      "retry_metrics_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/fqlphys_1788587_s0_bc_continued_i192_preempt_r1/metrics.json"
+    }
+  }
+}

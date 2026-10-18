@@ -1,0 +1,14 @@
+{
+  "job": "1788519",
+  "command": [
+    "--array=0",
+    "--exclude=quantum,infinite-frontier",
+    "--mem=16G",
+    "--time=06:00:00",
+    "backend/scripts/table2_fresh.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane136_1/tasks.jsonl",
+    "6f4791153382f86769eb2b534a64f0701c028197f7da2dbd93fa692079b02e90"
+  ],
+  "name": "t2auto_dreamplace_ariane136_1",
+  "time": 1792235634.6555183
+}

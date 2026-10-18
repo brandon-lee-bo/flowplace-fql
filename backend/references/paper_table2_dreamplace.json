@@ -1,0 +1,50 @@
+{
+  "source": "https://arxiv.org/pdf/2604.23658v1",
+  "page": 6,
+  "note": "Rounded published values, no claim of exact unreleased tool version or run seed.",
+  "method": "DREAMPlace",
+  "designs": {
+    "ariane133": {
+      "rWL_million_um": 6.86,
+      "WNS_ns": -1.2,
+      "TNS_ns": -3277.38,
+      "Power_W": 0.44,
+      "CellArea_um2": 384158
+    },
+    "ariane136": {
+      "rWL_million_um": 7.7,
+      "WNS_ns": -1.58,
+      "TNS_ns": -4544.31,
+      "Power_W": 0.51,
+      "CellArea_um2": 396307
+    },
+    "bp": {
+      "rWL_million_um": 9.89,
+      "WNS_ns": -4.84,
+      "TNS_ns": -31.66,
+      "Power_W": 0.5,
+      "CellArea_um2": 529325
+    },
+    "bp_be": {
+      "rWL_million_um": 2.78,
+      "WNS_ns": -1.16,
+      "TNS_ns": -353.89,
+      "Power_W": 0.2,
+      "CellArea_um2": 123117
+    },
+    "bp_fe": {
+      "rWL_million_um": 2.13,
+      "WNS_ns": -0.5,
+      "TNS_ns": -115.46,
+      "Power_W": 0.21,
+      "CellArea_um2": 74222
+    },
+    "swerv_wrapper": {
+      "rWL_million_um": 5.16,
+      "WNS_ns": -0.82,
+      "TNS_ns": -675.28,
+      "Power_W": 0.27,
+      "CellArea_um2": 232296
+    }
+  }
+}

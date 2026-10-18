@@ -1,0 +1,28 @@
+{
+  "job": "1788067",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/summarize_table2_methods.slurm",
+    "--tasks",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+    "--tasks-sha256",
+    "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+    "--array-job",
+    "1788030",
+    "--tasks",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/tasks.jsonl",
+    "--tasks-sha256",
+    "bcd6c7e015570021a028e3c7cc87df34a32174c5e943bb9799a7db4a6234a5d1",
+    "--array-job",
+    "1788063",
+    "--infrastructure-retry",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/retry_binding.json",
+    "--infrastructure-retry-sha256",
+    "d127593d4e00c7c33b33b10ee57e6f42acb6862e4ae67183205c058029892107",
+    "--scheduler-snapshot",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/scheduler_first_retry_check.json",
+    "--output",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/source_era_retry_interim_v1"
+  ]
+}

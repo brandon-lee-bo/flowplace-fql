@@ -1,0 +1,10 @@
+{
+  "job": "1788335",
+  "created_unix": 1792229645.347593,
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/watch_table2_exact_import.slurm"
+  ],
+  "runner_sha256": "1316c7393b30ac36fd171860ca1c6e41f7b32a257364f0e66e0aae149759060b"
+}

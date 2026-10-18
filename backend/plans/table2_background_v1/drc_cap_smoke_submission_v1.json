@@ -1,0 +1,11 @@
+{
+  "job": "1788390",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "backend/plans/table2_background_v1/drc_cap_smoke_v1.slurm"
+  ],
+  "source_sha256": "a0b377454028e6b369e7372220fde02dd0adfbd03ba487fbc1a34ce9ce8707e6",
+  "created_unix": 1792231462.1472778,
+  "scope": "Posthoc evidence only; no original result or physical setting modified."
+}

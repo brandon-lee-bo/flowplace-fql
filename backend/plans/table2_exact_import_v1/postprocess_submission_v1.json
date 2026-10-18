@@ -1,0 +1,12 @@
+{
+  "job": "1788341",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:1788335",
+    "analysis/finish_table2_exact_import.slurm",
+    "cc1a9cf25063774e2b29e849c42ff876cffaa00850e742605e48dc17cf0e2f48"
+  ],
+  "source_sha256": "cc1a9cf25063774e2b29e849c42ff876cffaa00850e742605e48dc17cf0e2f48",
+  "created_unix": 1792229951.4204428
+}

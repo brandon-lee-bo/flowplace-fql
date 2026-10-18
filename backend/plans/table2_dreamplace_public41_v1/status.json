@@ -1,0 +1,19 @@
+{
+  "status": "superseded_pending_gpu_protocol",
+  "reason": "Original frozen CPU tasks referenced v2 wrapper audit. Corrected v3 CPU smoke passed without changing placement; root is preparing a new GPU and version-matched ORFS protocol.",
+  "frozen_tasks_unchanged": true,
+  "cpu_six_design_jobs_submitted": false,
+  "failed_smoke_jobs": [
+    1787984,
+    1787991
+  ],
+  "next_plan_requires_new_runner_hash_and_explicit_hardware_protocol": true,
+  "validated_cpu_smoke": {
+    "run_id": "dmp_public41_bp_fe_smoke_v3",
+    "job_id": "1787996",
+    "manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_bp_fe_smoke_v3/manifest.json",
+    "manifest_sha256": "4445e26dd475272aad1f9a32ced957d8a1221fc0986f81683516e9a5626495a5",
+    "handoff_def": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_bp_fe_smoke_v3/bp_fe.handoff.def",
+    "handoff_sha256": "d18f962aab7a7280ca4e8c0cb6566aa2c5ddeb5fc5d94494c7957eb2ff9cda58"
+  }
+}

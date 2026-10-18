@@ -1,0 +1,31 @@
+{
+  "time": 1792241129.5209816,
+  "old_build": "1788546",
+  "new_build": "1788558",
+  "old_planner": "1788551",
+  "new_planner": "1788559",
+  "reason": "Slurm purged the failed builder from live controller before requeue. Dependency setup and fresh configuration succeeded; original failure remains in sacct and logs. New identical build script uses the prepared historical dependency cache. Planner now accepts the build job ID explicitly.",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:1788558:1788517:1788399",
+    "analysis/prepare_table2_source_controls.slurm",
+    "16a8e8e2f89fc527f8143e7d0b5dba5b1bfddd3882ed3f6dfc7ab4af42b21a82",
+    "--build-job",
+    "1788558"
+  ],
+  "script_sha256": "16a8e8e2f89fc527f8143e7d0b5dba5b1bfddd3882ed3f6dfc7ab4af42b21a82",
+  "wrapper_sha256": "e98f9faf43946737b93f677a3f867807c5b5880d8188f207dc2b136e4427f258",
+  "no_algorithm_or_physical_parameter_changes": true,
+  "sdk_dependency_update": {
+    "command": [
+      "scontrol",
+      "update",
+      "JobId=1788555",
+      "Dependency=afterok:1788558:1788517:1788399"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}

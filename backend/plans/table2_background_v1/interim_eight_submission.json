@@ -1,0 +1,14 @@
+{
+  "job": "1788353",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/run_table2_method_audit.slurm",
+    "--invocation",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/interim_eight_completed.json",
+    "--invocation-sha256",
+    "e31bc094ba987bb757a228ad40d8b09bcec749b0543d463aa3dd0b0d3ae7b65b"
+  ],
+  "created_unix": 1792230324.4014645,
+  "note": "New two large FlowPlace results completed; full twelve-outcome denominator retained, incomplete nonzero expected."
+}

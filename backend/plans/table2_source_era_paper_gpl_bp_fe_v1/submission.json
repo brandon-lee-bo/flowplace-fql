@@ -1,0 +1,92 @@
+{
+  "scope": "One predeclared fixed released bp_fe DEF control; complete the OpenROAD-era by GPL switch 2x2. Primary 12 outcomes unchanged; report all four controls, never pick closest PPA.",
+  "created_unix": 1792227880.3853765,
+  "task_sha256": "c901180018cb40eff90174253cb5b4ad9ceb4a7b983317aa880cdda568c9fab9",
+  "reference_task": {
+    "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/releases/flowplace_DEFS/openroad/bp_fe.def",
+    "def_sha256": "9fb14ce342b5011a324afcb537451b49f37c7e908c4c508bed4b0d867dd24710",
+    "design": "bp_fe",
+    "diagnostic": true,
+    "make_overrides": {},
+    "method": "FlowPlace",
+    "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+    "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+    "recipe_label": "released_author_flow_legacy_tool_control",
+    "run_id": "table2_legacy_tool_v1_bp_fe",
+    "source": "Same author released DEF; tool-version diagnostic",
+    "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+    "tool_version": "v2.0-17598-ga008522d8"
+  },
+  "source_task_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_paper_gpl_bp_fe_v1/tasks.jsonl",
+  "differences_from_reference_task": {
+    "make_overrides": {
+      "old": {},
+      "new": {
+        "GPL_ROUTABILITY_DRIVEN": 1,
+        "GPL_TIMING_DRIVEN": 1
+      }
+    },
+    "recipe_label": {
+      "old": "released_author_flow_legacy_tool_control",
+      "new": "source_era_paper_gpl_interaction_control_v1"
+    },
+    "run_id": {
+      "old": "table2_legacy_tool_v1_bp_fe",
+      "new": "table2_source_era_paper_gpl_bp_fe_v1"
+    },
+    "source": {
+      "old": "Same author released DEF; tool-version diagnostic",
+      "new": "Fourth cell of fixed released-layout tool-era by GPL-switch control; no generation/seed change"
+    },
+    "not_primary_table2_result": {
+      "old": null,
+      "new": true
+    },
+    "paired_reference": {
+      "old": null,
+      "new": "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_legacy_tool_v1_bp_fe"
+    },
+    "paired_reconciliation": {
+      "old": null,
+      "new": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/reconciliation_1787997_v1"
+    }
+  },
+  "status": "submitted",
+  "physical_job": "1788249",
+  "physical_args": [
+    "--array=0",
+    "--nodelist=enterprise",
+    "--mem=16G",
+    "--time=02:30:00",
+    "--dependency=afterok:1788239",
+    "--export=ALL,FLOWPLACE_TABLE2_OPENROAD_EXE=/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+    "backend/scripts/table2_fresh.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_paper_gpl_bp_fe_v1/tasks.jsonl",
+    "c901180018cb40eff90174253cb5b4ad9ceb4a7b983317aa880cdda568c9fab9"
+  ],
+  "archive_create_job": "1788250",
+  "archive_commit_job": "1788251",
+  "archive_create_args": [
+    "--mem=4G",
+    "--exclude=enterprise",
+    "--dependency=afterok:1788249",
+    "backend/scripts/archive_table2_staged.slurm",
+    "create",
+    "--run",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_paper_gpl_bp_fe_v1",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_paper_gpl_bp_fe_v1/staged_v1"
+  ],
+  "archive_commit_args": [
+    "--mem=4G",
+    "--exclude=enterprise",
+    "--dependency=afterok:1788250",
+    "backend/scripts/archive_table2_staged.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_paper_gpl_bp_fe_v1/staged_v1",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_paper_gpl_bp_fe_v1/staged_v1",
+    "--confirm-remove-bulk-backup"
+  ]
+}

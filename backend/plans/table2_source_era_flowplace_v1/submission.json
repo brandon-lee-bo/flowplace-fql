@@ -1,0 +1,20 @@
+{
+  "physical_array_job": "1788030",
+  "archive_submission": "Submitted batch job 1788033",
+  "command": [
+    "sbatch",
+    "--dependency=aftercorr:1788030",
+    "--array=0-5%1",
+    "backend/scripts/archive_table2_task.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+    "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+    "7d99c3b24927fb41cbbef3ee9eac439a555c2e23bc3514f209eb7158deb38064",
+    "def0800997b0bb8166a63db64675b6f4b4ce00ff727699db4d6f3bcc402d0d99",
+    "commit-verified-artifacts"
+  ],
+  "source_hashes": {
+    "backend/scripts/archive_table2_artifacts.py": "7d99c3b24927fb41cbbef3ee9eac439a555c2e23bc3514f209eb7158deb38064",
+    "backend/scripts/archive_table2_task.py": "def0800997b0bb8166a63db64675b6f4b4ce00ff727699db4d6f3bcc402d0d99"
+  },
+  "policy": "Lossless persistent archive verified before replacing intermediate results/objects by scratch cache links; logs/reports/provenance stay persistent."
+}

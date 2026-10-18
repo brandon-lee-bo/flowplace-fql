@@ -1,0 +1,18 @@
+{
+  "commit": "a008522d8",
+  "files": {
+    "dbMarkerCategory.cpp": {
+      "url": "https://raw.githubusercontent.com/The-OpenROAD-Project/OpenROAD/a008522d8/src/odb/src/db/dbMarkerCategory.cpp",
+      "sha256": "d2c97d8aaefe09d3441fb3eaf687c0f41a31572db47c4603ad5af0f59bafc0b4"
+    },
+    "dbMarker.cpp": {
+      "url": "https://raw.githubusercontent.com/The-OpenROAD-Project/OpenROAD/a008522d8/src/odb/src/db/dbMarker.cpp",
+      "sha256": "dfcacb41676bfd23e5dfdfcdcea625f144042a5513b4ed2a87cc6a37b49c5046"
+    },
+    "TritonRoute.cpp": {
+      "url": "https://raw.githubusercontent.com/The-OpenROAD-Project/OpenROAD/a008522d8/src/drt/src/TritonRoute.cpp",
+      "sha256": "423fd39130641306a8fade6bc9e1b7c08e694364fc12eeb0c7e37ca6226dd883"
+    }
+  },
+  "scope": "Exact source-revision explanation of per-category 10000 exported marker cap; not a change to OpenROAD or metrics."
+}

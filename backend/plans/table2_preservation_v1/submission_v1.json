@@ -1,0 +1,10 @@
+{
+  "job": "1788403",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/watch_table2_preservation.slurm",
+    "68137389bfc2bf873b6e89686b1b99d62f934f8481179bf8cd2a2cf6c8d0f7e1"
+  ],
+  "time": 1792231808.6878324
+}

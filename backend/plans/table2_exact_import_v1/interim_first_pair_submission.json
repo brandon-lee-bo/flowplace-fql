@@ -1,0 +1,15 @@
+{
+  "job": "1788350",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:1788317_0:1788319_0",
+    "analysis/run_table2_method_audit.slurm",
+    "--invocation",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/interim_first_pair.json",
+    "--invocation-sha256",
+    "fc91d6d50f00701549a1de29e08e9e6bfb89ee685b477ed614b295e084072e46"
+  ],
+  "created_unix": 1792230210.53192,
+  "note": "Expected nonzero for incomplete full 12-row denominator; checks both first-pair result/provenance paths early."
+}

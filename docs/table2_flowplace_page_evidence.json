@@ -1,0 +1,363 @@
+{
+  "scope": "FlowPlace only, Table 2, documentation snapshot, no new EDA run",
+  "date_hkt": "2026-10-17",
+  "sources": {
+    "primary_report": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/source_era_capacity_progress_v2/report/summary.json",
+      "sha256": "4e309d6f041a48718d3ccd801e7465a0f0f5a4623c645693756341f0e625689e"
+    },
+    "primary_macro_audit": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/macro_preservation_progress_v5/summary.json",
+      "sha256": "0ae7c0e8b1672245cce01cdb732f468897eda1a196424bbf4fd8a66731b0e2b8"
+    },
+    "paper": {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/references/paper_table2_flowplace.json",
+      "sha256": "2ae55c1ec74e7d928a364a79c10377282615e6f23d8570da9c94186dc7b8bacd"
+    },
+    "generation": {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/summary.json",
+      "sha256": "9bc7f9cd18dc996bd12d21788ce75288395e4a26b0c9f57c4446427c47948b0f"
+    },
+    "generation_manifest": {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+      "sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32"
+    },
+    "exact_report": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/exact_import_capaware_progress_v4/report/summary.json",
+      "sha256": "4faf7443bcac44bafaf80d27a7efa2770118d16f3b7ca136b7a580e4681d9d3a"
+    },
+    "exact_state": {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/state.json",
+      "sha256": "58b46fd21aebc5464eabc346df221653e2943aed250b568a08805b98cc39bf02"
+    },
+    "pause": {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/USER_PAUSED_TABLE2.json",
+      "sha256": "49ed636a31c58ef01db2b842229a716502e947a3bf7be26974a670d86b41655d"
+    }
+  },
+  "primary_rows": [
+    {
+      "method": "FlowPlace",
+      "design": "ariane133",
+      "run_id": "t2auto_flowplace_ariane133_1",
+      "status": "validated",
+      "measured": {
+        "rWL_million_um": 7.661557999999999,
+        "WNS_ns": -1.12651,
+        "TNS_ns": -3053.06,
+        "Power_W": 0.447824,
+        "CellArea_um2": 385830.0
+      },
+      "paper_rounded": {
+        "rWL_million_um": 7.62,
+        "WNS_ns": -1.1,
+        "TNS_ns": -2874.29,
+        "Power_W": 0.44,
+        "CellArea_um2": 384905
+      },
+      "DRC": 239,
+      "runtime_seconds": 3658.758479833603,
+      "metrics_sha256": "a80aec7579e6771c3aba1fbb4aa0e0955e9e044adf4692872a619f5b329770b6"
+    },
+    {
+      "method": "FlowPlace",
+      "design": "ariane136",
+      "run_id": "table2_source_era_flowplace_v1_ariane136",
+      "status": "validated",
+      "measured": {
+        "rWL_million_um": 8.081161,
+        "WNS_ns": -1.44668,
+        "TNS_ns": -4085.44,
+        "Power_W": 0.502453,
+        "CellArea_um2": 397635.0
+      },
+      "paper_rounded": {
+        "rWL_million_um": 8.14,
+        "WNS_ns": -1.37,
+        "TNS_ns": -3845.98,
+        "Power_W": 0.5,
+        "CellArea_um2": 397798
+      },
+      "DRC": 971,
+      "runtime_seconds": 6594.398537158966,
+      "metrics_sha256": "0a4010cd6808c8a7182980fbce49fcb907515ba6dec003913d10d945a9f84a36"
+    },
+    {
+      "method": "FlowPlace",
+      "design": "bp",
+      "run_id": "table2_source_era_flowplace_v1_bp_infra_retry2",
+      "status": "validated",
+      "measured": {
+        "rWL_million_um": 9.755799,
+        "WNS_ns": -4.81371,
+        "TNS_ns": -57.6705,
+        "Power_W": 0.52568,
+        "CellArea_um2": 530765.0
+      },
+      "paper_rounded": {
+        "rWL_million_um": 10.03,
+        "WNS_ns": -4.74,
+        "TNS_ns": -23.87,
+        "Power_W": 0.53,
+        "CellArea_um2": 531359
+      },
+      "DRC": 223,
+      "runtime_seconds": 2906.695953130722,
+      "metrics_sha256": "901159e5ea53821ee91e884af0eb2a8b1f0eae4bff429e22ab0949e1d6c205d5"
+    },
+    {
+      "method": "FlowPlace",
+      "design": "bp_be",
+      "run_id": "table2_source_era_flowplace_v1_bp_be",
+      "status": "validated",
+      "measured": {
+        "rWL_million_um": 2.871693,
+        "WNS_ns": -1.14681,
+        "TNS_ns": -233.055,
+        "Power_W": 0.198914,
+        "CellArea_um2": 121782.0
+      },
+      "paper_rounded": {
+        "rWL_million_um": 3.1,
+        "WNS_ns": -1.19,
+        "TNS_ns": -316.39,
+        "Power_W": 0.2,
+        "CellArea_um2": 121846
+      },
+      "DRC": 4171,
+      "runtime_seconds": 1155.9520552158356,
+      "metrics_sha256": "e942034f4051fc2e99bc191fe1ebbb484e45db516327b79e66c1074b0c557e37"
+    },
+    {
+      "method": "FlowPlace",
+      "design": "bp_fe",
+      "run_id": "t2auto_flowplace_bp_fe_1",
+      "status": "validated",
+      "measured": {
+        "rWL_million_um": 2.080132,
+        "WNS_ns": -0.382896,
+        "TNS_ns": -70.6774,
+        "Power_W": 0.205494,
+        "CellArea_um2": 71827.7
+      },
+      "paper_rounded": {
+        "rWL_million_um": 2.33,
+        "WNS_ns": -0.56,
+        "TNS_ns": -124.48,
+        "Power_W": 0.21,
+        "CellArea_um2": 72407
+      },
+      "DRC": 10823,
+      "runtime_seconds": 765.7078700065613,
+      "metrics_sha256": "c06eb216d2585e663d3b97b5f14ad9bff0a6104e68b09c00bd0abe2cc2c0b3d4"
+    },
+    {
+      "method": "FlowPlace",
+      "design": "swerv_wrapper",
+      "run_id": "table2_source_era_flowplace_v1_swerv_wrapper",
+      "status": "validated",
+      "measured": {
+        "rWL_million_um": 4.437885,
+        "WNS_ns": -0.890352,
+        "TNS_ns": -903.203,
+        "Power_W": 0.268631,
+        "CellArea_um2": 226975.0
+      },
+      "paper_rounded": {
+        "rWL_million_um": 4.54,
+        "WNS_ns": -0.66,
+        "TNS_ns": -586.54,
+        "Power_W": 0.27,
+        "CellArea_um2": 227567
+      },
+      "DRC": 8638,
+      "runtime_seconds": 3429.644767522812,
+      "metrics_sha256": "83c938eb4241328db6ca1bef21e29ecc6ce9d0c28d2ef9c08d7f4e60a20fc7db"
+    }
+  ],
+  "generation": [
+    {
+      "design": "ariane133",
+      "seed": 300,
+      "steps": 20,
+      "rng_mode": "official-stream",
+      "generation_seconds_including_legalizer_init_compile": 3.7530500828288496,
+      "hard_constraint": true,
+      "w_reg": 0.1,
+      "w_dist": 1.0,
+      "is_legal": true,
+      "nonfinite_values": 0,
+      "nonpositive_size_values": 0,
+      "overlap_pairs": 0,
+      "overlap_area_normalized": 0.0,
+      "out_of_bounds_macros": 0,
+      "max_boundary_excess": 0.0,
+      "macro_net_hpwl_cache_units": 2960685.2661208347,
+      "num_macros": 132,
+      "num_graph_edges": 107756,
+      "coordinate_system": "centers normalized to [-1,1]; macro_physical.json lower-left in original benchmark-cache units; design.pt uses official grid conversion"
+    },
+    {
+      "design": "ariane136",
+      "seed": 300,
+      "steps": 20,
+      "rng_mode": "official-stream",
+      "generation_seconds_including_legalizer_init_compile": 2.481410242849961,
+      "hard_constraint": true,
+      "w_reg": 0.1,
+      "w_dist": 1.0,
+      "is_legal": true,
+      "nonfinite_values": 0,
+      "nonpositive_size_values": 0,
+      "overlap_pairs": 0,
+      "overlap_area_normalized": 0.0,
+      "out_of_bounds_macros": 0,
+      "max_boundary_excess": 0.0,
+      "macro_net_hpwl_cache_units": 2844699.513360999,
+      "num_macros": 136,
+      "num_graph_edges": 114688,
+      "coordinate_system": "centers normalized to [-1,1]; macro_physical.json lower-left in original benchmark-cache units; design.pt uses official grid conversion"
+    },
+    {
+      "design": "bp_be",
+      "seed": 300,
+      "steps": 20,
+      "rng_mode": "official-stream",
+      "generation_seconds_including_legalizer_init_compile": 0.3552445010282099,
+      "hard_constraint": true,
+      "w_reg": 0.1,
+      "w_dist": 1.0,
+      "is_legal": true,
+      "nonfinite_values": 0,
+      "nonpositive_size_values": 0,
+      "overlap_pairs": 0,
+      "overlap_area_normalized": 0.0,
+      "out_of_bounds_macros": 0,
+      "max_boundary_excess": 0.0,
+      "macro_net_hpwl_cache_units": 137487.3916768745,
+      "num_macros": 10,
+      "num_graph_edges": 1004,
+      "coordinate_system": "centers normalized to [-1,1]; macro_physical.json lower-left in original benchmark-cache units; design.pt uses official grid conversion"
+    },
+    {
+      "design": "bp_fe",
+      "seed": 300,
+      "steps": 20,
+      "rng_mode": "official-stream",
+      "generation_seconds_including_legalizer_init_compile": 0.3589191739447415,
+      "hard_constraint": true,
+      "w_reg": 0.1,
+      "w_dist": 1.0,
+      "is_legal": true,
+      "nonfinite_values": 0,
+      "nonpositive_size_values": 0,
+      "overlap_pairs": 0,
+      "overlap_area_normalized": 0.0,
+      "out_of_bounds_macros": 0,
+      "max_boundary_excess": 0.0,
+      "macro_net_hpwl_cache_units": 83767.21826647143,
+      "num_macros": 11,
+      "num_graph_edges": 664,
+      "coordinate_system": "centers normalized to [-1,1]; macro_physical.json lower-left in original benchmark-cache units; design.pt uses official grid conversion"
+    },
+    {
+      "design": "bp",
+      "seed": 300,
+      "steps": 20,
+      "rng_mode": "official-stream",
+      "generation_seconds_including_legalizer_init_compile": 0.5652323781978339,
+      "hard_constraint": true,
+      "w_reg": 0.1,
+      "w_dist": 1.0,
+      "is_legal": true,
+      "nonfinite_values": 0,
+      "nonpositive_size_values": 0,
+      "overlap_pairs": 0,
+      "overlap_area_normalized": 0.0,
+      "out_of_bounds_macros": 0,
+      "max_boundary_excess": 0.0,
+      "macro_net_hpwl_cache_units": 289209.91628817184,
+      "num_macros": 24,
+      "num_graph_edges": 2036,
+      "coordinate_system": "centers normalized to [-1,1]; macro_physical.json lower-left in original benchmark-cache units; design.pt uses official grid conversion"
+    },
+    {
+      "design": "swerv_wrapper",
+      "seed": 300,
+      "steps": 20,
+      "rng_mode": "official-stream",
+      "generation_seconds_including_legalizer_init_compile": 0.6190345259383321,
+      "hard_constraint": true,
+      "w_reg": 0.1,
+      "w_dist": 1.0,
+      "is_legal": true,
+      "nonfinite_values": 0,
+      "nonpositive_size_values": 0,
+      "overlap_pairs": 0,
+      "overlap_area_normalized": 0.0,
+      "out_of_bounds_macros": 0,
+      "max_boundary_excess": 0.0,
+      "macro_net_hpwl_cache_units": 732244.4291457155,
+      "num_macros": 28,
+      "num_graph_edges": 7068,
+      "coordinate_system": "centers normalized to [-1,1]; macro_physical.json lower-left in original benchmark-cache units; design.pt uses official grid conversion"
+    }
+  ],
+  "generation_manifest": {
+    "seed": 300,
+    "rng_mode": "official global torch RNG stream seeded before model initialization",
+    "design_order": [
+      "ariane133",
+      "ariane136",
+      "bp_be",
+      "bp_fe",
+      "bp",
+      "swerv_wrapper"
+    ],
+    "host": "einstein",
+    "torch": "2.2.1+cu121",
+    "gpu": "NVIDIA L20",
+    "slurm_job_id": "1783973",
+    "checkpoint_sha256": "0fe61ef666c7ff34c32b1ea1b8fe23a1c8b45151955f0f16366a121fde5fd359",
+    "compile_disabled": false
+  },
+  "paused": true,
+  "method_source_files": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/upstream/flowplace/flow_matching/models.py",
+      "sha256": "b4b48d4ffc935eb97211b887abbefbf0c4b5b4922434608ed268c946343cf961"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/upstream/flowplace/flow_matching/networks/gnn.py",
+      "sha256": "0c77e1c395e9a3f1fdce5685db00bead26d2869ad13f62bd9ab794dc21de2415"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/upstream/flowplace/flow_matching/hard_constraint_legalizer.py",
+      "sha256": "8e1d1d335b87f4840ebe040e73b1b3e0a63ff3749b916e7ea88c3efc79070556"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/runtime/logs/debug/mask.61.train_mask_flowplace_uniform.61/config.yaml",
+      "sha256": "28288af053f61be3960de847443346a98b11bea306e473b71c1394ab75c6c6c0"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/config.yaml",
+      "sha256": "1b0a85723504b2e67691a26278d45be176b8c1edd210f766110d55df118234aa"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/upstream/flowplace/data-gen/configs/versions/mask.yaml",
+      "sha256": "d54c78da6a0ddcc78d5822fc46336222447ec88738a2b85a6b8eb4d56898cba3"
+    }
+  ],
+  "page": {
+    "id": "page_e6940ce82658819192217067fee059e6",
+    "url": "https://chatgpt.com/space/page_e6940ce82658819192217067fee059e6",
+    "structure": [
+      "FlowPlace 论文框架",
+      "复现 Table 2",
+      "效果与分析"
+    ],
+    "saved_content_verified": true,
+    "visual_preview_verified": false
+  },
+  "local_markdown_sha256": "b8d81f6c973a0e58be524908bf84bdc0a9ebdcddba9512d99dcedad03c24ef99"
+}

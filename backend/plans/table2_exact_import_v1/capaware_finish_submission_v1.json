@@ -1,0 +1,16 @@
+{
+  "job": "1788399",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:1788335",
+    "analysis/finish_table2_capaware.slurm",
+    "2d01762221a7acbe6488f9eb0f66b88f01a22ff59242b3721c8380a6a21a4971",
+    "--config",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/capaware_finish_config_v1.json",
+    "--config-sha256",
+    "4fd3611b9fbc3f847137cd2044521bcebb9cb985e03778c0fc8f461de5d73adf"
+  ],
+  "time": 1792231744.5225918,
+  "config_sha256": "4fd3611b9fbc3f847137cd2044521bcebb9cb985e03778c0fc8f461de5d73adf"
+}

@@ -1,0 +1,83 @@
+{
+  "created_unix": 1792227792.377032,
+  "reason": "Interrupted artifact commit 1788237 OOM at 2G while copying, before any source rename. Allow memory for source/destination page cache in remaining pending storage jobs; keep physical experiment settings unchanged. Exclude enterprise so archival allocations do not pressure active EDA-node physical jobs.",
+  "updates": [
+    {
+      "job": "1788218_1",
+      "memory_MiB": 20480,
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788218_1",
+        "MinMemoryNode=20480",
+        "ExcNodeList=enterprise"
+      ]
+    },
+    {
+      "job": "1788218_2",
+      "memory_MiB": 12288,
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788218_2",
+        "MinMemoryNode=12288",
+        "ExcNodeList=enterprise"
+      ]
+    },
+    {
+      "job": "1788218_3",
+      "memory_MiB": 12288,
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788218_3",
+        "MinMemoryNode=12288",
+        "ExcNodeList=enterprise"
+      ]
+    },
+    {
+      "job": "1788218_5",
+      "memory_MiB": 12288,
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788218_5",
+        "MinMemoryNode=12288",
+        "ExcNodeList=enterprise"
+      ]
+    },
+    {
+      "job": "1788219_3",
+      "memory_MiB": 12288,
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788219_3",
+        "MinMemoryNode=12288",
+        "ExcNodeList=enterprise"
+      ]
+    },
+    {
+      "job": "1788212",
+      "memory_MiB": 12288,
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788212",
+        "MinMemoryNode=12288",
+        "ExcNodeList=enterprise"
+      ]
+    },
+    {
+      "job": "1788213",
+      "memory_MiB": 12288,
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788213",
+        "MinMemoryNode=12288",
+        "ExcNodeList=enterprise"
+      ]
+    }
+  ]
+}

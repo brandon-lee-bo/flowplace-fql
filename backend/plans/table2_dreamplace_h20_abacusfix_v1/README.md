@@ -1,0 +1,7 @@
+# Frozen DREAMPlace H20 cohort with declared Abacus correction
+
+All six designs run anew on one H20, serial fresh processes, seed 1000, unchanged author per-design halo values. No old successful result or seed is selected. Only a one-line stock Abacus row lower-bin truncation is changed to the existing library floorDiv; all other installed files are byte-identical to the validated parent. The patch is an implementation correction, explicitly disclosed, not an author-provided recipe.
+
+The retained actual failure snapshot proves that a macro exactly touching a standard cell was assigned to the prior row because float32 854.73681640625 / 7.3684210777282715 = 115.99999237060547. The original two-rectangle fixture aborts; patched fixture remains unchanged; full original Abacus snapshot replays with stock whole-layout legality passing and zero macro displacement. Job 1788043 records compile commands, parent binary hashes, exact patch, tests and unchanged parent installation.
+
+No placement objective, seed, halo, precision, iteration count or standard-cell legalization stage is removed. Full macro geometry, connectivity, orientation and physical-pin audits still apply. The original six-design cohort, observer failure and all other failed runs remain preserved. Exact author baseline settings and original replace.def are unavailable; runtime is not paper-hardware matched. No OpenROAD PPA is run by this plan.

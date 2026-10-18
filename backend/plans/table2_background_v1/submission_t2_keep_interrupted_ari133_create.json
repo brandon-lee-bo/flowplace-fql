@@ -1,0 +1,18 @@
+{
+  "job": "1788238",
+  "command": [
+    "--dependency=afterok:1788237",
+    "backend/scripts/archive_interrupted_table2_staged.slurm",
+    "create",
+    "--run",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_ariane133",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_ariane133/interrupted_preservation_v1",
+    "--retry-binding",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+    "--retry-binding-sha256",
+    "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+  ],
+  "name": "t2_keep_interrupted_ari133_create",
+  "time": 1792227560.8282585
+}

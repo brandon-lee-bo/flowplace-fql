@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "protocol": "public_DREAMPlace_4.1_CPU_BB_two_stage_frozen_reconstruction",
+  "method": "DREAMPlace",
+  "designs": [
+    "bp_fe",
+    "bp",
+    "ariane133",
+    "ariane136",
+    "bp_be",
+    "swerv_wrapper"
+  ],
+  "not_exact_author_baseline": true,
+  "fixed_seed": 1000,
+  "seed_or_halo_search": false,
+  "maximum_concurrent_generation_jobs": 2,
+  "runner": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/run_dreamplace_table2.py",
+  "runner_sha256": "0159c3408c781949ec6777f54a73b668a29619bcae4add87a0e78753a108ee14",
+  "slurm_wrapper_sha256": "c2331ba58937f0c931eac896bde1780dec458e765c9c1da6ebbe0bd2c5d82833",
+  "tasks_sha256": "64060e7fd8d3aea6ea6ab4218ac4045bc82e07aef71787972df20c7c8834211a",
+  "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+  "installation_manifest_source": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/dmp_public41_bp_fe_smoke_v1/installation_file_hashes.json",
+  "installation_manifest_sha256": "f9f401c52d34a2bda6241fd5b3859306b54d52056c1927575caa3e708b3b720d",
+  "macro_input_positions": "All movable macro and standard-cell coordinates neutralized, then stock Gaussian center initialization; no FlowPlace positional warm start.",
+  "final_orientation": "Keep stock row-aligned N/FS orientation; read-only finalDEF pin-offset reload gate.",
+  "macro_algorithm": "Stock BB and two-stage flow, original macro Tetris/min-cost-flow legalizers; no added overlap repair.",
+  "explicit_common_overrides": {
+    "macro_place_flag": 1,
+    "use_bb": 1,
+    "gpu": 0,
+    "num_threads": 8,
+    "random_center_init_flag": 1,
+    "two_stage_density_scaler": 1000,
+    "detailed_place_engine": "",
+    "detailed_place_command": "",
+    "detailed_place_flag": 0,
+    "timing_opt_flag": 0,
+    "routability_opt_flag": 0
+  },
+  "unknown_config_keys": "Save per-run as unapplied; do not silently claim effects.",
+  "output_root": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2",
+  "tmp_root": "/scratch/bohanli/flowplace_table2",
+  "downstream_protocol": "Pending parent freeze. Both methods must use identical ORFS config, image, sources, GPL flags and timing/route setup. Only macro positions/orientations passed; standard cells rebuilt by author evaluator.",
+  "failure_policy": "Keep all six denominator entries, illegal/failed designs recorded as failures; no silent seed, halo, density, repair or tool changes. bp_fe v1 retained as wrapper-guard failure and superseded by v2 with identical placement algorithm.",
+  "limitations": [
+    "Original replace.def and standalone author baseline configuration unavailable; template orientations, fixed IO and floorplan inherited from published DEF.",
+    "Full DEF versus hierarchical Verilog pin-connectivity equivalence is not proven; instance/master equality and DEF-to-DMP net pin multisets checked.",
+    "CPU and GPU can differ numerically; CPU runtime is not a GPU speedup comparison.",
+    "Exact author strong-legalization implementation/settings not identified.",
+    "Author conversion halos become active under macro_place_flag=1: explicit predeclared reconstruction assumption."
+  ]
+}

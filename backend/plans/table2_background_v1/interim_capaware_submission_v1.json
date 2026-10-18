@@ -1,0 +1,15 @@
+{
+  "job": "1788391",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:1788390",
+    "analysis/run_table2_capaware_audit.slurm",
+    "--invocation",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/interim_capaware_v1.json",
+    "--invocation-sha256",
+    "b4424da481e8e1a4f6d66c0e41574a93ac2aecb4ea2b8b00aad65e612b917f89"
+  ],
+  "created_unix": 1792231492.0590177,
+  "note": "Separately labeled posthoc correction; ordinary strict original audit remains untouched. Incomplete twelve-row denominator means expected nonzero."
+}

@@ -1,0 +1,107 @@
+{
+  "created_unix": 1792228829.640385,
+  "scope": "Storage-only pending-job replacement: scratch-first compression, original completed-run gates and immutable artifacts. Physical tasks unchanged.",
+  "helper_sha256": "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+  "cancelled": [
+    {
+      "job": "1788218_1",
+      "before": "JobId=1788220 ArrayJobId=1788218 ArrayTaskId=1 ArrayTaskThrottle=1 JobName=t2_staged_dmp_arc_v1\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=422 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=DependencyNeverSatisfied Dependency=aftercorr:1788077_*(failed)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:10:00 TimeMin=N/A\n   SubmitTime=2026-10-17T16:44:18 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T16:44:18 Scheduler=Main\n   Partition=cpu-scavenger AllocNode:Sid=ai0:3344067\n   ReqNodeList=(null) ExcNodeList=enterprise\n   NodeList=\n   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=2,mem=20G,node=1,billing=2\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=2 MinMemoryNode=20G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/archive_table2_staged_task.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_staged_archive_task_1788218_1.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_staged_archive_task_1788218_1.log\n   TresPerTask=cpu=2\n   \n\n",
+      "reason": "Exact source task PREEMPTED; superseded by frozen identical-input retry. All old artifacts retained."
+    },
+    {
+      "job": "1788218_2",
+      "before": "JobId=1788221 ArrayJobId=1788218 ArrayTaskId=2 ArrayTaskThrottle=1 JobName=t2_staged_dmp_arc_v1\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=422 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=DependencyNeverSatisfied Dependency=aftercorr:1788077_*(failed)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:10:00 TimeMin=N/A\n   SubmitTime=2026-10-17T16:44:18 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T16:44:18 Scheduler=Main\n   Partition=cpu-scavenger AllocNode:Sid=ai0:3344067\n   ReqNodeList=(null) ExcNodeList=enterprise\n   NodeList=\n   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=2,mem=12G,node=1,billing=2\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=2 MinMemoryNode=12G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/archive_table2_staged_task.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_staged_archive_task_1788218_2.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_staged_archive_task_1788218_2.log\n   TresPerTask=cpu=2\n   \n\n",
+      "reason": "Exact source task PREEMPTED; superseded by frozen identical-input retry. All old artifacts retained."
+    },
+    {
+      "job": "1788261",
+      "before": "JobId=1788261 JobName=t2auto_dreamplace_bp_1_commit\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=422 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=Dependency Dependency=afterok:1788260(unfulfilled)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:10:00 TimeMin=N/A\n   SubmitTime=2026-10-17T17:07:31 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T17:07:31 Scheduler=Main\n   Partition=cpu-scavenger AllocNode:Sid=ai1:3405350\n   ReqNodeList=(null) ExcNodeList=enterprise\n   NodeList=\n   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=2,mem=20G,node=1,billing=2\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=2 MinMemoryNode=20G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/archive_table2_artifacts.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788261.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788261.log\n   TresPerTask=cpu=2\n   \n\n",
+      "reason": "Replace pending conservative staging with verified scratch-first helper; no source mutation."
+    },
+    {
+      "job": "1788260",
+      "before": "JobId=1788260 JobName=t2auto_dreamplace_bp_1_arc\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=422 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=Dependency Dependency=afterok:1788259_*(unfulfilled)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:10:00 TimeMin=N/A\n   SubmitTime=2026-10-17T17:07:31 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T17:07:31 Scheduler=Main\n   Partition=cpu-scavenger AllocNode:Sid=ai1:3405350\n   ReqNodeList=(null) ExcNodeList=enterprise\n   NodeList=\n   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=2,mem=20G,node=1,billing=2\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=2 MinMemoryNode=20G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/archive_table2_artifacts.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788260.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788260.log\n   TresPerTask=cpu=2\n   \n\n",
+      "reason": "Replace pending conservative staging with verified scratch-first helper; no source mutation."
+    },
+    {
+      "job": "1788264",
+      "before": "JobId=1788264 JobName=t2auto_dreamplace_ariane133_1_commit\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=422 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=Dependency Dependency=afterok:1788263(unfulfilled)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:10:00 TimeMin=N/A\n   SubmitTime=2026-10-17T17:07:31 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T17:07:31 Scheduler=Main\n   Partition=cpu-scavenger AllocNode:Sid=ai1:3405350\n   ReqNodeList=(null) ExcNodeList=enterprise\n   NodeList=\n   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=2,mem=12G,node=1,billing=2\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=2 MinMemoryNode=12G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/archive_table2_artifacts.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788264.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788264.log\n   TresPerTask=cpu=2\n   \n\n",
+      "reason": "Replace pending conservative staging with verified scratch-first helper; no source mutation."
+    },
+    {
+      "job": "1788263",
+      "before": "JobId=1788263 JobName=t2auto_dreamplace_ariane133_1_arc\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=422 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=Dependency Dependency=afterok:1788262_*(unfulfilled)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:10:00 TimeMin=N/A\n   SubmitTime=2026-10-17T17:07:31 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T17:07:31 Scheduler=Main\n   Partition=cpu-scavenger AllocNode:Sid=ai1:3405350\n   ReqNodeList=(null) ExcNodeList=enterprise\n   NodeList=\n   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=2,mem=12G,node=1,billing=2\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=2 MinMemoryNode=12G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/archive_table2_artifacts.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788263.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_archive_1788263.log\n   TresPerTask=cpu=2\n   \n\n",
+      "reason": "Replace pending conservative staging with verified scratch-first helper; no source mutation."
+    }
+  ],
+  "replacements": [
+    {
+      "run_id": "t2auto_dreamplace_bp_1",
+      "source_job": "1788259",
+      "create_job": "1788286",
+      "create_command": [
+        "sbatch",
+        "--parsable",
+        "--mem=20G",
+        "--exclude=enterprise",
+        "--dependency=afterok:1788259",
+        "backend/scripts/archive_table2_staged.slurm",
+        "create",
+        "--run",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_bp_1",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_1/scratch_staged_v1"
+      ],
+      "archive": "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_1/scratch_staged_v1",
+      "commit_job": "1788287",
+      "commit_command": [
+        "sbatch",
+        "--parsable",
+        "--mem=20G",
+        "--exclude=enterprise",
+        "--dependency=afterok:1788286",
+        "backend/scripts/archive_table2_staged.slurm",
+        "commit",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_1/scratch_staged_v1",
+        "--scratch-dir",
+        "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_bp_1/scratch_staged_v1",
+        "--confirm-remove-bulk-backup"
+      ]
+    },
+    {
+      "run_id": "t2auto_dreamplace_ariane133_1",
+      "source_job": "1788262",
+      "create_job": "1788288",
+      "create_command": [
+        "sbatch",
+        "--parsable",
+        "--mem=12G",
+        "--exclude=enterprise",
+        "--dependency=afterok:1788262",
+        "backend/scripts/archive_table2_staged.slurm",
+        "create",
+        "--run",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_ariane133_1",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_1/scratch_staged_v1"
+      ],
+      "archive": "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_1/scratch_staged_v1",
+      "commit_job": "1788289",
+      "commit_command": [
+        "sbatch",
+        "--parsable",
+        "--mem=12G",
+        "--exclude=enterprise",
+        "--dependency=afterok:1788288",
+        "backend/scripts/archive_table2_staged.slurm",
+        "commit",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_1/scratch_staged_v1",
+        "--scratch-dir",
+        "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_ariane133_1/scratch_staged_v1",
+        "--confirm-remove-bulk-backup"
+      ]
+    }
+  ]
+}

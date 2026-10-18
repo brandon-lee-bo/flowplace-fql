@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "protocol": "public_DREAMPlace_4.1_H20_BB_two_stage_with_disclosed_abacus_floorDiv_correction",
+  "method": "DREAMPlace",
+  "not_exact_author_baseline": true,
+  "designs": [
+    "bp_fe",
+    "bp",
+    "ariane133",
+    "ariane136",
+    "bp_be",
+    "swerv_wrapper"
+  ],
+  "seed": 1000,
+  "reuse_predeclared_smoke": false,
+  "all_six_new_run_ids": true,
+  "same_original_halos": true,
+  "single_gpu_serial_fresh_process_per_design": true,
+  "tasks_sha256": "60422f1bb11a6c7db07b13670b8262da2eb805f3a385c01798e3441da411be29",
+  "runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+  "cohort_driver_sha256": "a640b9ce74a51a064dc8bea1cafaa282fc749c0c823d0dcc19c050565f5e9e5e",
+  "cohort_slurm_sha256": "a8467e2499bc56530a5140b9d1e63e19ff5c1dc00143431c7e01d1bd59d7fc65",
+  "installation_root": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/abacus_floor_div_job_1788043/install",
+  "installation_manifest_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+  "operator_patch_validation": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/abacus_floor_div_job_1788043/operator_patch_validation.json",
+  "operator_patch_validation_sha256": "69b94d98e5e3cc259691e012dfe1593a958b3112a2b0bb026ced3ca14f10c9c4",
+  "operator_patch_sha256": "3b8600c884155025dd50e06690a2530838db823e8d2feb635e9f5174a9d7bfc1",
+  "supersedes_for_formal_method_cohort": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_dreamplace_h20_v1",
+  "unpatched_cohort": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/cohort_1788011",
+  "unpatched_result": "Five of six passed, ariane133 failed stock Abacus row-bin float boundary assertion; retained without altering or filtering.",
+  "ppa_evaluated": false,
+  "selected_by_ppa": false
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "old_tasks": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+  "old_tasks_sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+  "old_task_index": 3,
+  "old_run_id": "table2_source_era_dreamplace_v1_ariane136",
+  "old_job": "1788077_3",
+  "new_tasks": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane136_1/tasks.jsonl",
+  "new_tasks_sha256": "6f4791153382f86769eb2b534a64f0701c028197f7da2dbd93fa692079b02e90",
+  "new_task_index": 0,
+  "new_run_id": "t2auto_dreamplace_ariane136_1",
+  "reason": "Infrastructure interruption or exhausted walltime budget; identical task except run_id, never PPA-based selection",
+  "reason_kind": "runtime_capacity_no_final_metrics",
+  "old_elapsed_seconds": 9025,
+  "new_walltime_seconds": 21600,
+  "scheduler_evidence": {
+    "JobID": "1788077_3",
+    "State": "TIMEOUT",
+    "ExitCode": "0:0",
+    "ElapsedRaw": "9025"
+  },
+  "created_unix": 1792235634.627595
+}

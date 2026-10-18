@@ -1,0 +1,8 @@
+{
+  "time": 1792233253.2752278,
+  "job": "1788077_3",
+  "requested_timelimit": "03:30:00",
+  "returncode": 1,
+  "stderr": "1788077_3: Access/permission denied",
+  "action": "No escalation or further modification. Retain current run and diagnose completion/timeout from original logs."
+}

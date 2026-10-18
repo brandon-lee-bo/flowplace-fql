@@ -1,0 +1,6 @@
+{
+  "time": 1792230655.4500294,
+  "note": "Before any final-audit job submission: corrected macro auditor wrapper target left by filename substitution; Python audit source hashes unchanged.",
+  "old_wrapper_sha256": "dbc72bc5cc0ae44392ef1cb8f232bf921aa2d3bff5830dda6c43ec3cffe55a32",
+  "new_wrapper_sha256": "bc80c96ee9580e590b8de4520add64ba053306b31da9f65e24576f14c3cb57b0"
+}

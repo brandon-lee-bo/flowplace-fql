@@ -1,0 +1,62 @@
+{
+  "time": 1792238975.797197,
+  "reason": "Avoid repeatedly preempted development nodes for already-frozen archival tasks; no physical input or PPA change.",
+  "events": [
+    {
+      "job": "1788451_3",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "job": "1788451_4",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "job": "1788451_5",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "job": "1788452_3",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "job": "1788452_4",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "job": "1788452_5",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "job": "1788520",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "job": "1788521",
+      "before": "PENDING|Dependency",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

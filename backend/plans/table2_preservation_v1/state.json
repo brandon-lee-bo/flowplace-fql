@@ -1,0 +1,305 @@
+{
+  "status": "watching",
+  "slurm_job_id": "1788518",
+  "submissions": {
+    "table2_source_era_flowplace_v1_bp_fe": {
+      "classification": "interrupted",
+      "create": "1788411",
+      "commit": "1788412",
+      "commands": [
+        [
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_bp_fe",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe/preservation_watcher_interrupted_v1",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/retry_binding.json",
+          "--retry-binding-sha256",
+          "d127593d4e00c7c33b33b10ee57e6f42acb6862e4ae67183205c058029892107"
+        ],
+        [
+          "--dependency=afterok:1788411",
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe/preservation_watcher_interrupted_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_bp_fe/preservation_watcher_interrupted_v1",
+          "--confirm-remove-bulk-backup",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/retry_binding.json",
+          "--retry-binding-sha256",
+          "d127593d4e00c7c33b33b10ee57e6f42acb6862e4ae67183205c058029892107"
+        ]
+      ],
+      "time": 1792231844.629812
+    },
+    "table2_source_era_flowplace_v1_bp_fe_infra_retry1": {
+      "classification": "interrupted",
+      "create": "1788413",
+      "commit": "1788414",
+      "commands": [
+        [
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_bp_fe_infra_retry1",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe_infra_retry1/preservation_watcher_interrupted_v1",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_0.json",
+          "--retry-binding-sha256",
+          "10076a684fa1911653fcd6630f733ffd6786b29eaa15920979d1f7b5515a58ae"
+        ],
+        [
+          "--dependency=afterok:1788413",
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe_infra_retry1/preservation_watcher_interrupted_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_bp_fe_infra_retry1/preservation_watcher_interrupted_v1",
+          "--confirm-remove-bulk-backup",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_0.json",
+          "--retry-binding-sha256",
+          "10076a684fa1911653fcd6630f733ffd6786b29eaa15920979d1f7b5515a58ae"
+        ]
+      ],
+      "time": 1792231844.6462777
+    },
+    "table2_source_era_flowplace_v1_bp_fe_infra_retry2": {
+      "classification": "interrupted",
+      "create": "1788415",
+      "commit": "1788416",
+      "commands": [
+        [
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_bp_fe_infra_retry2",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe_infra_retry2/preservation_watcher_interrupted_v1",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/retry_binding.json",
+          "--retry-binding-sha256",
+          "7a83ba9c9226090d314f78d65f5501cf513c4b639e2b3fc2ee86e9456ac25248"
+        ],
+        [
+          "--dependency=afterok:1788415",
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_fe_infra_retry2/preservation_watcher_interrupted_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_bp_fe_infra_retry2/preservation_watcher_interrupted_v1",
+          "--confirm-remove-bulk-backup",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/retry_binding.json",
+          "--retry-binding-sha256",
+          "7a83ba9c9226090d314f78d65f5501cf513c4b639e2b3fc2ee86e9456ac25248"
+        ]
+      ],
+      "time": 1792231844.670162
+    },
+    "t2auto_dreamplace_bp_2": {
+      "classification": "interrupted",
+      "create": "1788417",
+      "commit": "1788418",
+      "commands": [
+        [
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_bp_2",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_2/preservation_watcher_interrupted_v1",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/retry_binding.json",
+          "--retry-binding-sha256",
+          "b1202702a2bc0e881843845caab0bcd8b01820986fb4836ee322b7e0b7585e04"
+        ],
+        [
+          "--dependency=afterok:1788417",
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_2/preservation_watcher_interrupted_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_bp_2/preservation_watcher_interrupted_v1",
+          "--confirm-remove-bulk-backup",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/retry_binding.json",
+          "--retry-binding-sha256",
+          "b1202702a2bc0e881843845caab0bcd8b01820986fb4836ee322b7e0b7585e04"
+        ]
+      ],
+      "time": 1792231844.6926548
+    },
+    "t2auto_dreamplace_ariane133_1": {
+      "classification": "interrupted",
+      "create": "1788419",
+      "commit": "1788420",
+      "commands": [
+        [
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_ariane133_1",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_1/preservation_watcher_interrupted_v1",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/retry_binding.json",
+          "--retry-binding-sha256",
+          "b2118cf8fa9e2f6d7b88e2886bddd782d8db2662ad45f8d12d0891cc3834563e"
+        ],
+        [
+          "--dependency=afterok:1788419",
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_1/preservation_watcher_interrupted_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_ariane133_1/preservation_watcher_interrupted_v1",
+          "--confirm-remove-bulk-backup",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/retry_binding.json",
+          "--retry-binding-sha256",
+          "b2118cf8fa9e2f6d7b88e2886bddd782d8db2662ad45f8d12d0891cc3834563e"
+        ]
+      ],
+      "time": 1792231844.7099094
+    },
+    "t2_exactimport_v1_dreamplace_swerv_wrapper": {
+      "classification": "cap",
+      "create": "1788479",
+      "commit": "1788480",
+      "commands": [
+        [
+          "backend/scripts/archive_table2_capvalidated.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2_exactimport_v1_dreamplace_swerv_wrapper",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2_exactimport_v1_dreamplace_swerv_wrapper/preservation_watcher_cap_v1"
+        ],
+        [
+          "--dependency=afterok:1788479",
+          "backend/scripts/archive_table2_capvalidated.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2_exactimport_v1_dreamplace_swerv_wrapper/preservation_watcher_cap_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/t2_exactimport_v1_dreamplace_swerv_wrapper/preservation_watcher_cap_v1",
+          "--confirm-remove-bulk-backup"
+        ]
+      ],
+      "time": 1792233737.3007185
+    },
+    "t2auto_dreamplace_bp_3": {
+      "classification": "interrupted",
+      "create": "1788486",
+      "commit": "1788487",
+      "commands": [
+        [
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_bp_3",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_3/preservation_watcher_interrupted_v1",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/retry_binding.json",
+          "--retry-binding-sha256",
+          "0cc8a5085896d47de9d82cfbb68ea9ab58885b5da0abb13fe0a514a58369a0bb"
+        ],
+        [
+          "--dependency=afterok:1788486",
+          "backend/scripts/archive_interrupted_table2_staged.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_3/preservation_watcher_interrupted_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_bp_3/preservation_watcher_interrupted_v1",
+          "--confirm-remove-bulk-backup",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/retry_binding.json",
+          "--retry-binding-sha256",
+          "0cc8a5085896d47de9d82cfbb68ea9ab58885b5da0abb13fe0a514a58369a0bb"
+        ]
+      ],
+      "time": 1792233782.3725927
+    },
+    "t2_exactimport_v1_flowplace_bp_fe": {
+      "classification": "cap",
+      "create": "1788497",
+      "commit": "1788498",
+      "commands": [
+        [
+          "backend/scripts/archive_table2_capvalidated.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2_exactimport_v1_flowplace_bp_fe",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2_exactimport_v1_flowplace_bp_fe/preservation_watcher_cap_v1"
+        ],
+        [
+          "--dependency=afterok:1788497",
+          "backend/scripts/archive_table2_capvalidated.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2_exactimport_v1_flowplace_bp_fe/preservation_watcher_cap_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/t2_exactimport_v1_flowplace_bp_fe/preservation_watcher_cap_v1",
+          "--confirm-remove-bulk-backup"
+        ]
+      ],
+      "time": 1792234458.192843
+    },
+    "table2_source_era_dreamplace_v1_ariane136": {
+      "classification": "runtime",
+      "create": "1788522",
+      "commit": "1788523",
+      "commands": [
+        [
+          "backend/scripts/archive_table2_runtime_interrupted.slurm",
+          "create",
+          "--run",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_dreamplace_v1_ariane136",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_dreamplace_v1_ariane136/preservation_watcher_runtime_v1",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane136_1/retry_binding.json",
+          "--retry-binding-sha256",
+          "0660dcd37bf9cfe3f5900eac7d593cf4df46c904c7d10147039338f3ce9778f2"
+        ],
+        [
+          "--dependency=afterok:1788522",
+          "backend/scripts/archive_table2_runtime_interrupted.slurm",
+          "commit",
+          "--archive-dir",
+          "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_dreamplace_v1_ariane136/preservation_watcher_runtime_v1",
+          "--scratch-dir",
+          "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_dreamplace_v1_ariane136/preservation_watcher_runtime_v1",
+          "--confirm-remove-bulk-backup",
+          "--retry-binding",
+          "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane136_1/retry_binding.json",
+          "--retry-binding-sha256",
+          "0660dcd37bf9cfe3f5900eac7d593cf4df46c904c7d10147039338f3ce9778f2"
+        ]
+      ],
+      "time": 1792235637.5691094
+    }
+  },
+  "errors": [],
+  "last_checked_unix": 1792244379.8100662,
+  "controller_history": [
+    {
+      "slurm_job_id": "1788518",
+      "time": 1792235637.067204,
+      "protocol": "explicit_capacity_preservation_v1"
+    }
+  ]
+}

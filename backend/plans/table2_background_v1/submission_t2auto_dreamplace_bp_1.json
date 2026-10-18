@@ -1,0 +1,14 @@
+{
+  "job": "1788259",
+  "command": [
+    "--array=0",
+    "--nodelist=enterprise",
+    "--mem=16G",
+    "--time=02:30:00",
+    "backend/scripts/table2_fresh.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_1/tasks.jsonl",
+    "a2bf72f65184f11670f35fcb578fa992a322fd64fcac471aa8588814ba9043c0"
+  ],
+  "name": "t2auto_dreamplace_bp_1",
+  "time": 1792228051.8218567
+}

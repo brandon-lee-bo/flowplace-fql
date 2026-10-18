@@ -1,0 +1,14 @@
+{
+  "cohort": "original",
+  "base": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1",
+  "prefix": "source_era_capacity_completed_v1",
+  "source_sha256": {
+    "analysis/table2_drc_cap.py": "a0b377454028e6b369e7372220fde02dd0adfbd03ba487fbc1a34ce9ce8707e6",
+    "analysis/audit_table2_macro_preservation.py": "521fe0f12165be6590ca407b4bc52509cf6e014ce77a496e7011c664f3cc37e4",
+    "analysis/plot_table2_reproduction.py": "5a9d7555c4804cb8e0d222d74f946da2131fa29dd6d6639f341212843422a001",
+    "analysis/write_table2_original_issue_report_capaware.py": "2ff9f7cc3aa1f29ea26f811102d4440461c3b1bdd7a72d8da146f0f37e6f7095",
+    "analysis/finish_table2_capacity.py": "f17867ae598badbb9da11cb5502dbd71fc3f4edbaf28a86d1ec7d4f44b2be280",
+    "analysis/summarize_table2_methods_capacity.py": "d1b3076961f1350f0251528ca951e05acb3badc9e964002a74431b70d54c6255",
+    "analysis/run_table2_capacity_audit.py": "1e956ab64a72a34e6a6b63c6be6b46d83062b730f8952c9a29ca9252f5670daf"
+  }
+}

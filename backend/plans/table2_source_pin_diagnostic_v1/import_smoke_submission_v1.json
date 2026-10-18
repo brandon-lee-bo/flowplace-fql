@@ -1,0 +1,16 @@
+{
+  "time": 1792241302.8741183,
+  "probe_job": "1788561",
+  "probe_script_sha256": "c0d5d5a99f4f5b514c9fde7293b0756be25dcc5bd5b9ba7878b89d87d7288ece",
+  "source_build_job": "1788558",
+  "scope": "One released bp_fe LEF/DEF import; no placement or PPA. Require this smoke before the three predeclared physical controls.",
+  "dependency_command": [
+    "scontrol",
+    "update",
+    "JobId=1788559",
+    "Dependency=afterok:1788558:1788561:1788517:1788399"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ""
+}

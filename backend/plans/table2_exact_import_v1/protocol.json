@@ -1,0 +1,33 @@
+{
+  "created_unix": 1792229610.0229254,
+  "policy": "preserve_generator_dbu_coordinates_v1",
+  "classification": "separate uniform compatibility cohort; original author-recipe primary cohort remains unchanged",
+  "order": [
+    "swerv_wrapper",
+    "bp_fe",
+    "bp_be",
+    "bp",
+    "ariane133",
+    "ariane136"
+  ],
+  "plans": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/flowplace_tasks.jsonl",
+      "sha256": "9e73f228d7191e1596c08fea0a0bf0a9379b044fcb382aef82b252167669fc5d",
+      "method": "FlowPlace"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/dreamplace_tasks.jsonl",
+      "sha256": "3c07a46749130f7643d548f4c3ecf47993bfdb08b7b06cd90da9fc37e3d7a4ce",
+      "method": "DREAMPlace"
+    }
+  ],
+  "source_sha256": {
+    "backend/scripts/exact_import/run_table2.py": "0a8ea3d2605eb4f0bf9b661117ab936ae0ebcce7532a7cee53d82d5dfe9df58a",
+    "backend/scripts/exact_import/table2_exact.slurm": "9cc174617c0a4310b248e73563e419ce833d6c8ef36822f7ff3becf7c324ac3c",
+    "backend/scripts/exact_import/macro_import.py": "3ab91cc16ab2408020998ecaa03ea0e4384759c55f32d9e456e9f6e5f36e88d2"
+  },
+  "no_generation_or_ppa_parameter_change": true,
+  "inputs_reused_without_new_samples": true,
+  "probe_sha256": "13c152ed29bc3495de8b000966d5e5430c70eac55a1e72d6ead979f21c5857a8"
+}

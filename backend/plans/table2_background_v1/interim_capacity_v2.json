@@ -1,0 +1,160 @@
+{
+  "plans": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+      "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+      "array_job": "1788030"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/tasks.jsonl",
+      "sha256": "bcd6c7e015570021a028e3c7cc87df34a32174c5e943bb9799a7db4a6234a5d1",
+      "array_job": "1788063"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/tasks.jsonl",
+      "sha256": "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec",
+      "array_job": "1788071"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+      "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+      "array_job": "1788077"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/tasks.jsonl",
+      "sha256": "b0eb4bc39d868e9808d2b7a8a6819a22ddf443e3bcc05c7cfe78d73ca28fc9bf",
+      "array_job": "1788096"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/tasks.jsonl",
+      "sha256": "d112fbaa611e13e252d3e29f50022721bad638ec0d690f9aea9a12f48c76b555",
+      "array_job": "1788211"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_1/tasks.jsonl",
+      "sha256": "a2bf72f65184f11670f35fcb578fa992a322fd64fcac471aa8588814ba9043c0",
+      "array_job": "1788259"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_1/tasks.jsonl",
+      "sha256": "84182095248e92253cfca3230c990d9b77acdd02a64348a6e1544b4b4d15bd14",
+      "array_job": "1788262"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/tasks.jsonl",
+      "sha256": "296b6dbb9ea20a34e7535b345a0565e2be971960ddb16101d878b24ee0a871b5",
+      "array_job": "1788378"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/tasks.jsonl",
+      "sha256": "ccc842b1d204fe4b9dcce67ef02ee184d810f45680270cba65c054c6e14e7841",
+      "array_job": "1788405"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/tasks.jsonl",
+      "sha256": "3948ed6e16cc671ead47a0a4289a69de34a962357b4e51f39d59b5a01ca258c8",
+      "array_job": "1788408"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/tasks.jsonl",
+      "sha256": "bd5ea23b608ef3150fd01799cefe1df24af19bd32480aa2a827d809134907101",
+      "array_job": "1788482"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane136_1/tasks.jsonl",
+      "sha256": "6f4791153382f86769eb2b534a64f0701c028197f7da2dbd93fa692079b02e90",
+      "array_job": "1788519"
+    }
+  ],
+  "infrastructure_retries": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/retry_binding.json",
+      "sha256": "d127593d4e00c7c33b33b10ee57e6f42acb6862e4ae67183205c058029892107"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_0.json",
+      "sha256": "10076a684fa1911653fcd6630f733ffd6786b29eaa15920979d1f7b5515a58ae"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+      "sha256": "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/retry_binding.json",
+      "sha256": "7a83ba9c9226090d314f78d65f5501cf513c4b639e2b3fc2ee86e9456ac25248"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+      "sha256": "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_1/retry_binding.json",
+      "sha256": "22f752ca744b448a55cb1a27ce3a9e3e621e397e293ee645ffdfd18ce642d501"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_1/retry_binding.json",
+      "sha256": "17df5f327e86e16239fd8226752673639b78ff109ce465e6991e02a1320ad175"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/retry_binding.json",
+      "sha256": "5a3d0b9752cff8c56086551200dfcc601dff3e69ee89f756180fe073cb1d954b"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/retry_binding.json",
+      "sha256": "b1202702a2bc0e881843845caab0bcd8b01820986fb4836ee322b7e0b7585e04"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/retry_binding.json",
+      "sha256": "b2118cf8fa9e2f6d7b88e2886bddd782d8db2662ad45f8d12d0891cc3834563e"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/retry_binding.json",
+      "sha256": "0cc8a5085896d47de9d82cfbb68ea9ab58885b5da0abb13fe0a514a58369a0bb"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane136_1/retry_binding.json",
+      "sha256": "0660dcd37bf9cfe3f5900eac7d593cf4df46c904c7d10147039338f3ce9778f2"
+    }
+  ],
+  "source_sha256": {
+    "analysis/summarize_table2_methods.py": "fea2542ee2690284acca63619cb7c0a97a5b98906e03bff6749f359717111c7f",
+    "analysis/summarize_table2_generated.py": "c88c6fc751985581904bf91eea951cb2f710056cab6152c2a120957113a5dcbd",
+    "backend/scripts/compare_table2_method.py": "c84aba5507cb5e93f38b7dc99259e45cd2285c8942e957a28e5cf97dcb9d31a3",
+    "analysis/run_table2_method_audit.py": "72934ab145b5ba74636d3a424c42bc64291c4029314a036775f70931ee6948bb",
+    "analysis/watch_table2_batch_capacity.py": "eabe296ca8df26c315ee2ccee33ac1bae578f7c808306c5758b636fe9586d6a2",
+    "analysis/summarize_table2_methods_capacity.py": "d1b3076961f1350f0251528ca951e05acb3badc9e964002a74431b70d54c6255",
+    "analysis/run_table2_capacity_audit.py": "1e956ab64a72a34e6a6b63c6be6b46d83062b730f8952c9a29ca9252f5670daf"
+  },
+  "additional_accounting_jobs": [
+    "1788033",
+    "1788064",
+    "1788065",
+    "1788066",
+    "1788072",
+    "1788073",
+    "1788074",
+    "1788075",
+    "1788078",
+    "1788062",
+    "1788043",
+    "1788097",
+    "1788098",
+    "1788212",
+    "1788213",
+    "1788260",
+    "1788261",
+    "1788263",
+    "1788264",
+    "1788379",
+    "1788380",
+    "1788406",
+    "1788407",
+    "1788409",
+    "1788410",
+    "1788483",
+    "1788484",
+    "1788520",
+    "1788521"
+  ],
+  "output": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/source_era_capacity_progress_v2"
+}

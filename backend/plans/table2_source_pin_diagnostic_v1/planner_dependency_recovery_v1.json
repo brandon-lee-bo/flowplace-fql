@@ -1,0 +1,29 @@
+{
+  "time": 1792240056.2835896,
+  "reason": "Our temporary setup hold became JobHeldAdmin after dependency rebinding; user release failed. Cancel the unstarted self-held planning job and submit the identical plan with repaired dependencies. No resource or priority override.",
+  "old_state": "JobId=1788548 JobName=table2_prepare_source_controls\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=0 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=JobHeldAdmin Dependency=afterok:1788546(unfulfilled),afterok:1788517(unfulfilled),afterok:1788399(unfulfilled)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:05:00 TimeMin=N/A\n   SubmitTime=2026-10-17T20:19:43 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T20:19:43 Scheduler=Main\n   Partition=cpu-scavenger AllocNode:Sid=ai0:266152\n   ReqNodeList=(null) ExcNodeList=infinite-frontier,quantum\n   NodeList=\n   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=1,mem=1G,node=1,billing=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/analysis/prepare_table2_source_controls.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_prepare_source_controls_1788548.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_prepare_source_controls_1788548.log\n   TresPerTask=cpu=1\n   \n\n",
+  "commands": [
+    {
+      "command": [
+        "scancel",
+        "1788548"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--dependency=afterok:1788546:1788517:1788399",
+        "analysis/prepare_table2_source_controls.slurm",
+        "9a7c1998a721739f84819c8c22a10239c64f55e4a827d6ac00db47f74fde2c23"
+      ],
+      "returncode": 0,
+      "stdout": "1788551\n",
+      "stderr": ""
+    }
+  ],
+  "replacement_job": "1788551"
+}

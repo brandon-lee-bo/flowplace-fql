@@ -1,0 +1,40 @@
+{
+  "status": "committed",
+  "source_run": "table2_source_era_flowplace_v1_bp_infra_retry2",
+  "source_physical_job": "1788071_1",
+  "failed_create_job": "1788074",
+  "cancelled_never_satisfied_commit_job": "1788075",
+  "reason": "Source fullflow succeeded; archive creation refused because uncompressed source plus 8 GiB reserve exceeds current quota remaining. No source artifacts were removed. Recover archive only after other successful results have committed their verified archives.",
+  "created_unix": 1792226258.519285,
+  "scheduler_snapshot": "JobID|State|ExitCode\n1788071_1|COMPLETED|0:0\n1788074|FAILED|1:0\n1788075|CANCELLED by 1655801170|0:0\n",
+  "staged_create_job": "1788200",
+  "create_args": [
+    "--job-name=t2_bp_staged_create",
+    "backend/scripts/archive_table2_staged.slurm",
+    "create",
+    "--run",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_bp_infra_retry2",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_infra_retry2/scratch_staged_v2"
+  ],
+  "archive": "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_infra_retry2/scratch_staged_v2",
+  "helper_sha256": "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+  "updated_unix": 1792226433.2501967,
+  "staged_commit_job": "1788201",
+  "commit_args": [
+    "--job-name=t2_bp_staged_commit",
+    "--dependency=afterok:1788200",
+    "backend/scripts/archive_table2_staged.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp_infra_retry2/scratch_staged_v2",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_bp_infra_retry2/scratch_staged_v2",
+    "--confirm-remove-bulk-backup"
+  ],
+  "create_actual_time_limit": "00:05:00",
+  "commit_actual_time_limit": "00:05:00",
+  "archive_manifest_sha256": "9415fc70c1920047f400855be02333c68e570ab4d64be4934bfa061759de8b86",
+  "commit_verified_unix": 1792226580.8093731,
+  "commit_state_sha256": "a6ef92d3b289e0c9678d26e8bcd639d9bb3797652254f96b43f88efe9bdd1662"
+}

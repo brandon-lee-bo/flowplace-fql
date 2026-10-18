@@ -1,0 +1,15 @@
+{
+  "job": "1788410",
+  "command": [
+    "--dependency=afterok:1788409",
+    "backend/scripts/archive_table2_artifacts.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_ariane133_2/automatic",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_ariane133_2/automatic",
+    "--confirm-remove-bulk-backup"
+  ],
+  "name": "t2auto_dreamplace_ariane133_2_commit",
+  "time": 1792231837.100432
+}

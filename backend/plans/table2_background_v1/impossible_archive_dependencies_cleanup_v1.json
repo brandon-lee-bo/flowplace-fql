@@ -1,0 +1,40 @@
+{
+  "time": 1792235656.1427064,
+  "canceled": [
+    {
+      "job": "1788451_1",
+      "before": "1788451_1|PENDING|DependencyNeverSatisfied",
+      "reason": "Only impossible pending archive dependency; physical and original evidence unchanged"
+    },
+    {
+      "job": "1788422",
+      "before": "1788422|PENDING|DependencyNeverSatisfied",
+      "reason": "Only impossible pending archive dependency; physical and original evidence unchanged"
+    },
+    {
+      "job": "1788380",
+      "before": "1788380|PENDING|DependencyNeverSatisfied",
+      "reason": "Only impossible pending archive dependency; physical and original evidence unchanged"
+    },
+    {
+      "job": "1788288",
+      "before": "1788288|PENDING|DependencyNeverSatisfied",
+      "reason": "Only impossible pending archive dependency; physical and original evidence unchanged"
+    },
+    {
+      "job": "1788218_3",
+      "before": "1788218_3|PENDING|DependencyNeverSatisfied",
+      "reason": "Only impossible pending archive dependency; physical and original evidence unchanged"
+    }
+  ],
+  "followups": [
+    {
+      "job": "1788289",
+      "before": "table2_staged_archive|PENDING|DependencyNeverSatisfied",
+      "time": 1792239653.3940604,
+      "returncode": 0,
+      "stderr": "",
+      "reason": "Commit dependency was canceled after the original preempted attempt; verified replacement archival already completed."
+    }
+  ]
+}

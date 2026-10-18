@@ -1,0 +1,15 @@
+{
+  "created_unix": 1792230076.0482936,
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterany:1788279",
+    "analysis/finish_table2_original_issue.slurm",
+    "e1aa130adfcd89ced880c207ce9f3033f47f1000084a5afcaf7a08d4f074b028",
+    "e17ff4a828b1daf6b1acfcebcb93d31c29bd786cae521348ff6082e0d43f7c8e"
+  ],
+  "job": "1788349",
+  "source_sha256": "e1aa130adfcd89ced880c207ce9f3033f47f1000084a5afcaf7a08d4f074b028",
+  "writer_sha256": "e17ff4a828b1daf6b1acfcebcb93d31c29bd786cae521348ff6082e0d43f7c8e",
+  "note": "Publishes complete original PPA table while retaining macro-geometry FAILED status; does not grant baseline qualification."
+}

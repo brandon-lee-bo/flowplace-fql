@@ -1,0 +1,19 @@
+{
+  "time": 1792228730.8257458,
+  "command": [
+    "srun",
+    "--jobid=1788214",
+    "--overlap",
+    "--exact",
+    "--nodes=1",
+    "--ntasks=1",
+    "--cpus-per-task=1",
+    "python3",
+    "-c",
+    "import pathlib,json; p=pathlib.Path('/proc/1305973'); print(json.dumps({'pid':1305973,'cwd':str((p/'cwd').resolve()),'cmd':(p/'cmdline').read_bytes().decode().replace(chr(0),' '),'stat':(p/'stat').read_text(),'status': '\\n'.join(x for x in (p/'status').read_text().splitlines() if x.startswith(('State:','VmRSS:','Threads:','Cpus_allowed_list:')))},indent=2))"
+  ],
+  "returncode": 0,
+  "stdout": "{\n  \"pid\": 1305973,\n  \"cwd\": \"/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/thirdparty/OpenROAD-flow-scripts\",\n  \"cmd\": \"/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad -exit -no_init -threads 8 -no_splash /fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/thirdparty/OpenROAD-flow-scripts/scripts/cts.tcl -metrics /fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_dreamplace_v1_ariane136/orfs_work/logs/nangate45/ariane136/eval/4_1_cts.json \",\n  \"stat\": \"1305973 (openroad) R 1305971 1250165 1250121 0 -1 4194560 2179059 1642 0 0 180157 259 4 0 20 0 3 0 146681771 2957213696 533161 17179869184 94805326671872 94805365929813 140735528612288 0 0 0 0 4096 1256 0 0 0 17 233 0 0 0 0 0 94805397567376 94805399330800 94805413875712 140735528621563 140735528621981 140735528621981 140735528656782 0\\n\",\n  \"status\": \"State:\\tR (running)\\nVmRSS:\\t 2136160 kB\\nThreads:\\t3\\nCpus_allowed_list:\\t41-44,233-236\"\n}\n",
+  "stderr": "",
+  "scope": "Read-only process inspection inside the existing Slurm allocation; no placement process changed."
+}

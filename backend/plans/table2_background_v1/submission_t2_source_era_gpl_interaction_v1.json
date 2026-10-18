@@ -1,0 +1,16 @@
+{
+  "job": "1788249",
+  "command": [
+    "--array=0",
+    "--nodelist=enterprise",
+    "--mem=16G",
+    "--time=02:30:00",
+    "--dependency=afterok:1788239",
+    "--export=ALL,FLOWPLACE_TABLE2_OPENROAD_EXE=/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+    "backend/scripts/table2_fresh.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_paper_gpl_bp_fe_v1/tasks.jsonl",
+    "c901180018cb40eff90174253cb5b4ad9ceb4a7b983317aa880cdda568c9fab9"
+  ],
+  "name": "t2_source_era_gpl_interaction_v1",
+  "time": 1792227880.4101996
+}

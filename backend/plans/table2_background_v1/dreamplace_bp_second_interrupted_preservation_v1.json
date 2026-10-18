@@ -1,0 +1,42 @@
+{
+  "created_unix": 1792231335.090218,
+  "old_job": "1788259_0",
+  "replacement_job": "1788378_0",
+  "create_job": "1788385",
+  "create_command": [
+    "sbatch",
+    "--parsable",
+    "--mem=12G",
+    "--exclude=enterprise",
+    "backend/scripts/archive_interrupted_table2_staged.slurm",
+    "create",
+    "--run",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_bp_1",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_1/interrupted_preservation_v1",
+    "--retry-binding",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/retry_binding.json",
+    "--retry-binding-sha256",
+    "5a3d0b9752cff8c56086551200dfcc601dff3e69ee89f756180fe073cb1d954b"
+  ],
+  "commit_job": "1788386",
+  "commit_command": [
+    "sbatch",
+    "--parsable",
+    "--mem=12G",
+    "--exclude=enterprise",
+    "--dependency=afterok:1788385",
+    "backend/scripts/archive_interrupted_table2_staged.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_1/interrupted_preservation_v1",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_bp_1/interrupted_preservation_v1",
+    "--confirm-remove-bulk-backup",
+    "--retry-binding",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/retry_binding.json",
+    "--retry-binding-sha256",
+    "5a3d0b9752cff8c56086551200dfcc601dff3e69ee89f756180fe073cb1d954b"
+  ],
+  "classification": "superseded_infrastructure_interruption_not_a_success"
+}

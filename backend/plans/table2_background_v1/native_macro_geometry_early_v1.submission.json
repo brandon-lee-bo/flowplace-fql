@@ -1,0 +1,10 @@
+{
+  "job": "1788302",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "backend/plans/table2_background_v1/native_macro_geometry_early_v1.slurm"
+  ],
+  "script_sha256": "c09e0a65d2caf7ad963adf4eee222e4fa017666cd835de6122187fe77432beba",
+  "created_unix": 1792229067.4908853
+}

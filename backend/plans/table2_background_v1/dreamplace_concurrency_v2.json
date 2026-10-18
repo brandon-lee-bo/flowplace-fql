@@ -1,0 +1,11 @@
+{
+  "time_unix": 1792226580.7907867,
+  "array_job": "1788077",
+  "old_throttle": 2,
+  "new_throttle": 4,
+  "reason": "Verified BP archive commit recovered durable headroom. All task inputs, 8 threads, 16G memory and 2h30 limits remain unchanged; only pending task concurrency is increased. Budget allows four DREAMPlace tasks plus FlowPlace recovery within 64 cores/512G per-user EDA-node limit.",
+  "quota_remaining_bytes": 17475515641,
+  "enterprise_node_before": "NodeName=enterprise Arch=x86_64 CoresPerSocket=80  CPUAlloc=186 CPUEfctv=320 CPUTot=320 CPULoad=64.81 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=enterprise NodeHostName=enterprise Version=24.11.4 OS=Linux 5.14.0-687.31.1.el9_8.x86_64 #1 SMP PREEMPT_DYNAMIC Wed Jul 29 13:22:17 UTC 2026  RealMemory=789504 AllocMem=720996 FreeMem=683517 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=eda,service,cpu-scavenger  BootTime=2026-09-30T17:21:39 SlurmdStartTime=2026-09-30T17:22:02 LastBusyTime=2026-09-30T18:47:16 ResumeAfterTime=None CfgTRES=cpu=320,mem=771G,billing=320 AllocTRES=cpu=186,mem=720996M CurrentWatts=0 AveWatts=0 \n",
+  "status": "applied",
+  "scheduler_after": "             JOBID        STATE         TIME                    NODELIST(REASON)\n   1788077_[3-5%4]      PENDING         0:00                              (None)\n         1788077_2      RUNNING         7:47                          enterprise\n         1788077_1      RUNNING        18:47                          enterprise\n"
+}

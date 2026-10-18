@@ -1,0 +1,23 @@
+{
+  "job": "1788095",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/watch_table2_batch.slurm"
+  ],
+  "time": 1792223957.8533585,
+  "policy": "All12 tasks submitted; same-input infrastructure retries only, scavenger+enterprise, archive and final audit.",
+  "scheduling_changes": {
+    "FlowPlace_array_throttle": 4,
+    "DREAMPlace_array_throttle": 2,
+    "DREAMPlace_artificial_dependency_removed": true,
+    "cancelled_superseded_final_audit": "1788085"
+  },
+  "pending_node_request_cleared_for_supervisor": true,
+  "confirmed_running_node": "blue-space",
+  "cancelled_impossible_archive_jobs": [
+    "1788072",
+    "1788073"
+  ],
+  "last_verified_unix": 1792224050.5106723
+}

@@ -345,3 +345,118 @@ teacher 原始路径已有中间硬合法化，不额外增加投影。
 - `analysis/artifacts/cost_final_v1/`：最终Slurm申请资源快照，包含失败成本；
   这是保留的 CPU/GPU 时间，不是实际利用率、电耗或实验总墙钟时间。
 - `docs/completion_audit.md`：原始目标逐项完成状态及证据入口。
+
+
+## 2026-10-17 晚：重新学习行为 flow 的接入试验
+
+用户暂停 Table 2 后授权仔细尝试 FQL。这里是后续新实验，与前文已结束的
+缓存 teacher 蒸馏分开记录；原先负面结果和失败均保留。
+
+这次补齐了原 FQL 中的重要组成：先用离线 raw proposal 做 flow matching
+训练行为 flow，再不断采样新的 Gaussian noise，把同噪声对应的行为 flow
+输出蒸馏给一步策略。策略同时接受 Q 梯度，梯度不穿过多步积分或离散合法化。
+仍是单电路 bp_fe、一次动作生成全部坐标的终止任务，网络为 MLP；不声称
+已把原版 FlowPlace 的图网络完整替换，也不测试跨电路泛化或多步 Bellman 学习。
+
+3 个种子的训练 1788584 已成功。新 BC 学生的验证坐标 MSE 分别为
+0.00574、0.00860、0.00525。与旧硬投影教师的蒸馏相比，这个目标更容易学，
+但教师、先验和训练流程同时改变，不能把差异单独归因于某一项改动。
+全部新宏候选均通过独立几何检查。32 个同电路 validation noises 上，
+3-seed mean macro HPWL 如下；它们是宏代理目标，不是布线 PPA。
+
+| 方法 | 宏 HPWL，缓存坐标单位 |
+|---|---:|
+| 原始 FlowPlace cached teacher，一份 32-noise 参考 | 80,861.57 |
+| 新 learned behavior flow，3-seed mean | 76,006.65 |
+| 一步 BC，3-seed mean | 76,048.26 |
+| FQL alpha=1，3-seed mean | 67,375.81 |
+| FQL alpha=10，3-seed mean | 74,987.85 |
+| FQL alpha=100，3-seed mean | 75,959.02 |
+
+强 Q 引导的宏 critic 在策略选择分布上仍有外推问题，例如部分 seed 训练时
+预测出正 reward，而实际 reward 定义始终非正。因此这里的代理目标下降
+不能作为可靠后端优化证据。
+
+另用已有 96 个真实 GRT 标签诊断 critic，只在 64 个 TRAIN 布局、32 个
+噪声家族上做分组五折 CV 选 ridge 惩罚，在原 16 个 validation 布局上报告
+结果；没有读取 heldout 预测，也没有把验证数据重新称为独立最终测试。
+raw physical 的 17 个特征含 HPWL、面积加权几何、边界/重叠和软密度。
+验证 reward MAE 为 0.025367，对照 TRAIN 常数为 0.039135，降低约 35.2%；
+Spearman 为 0.7265，但 TRAIN CV Spearman 仅 0.3200，信号仍有限。
+executed-layout 表示虽也报告，不能对离散合法化直接求梯度。
+这些指标衡量布线线长 reward 的预测，不是功耗预测，也不是实际线长降幅。
+
+真实后端对照固定 3 seeds × 2 noises（192/193）× 两方法，共 12 个候选。
+两方法从相同 BC 检查点出发，均继续训练 1500 步；FQL 使用固定 alpha=1，
+critic 和行为 flow 冻结。不按 Q 选样，不用真实结果更改 alpha/seed/布局。
+12/12 DEF 导出都通过独立宏几何和舍入检查；这不保证后续物理流程成功。
+
+<!-- fresh-physical-result: completed -->
+**真实 GRT 已全部完成并复查：12/12 成功，无物理失败，1 次同输入抢占恢复。**
+原始报告重读确认 12 例共用同一 physical-flow revision；Q 训练与新评估的工具、
+设计约束、工艺配置、线程数和报告方式一致。以下为完整预定样本，未挑 seed。
+
+| 方法 | 实测布局数 | 平均 GRT rWL，µm | 平均 WNS，ns | 平均 TNS，ns |
+|---|---:|---:|---:|---:|
+| 原 FlowPlace + 数据采集时再合法化，已有同两 noise 参考 | 2 | 2,430,166.00 | -0.429225 | -238.2330 |
+| 新行为 flow 的一步 BC continuation，3 seeds × 2 noises | 6 | 2,307,378.50 | -0.355149 | -196.9770 |
+| 同起点、同预算，加真实 GRT Q 引导 | 6 | 2,286,268.67 | -0.371951 | -163.7235 |
+| 已有 TRAIN 64 布局中最小 rWL 的固定布局 | 1 | 2,159,262.00 | -0.379821 | -153.0360 |
+
+两份 teacher 参考只计两次测量，没有复制成六个独立重复。它包含数据采集时
+追加的最终合法化，与原始 FlowPlace 原样输出、Table 2 released DEF 结果
+区分。固定最优布局只计一次，选择成本为 64 个 TRAIN 后端标签及 32 个父
+teacher noise 家族；新策略另外用了 192 份 TRAIN teacher/noise 数据及训练。
+
+Q 引导相对匹配 BC 的平均 rWL 降约 **0.915%**；逐配对改善比例的平均为
+0.857%，两者定义不同。6 对中 4 对线长改善，2 对恶化；只有 2 对 WNS 改善。
+逐 seed 的平均线长分别为：BC 2,269,410 / 2,369,662 / 2,283,063.5；
+FQL 2,318,702.5 / 2,292,641 / 2,247,462.5 µm。因此收益不稳定：seed0
+反而更差。平均 WNS 变差，TNS 改善，功耗略升（0.168513→0.169021 W），
+标准单元面积几乎相同（60,312.63→60,312.23 µm²）。不能写成 PPA 全面提升。
+相对两份 teacher 参考的差异也不能全归于 Q：BC 已有明显变化，而 Q 的
+额外增益很小。六个 FQL 候选的最低 rWL 为 2,185,930 µm，仍未超过 TRAIN
+固定最优布局；单电路学习策略优于简单复用的价值尚未建立。
+
+独立 NumPy 特征实现重算了 actor Q，并验证与保存的 Torch Q 一致。Q 对
+6 个 FQL 候选的 reward MAE 为 **0.038308**，Spearman **-0.02857**；对
+6 个 BC 候选的 MAE 为 0.023153，Spearman -0.42857。与缓存 validation
+上的 MAE 0.025367、Spearman 0.7265 不同，策略实际选择的输入上排序仍
+不可靠。样本很少、共享两个噪声家族，这些相关性只作诊断；不能断言所有
+设计上的 Q 都失效。标准化特征距离也仅为描述，不能当作校准的不确定性。
+
+结论：新的行为 flow 与 fresh-noise 一步蒸馏机制可以跑通；当前小样本
+Q 引导有有限平均线长收益，但不能建立稳健的后端优势。下一步优先研究
+物理先验与保守 Q、策略分布上的校准，再考虑图网络、多电路和新的封存
+测试。没有启动额外训练、后端扩张或 heldout；Table 2 仍保持暂停。
+
+最终原始报告复查和抢占绑定位于候选目录 `backend_report_v2/`。其最终
+aggregate 阶段的 1788998 因保留字段冲突退出：探索性计划误用保留键
+`physical_failure_policy` 存储文字，严格汇总器要求该键是另一套 48-case
+实验的策略哈希绑定。失败记录原样保留，没有放宽汇总检查。
+兼容汇总 **1789015 COMPLETED 0:0** 在独立 `backend_report_v3/` 中保留
+并绑定原计划，只把描述键重命名为 `physical_failure_note`，所有科学字段
+逐项还原相等后走严格 12 例全成功审计。1789016/1789017/1789018 的完整
+配对报告、Q 校准和已有 teacher 参考比较均以 0:0 完成。此前依赖失败汇总
+而未启动的 1788999/1789003/1789014 已取消，不留下不可满足的后台任务。
+
+最终证据：`backend_report_v3/aggregate/report.json`、
+`backend_report_v3/compatibility_proof.json`、
+`/fact_data/bohanli/flowplace_fql/fresh_flow_full_summary_v1/summary.json`、
+`/fact_data/bohanli/flowplace_fql/physical_selection_diagnostic_v1/report.json`、
+`/fact_data/bohanli/flowplace_fql/fresh_reference_comparison_v1/report.json`。
+
+
+恢复记录：1788588 因容器配额根目录挂载错误，在创建结果前退出；修复绑定
+后相同候选由 1788685 执行。1788685_0 被 Slurm PREEMPTED，原 manifest/log
+保留，仅补跑同输入 1788997；它不是新候选，也不是为了更好的质量重跑。
+原始报告重读、恢复绑定、完整 12 分母汇总为 1788998。
+
+证据入口：`fql/fresh_flow_plan_v2.json`、`fql/physical_actor_plan_v1.json`、
+`fql/physical_preemption_plan_v1.json`；训练结果位于
+`/fact_data/bohanli/flowplace_fql/fresh_flow_pilot_1788584/`，物理 critic 位于
+`/fact_data/bohanli/flowplace_fql/physical_critic_1788582/`，12 个候选位于
+`/fact_data/bohanli/flowplace_fql_backend/fql_physical_actor_1788587/`。
+最终配对报告目标为 `/fact_data/bohanli/flowplace_fql/fresh_flow_full_summary_v1/`，
+策略所选布局的 Q 校准目标为
+`/fact_data/bohanli/flowplace_fql/physical_selection_diagnostic_v1/`。

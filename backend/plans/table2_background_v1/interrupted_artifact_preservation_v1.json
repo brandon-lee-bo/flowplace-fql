@@ -1,0 +1,113 @@
+{
+  "status": "completed",
+  "created_unix": 1792227560.748326,
+  "helper_sha256": "69c9bdd66c95889f4317d7207e475f222f6fde26b266130753422c8134b0ec1a",
+  "scope": "Only superseded PREEMPTED attempts with frozen identical-input retry bindings and no final metrics. Preserve full durable archives, all original manifests/logs/reports, and failure classification. Select large stopped artifacts by size, never by PPA.",
+  "attempts": [
+    {
+      "run_id": "table2_source_era_flowplace_v1_bp",
+      "binding": {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+        "sha256": "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+      },
+      "create_job": "1788236",
+      "commit_job": "1788237",
+      "create_args": [
+        "backend/scripts/archive_interrupted_table2_staged.slurm",
+        "create",
+        "--run",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_bp",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp/interrupted_preservation_v1",
+        "--retry-binding",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+        "--retry-binding-sha256",
+        "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+      ],
+      "commit_args": [
+        "--dependency=afterok:1788236",
+        "backend/scripts/archive_interrupted_table2_staged.slurm",
+        "commit",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp/interrupted_preservation_v1",
+        "--scratch-dir",
+        "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_bp/interrupted_preservation_v1",
+        "--confirm-remove-bulk-backup",
+        "--retry-binding",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+        "--retry-binding-sha256",
+        "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+      ],
+      "archive": "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp/interrupted_preservation_v1"
+    },
+    {
+      "run_id": "table2_source_era_flowplace_v1_ariane133",
+      "binding": {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+        "sha256": "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+      },
+      "create_job": "1788238",
+      "commit_job": "1788239",
+      "create_args": [
+        "--dependency=afterok:1788237",
+        "backend/scripts/archive_interrupted_table2_staged.slurm",
+        "create",
+        "--run",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_flowplace_v1_ariane133",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_ariane133/interrupted_preservation_v1",
+        "--retry-binding",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+        "--retry-binding-sha256",
+        "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+      ],
+      "commit_args": [
+        "--dependency=afterok:1788238",
+        "backend/scripts/archive_interrupted_table2_staged.slurm",
+        "commit",
+        "--archive-dir",
+        "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_ariane133/interrupted_preservation_v1",
+        "--scratch-dir",
+        "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_flowplace_v1_ariane133/interrupted_preservation_v1",
+        "--confirm-remove-bulk-backup",
+        "--retry-binding",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+        "--retry-binding-sha256",
+        "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+      ],
+      "archive": "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_ariane133/interrupted_preservation_v1"
+    }
+  ],
+  "recovery": {
+    "job": "1788246",
+    "source_failed_commit": "1788237",
+    "verified_pre_publication_state": "copying, backup_paths empty; original results/objects are real directories",
+    "new_attempt": "interrupted_preservation_recover_v2",
+    "memory_GiB": 8,
+    "old_archive_and_partial_scratch_retained": true
+  },
+  "ariane_memory_GiB": 12,
+  "updated_unix": 1792227759.9376583,
+  "verified_commits": [
+    {
+      "run_id": "table2_source_era_flowplace_v1_bp",
+      "commit_job": "1788246",
+      "archive": "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_bp/interrupted_preservation_recover_v2",
+      "source_bytes": 2749925034,
+      "archive_bytes": 351359757,
+      "archive_manifest_sha256": "b42e96c8f17f3423737fb37b278932982ef7cc8340e06c2b7c4e00138b0e06b1",
+      "commit_state_sha256": "3fd487e02dde0b1ef72602fbebb0654b6a56cd42f274733e50aabc55edc1e042"
+    },
+    {
+      "run_id": "table2_source_era_flowplace_v1_ariane133",
+      "commit_job": "1788239",
+      "archive": "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_flowplace_v1_ariane133/interrupted_preservation_v1",
+      "source_bytes": 4059654906,
+      "archive_bytes": 744413106,
+      "archive_manifest_sha256": "94ded9c6e8ad1c4610d9552d48542ccc48103127c8d629ce9405ac9f2b8426f0",
+      "commit_state_sha256": "c786a245fabbf502e0ed1c809f338f83de2b3ebcd7bb6eae4df2ef8a1495f7da"
+    }
+  ],
+  "completed_unix": 1792227935.5679579,
+  "source_bytes_removed": 6809579940
+}

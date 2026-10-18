@@ -1,0 +1,50 @@
+{
+  "time": 1792241669.5337,
+  "record": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_cd519_source_v1/runtime_path_1788564",
+  "reason": "Historical source appends /opt/or-tools to installation RPATH; supply the matching SDK directory first through the CMake cache. No source or algorithm patch.",
+  "commands": [
+    {
+      "command": [
+        "scontrol",
+        "requeue",
+        "1788558"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788561",
+        "Dependency=afterok:1788558"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788559",
+        "Dependency=afterok:1788558:1788561:1788517:1788399"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788555",
+        "Dependency=afterok:1788558:1788517:1788399"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

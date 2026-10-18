@@ -1,0 +1,29 @@
+{
+  "time": 1792239583.0438488,
+  "planner_job": "1788548",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:1788546:1788517:1788399",
+    "analysis/prepare_table2_source_controls.slurm",
+    "9a7c1998a721739f84819c8c22a10239c64f55e4a827d6ac00db47f74fde2c23"
+  ],
+  "planner_sha256": "9a7c1998a721739f84819c8c22a10239c64f55e4a827d6ac00db47f74fde2c23",
+  "controls": [
+    {
+      "tool": "dec2024",
+      "design": "bp"
+    },
+    {
+      "tool": "cd519",
+      "design": "bp_fe"
+    },
+    {
+      "tool": "cd519",
+      "design": "bp"
+    }
+  ],
+  "input": "Author released DEFs, not regenerated layouts",
+  "priority": "Run only after both twelve-row cohorts finish and the independently selected historical source builds",
+  "recipe": "Released GPL0/0, same clock/lib/netlist, eight threads, route cap4; no primary row replacement"
+}

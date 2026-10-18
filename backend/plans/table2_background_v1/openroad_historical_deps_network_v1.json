@@ -1,0 +1,13 @@
+{
+  "time": 1792240508.586197,
+  "old_job": "1788553",
+  "replacement_job": "1788556",
+  "reason": "Observed Boost transfer ETA exceeded the original 600-second per-request limit. Preserve partial bytes and resume rather than repeatedly restarting the download.",
+  "changes": [
+    "curl --continue-at -",
+    "per-request max-time 1800 seconds"
+  ],
+  "no_layout_or_algorithm_change": true,
+  "old_record": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_cd519_source_v1/historical_deps_1788553",
+  "new_record": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_cd519_source_v1/historical_deps_1788556"
+}

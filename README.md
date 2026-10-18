@@ -59,6 +59,41 @@ explains what was adapted from FQL and which hypotheses remain unproven.
 The [six-circuit comparison](analysis/artifacts/table2_released_v1/comparison.md)
 retains five completed fullflows and the released swerv DEF's overlap failure.
 
+## GitHub checkout
+
+Private repository: https://github.com/brandon-lee-bo/flowplace-fql
+
+```sh
+git clone https://github.com/brandon-lee-bo/flowplace-fql.git
+cd flowplace-fql
+```
+
+The repository includes experiment code, configuration, Slurm scripts, research
+records and the existing local commit history. Python environments, model
+weights, datasets, downloaded upstream sources and large native EDA artifacts
+remain on the server and are excluded from Git. This is a source-code snapshot,
+not a self-contained copy of the experiment data. The current study is documented
+in [the experiment record](docs/graph_fql_offline_to_online.md).
+
+For a fresh checkout, restore the official sources at the revisions recorded in
+`manifest.json`:
+
+```sh
+git clone https://github.com/lamda-bbo/flowplace.git upstream/flowplace
+git -C upstream/flowplace checkout --detach da4a10fc1a68c66dfa0ec31dd10f75b75e2e5547
+git -C upstream/flowplace rev-parse HEAD > upstream/flowplace/SOURCE_COMMIT
+git clone https://github.com/seohongpark/fql.git upstream/fql
+git -C upstream/fql checkout --detach e8cd16eb490332924dfa2492097219f181765933
+git -C upstream/fql rev-parse HEAD > upstream/fql/SOURCE_COMMIT
+```
+
+Release checkpoints and physical-design inputs must be restored separately;
+see [the baseline adapter](baseline/README.md) and
+[the backend instructions](backend/README.md). Existing job scripts contain
+FactLab paths, resource requests and references to server-local artifacts. Review
+these before submitting from another checkout; use Slurm for computation.
+Historical Table 2 controllers remain paused.
+
 ## Goal
 
 Integrate the actual FQL flow teacher, one-step actor and critic with FlowPlace's

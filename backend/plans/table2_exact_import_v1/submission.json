@@ -1,0 +1,59 @@
+{
+  "created_unix": 1792229610.0907838,
+  "plans": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/flowplace_tasks.jsonl",
+      "sha256": "9e73f228d7191e1596c08fea0a0bf0a9379b044fcb382aef82b252167669fc5d",
+      "method": "FlowPlace",
+      "array_job": "1788317",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--export=ALL,FLOWPLACE_TABLE2_OPENROAD_EXE=/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+        "backend/scripts/exact_import/table2_exact.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/flowplace_tasks.jsonl",
+        "9e73f228d7191e1596c08fea0a0bf0a9379b044fcb382aef82b252167669fc5d"
+      ],
+      "archive_array_job": "1788318",
+      "archive_command": [
+        "sbatch",
+        "--parsable",
+        "--array=0-5%1",
+        "--mem=12G",
+        "--exclude=enterprise",
+        "--dependency=aftercorr:1788317",
+        "backend/scripts/archive_table2_staged_task.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/flowplace_tasks.jsonl",
+        "9e73f228d7191e1596c08fea0a0bf0a9379b044fcb382aef82b252167669fc5d",
+        "1788317"
+      ]
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/dreamplace_tasks.jsonl",
+      "sha256": "3c07a46749130f7643d548f4c3ecf47993bfdb08b7b06cd90da9fc37e3d7a4ce",
+      "method": "DREAMPlace",
+      "array_job": "1788319",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--export=ALL,FLOWPLACE_TABLE2_OPENROAD_EXE=/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+        "backend/scripts/exact_import/table2_exact.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/dreamplace_tasks.jsonl",
+        "3c07a46749130f7643d548f4c3ecf47993bfdb08b7b06cd90da9fc37e3d7a4ce"
+      ],
+      "archive_array_job": "1788320",
+      "archive_command": [
+        "sbatch",
+        "--parsable",
+        "--array=0-5%1",
+        "--mem=12G",
+        "--exclude=enterprise",
+        "--dependency=aftercorr:1788319",
+        "backend/scripts/archive_table2_staged_task.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/dreamplace_tasks.jsonl",
+        "3c07a46749130f7643d548f4c3ecf47993bfdb08b7b06cd90da9fc37e3d7a4ce",
+        "1788319"
+      ]
+    }
+  ]
+}

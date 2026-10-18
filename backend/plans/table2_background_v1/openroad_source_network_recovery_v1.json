@@ -1,0 +1,54 @@
+{
+  "time": 1792239719.566674,
+  "reason": "OpenSTA Git clone failed early EOF, followed by an automatic large HEAD retry. Preserve records, stop only setup, then fetch sparse pinned source; no physical evaluation canceled.",
+  "actions": [
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788546"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scancel",
+        "1788539"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788546",
+        "Dependency=afterok:1788549"
+      ],
+      "time": 1792239763.8913326,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "release",
+        "1788546"
+      ],
+      "time": 1792239763.8989346,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "recovery_job": "1788549",
+  "recovery_command": [
+    "sbatch",
+    "--parsable",
+    "backend/scripts/recover_openroad_pinned_submodules.slurm"
+  ]
+}

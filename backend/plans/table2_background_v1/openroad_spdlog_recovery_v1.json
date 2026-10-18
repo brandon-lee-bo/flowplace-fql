@@ -1,0 +1,40 @@
+{
+  "time": 1792240038.5549314,
+  "dependency_job": "1788550",
+  "dependency_build_and_configuration": "succeeded; recovery guard expected PATH but CMake stored UNINITIALIZED; preserved failed guard",
+  "dependency": "spdlog v1.8.1 from historical installer",
+  "no_algorithm_source_changes": true,
+  "commands": [
+    {
+      "command": [
+        "scontrol",
+        "requeue",
+        "1788546"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "update",
+        "JobId=1788548",
+        "Dependency=afterok:1788546:1788517:1788399"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "release",
+        "1788548"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Access/permission denied for job 1788548\nslurm_suspend error: Access/permission denied\n"
+    }
+  ]
+}

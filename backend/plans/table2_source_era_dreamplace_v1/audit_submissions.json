@@ -1,0 +1,15 @@
+{
+  "interim_job": "1788084",
+  "final_job": "1788085",
+  "final_command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterany:1788030:1788063:1788071:1788077",
+    "analysis/run_table2_method_audit.slurm",
+    "--invocation",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/final_audit_invocation.json",
+    "--invocation-sha256",
+    "20b8a26d67907097474e30d3782a74d740713133c8569256a8863cd3487a81c7"
+  ],
+  "final_invocation_sha256": "20b8a26d67907097474e30d3782a74d740713133c8569256a8863cd3487a81c7"
+}

@@ -1,0 +1,56 @@
+{
+  "time_hkt": "2026-10-17T21:49:47.470517+08:00",
+  "basis": "Existing raw physical GRT ridge passed exploratory validation; fresh-flow pilot still in progress. All settings below fixed before new actor/backend outcomes.",
+  "scope": "Fixed-circuit terminal FQL-style adaptation, not exact original multi-step FQL; Table 2 remains paused.",
+  "input_pilot_job": "1788584",
+  "input_critic_job": "1788582",
+  "source_files": {
+    "fql/physical_ridge.py": "f0b20bf2562bf69176f23ea00872e4d4809e964dca47fee97a81676ff6c64a32",
+    "fql/train_physical_actor.py": "2e6f9bde4c95fe97564babb2230fadfcc930c59e454dbcac6438f7fa83e38879",
+    "fql/train_physical_actor.slurm": "cd8721a42ede8b8f852a568738423b9372761b206c50a11989c6420815e96b70",
+    "fql/physical_backend.slurm": "66b3e46bb30b8d8db1d38978080c41bf90fab3a9296856cb1205f2cd02215429",
+    "fql/test_physical_critic.py": "85322c4c619762c1e9293309ced31c8a7c87fece5c251d3ef935b7a2cc13ce0d",
+    "fql/finish_physical_backend.slurm": "7a7d642bc9dd8fca974087f9f9bb9f85675998caa7f0c2d43f7976e2c2cea021"
+  },
+  "train": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "steps": 1500,
+    "lr": 0.0003,
+    "batch": 128,
+    "teacher": "frozen learned behavior flow from macro pilot",
+    "critic": "frozen raw-proposal 17-feature ridge with TRAIN-family CV chosen penalty",
+    "initial_actor": "same macro pilot distill_only checkpoint for both methods",
+    "variants": [
+      "BC continuation alpha1, no Q",
+      "FQL-style continuation alpha1, GRT Q"
+    ],
+    "fresh_gaussian_noise": true
+  },
+  "new_backend": {
+    "requests": 12,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "families": [
+      192,
+      193
+    ],
+    "methods": [
+      "bc_continued",
+      "fql_physical_alpha_1"
+    ],
+    "stage": "global_route_only",
+    "tool": "same ORFS 26Q4 and released physical configuration as the existing GRT training labels, not Table 2 source-era diagnostic tool",
+    "max_concurrent": 2,
+    "failure": "Report all twelve outcomes; no survivor-only method mean; preserve physical failures and no silent scientific changes",
+    "artifact_storage": "fact_data bulk; do not overwrite existing results"
+  },
+  "selection": "None. One alpha, fixed final iterations and fixed first two existing validation families. No new heldout evaluation.",
+  "limits": "Exploratory single-design small-sample assessment. Macro HPWL and predicted Q cannot establish PPA improvement."
+}

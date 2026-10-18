@@ -1,0 +1,17 @@
+{
+  "job": "1788251",
+  "command": [
+    "--mem=4G",
+    "--exclude=enterprise",
+    "--dependency=afterok:1788250",
+    "backend/scripts/archive_table2_staged.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_paper_gpl_bp_fe_v1/staged_v1",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_paper_gpl_bp_fe_v1/staged_v1",
+    "--confirm-remove-bulk-backup"
+  ],
+  "name": "t2_source_era_gpl_commit_v1",
+  "time": 1792227880.4641433
+}

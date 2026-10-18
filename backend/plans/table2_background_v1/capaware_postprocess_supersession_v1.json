@@ -1,0 +1,41 @@
+{
+  "time": 1792231682.1930735,
+  "reason": "Supersede pending strict-only final postprocessors with a separate cap-aware posthoc pipeline. No physical flow or original evidence changed.",
+  "cancelled": [
+    {
+      "job": "1788279",
+      "before": [
+        "1788279|PENDING|Dependency"
+      ]
+    },
+    {
+      "job": "1788341",
+      "before": [
+        "1788341|PENDING|Dependency"
+      ]
+    },
+    {
+      "job": "1788349",
+      "before": [
+        "1788349|PENDING|Dependency"
+      ]
+    },
+    {
+      "job": "1788218_5",
+      "before": [
+        "1788218_5|PENDING|DependencyNeverSatisfied"
+      ]
+    },
+    {
+      "job": "1788286",
+      "before": [
+        "1788286|PENDING|DependencyNeverSatisfied"
+      ]
+    }
+  ],
+  "pending_bp_node_constraint_removed": {
+    "job": "1788378_0",
+    "before": "JobId=1788378 ArrayJobId=1788378 ArrayTaskId=0 JobName=t2auto_dreamplace_bp_2\n   UserId=bohanli(1655801170) GroupId=domain users(1655800513) MCS_label=N/A\n   Priority=428 Nice=0 Account=factlab QOS=cpu-scavenger\n   JobState=PENDING Reason=Priority Dependency=(null)\n   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=02:30:00 TimeMin=N/A\n   SubmitTime=2026-10-17T17:57:50 EligibleTime=2026-10-17T17:57:50\n   AccrueTime=2026-10-17T17:57:50\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T18:07:44 Scheduler=Backfill:*\n   Partition=cpu-scavenger AllocNode:Sid=ai1:3405350\n   ReqNodeList=enterprise ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=8,mem=16G,node=1,billing=8\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=8 MinMemoryNode=16G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)\n   Command=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts/table2_fresh.slurm\n   WorkDir=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql\n   StdErr=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_fresh_1788378_0.log\n   StdIn=/dev/null\n   StdOut=/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/logs/table2_fresh_1788378_0.log\n   TresPerTask=cpu=8\n   \n\n",
+    "reason": "Permit scheduler choice within original cpu-scavenger partition; same frozen task, resources, seed, tool and PPA settings."
+  }
+}

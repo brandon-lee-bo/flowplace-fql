@@ -1,0 +1,14 @@
+{
+  "created": "2026-10-17T15:06:31.043845+08:00",
+  "status": "frozen_awaiting_common_backend_metric_compatibility",
+  "tasks_sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+  "source_plan_sha256": "255a9e163511a8d087edc337745b5a3358336a02b7c80329e18d494be44d2c2c",
+  "selection_rule": "One original-mode global-stream seed300 FlowPlace sample per circuit, fixed before physical evaluation; no per-design seed selection.",
+  "backend_rule": "Released author flow GPL0/0/cap4, fixed source-era OpenROAD v2.0-17598-ga008522d8, same 8-thread fullflow for FlowPlace and DREAMPlace.",
+  "tool_selection_evidence": "docs/table2_orfs_version_provenance.md; nearest retained release after source-era snapshot, selected before old-tool control PPA was available.",
+  "tool_selection_not_paper_proven": true,
+  "control_pending": "1787997_0: old-tool released bp_fe, currently detailed routing; no final metrics at plan freeze.",
+  "reference_policy": "Raw final JSON canonical values, retain exact author parser output separately; final extraction compatibility must be resolved before launch.",
+  "no_algorithm_or_physical_parameters_tuned_to_paper": true,
+  "storage_policy": "Persistent results under fact_data; archive reproducible intermediate directories losslessly after verification if needed, keep raw reports/metrics/provenance durable."
+}

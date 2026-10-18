@@ -1,0 +1,14 @@
+{
+  "job": "1788406",
+  "command": [
+    "--dependency=afterok:1788405",
+    "backend/scripts/archive_table2_artifacts.slurm",
+    "create",
+    "--run",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_bp_3",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_3/automatic"
+  ],
+  "name": "t2auto_dreamplace_bp_3_arc",
+  "time": 1792231836.9823167
+}

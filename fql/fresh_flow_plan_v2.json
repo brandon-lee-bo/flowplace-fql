@@ -1,0 +1,104 @@
+{
+  "created_hkt": "2026-10-17T21:46:11.632066+08:00",
+  "scope": "User-authorized bounded FQL integration investigation; Table 2 remains user-paused",
+  "new_results_seen": "Existing-label physical critic results seen; macro pilot has not started training. Scientific macro parameters unchanged.",
+  "source_files": {
+    "fql/fresh_flow.py": "2168147ae1b79896049851aefff0d52860a04f4521a13919bf8aa25cab75b691",
+    "fql/run_fresh_flow.py": "70177b48a1de5b9296f73a5f56258c4cebcedda2ea9c16975ad5b352b2498fc2",
+    "fql/physical_critic_diagnostic.py": "ac5dc8ef6c5bc80d25860bdf2b53ba43a483e0f734c3dd5df43d23f1a1ada8b2",
+    "fql/test_fresh_flow.py": "8e768e46ef65c7ebbcb36b3e9cfd7f9c8f666450376158623111eee9fe9aa2f6",
+    "fql/test_physical_critic.py": "937de5157e8f4fc48bf502c92099c671960ea6981851718f88eee3f0b23fce96",
+    "fql/fresh_flow_pilot.slurm": "6259ce4f3c85a3e093bf9c1f483fcbc0607ffc234a91a87b7a33f98081eaea76",
+    "fql/fresh_flow_checks.slurm": "a06d5794c4b5c2e3032eb3f57577604f4a6b5e9a8520c4e8eb5a5d3f10492a85",
+    "fql/physical_critic_diagnostic.slurm": "8755475ecacf23c996d1dc7b8df6e1b1a85707213404df356dee854e26e948c1"
+  },
+  "macro_pilot": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "steps": 4000,
+    "actor_and_flow_widths": [
+      128,
+      128,
+      128
+    ],
+    "flow_steps": 10,
+    "critic": "terminal dual MLP, actual macro-only HPWL reward after same legalizer",
+    "teacher": "behavior flow trained from TRAIN raw proposals with fresh Gaussian flow matching",
+    "variants": [
+      "distill_only",
+      "fql_alpha_1",
+      "fql_alpha_10",
+      "fql_alpha_100"
+    ],
+    "validation_noise_rows": [
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223
+    ],
+    "heldout": false,
+    "model_selection": "None. Fixed final iteration; report every alpha and seed. Exploratory diagnostics only."
+  },
+  "real_grt_critic": {
+    "new_backend_requests": 0,
+    "families": 32,
+    "cv": "5 folds grouped within TRAIN, select penalty per representation by CV MAE; lower penalty ties",
+    "representations": [
+      "raw_hpwl",
+      "raw_physical",
+      "raw_coordinates",
+      "executed_hpwl",
+      "executed_physical",
+      "executed_coordinates"
+    ],
+    "ridge_penalties": [
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "validation": "Previously inspected 8 families; exploratory only",
+    "heldout": false,
+    "expansion": "No automatic actor expansion; inspect all models and deployed-domain limitations first."
+  },
+  "infrastructure_recovery": {
+    "original_job": "1788583",
+    "error": "Upstream analysis.py shadows local analysis namespace after baseline.api modifies sys.path; fixed import order only. Failed before training or new macro results.",
+    "scientific_parameters_changed": false,
+    "original_plan_sha256": "d8568859e1a1516ba1416404348f3519b9b80fda93493a0abdbcda886cad467b",
+    "time_hkt": "2026-10-17T21:47:06.011294+08:00"
+  }
+}

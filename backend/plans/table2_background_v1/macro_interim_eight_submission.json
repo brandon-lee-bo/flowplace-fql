@@ -1,0 +1,14 @@
+{
+  "created_unix": 1792230412.7774892,
+  "job": "1788358",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/audit_table2_macro_preservation.slurm",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/source_era_progress_v6/report/summary.json",
+    "068cc939bde072fe03e8c6ed61db6d2343cb31cf9a469fd4369dbbd0e9e9f4c7",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/macro_preservation_progress_v5",
+    "521fe0f12165be6590ca407b4bc52509cf6e014ce77a496e7011c664f3cc37e4"
+  ],
+  "note": "Newly completed large FlowPlace designs now included; retain full twelve-outcome denominator."
+}

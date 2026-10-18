@@ -1,0 +1,63 @@
+{
+  "time": 1792235012.2875159,
+  "reason": "Both new BP fullflows can add roughly 16 GiB while original large fullflows are still active. Preserve at least 8 GiB durable headroom; briefly hold only not-started compatibility large cases until completed artifacts are archived. No input, algorithm or resource priority increase.",
+  "held": [
+    {
+      "job": "1788317_3",
+      "before": "PENDING|JobArrayTaskLimit"
+    },
+    {
+      "job": "1788317_4",
+      "before": "PENDING|JobArrayTaskLimit"
+    },
+    {
+      "job": "1788317_5",
+      "before": "PENDING|JobArrayTaskLimit"
+    },
+    {
+      "job": "1788319_3",
+      "before": "PENDING|JobArrayTaskLimit"
+    },
+    {
+      "job": "1788319_4",
+      "before": "PENDING|JobArrayTaskLimit"
+    },
+    {
+      "job": "1788319_5",
+      "before": "PENDING|JobArrayTaskLimit"
+    }
+  ],
+  "release_events": [
+    {
+      "job": "1788317_4",
+      "design": "ariane133",
+      "time": 1792238697.3146453,
+      "quota_snapshot": {
+        "time": 1792238697.3118203,
+        "remaining_bytes": 21870801676,
+        "future_growth_bytes": 5081809063,
+        "active": [
+          {
+            "job": "1788519_0",
+            "run": "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_ariane136_1",
+            "bulk_bytes": 1360641881,
+            "future_reservation_bytes": 5081809063
+          }
+        ],
+        "waiting_for_archive_or_execution": [],
+        "held": [
+          "1788317_3",
+          "1788317_4",
+          "1788317_5",
+          "1788319_3",
+          "1788319_4",
+          "1788319_5"
+        ]
+      },
+      "required_bytes": 21187936423,
+      "status": "released",
+      "returncode": 0,
+      "output": ""
+    }
+  ]
+}

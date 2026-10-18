@@ -1,0 +1,25 @@
+{
+  "time": 1792241072.0431547,
+  "dependency_versions": {
+    "boost": "1.80.0",
+    "spdlog": "1.8.1",
+    "ortools": "9.10.4067"
+  },
+  "basis": "Versions specified by the pinned OpenROAD DependencyInstaller.sh, not PPA results",
+  "record": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_cd519_source_v1/historical_deps_1788556",
+  "no_algorithm_source_changes": true,
+  "runtime_sdk": "/scratch/bohanli/flowplace_table2/openroad_cd519_source_v1/dependencies/or-tools-9.10.4067",
+  "runtime_sdk_retention": "Keep scratch SDK while binary is used; source archives and hashes retained. Preserve durable SDK before declaring a reusable installed tool.",
+  "commands": [
+    {
+      "command": [
+        "scontrol",
+        "requeue",
+        "1788546"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Invalid job id specified for job 1788546\n"
+    }
+  ]
+}

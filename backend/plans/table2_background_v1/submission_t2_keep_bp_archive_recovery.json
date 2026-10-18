@@ -1,0 +1,9 @@
+{
+  "job": "1788246",
+  "command": [
+    "--exclude=enterprise",
+    "backend/plans/table2_background_v1/recover_interrupted_bp_archive.slurm"
+  ],
+  "name": "t2_keep_bp_archive_recovery",
+  "time": 1792227759.91938
+}

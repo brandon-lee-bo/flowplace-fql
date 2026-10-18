@@ -1,0 +1,13 @@
+{
+  "created": "2026-10-17T14:45:24.021214+08:00",
+  "reason": "Predeclared cross-design confirmation of bp_fe combined GPL-switch diagnostic. Started before bp_fe final metrics; no selection by numerical closeness.",
+  "method": "FlowPlace",
+  "input": "Same released bp_be DEF used in prior completed baseline.",
+  "changes": [
+    "GPL_TIMING_DRIVEN=1",
+    "GPL_ROUTABILITY_DRIVEN=1"
+  ],
+  "unchanged": "Macro coordinates, netlist/SDC/libraries, OpenROAD binary, release source tree, routing cap and timing-repair code.",
+  "tasks_sha256": "bec3eb7b0af3bb27a587e963f5349e46bd05fddc7b107a9201338bf8f9d7c24b",
+  "recipe": "diagnostic; not pooled with released recipe"
+}

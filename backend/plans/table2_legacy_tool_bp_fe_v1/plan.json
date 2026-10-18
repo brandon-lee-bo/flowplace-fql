@@ -1,0 +1,21 @@
+{
+  "created": "2026-10-17T14:56:09.323399+08:00",
+  "comparison": "Released bp_fe DEF and author released flow GPL0/0; change OpenROAD binary only within the identical Ubuntu22.04 SIF.",
+  "selection_rule": "Nearest retained public binary release after the independently identified 2024-10-30 upstream ORFS source snapshot, chosen before any PPA evaluation.",
+  "source_proof": "docs/table2_orfs_version_provenance.md",
+  "reference_baseline": "backend/results/released_bp_fe_03",
+  "known_limitation": "Not proven to be the author exact binary. The SIF dependencies/Yosys/KLayout stay as existing environment.",
+  "unchanged": [
+    "macro DEF",
+    "flow source",
+    "netlist/SDC",
+    "LEF/Liberty/RC rules",
+    "GPL flags 0/0",
+    "route cap4",
+    "timing repair code",
+    "8 threads"
+  ],
+  "probe": "1787995: ldd clean/version command 0; leading-v validation typo documented separately.",
+  "tasks_sha256": "fb9a574891c61786b0978b2e67da5462f7841af010b0bf91b8e985f075e15a9d",
+  "algorithm_inputs_unchanged": true
+}

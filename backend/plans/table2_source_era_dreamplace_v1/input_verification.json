@@ -1,0 +1,51 @@
+{
+  "created_unix": 1792223291.6529386,
+  "cohort_manifest_sha256": "1fcdc500a0f21059486cb19ae757bb86cc81f73db461ed0da1a332dabb4fb45c",
+  "handoffs_sha256": "2ceded44a75b3e31d7fc5a9ed5af23a405e5f278214d229dc14525ceec8b9515",
+  "scheduler": "1788062|COMPLETED|0:0|00:06:19\n",
+  "checks": [
+    {
+      "design": "bp_fe",
+      "macro_count": 11,
+      "legal_no_halo": true,
+      "generation_manifest_sha256": "44a1f4d1bd4afd548488d9c613acaf3253969ac4c03c19dfe6a0debb14bb1d40",
+      "operator_patch_sha256": "3b8600c884155025dd50e06690a2530838db823e8d2feb635e9f5174a9d7bfc1"
+    },
+    {
+      "design": "bp",
+      "macro_count": 24,
+      "legal_no_halo": true,
+      "generation_manifest_sha256": "513006fac639ad7b9618d92158520c1adcc4b55cae17a14fc14e5a7424235180",
+      "operator_patch_sha256": "3b8600c884155025dd50e06690a2530838db823e8d2feb635e9f5174a9d7bfc1"
+    },
+    {
+      "design": "ariane133",
+      "macro_count": 132,
+      "legal_no_halo": true,
+      "generation_manifest_sha256": "da3b55b05aa370789453bd0ffd9828a9cc8443a4147b6e9865764ed3356f25cf",
+      "operator_patch_sha256": "3b8600c884155025dd50e06690a2530838db823e8d2feb635e9f5174a9d7bfc1"
+    },
+    {
+      "design": "ariane136",
+      "macro_count": 136,
+      "legal_no_halo": true,
+      "generation_manifest_sha256": "800abdf2d290d8eaf841fd01a1299c93bffd8c8a1a7391e3bd264373972851b6",
+      "operator_patch_sha256": "3b8600c884155025dd50e06690a2530838db823e8d2feb635e9f5174a9d7bfc1"
+    },
+    {
+      "design": "bp_be",
+      "macro_count": 10,
+      "legal_no_halo": true,
+      "generation_manifest_sha256": "63eb7be565ddef4a614870e83e70a60ddd0a1e1ba2e23c0bab3732b3004c72f9",
+      "operator_patch_sha256": "3b8600c884155025dd50e06690a2530838db823e8d2feb635e9f5174a9d7bfc1"
+    },
+    {
+      "design": "swerv_wrapper",
+      "macro_count": 28,
+      "legal_no_halo": true,
+      "generation_manifest_sha256": "c466550697a9252c50c1603fe7927a61065d90dfbbd840bb35d094d78e5fb8c8",
+      "operator_patch_sha256": "3b8600c884155025dd50e06690a2530838db823e8d2feb635e9f5174a9d7bfc1"
+    }
+  ],
+  "policy": "All six outputs accepted before any DMP PPA, no per-design best-of selection."
+}

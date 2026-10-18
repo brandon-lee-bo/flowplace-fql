@@ -1,0 +1,101 @@
+{
+  "plans": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+      "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+      "array_job": "1788030"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/tasks.jsonl",
+      "sha256": "bcd6c7e015570021a028e3c7cc87df34a32174c5e943bb9799a7db4a6234a5d1",
+      "array_job": "1788063"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/tasks.jsonl",
+      "sha256": "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec",
+      "array_job": "1788071"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+      "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+      "array_job": "1788077"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/tasks.jsonl",
+      "sha256": "b0eb4bc39d868e9808d2b7a8a6819a22ddf443e3bcc05c7cfe78d73ca28fc9bf",
+      "array_job": "1788096"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/tasks.jsonl",
+      "sha256": "d112fbaa611e13e252d3e29f50022721bad638ec0d690f9aea9a12f48c76b555",
+      "array_job": "1788211"
+    }
+  ],
+  "infrastructure_retries": [
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/retry_binding.json",
+      "sha256": "d127593d4e00c7c33b33b10ee57e6f42acb6862e4ae67183205c058029892107"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_0.json",
+      "sha256": "10076a684fa1911653fcd6630f733ffd6786b29eaa15920979d1f7b5515a58ae"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+      "sha256": "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/retry_binding.json",
+      "sha256": "7a83ba9c9226090d314f78d65f5501cf513c4b639e2b3fc2ee86e9456ac25248"
+    },
+    {
+      "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+      "sha256": "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+    }
+  ],
+  "source_sha256": {
+    "analysis/summarize_table2_methods.py": "fea2542ee2690284acca63619cb7c0a97a5b98906e03bff6749f359717111c7f",
+    "analysis/summarize_table2_generated.py": "c88c6fc751985581904bf91eea951cb2f710056cab6152c2a120957113a5dcbd",
+    "backend/scripts/compare_table2_method.py": "c84aba5507cb5e93f38b7dc99259e45cd2285c8942e957a28e5cf97dcb9d31a3",
+    "analysis/run_table2_method_audit.py": "72934ab145b5ba74636d3a424c42bc64291c4029314a036775f70931ee6948bb"
+  },
+  "additional_accounting_jobs": [
+    "1788033",
+    "1788043",
+    "1788062",
+    "1788064",
+    "1788065",
+    "1788066",
+    "1788072",
+    "1788073",
+    "1788074",
+    "1788075",
+    "1788078",
+    "1788097",
+    "1788098",
+    "1788111",
+    "1788116",
+    "1788117",
+    "1788118",
+    "1788119",
+    "1788120",
+    "1788129",
+    "1788131",
+    "1788132",
+    "1788200",
+    "1788201",
+    "1788212",
+    "1788213",
+    "1788218",
+    "1788219",
+    "1788226",
+    "1788228",
+    "1788230",
+    "1788236",
+    "1788237",
+    "1788238",
+    "1788239",
+    "1788246"
+  ],
+  "output": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/source_era_progress_v5"
+}

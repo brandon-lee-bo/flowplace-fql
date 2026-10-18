@@ -1,0 +1,45 @@
+{
+  "source_reference_sha256": "d2ed02b627432bee65318d2884447fee4a545a956ced7cd2c916a75d3eb9da87",
+  "archive_sha256": "4a0e7841a9ea6f580b3253bf7e57f696dde73f0e03545e2d4026c6229cba631f",
+  "slurm_job_id": "1788547",
+  "time": 1792239476.9002333,
+  "rows": [
+    {
+      "design": "ariane133",
+      "metadata_member": "thirdparty/OpenROAD-flow-scripts/designs/nangate45/ariane133/metadata-base-ok.json",
+      "synth_member": "thirdparty/OpenROAD-flow-scripts/results/nangate45/ariane133/eval/1_synth.v",
+      "verified": true
+    },
+    {
+      "design": "ariane136",
+      "metadata_member": "thirdparty/OpenROAD-flow-scripts/designs/nangate45/ariane136/metadata-base-ok.json",
+      "synth_member": "thirdparty/OpenROAD-flow-scripts/results/nangate45/ariane136/eval/1_synth.v",
+      "verified": true
+    },
+    {
+      "design": "bp",
+      "metadata_member": "thirdparty/OpenROAD-flow-scripts/designs/nangate45/black_parrot/metadata-base-ok.json",
+      "synth_member": "thirdparty/OpenROAD-flow-scripts/results/nangate45/bp/eval/1_synth.v",
+      "verified": true
+    },
+    {
+      "design": "bp_be",
+      "metadata_member": "thirdparty/OpenROAD-flow-scripts/designs/nangate45/bp_be_top/metadata-base-ok.json",
+      "synth_member": "thirdparty/OpenROAD-flow-scripts/results/nangate45/bp_be/eval/1_synth.v",
+      "verified": true
+    },
+    {
+      "design": "bp_fe",
+      "metadata_member": "thirdparty/OpenROAD-flow-scripts/designs/nangate45/bp_fe_top/metadata-base-ok.json",
+      "synth_member": "thirdparty/OpenROAD-flow-scripts/results/nangate45/bp_fe/eval/1_synth.v",
+      "verified": true
+    },
+    {
+      "design": "swerv_wrapper",
+      "metadata_member": "thirdparty/OpenROAD-flow-scripts/designs/nangate45/swerv_wrapper/metadata-base-ok.json",
+      "synth_member": "thirdparty/OpenROAD-flow-scripts/results/nangate45/swerv_wrapper/eval/1_synth.v",
+      "verified": true
+    }
+  ],
+  "all_six_verified": true
+}

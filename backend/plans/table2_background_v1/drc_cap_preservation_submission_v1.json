@@ -1,0 +1,34 @@
+{
+  "create": "1788400",
+  "commit": "1788401",
+  "commands": [
+    [
+      "sbatch",
+      "--parsable",
+      "--mem=12G",
+      "--exclude=enterprise",
+      "backend/scripts/archive_table2_capvalidated.slurm",
+      "create",
+      "--run",
+      "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_dreamplace_v1_swerv_wrapper",
+      "--archive-dir",
+      "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_dreamplace_v1_swerv_wrapper/posthoc_cap_preservation_v1"
+    ],
+    [
+      "sbatch",
+      "--parsable",
+      "--mem=12G",
+      "--exclude=enterprise",
+      "--dependency=afterok:1788400",
+      "backend/scripts/archive_table2_capvalidated.slurm",
+      "commit",
+      "--archive-dir",
+      "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_source_era_dreamplace_v1_swerv_wrapper/posthoc_cap_preservation_v1",
+      "--scratch-dir",
+      "/scratch/bohanli/flowplace_table2/artifact_cache/table2_source_era_dreamplace_v1_swerv_wrapper/posthoc_cap_preservation_v1",
+      "--confirm-remove-bulk-backup"
+    ]
+  ],
+  "time": 1792231744.82022,
+  "helper_sha256": "3f6b5d6d0c72b9592c672859024f14a04809f0346e1e89193ca0a1808061f9b6"
+}

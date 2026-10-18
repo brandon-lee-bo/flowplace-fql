@@ -1,0 +1,12 @@
+{
+  "job": "1788546",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterany:1788539",
+    "backend/scripts/build_openroad_cd519.slurm"
+  ],
+  "source_sha256": "5742f12e400a389d44bff13a4e2d831384f802f0c3eb1194e570a278f8177d6f",
+  "time": 1792239203.3973138,
+  "policy": "Version chosen from prior source history before any new-tool PPA; no primary cohort replacement"
+}

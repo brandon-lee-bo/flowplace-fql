@@ -1,0 +1,13 @@
+{
+  "created_unix": 1792228552.0357535,
+  "job": "1788279",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:1788095",
+    "analysis/finish_table2_reports.slurm",
+    "ed2c2add5798a69127874b1ef19c44b2cd7dfa0f5be1820fc8ebc8b4b974b680"
+  ],
+  "runner_sha256": "ed2c2add5798a69127874b1ef19c44b2cd7dfa0f5be1820fc8ebc8b4b974b680",
+  "scope": "Only frozen full-cohort audits, figures and report; no new placement generation or physical experiments."
+}

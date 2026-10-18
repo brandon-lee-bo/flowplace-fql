@@ -1,0 +1,45 @@
+{
+  "created": "2026-10-17T14:27:46.797786+08:00",
+  "scope": "FlowPlace Table2 six-design generated-layout track, not competitors and not Table3",
+  "generation": "Reuse all six saved original-mode seed300 samples without per-design reselection; generated previously under Slurm1783973",
+  "tasks_sha256": "255a9e163511a8d087edc337745b5a3358336a02b7c80329e18d494be44d2c2c",
+  "design_execution_order": [
+    "bp_fe",
+    "bp",
+    "ariane133",
+    "ariane136",
+    "bp_be",
+    "swerv_wrapper"
+  ],
+  "sampling_order": [
+    "ariane133",
+    "ariane136",
+    "bp_be",
+    "bp_fe",
+    "bp",
+    "swerv_wrapper"
+  ],
+  "checkpoint_sha256": "0fe61ef666c7ff34c32b1ea1b8fe23a1c8b45151955f0f16366a121fde5fd359",
+  "backend": "Authors released Nangate45 OpenROAD fullflow through detailed routing and finish",
+  "optimization_overrides": {},
+  "metrics": [
+    "DRT_WL",
+    "WNS",
+    "TNS",
+    "Power",
+    "StdCellArea"
+  ],
+  "additional_metrics": [
+    "DRC"
+  ],
+  "resource_policy": "FactLab Slurm cpu-scavenger, 8CPU/24GiB each, at most2 concurrent; data in fact_data, temps in scratch",
+  "selection_policy": "All six declared layouts evaluated once; no best-of-seed selection; physical failures retained",
+  "known_limitations": [
+    "Newer OpenROAD image than undocumented paper tool version",
+    "Released flow disables timing/routability-driven GPL; this track preserves released settings",
+    "Detailed route cap4 retained; completion is not DRC-clean signoff",
+    "Official-stream original GPU mode is not deterministic; saved noises, trajectories and DEFs fix this evaluation input",
+    "Coordinate export adapter instead of DREAMPlace conversion, validated dimensions/IDs/scaling; original pre-generation DEF orientation provenance unavailable"
+  ],
+  "future_algorithm_comparison": "Keep exact flow/tool/netlist/SDC/metrics fixed; compare heldout seeds and include generation/quality-label/training cost; no FQL experiments in this task"
+}

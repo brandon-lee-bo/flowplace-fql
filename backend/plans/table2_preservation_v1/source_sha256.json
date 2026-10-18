@@ -1,0 +1,7 @@
+{
+  "analysis/watch_table2_preservation.py": "68137389bfc2bf873b6e89686b1b99d62f934f8481179bf8cd2a2cf6c8d0f7e1",
+  "analysis/table2_drc_cap.py": "a0b377454028e6b369e7372220fde02dd0adfbd03ba487fbc1a34ce9ce8707e6",
+  "backend/scripts/archive_table2_capvalidated.py": "3f6b5d6d0c72b9592c672859024f14a04809f0346e1e89193ca0a1808061f9b6",
+  "backend/scripts/archive_table2_staged.py": "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+  "backend/scripts/archive_interrupted_table2_staged.py": "69c9bdd66c95889f4317d7207e475f222f6fde26b266130753422c8134b0ec1a"
+}

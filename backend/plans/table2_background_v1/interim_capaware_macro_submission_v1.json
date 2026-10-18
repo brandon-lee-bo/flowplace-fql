@@ -1,0 +1,13 @@
+{
+  "job": "1788402",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/audit_table2_macro_preservation.slurm",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/capaware_progress_v1/report/summary.json",
+    "70b8c078ca4d66b9d2754ae3fc12b255bdfa0baed0a257597f9f9501f3d716c6",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/macro_preservation_capaware_progress_v1",
+    "521fe0f12165be6590ca407b4bc52509cf6e014ce77a496e7011c664f3cc37e4"
+  ],
+  "time": 1792231756.4358273
+}

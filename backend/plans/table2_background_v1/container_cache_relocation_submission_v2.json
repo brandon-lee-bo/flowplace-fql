@@ -1,0 +1,13 @@
+{
+  "job": "1788367",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "backend/scripts/relocate_table2_container_cache.slurm",
+    "a0cb43691f53eb81892d1a8a14e3ba5cde9b608cce5979934739e50d186807b4"
+  ],
+  "runner_sha256": "a0cb43691f53eb81892d1a8a14e3ba5cde9b608cce5979934739e50d186807b4",
+  "created_unix": 1792230563.5355392,
+  "previous_job": "1788364",
+  "previous_failure": "Wrapper pointed to nonexistent runner; failed before reading or mutating cache. Original wrapper snapshotted."
+}

@@ -1,0 +1,41 @@
+{
+  "time": 1792233868.8250399,
+  "source_job": "1788482_0",
+  "source_run": "t2auto_dreamplace_bp_4",
+  "original_archive_jobs": [
+    "1788483",
+    "1788484"
+  ],
+  "reason": "Use frozen scratch-staged artifact helper with sufficient memory; no physical setting changed.",
+  "create_job": "1788490",
+  "commit_job": "1788491",
+  "commands": [
+    [
+      "sbatch",
+      "--parsable",
+      "--mem=20G",
+      "--exclude=enterprise",
+      "--dependency=afterok:1788482",
+      "backend/scripts/archive_table2_staged.slurm",
+      "create",
+      "--run",
+      "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_bp_4",
+      "--archive-dir",
+      "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_4/scratch_staged_v1"
+    ],
+    [
+      "sbatch",
+      "--parsable",
+      "--mem=20G",
+      "--exclude=enterprise",
+      "--dependency=afterok:1788490",
+      "backend/scripts/archive_table2_staged.slurm",
+      "commit",
+      "--archive-dir",
+      "/fact_data/bohanli/flowplace_fql_backend/table2_archives/t2auto_dreamplace_bp_4/scratch_staged_v1",
+      "--scratch-dir",
+      "/scratch/bohanli/flowplace_table2/artifact_cache/t2auto_dreamplace_bp_4/scratch_staged_v1",
+      "--confirm-remove-bulk-backup"
+    ]
+  ]
+}

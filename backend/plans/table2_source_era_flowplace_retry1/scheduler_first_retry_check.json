@@ -1,0 +1,60 @@
+{
+  "by_job_id": {
+    "1788030_0": {
+      "state": "PREEMPTED",
+      "exit_code": "0:0",
+      "elapsed": "00:02:40",
+      "elapsed_seconds": "160",
+      "allocated_cpus": "8",
+      "cpu_time_seconds": "1280",
+      "node_list": "blue-space",
+      "start": "2026-10-17T15:36:45",
+      "end": "2026-10-17T15:39:25"
+    },
+    "1788030_1": {
+      "state": "RUNNING",
+      "exit_code": "0:0",
+      "elapsed": "00:07:08",
+      "elapsed_seconds": "428",
+      "allocated_cpus": "8",
+      "cpu_time_seconds": "3424",
+      "node_list": "gravitation",
+      "start": "2026-10-17T15:36:45",
+      "end": "Unknown"
+    },
+    "1788030_2": {
+      "state": "RUNNING",
+      "exit_code": "0:0",
+      "elapsed": "00:04:20",
+      "elapsed_seconds": "260",
+      "allocated_cpus": "8",
+      "cpu_time_seconds": "2080",
+      "node_list": "gravitation",
+      "start": "2026-10-17T15:39:33",
+      "end": "Unknown"
+    },
+    "1788030_[3-5%2]": {
+      "state": "PENDING",
+      "exit_code": "0:0",
+      "elapsed": "00:00:00",
+      "elapsed_seconds": "0",
+      "allocated_cpus": "0",
+      "cpu_time_seconds": "0",
+      "node_list": "None assigned",
+      "start": "Unknown",
+      "end": "Unknown"
+    },
+    "1788063_0": {
+      "state": "RUNNING",
+      "exit_code": "0:0",
+      "elapsed": "00:01:33",
+      "elapsed_seconds": "93",
+      "allocated_cpus": "8",
+      "cpu_time_seconds": "744",
+      "node_list": "gravitation",
+      "start": "2026-10-17T15:42:20",
+      "end": "Unknown"
+    }
+  },
+  "sacct_original": "JobID|State|ExitCode|Elapsed|ElapsedRaw|AllocCPUS|CPUTimeRAW|NodeList|Start|End\n1788030_0|PREEMPTED|0:0|00:02:40|160|8|1280|blue-space|2026-10-17T15:36:45|2026-10-17T15:39:25\n1788030_1|RUNNING|0:0|00:07:08|428|8|3424|gravitation|2026-10-17T15:36:45|Unknown\n1788030_2|RUNNING|0:0|00:04:20|260|8|2080|gravitation|2026-10-17T15:39:33|Unknown\n1788030_[3-5%2]|PENDING|0:0|00:00:00|0|0|0|None assigned|Unknown|Unknown\n1788063_0|RUNNING|0:0|00:01:33|93|8|744|gravitation|2026-10-17T15:42:20|Unknown\n"
+}

@@ -1,0 +1,34 @@
+{
+  "physical_array_job": "1788077",
+  "archive_array_job": "1788078",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--array=0-5%1",
+    "--dependency=afterany:1788071_0",
+    "--nodelist=enterprise",
+    "--mem=16G",
+    "--time=02:30:00",
+    "backend/scripts/table2_fresh.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+    "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058"
+  ],
+  "archive_command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=aftercorr:1788077",
+    "--array=0-5%1",
+    "backend/scripts/archive_table2_task.slurm",
+    "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+    "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+    "7d99c3b24927fb41cbbef3ee9eac439a555c2e23bc3514f209eb7158deb38064",
+    "def0800997b0bb8166a63db64675b6f4b4ce00ff727699db4d6f3bcc402d0d99",
+    "commit-verified-artifacts"
+  ],
+  "tasks_sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+  "source_hashes": {
+    "archive_helper": "7d99c3b24927fb41cbbef3ee9eac439a555c2e23bc3514f209eb7158deb38064",
+    "archive_driver": "def0800997b0bb8166a63db64675b6f4b4ce00ff727699db4d6f3bcc402d0d99"
+  },
+  "dependency_reason": "Start after retry bp_fe allocation exits, keeping at most four physical tasks total; later concurrency may increase if capacity/storage permit."
+}

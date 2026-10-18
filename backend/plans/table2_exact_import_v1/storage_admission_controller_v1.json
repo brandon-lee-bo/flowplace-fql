@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "job": "1788317_4",
+      "design": "ariane133",
+      "time": 1792238697.3146453,
+      "quota_snapshot": {
+        "time": 1792238697.3118203,
+        "remaining_bytes": 21870801676,
+        "future_growth_bytes": 5081809063,
+        "active": [
+          {
+            "job": "1788519_0",
+            "run": "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_ariane136_1",
+            "bulk_bytes": 1360641881,
+            "future_reservation_bytes": 5081809063
+          }
+        ],
+        "waiting_for_archive_or_execution": [],
+        "held": [
+          "1788317_3",
+          "1788317_4",
+          "1788317_5",
+          "1788319_3",
+          "1788319_4",
+          "1788319_5"
+        ]
+      },
+      "required_bytes": 21187936423,
+      "status": "released",
+      "returncode": 0,
+      "output": ""
+    }
+  ],
+  "started_unix": 1792238697.2780144,
+  "reserve_bytes": 8589934592,
+  "archive_margin_bytes": 1073741824,
+  "expected_bulk_bytes": {
+    "bp": 10737418240,
+    "ariane133": 6442450944,
+    "ariane136": 6442450944
+  },
+  "policy": "One released large compatibility job at a time, including archival; original jobs continue. Never change inputs, seeds or optimization parameters.",
+  "controllers": [
+    {
+      "job": "1788537",
+      "time": 1792238697.2780185,
+      "source_sha256": "31117a6f9971191478a6f009c5f6bc13c0d4e9a337b65e331fc259fb40c1777d"
+    }
+  ],
+  "status": "waiting_for_safe_storage",
+  "latest": {
+    "time": 1792244376.178882,
+    "remaining_bytes": 20914823532,
+    "future_growth_bytes": 5081809063,
+    "active": [
+      {
+        "job": "1788519_0",
+        "run": "/fact_data/bohanli/flowplace_fql_backend/table2_results/t2auto_dreamplace_ariane136_1",
+        "bulk_bytes": 1360641881,
+        "future_reservation_bytes": 5081809063
+      }
+    ],
+    "waiting_for_archive_or_execution": [
+      "1788317_4"
+    ],
+    "held": [
+      "1788317_3",
+      "1788317_5",
+      "1788319_3",
+      "1788319_4",
+      "1788319_5"
+    ]
+  }
+}

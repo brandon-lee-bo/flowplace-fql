@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "protocol": "public_DREAMPlace_4.1_H20_BB_two_stage_frozen_reconstruction",
+  "method": "DREAMPlace",
+  "not_exact_author_baseline": true,
+  "designs": [
+    "bp_fe",
+    "bp",
+    "ariane133",
+    "ariane136",
+    "bp_be",
+    "swerv_wrapper"
+  ],
+  "seed": 1000,
+  "single_gpu_serial_fresh_process_per_design": true,
+  "reuse_predeclared_bp_fe": {
+    "run_id": "dmp_public41_gpu_bp_fe_smoke_v2",
+    "slurm_job_id": "1788008",
+    "manifest_sha256": "b3f592fed2348da636d0de359ed304efdf41edec8cab39a5fb50a6638f09d2fb",
+    "handoff_sha256": "ace3ac1988bcd2eb072d192135ee416e5a8edaf7e07682dbd17c5e32c85e13ff"
+  },
+  "tasks_sha256": "16fe0490d16c08ae22d6c16318c1f19da6b3d508b0176d9ebcf86a8f0d6470d1",
+  "runner_sha256": "b07ec3a5ae83da243095de1b807a5ab667d35c1df761bfe2c8d5d4f5c73d7c7c",
+  "cohort_driver_sha256": "b6911cd9ec0d0230584e99d1c947bff6fdd2a191774b91c03e4e652548a0cdaf",
+  "cohort_slurm_sha256": "cab2921a5308bed1668cee5d821ba27880c3cd62300e114ece57b7616f3c9639",
+  "installation_root": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/install",
+  "installation_manifest_sha256": "7d8da57ed599c5ac0665caffa7495db3d7403265b509996c78aac28de5a99eb0",
+  "gpu_build_completion": {
+    "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/build_completion.json",
+    "sha256": "507c9d7493d9a58cdf4aaa074569d9956313ff52fffe784a02dec1c9667fc060",
+    "contents": {
+      "initial_job": 1787994,
+      "build_retry_job": 1787998,
+      "successful_retry_job": "1788005",
+      "retry_dir": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005",
+      "compatibility_patch_sha256": "05d8567435ab44045baaae839b76d659cf70ccd4a82692f7d05c388e2377da78",
+      "test_fixture_patch_sha256": "02350c0d38420b41c448e6faecb26abdeed304311181fa98fcb66c9ed09e11db",
+      "scope": "Build/install and HPWL reused from 1787998; remaining three operator tests completed here. No Table 2 placement."
+    }
+  },
+  "gpu_build_metadata": {
+    "BUILD_AND_OPERATOR_TESTS_PASSED": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/BUILD_AND_OPERATOR_TESTS_PASSED",
+      "sha256": "e62709c7b1dcce8675d27753d46e4c7241f3b38fa71f70400be1fc6b64d3ea91"
+    },
+    "environment.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/environment.json",
+      "sha256": "9176f09c8e37588beff8c298399250a63222767c7df8786b618d856527214a55"
+    },
+    "source_commit.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/source_commit.txt",
+      "sha256": "56f8bdb07282ee0ca8f39fe699ac8e76d89a7f4dc417914026c55bdf743381bb"
+    },
+    "source_file_hashes.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/source_file_hashes.json",
+      "sha256": "ef8a6cde4eb4935ee0af5b7a4372795f08e40ef077ad74cdcf305ca5096b9b4c"
+    },
+    "installation_file_hashes.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/installation_file_hashes.json",
+      "sha256": "d3be80c2fa3e88b77c86b4c7f587ad4a57241dd8c56fe257a1c668f0e8b09340"
+    },
+    "source.patch": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/source.patch",
+      "sha256": "edcd8796fc005944d9d1547b6f77cb80b7daf3302f057b8fb2126ac318e23bde"
+    },
+    "submodule_worktree_patches.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/submodule_worktree_patches.txt",
+      "sha256": "153bd850abcfaae438795c9ddb9ed6d97f4c0448dcb47e57ed2e752db1666cb0"
+    },
+    "submitted_script.slurm": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/submitted_script.slurm",
+      "sha256": "c7115e46ef9ea5a5b0402967058bbdbc7b6e5a54b3ea8fb4bf83b9357f5269d8"
+    },
+    "nvcc.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/nvcc.txt",
+      "sha256": "68f8b0a1301428031e307cf5260142a517bff25cc232a09eae2734be475d721f"
+    },
+    "gcc.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/gcc.txt",
+      "sha256": "fd00e11585995e1a29ac81f3fb25347cc61ae17f924e135727f8961add849de0"
+    },
+    "cmake.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/cmake.txt",
+      "sha256": "7e7adc8e36a68ba428602f991671d15d9e37b349ec07a24043492fde86f490df"
+    },
+    "cuda_arch.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/cuda_arch.txt",
+      "sha256": "c0593f23242d2c6826d6166ff9e1533544379e4f70b893870bccbb2fe19a93a8"
+    },
+    "python_packages.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/python_packages.json",
+      "sha256": "5bc7b632b463341b8b8620cf5309bdbb626a527073215c532d979c8580f27eac"
+    },
+    "exit_code.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/exit_code.txt",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    }
+  },
+  "gpu_retry_metadata": {
+    "compatibility.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/compatibility.json",
+      "sha256": "e9e5b5bd402f9a6f0d684aafa114aeb58a4392772988b16b443d423fcec843e8"
+    },
+    "cccl_namespace.patch": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/cccl_namespace.patch",
+      "sha256": "05d8567435ab44045baaae839b76d659cf70ccd4a82692f7d05c388e2377da78"
+    },
+    "submitted_script.slurm": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/submitted_script.slurm",
+      "sha256": "813da3ab323bfea17eb672f4021751ba1f2418fdf6b161a881ec8fcfd2cbbddf"
+    },
+    "configure.log": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/configure.log",
+      "sha256": "3cf09d19687aa2b59d4f860ce0d3e0b2d9b04b6cb17234e7a6abfc4cf0583321"
+    },
+    "installed_configure.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/installed_configure.json",
+      "sha256": "d0e61b83bcaf4deb9f5612e0fa191cc43431a4050623f562abcb8f3310937373"
+    },
+    "loaded_operator_modules.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/loaded_operator_modules.json",
+      "sha256": "62532b3ee234375d3cc85c7aa9e95752b9ed9db42acb7ed6c64b84fd3aa69c05"
+    },
+    "loaded_cuda_libraries.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/loaded_cuda_libraries.txt",
+      "sha256": "5749c70173776a9288bc012cc8c4dcdbae0db31e50e18b6464b05ffa398a5d3d"
+    },
+    "CMakeCache.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/CMakeCache.txt",
+      "sha256": "4d22840457b6a2882917127412538d9664fadbba0ed40ecd181c4bc89436034d"
+    },
+    "exit_code.txt": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "test_hpwl.log": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/test_hpwl.log",
+      "sha256": "2f943b0dcb7a2366e79e7c92f8f93e58c9c4806c326c1c07d428b247cd0b3e42"
+    },
+    "test_weighted_average_wirelength.log": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/test_weighted_average_wirelength.log",
+      "sha256": "c006db4e399d583409ec93f67cdce69fc62386077299b3df4b733a679152e77a"
+    },
+    "test_electric_potential.log": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/test_electric_potential.log",
+      "sha256": "fc61eebf8c432390930b1293132b858f4193ae1da44b67a353c09165d2eff20a"
+    },
+    "test_pin_pos.log": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/test_pin_pos.log",
+      "sha256": "db566ca22c300ad98c16d65b5ef0de459bd5e73e92c497542f9ce1aadf09cb59"
+    },
+    "test_fixture.patch": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/test_fixture.patch",
+      "sha256": "02350c0d38420b41c448e6faecb26abdeed304311181fa98fcb66c9ed09e11db"
+    },
+    "validation_continuation.json": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/validation_continuation.json",
+      "sha256": "8f16b9dfddb7eea738feac316187e708158019b9df5b68a2daadbdc20ac95b71"
+    },
+    "weighted_average_wirelength_unittest.py": {
+      "path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/retries/job_1788005/weighted_average_wirelength_unittest.py",
+      "sha256": "9a71690b3b3e2bda9df86c5ac6bba5f5ec8e932e6c1f4b55fbbac5ef155cbe5e"
+    }
+  },
+  "execution_environment": {
+    "python_executable": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/env/bin/python",
+    "python_version": "3.9.25 (main, Jul 13 2026, 00:00:00) \n[GCC 11.5.0 20240719 (Red Hat 11.5.0-14)]",
+    "hostname": "gravitation",
+    "torch_version": "2.2.1+cu121",
+    "torch_compiled_cuda": "12.1",
+    "torch_file": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/.venv/lib/python3.9/site-packages/torch/__init__.py",
+    "numpy_version": "1.23.5",
+    "configure_file": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/install/dreamplace/configure.py",
+    "compile_configurations": {
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_CC_COMPILER": "",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_ABI": "0",
+      "CMAKE_CXX_STANDARD": "17",
+      "PYTHON": "",
+      "Boost_DIR": "",
+      "Boost_INCLUDE_DIRS": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/iccad/assets/deps/include",
+      "ZLIB_INCLUDE_DIRS": "/usr/include",
+      "ZLIB_LIBRARIES": "/usr/lib64/libz.so",
+      "CUDA_FOUND": "TRUE",
+      "CUDA_TOOLKIT_ROOT_DIR": "/usr/local/cuda-12.8",
+      "CMAKE_CUDA_FLAGS": "",
+      "CAIRO_FOUND": "TRUE",
+      "CAIRO_INCLUDE_DIRS": "/usr/include/cairo",
+      "CAIRO_LIBRARIES": "/usr/lib64/libcairo.so"
+    },
+    "cuda_visible_devices": "0",
+    "slurm_gpus": "0",
+    "num_threads": 8,
+    "python_module_search_path": [
+      "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/install/dreamplace",
+      "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/install",
+      "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/iccad/scripts",
+      "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/scripts",
+      "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/install",
+      "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/.venv/lib/python3.9/site-packages",
+      "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/iccad/assets/dmp_env/lib/python3.9/site-packages",
+      "/usr/lib64/python3.9/site-packages",
+      "/usr/lib/python3.9/site-packages",
+      "/usr/lib64/python39.zip",
+      "/usr/lib64/python3.9",
+      "/usr/lib64/python3.9/lib-dynload",
+      "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/env/lib64/python3.9/site-packages",
+      "/fact_data/bohanli/flowplace_fql_backend/dreamplace_gpu_build/job_1787994/env/lib/python3.9/site-packages"
+    ],
+    "drawing_import_dependencies": {
+      "cffi": {
+        "file": "/usr/lib64/python3.9/site-packages/cffi/__init__.py",
+        "version": "1.14.5",
+        "file_sha256": "c537ba619537f93d7f873bb8c7b2ccb3a69fc2b6e1b7061a438a180984dfcb73"
+      },
+      "_cffi_backend": {
+        "file": "/usr/lib64/python3.9/site-packages/_cffi_backend.cpython-39-x86_64-linux-gnu.so",
+        "version": "1.14.5",
+        "file_sha256": "df23b53d6eb142a32a92a3343643261d675f15b30102c1ec955257531842666f"
+      },
+      "cairocffi": {
+        "file": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/iccad/assets/dmp_env/lib/python3.9/site-packages/cairocffi/__init__.py",
+        "version": "1.7.1",
+        "file_sha256": "872b1516092d9d8c961c82e20f77e7e8785a4833087c9ba7ea0a3e01c1a159ba"
+      }
+    },
+    "gpu_name": "NVIDIA H20",
+    "gpu_capability": [
+      9,
+      0
+    ],
+    "matches_tested_build_device_and_torch": true
+  },
+  "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+  "fixed_algorithm": {
+    "macro_place_flag": 1,
+    "use_bb": 1,
+    "gpu": 1,
+    "num_threads": 8,
+    "random_center_init_flag": 1,
+    "two_stage_density_scaler": 1000,
+    "detailed_place_flag": 0,
+    "detailed_place_engine": "",
+    "detailed_place_command": "",
+    "timing_opt_flag": 0,
+    "routability_opt_flag": 0,
+    "gp_stages": "One author-configured GP stage; stock duplicates internally to two stages."
+  },
+  "macro_halo_xy": {
+    "bp_fe": 20,
+    "bp": 40,
+    "ariane133": 60,
+    "ariane136": 60,
+    "bp_be": 22,
+    "swerv_wrapper": 20
+  },
+  "initialization": "Reset all movable macro/standard-cell coordinates, stock Gaussian center initialization; fixed IO/obstacles preserved.",
+  "legalization": "Original public 4.1 Tetris/min-cost-flow operators, no custom optimizer or repair. Preserve stock row orientation, audit fresh raw oriented pin offsets.",
+  "limits": [
+    "Original replace.def and exact author macro-baseline configuration unavailable. Released template supplies topology/floorplan/IO; no positional warm start.",
+    "Author conversion macros were fixed; enabling original per-design halos in macro mode is a predeclared reconstruction assumption.",
+    "Exact author strong-macro-legalizer correspondence is unconfirmed.",
+    "DREAMPlace/DEF net pin multiset and synth instance/master inventory checks do not establish complete DEF-versus-Verilog pin equivalence.",
+    "H20/CUDA12.8 toolkit/Torch2.2.1 cu121 and compatibility patches are explicit differences; no paper hardware-matched runtime claim."
+  ],
+  "selection_policy": "One seed and one declared halo per design; all six outcomes retained, no PPA-driven selection. First GPU bp_fe attempt failed before computation due missing cffi; v2 only fixes explicit dependency path.",
+  "downstream": "No OpenROAD in this cohort. Root separately freezes the same version-matched full backend for both methods.",
+  "outputs": "Each run retains handoff DEF, macro/pin audits, manifest/source hashes; cohort emits six-line handoffs.jsonl including explicit failures."
+}

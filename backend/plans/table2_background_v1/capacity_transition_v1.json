@@ -1,0 +1,1597 @@
+{
+  "status": "controllers_submitted",
+  "evidence": {
+    "JobID": "1788077_3",
+    "State": "TIMEOUT",
+    "ExitCode": "0:0",
+    "ElapsedRaw": "9025"
+  },
+  "run": "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_dreamplace_v1_ariane136",
+  "physical_manifest_sha256": "ad532df3f17b73f5a7eb552165cfcd5ca9e748e5dbb9b3545bfab8d9a92e52d5",
+  "before_control_state": {
+    "plans": [
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+        "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+        "array_job": "1788030"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/tasks.jsonl",
+        "sha256": "bcd6c7e015570021a028e3c7cc87df34a32174c5e943bb9799a7db4a6234a5d1",
+        "array_job": "1788063"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/tasks.jsonl",
+        "sha256": "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec",
+        "array_job": "1788071"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+        "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+        "array_job": "1788077"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/tasks.jsonl",
+        "sha256": "b0eb4bc39d868e9808d2b7a8a6819a22ddf443e3bcc05c7cfe78d73ca28fc9bf",
+        "array_job": "1788096"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/tasks.jsonl",
+        "sha256": "d112fbaa611e13e252d3e29f50022721bad638ec0d690f9aea9a12f48c76b555",
+        "array_job": "1788211"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_1/tasks.jsonl",
+        "sha256": "a2bf72f65184f11670f35fcb578fa992a322fd64fcac471aa8588814ba9043c0",
+        "array_job": "1788259"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_1/tasks.jsonl",
+        "sha256": "84182095248e92253cfca3230c990d9b77acdd02a64348a6e1544b4b4d15bd14",
+        "array_job": "1788262"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/tasks.jsonl",
+        "sha256": "296b6dbb9ea20a34e7535b345a0565e2be971960ddb16101d878b24ee0a871b5",
+        "array_job": "1788378"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/tasks.jsonl",
+        "sha256": "ccc842b1d204fe4b9dcce67ef02ee184d810f45680270cba65c054c6e14e7841",
+        "array_job": "1788405"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/tasks.jsonl",
+        "sha256": "3948ed6e16cc671ead47a0a4289a69de34a962357b4e51f39d59b5a01ca258c8",
+        "array_job": "1788408"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/tasks.jsonl",
+        "sha256": "bd5ea23b608ef3150fd01799cefe1df24af19bd32480aa2a827d809134907101",
+        "array_job": "1788482"
+      }
+    ],
+    "infrastructure_retries": [
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/retry_binding.json",
+        "sha256": "d127593d4e00c7c33b33b10ee57e6f42acb6862e4ae67183205c058029892107"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_0.json",
+        "sha256": "10076a684fa1911653fcd6630f733ffd6786b29eaa15920979d1f7b5515a58ae"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+        "sha256": "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/retry_binding.json",
+        "sha256": "7a83ba9c9226090d314f78d65f5501cf513c4b639e2b3fc2ee86e9456ac25248"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+        "sha256": "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_1/retry_binding.json",
+        "sha256": "22f752ca744b448a55cb1a27ce3a9e3e621e397e293ee645ffdfd18ce642d501"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_1/retry_binding.json",
+        "sha256": "17df5f327e86e16239fd8226752673639b78ff109ce465e6991e02a1320ad175"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/retry_binding.json",
+        "sha256": "5a3d0b9752cff8c56086551200dfcc601dff3e69ee89f756180fe073cb1d954b"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/retry_binding.json",
+        "sha256": "b1202702a2bc0e881843845caab0bcd8b01820986fb4836ee322b7e0b7585e04"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/retry_binding.json",
+        "sha256": "b2118cf8fa9e2f6d7b88e2886bddd782d8db2662ad45f8d12d0891cc3834563e"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/retry_binding.json",
+        "sha256": "0cc8a5085896d47de9d82cfbb68ea9ab58885b5da0abb13fe0a514a58369a0bb"
+      }
+    ],
+    "source_sha256": {
+      "analysis/summarize_table2_methods.py": "fea2542ee2690284acca63619cb7c0a97a5b98906e03bff6749f359717111c7f",
+      "analysis/summarize_table2_generated.py": "c88c6fc751985581904bf91eea951cb2f710056cab6152c2a120957113a5dcbd",
+      "backend/scripts/compare_table2_method.py": "c84aba5507cb5e93f38b7dc99259e45cd2285c8942e957a28e5cf97dcb9d31a3",
+      "analysis/run_table2_method_audit.py": "72934ab145b5ba74636d3a424c42bc64291c4029314a036775f70931ee6948bb"
+    },
+    "additional_accounting_jobs": [
+      "1788033",
+      "1788064",
+      "1788065",
+      "1788066",
+      "1788072",
+      "1788073",
+      "1788074",
+      "1788075",
+      "1788078",
+      "1788062",
+      "1788043",
+      "1788097",
+      "1788098",
+      "1788212",
+      "1788213",
+      "1788260",
+      "1788261",
+      "1788263",
+      "1788264",
+      "1788379",
+      "1788380",
+      "1788406",
+      "1788407",
+      "1788409",
+      "1788410",
+      "1788483",
+      "1788484"
+    ],
+    "output": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/source_era_matched_final_v1",
+    "status": "watching",
+    "events": [
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_flowplace_v1_bp_fe_infra_retry2",
+        "new": "t2auto_flowplace_bp_fe_1",
+        "job": "1788096",
+        "time": 1792223995.390046
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 11221802907,
+        "time": 1792226384.2923017
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 9711815726,
+        "time": 1792226429.3472211
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 9694351727,
+        "time": 1792226474.4093854
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 9694346643,
+        "time": 1792226519.534187
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_flowplace_v1_ariane133",
+        "new": "t2auto_flowplace_ariane133_1",
+        "job": "1788211",
+        "time": 1792226564.6867595
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_dreamplace_v1_bp",
+        "new": "t2auto_dreamplace_bp_1",
+        "job": "1788259",
+        "time": 1792228051.8742323
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_dreamplace_v1_ariane133",
+        "new": "t2auto_dreamplace_ariane133_1",
+        "job": "1788262",
+        "time": 1792228051.9539227
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_bp_1",
+        "new": "t2auto_dreamplace_bp_2",
+        "job": "1788378",
+        "time": 1792231070.8422658
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_bp_2",
+        "new": "t2auto_dreamplace_bp_3",
+        "job": "1788405",
+        "time": 1792231837.0089102
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_ariane133_1",
+        "new": "t2auto_dreamplace_ariane133_2",
+        "job": "1788408",
+        "time": 1792231837.1033397
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_bp_3",
+        "new": "t2auto_dreamplace_bp_4",
+        "job": "1788482",
+        "time": 1792233775.0214105
+      }
+    ],
+    "selected": {
+      "FlowPlace/ariane133": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane133.def",
+          "def_sha256": "62cea332d3befc85f85f3be48d61dc9e3ad0ddec626ea6cce243e8154517fc61",
+          "design": "ariane133",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane133.audit.json",
+          "geometry_audit_sha256": "8bc54694cd34194a9c0bd248988fec635ef60c5774d0d1d90c28eb86e286531e",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "t2auto_flowplace_ariane133_1",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/tasks.jsonl",
+          "sha256": "d112fbaa611e13e252d3e29f50022721bad638ec0d690f9aea9a12f48c76b555",
+          "array_job": "1788211"
+        },
+        "index": 0,
+        "job": "1788211_0",
+        "auto_retry_count": 1
+      },
+      "FlowPlace/ariane136": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane136.def",
+          "def_sha256": "b7cf1afefd8759e65f685b8bbba1da3e0035545b56157581a3e679b06313fb54",
+          "design": "ariane136",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane136.audit.json",
+          "geometry_audit_sha256": "975138a693b286535ddc0d02d3ad38f9d90ca41ae15092cdf396a72daedd024e",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_ariane136",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+          "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+          "array_job": "1788030"
+        },
+        "index": 3,
+        "job": "1788030_3"
+      },
+      "FlowPlace/bp_be": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_be.def",
+          "def_sha256": "c67bcb95977a2458a1b35953e0ec2bdd77669def731e74083bbc61a482923b25",
+          "design": "bp_be",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_be.audit.json",
+          "geometry_audit_sha256": "a5a0451e7b97f3367a4b509c07018d53a28261e2e8a4a4f2d8f128e40c31d0dd",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_bp_be",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+          "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+          "array_job": "1788030"
+        },
+        "index": 4,
+        "job": "1788030_4"
+      },
+      "FlowPlace/swerv_wrapper": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/swerv_wrapper.def",
+          "def_sha256": "6f40e975fdacb5614b64fd9658c55d790e223196479e490589df6c9d1341f837",
+          "design": "swerv_wrapper",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/swerv_wrapper.audit.json",
+          "geometry_audit_sha256": "97d4292dd9fe957c250cb041a8751e720fb9e67e43329b0605c0868d70b7d8a7",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_swerv_wrapper",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+          "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+          "array_job": "1788030"
+        },
+        "index": 5,
+        "job": "1788030_5"
+      },
+      "FlowPlace/bp_fe": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_fe.def",
+          "def_sha256": "27c5057f157410b4758bbd0e8143697786305515df5430cc13ba0e5f6c30ae97",
+          "design": "bp_fe",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_fe.audit.json",
+          "geometry_audit_sha256": "b7b005d5c061959400fb85a281c831b769d051968995f850a7fb27fdb1f11315",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "t2auto_flowplace_bp_fe_1",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/tasks.jsonl",
+          "sha256": "b0eb4bc39d868e9808d2b7a8a6819a22ddf443e3bcc05c7cfe78d73ca28fc9bf",
+          "array_job": "1788096"
+        },
+        "index": 0,
+        "job": "1788096_0",
+        "auto_retry_count": 1
+      },
+      "FlowPlace/bp": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp.def",
+          "def_sha256": "f7323890159a40eb5be3292362203bf2c77cee01e81ecb245282f7fbf94f2120",
+          "design": "bp",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp.audit.json",
+          "geometry_audit_sha256": "675ed16651a7d18e6c5c9a206dd608b43bca8645c3a0841b3cd03597030a45eb",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_bp_infra_retry2",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/tasks.jsonl",
+          "sha256": "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec",
+          "array_job": "1788071"
+        },
+        "index": 1,
+        "job": "1788071_1"
+      },
+      "DREAMPlace/bp_fe": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_fe_v1/bp_fe.handoff.def",
+          "def_sha256": "ace3ac1988bcd2eb072d192135ee416e5a8edaf7e07682dbd17c5e32c85e13ff",
+          "design": "bp_fe",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_fe_v1/manifest.json",
+          "generation_manifest_sha256": "44a1f4d1bd4afd548488d9c613acaf3253969ac4c03c19dfe6a0debb14bb1d40",
+          "generation_run_id": "dmp_public41_h20_abacusfix_bp_fe_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_fe_v1/handoff_audit.json",
+          "geometry_audit_sha256": "dac29c06ca56c93acac0b1d80f4172fb7dc380a088b04a34806a1e93679cc9f5",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_bp_fe",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 0,
+        "job": "1788077_0"
+      },
+      "DREAMPlace/bp": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_v1/bp.handoff.def",
+          "def_sha256": "8d334b409b198e05ff648daf3b92ddc6e11c9de20cd003838f87781eecbea2b0",
+          "design": "bp",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_v1/manifest.json",
+          "generation_manifest_sha256": "513006fac639ad7b9618d92158520c1adcc4b55cae17a14fc14e5a7424235180",
+          "generation_run_id": "dmp_public41_h20_abacusfix_bp_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_v1/handoff_audit.json",
+          "geometry_audit_sha256": "6febf50e2b8d191997b202b84cea0f59ca3c42815e953074b76750b8ab52e4ae",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "t2auto_dreamplace_bp_4",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/tasks.jsonl",
+          "sha256": "bd5ea23b608ef3150fd01799cefe1df24af19bd32480aa2a827d809134907101",
+          "array_job": "1788482"
+        },
+        "index": 0,
+        "job": "1788482_0",
+        "auto_retry_count": 4
+      },
+      "DREAMPlace/ariane133": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane133_v1/ariane133.handoff.def",
+          "def_sha256": "e9ee6629a94e39fb918cdec92769d02ce6cac64b0e3580d71ffdbbb0a1ebbfcc",
+          "design": "ariane133",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane133_v1/manifest.json",
+          "generation_manifest_sha256": "da3b55b05aa370789453bd0ffd9828a9cc8443a4147b6e9865764ed3356f25cf",
+          "generation_run_id": "dmp_public41_h20_abacusfix_ariane133_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane133_v1/handoff_audit.json",
+          "geometry_audit_sha256": "4d01139a90101327826e271fced5d43acce0ad3dd36f36929f2167cc89cf8a29",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "t2auto_dreamplace_ariane133_2",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/tasks.jsonl",
+          "sha256": "3948ed6e16cc671ead47a0a4289a69de34a962357b4e51f39d59b5a01ca258c8",
+          "array_job": "1788408"
+        },
+        "index": 0,
+        "job": "1788408_0",
+        "auto_retry_count": 2
+      },
+      "DREAMPlace/ariane136": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane136_v1/ariane136.handoff.def",
+          "def_sha256": "b468c8c2cbd874677107cff2264a787d6987a6ea9181a5333d7a180ef97c8c7c",
+          "design": "ariane136",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane136_v1/manifest.json",
+          "generation_manifest_sha256": "800abdf2d290d8eaf841fd01a1299c93bffd8c8a1a7391e3bd264373972851b6",
+          "generation_run_id": "dmp_public41_h20_abacusfix_ariane136_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane136_v1/handoff_audit.json",
+          "geometry_audit_sha256": "e4f02e58399f4e87ca1265e2fe8c7d3aa40c90f4569135376cf71b717e4b2a32",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_ariane136",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 3,
+        "job": "1788077_3"
+      },
+      "DREAMPlace/bp_be": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_be_v1/bp_be.handoff.def",
+          "def_sha256": "b4e3044dc715ba4bc1f8204da07705a65230eeb77ffe40f6f31aaeca0ddcdb86",
+          "design": "bp_be",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_be_v1/manifest.json",
+          "generation_manifest_sha256": "63eb7be565ddef4a614870e83e70a60ddd0a1e1ba2e23c0bab3732b3004c72f9",
+          "generation_run_id": "dmp_public41_h20_abacusfix_bp_be_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_be_v1/handoff_audit.json",
+          "geometry_audit_sha256": "10bc22d6a43a850d8fbfd5c757a047db7ec504939582a27f0bf50a8cfcbf07a0",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_bp_be",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 4,
+        "job": "1788077_4"
+      },
+      "DREAMPlace/swerv_wrapper": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_swerv_wrapper_v1/swerv_wrapper.handoff.def",
+          "def_sha256": "fcaf64a1861e5c8bb20fe5733d7b52fa42f11867b8abdfa36968146aef14db65",
+          "design": "swerv_wrapper",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_swerv_wrapper_v1/manifest.json",
+          "generation_manifest_sha256": "c466550697a9252c50c1603fe7927a61065d90dfbbd840bb35d094d78e5fb8c8",
+          "generation_run_id": "dmp_public41_h20_abacusfix_swerv_wrapper_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_swerv_wrapper_v1/handoff_audit.json",
+          "geometry_audit_sha256": "fbf5c17836178255510bebb9e3e2a3ce3747b6e33901d659f928e72ee47911b9",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_swerv_wrapper",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 5,
+        "job": "1788077_5"
+      }
+    },
+    "created_unix": 1792223995.2936566,
+    "last_accounting": {
+      "1788030_0": {
+        "JobID": "1788030_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "160"
+      },
+      "1788030_1": {
+        "JobID": "1788030_1",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "499"
+      },
+      "1788030_2": {
+        "JobID": "1788030_2",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3602"
+      },
+      "1788030_3": {
+        "JobID": "1788030_3",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "6598"
+      },
+      "1788030_4": {
+        "JobID": "1788030_4",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1162"
+      },
+      "1788030_5": {
+        "JobID": "1788030_5",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3434"
+      },
+      "1788063_0": {
+        "JobID": "1788063_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "170"
+      },
+      "1788071_0": {
+        "JobID": "1788071_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "600"
+      },
+      "1788071_1": {
+        "JobID": "1788071_1",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "2911"
+      },
+      "1788077_0": {
+        "JobID": "1788077_0",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1035"
+      },
+      "1788077_1": {
+        "JobID": "1788077_1",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "2580"
+      },
+      "1788077_2": {
+        "JobID": "1788077_2",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1920"
+      },
+      "1788077_3": {
+        "JobID": "1788077_3",
+        "State": "TIMEOUT",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "9025"
+      },
+      "1788077_4": {
+        "JobID": "1788077_4",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1091"
+      },
+      "1788077_5": {
+        "JobID": "1788077_5",
+        "State": "FAILED",
+        "ExitCode": "1:0",
+        "ElapsedRaw": "3819"
+      },
+      "1788096_0": {
+        "JobID": "1788096_0",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "772"
+      },
+      "1788211_0": {
+        "JobID": "1788211_0",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3669"
+      },
+      "1788259_0": {
+        "JobID": "1788259_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "2911"
+      },
+      "1788262_0": {
+        "JobID": "1788262_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3671"
+      },
+      "1788378_0": {
+        "JobID": "1788378_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "130"
+      },
+      "1788405_0": {
+        "JobID": "1788405_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1858"
+      },
+      "1788408_0": {
+        "JobID": "1788408_0",
+        "State": "RUNNING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3748"
+      },
+      "1788482_0": {
+        "JobID": "1788482_0",
+        "State": "RUNNING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1108"
+      }
+    },
+    "last_checked_unix": 1792235622.3276563
+  },
+  "time": 1792235633.8900619,
+  "submissions": {
+    "watcher": {
+      "job": "1788516",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "analysis/watch_table2_batch_capacity.slurm"
+      ],
+      "time": 1792235633.9853628
+    },
+    "finish": {
+      "job": "1788517",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--dependency=afterok:1788516",
+        "analysis/finish_table2_capacity.slurm",
+        "f17867ae598badbb9da11cb5502dbd71fc3f4edbaf28a86d1ec7d4f44b2be280",
+        "--config",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/capacity_finish_config_v1.json",
+        "--config-sha256",
+        "c1508bb3176c13b5e20843771d9ca7c332ff866b86dec48eb9929fbacd15b7c2"
+      ],
+      "time": 1792235633.997319
+    },
+    "preservation": {
+      "job": "1788518",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "analysis/watch_table2_preservation_capacity.slurm",
+        "8e592513281f2c8db1d2285dc7caff39cdbb611e410f2c22e69e7ca3becea3cc"
+      ],
+      "time": 1792235634.0107994
+    }
+  },
+  "stopped_control_state": {
+    "plans": [
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+        "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+        "array_job": "1788030"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/tasks.jsonl",
+        "sha256": "bcd6c7e015570021a028e3c7cc87df34a32174c5e943bb9799a7db4a6234a5d1",
+        "array_job": "1788063"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/tasks.jsonl",
+        "sha256": "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec",
+        "array_job": "1788071"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+        "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+        "array_job": "1788077"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/tasks.jsonl",
+        "sha256": "b0eb4bc39d868e9808d2b7a8a6819a22ddf443e3bcc05c7cfe78d73ca28fc9bf",
+        "array_job": "1788096"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/tasks.jsonl",
+        "sha256": "d112fbaa611e13e252d3e29f50022721bad638ec0d690f9aea9a12f48c76b555",
+        "array_job": "1788211"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_1/tasks.jsonl",
+        "sha256": "a2bf72f65184f11670f35fcb578fa992a322fd64fcac471aa8588814ba9043c0",
+        "array_job": "1788259"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_1/tasks.jsonl",
+        "sha256": "84182095248e92253cfca3230c990d9b77acdd02a64348a6e1544b4b4d15bd14",
+        "array_job": "1788262"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/tasks.jsonl",
+        "sha256": "296b6dbb9ea20a34e7535b345a0565e2be971960ddb16101d878b24ee0a871b5",
+        "array_job": "1788378"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/tasks.jsonl",
+        "sha256": "ccc842b1d204fe4b9dcce67ef02ee184d810f45680270cba65c054c6e14e7841",
+        "array_job": "1788405"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/tasks.jsonl",
+        "sha256": "3948ed6e16cc671ead47a0a4289a69de34a962357b4e51f39d59b5a01ca258c8",
+        "array_job": "1788408"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/tasks.jsonl",
+        "sha256": "bd5ea23b608ef3150fd01799cefe1df24af19bd32480aa2a827d809134907101",
+        "array_job": "1788482"
+      }
+    ],
+    "infrastructure_retries": [
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry1/retry_binding.json",
+        "sha256": "d127593d4e00c7c33b33b10ee57e6f42acb6862e4ae67183205c058029892107"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_0.json",
+        "sha256": "10076a684fa1911653fcd6630f733ffd6786b29eaa15920979d1f7b5515a58ae"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/retry_binding_1.json",
+        "sha256": "bbd1cbfa8b0741e0a61cd55cc976701459fc0c282d0860204bd4dbba911499fa"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/retry_binding.json",
+        "sha256": "7a83ba9c9226090d314f78d65f5501cf513c4b639e2b3fc2ee86e9456ac25248"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/retry_binding.json",
+        "sha256": "004947f415f447f0133748b74768a5f6dfd2f223c9133a6edec0b82f36344c6b"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_1/retry_binding.json",
+        "sha256": "22f752ca744b448a55cb1a27ce3a9e3e621e397e293ee645ffdfd18ce642d501"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_1/retry_binding.json",
+        "sha256": "17df5f327e86e16239fd8226752673639b78ff109ce465e6991e02a1320ad175"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_2/retry_binding.json",
+        "sha256": "5a3d0b9752cff8c56086551200dfcc601dff3e69ee89f756180fe073cb1d954b"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_3/retry_binding.json",
+        "sha256": "b1202702a2bc0e881843845caab0bcd8b01820986fb4836ee322b7e0b7585e04"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/retry_binding.json",
+        "sha256": "b2118cf8fa9e2f6d7b88e2886bddd782d8db2662ad45f8d12d0891cc3834563e"
+      },
+      {
+        "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/retry_binding.json",
+        "sha256": "0cc8a5085896d47de9d82cfbb68ea9ab58885b5da0abb13fe0a514a58369a0bb"
+      }
+    ],
+    "source_sha256": {
+      "analysis/summarize_table2_methods.py": "fea2542ee2690284acca63619cb7c0a97a5b98906e03bff6749f359717111c7f",
+      "analysis/summarize_table2_generated.py": "c88c6fc751985581904bf91eea951cb2f710056cab6152c2a120957113a5dcbd",
+      "backend/scripts/compare_table2_method.py": "c84aba5507cb5e93f38b7dc99259e45cd2285c8942e957a28e5cf97dcb9d31a3",
+      "analysis/run_table2_method_audit.py": "72934ab145b5ba74636d3a424c42bc64291c4029314a036775f70931ee6948bb",
+      "analysis/watch_table2_batch_capacity.py": "eabe296ca8df26c315ee2ccee33ac1bae578f7c808306c5758b636fe9586d6a2",
+      "analysis/summarize_table2_methods_capacity.py": "d1b3076961f1350f0251528ca951e05acb3badc9e964002a74431b70d54c6255",
+      "analysis/run_table2_capacity_audit.py": "1e956ab64a72a34e6a6b63c6be6b46d83062b730f8952c9a29ca9252f5670daf"
+    },
+    "additional_accounting_jobs": [
+      "1788033",
+      "1788064",
+      "1788065",
+      "1788066",
+      "1788072",
+      "1788073",
+      "1788074",
+      "1788075",
+      "1788078",
+      "1788062",
+      "1788043",
+      "1788097",
+      "1788098",
+      "1788212",
+      "1788213",
+      "1788260",
+      "1788261",
+      "1788263",
+      "1788264",
+      "1788379",
+      "1788380",
+      "1788406",
+      "1788407",
+      "1788409",
+      "1788410",
+      "1788483",
+      "1788484"
+    ],
+    "output": "/fact_data/bohanli/flowplace_fql_backend/table2_reports/source_era_matched_final_v1",
+    "status": "watching",
+    "events": [
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_flowplace_v1_bp_fe_infra_retry2",
+        "new": "t2auto_flowplace_bp_fe_1",
+        "job": "1788096",
+        "time": 1792223995.390046
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 11221802907,
+        "time": 1792226384.2923017
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 9711815726,
+        "time": 1792226429.3472211
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 9694351727,
+        "time": 1792226474.4093854
+      },
+      {
+        "kind": "retry_not_launched_storage_headroom",
+        "run": "table2_source_era_flowplace_v1_ariane133",
+        "remaining_bytes": 9694346643,
+        "time": 1792226519.534187
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_flowplace_v1_ariane133",
+        "new": "t2auto_flowplace_ariane133_1",
+        "job": "1788211",
+        "time": 1792226564.6867595
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_dreamplace_v1_bp",
+        "new": "t2auto_dreamplace_bp_1",
+        "job": "1788259",
+        "time": 1792228051.8742323
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "table2_source_era_dreamplace_v1_ariane133",
+        "new": "t2auto_dreamplace_ariane133_1",
+        "job": "1788262",
+        "time": 1792228051.9539227
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_bp_1",
+        "new": "t2auto_dreamplace_bp_2",
+        "job": "1788378",
+        "time": 1792231070.8422658
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_bp_2",
+        "new": "t2auto_dreamplace_bp_3",
+        "job": "1788405",
+        "time": 1792231837.0089102
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_ariane133_1",
+        "new": "t2auto_dreamplace_ariane133_2",
+        "job": "1788408",
+        "time": 1792231837.1033397
+      },
+      {
+        "kind": "infrastructure_retry",
+        "old": "t2auto_dreamplace_bp_3",
+        "new": "t2auto_dreamplace_bp_4",
+        "job": "1788482",
+        "time": 1792233775.0214105
+      },
+      {
+        "kind": "capacity_controller_transition",
+        "evidence": {
+          "JobID": "1788077_3",
+          "State": "TIMEOUT",
+          "ExitCode": "0:0",
+          "ElapsedRaw": "9025"
+        },
+        "time": 1792235633.968278,
+        "journal": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/capacity_transition_v1.json"
+      }
+    ],
+    "selected": {
+      "FlowPlace/ariane133": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane133.def",
+          "def_sha256": "62cea332d3befc85f85f3be48d61dc9e3ad0ddec626ea6cce243e8154517fc61",
+          "design": "ariane133",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane133.audit.json",
+          "geometry_audit_sha256": "8bc54694cd34194a9c0bd248988fec635ef60c5774d0d1d90c28eb86e286531e",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "t2auto_flowplace_ariane133_1",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_ariane133_1/tasks.jsonl",
+          "sha256": "d112fbaa611e13e252d3e29f50022721bad638ec0d690f9aea9a12f48c76b555",
+          "array_job": "1788211"
+        },
+        "index": 0,
+        "job": "1788211_0",
+        "auto_retry_count": 1
+      },
+      "FlowPlace/ariane136": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane136.def",
+          "def_sha256": "b7cf1afefd8759e65f685b8bbba1da3e0035545b56157581a3e679b06313fb54",
+          "design": "ariane136",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/ariane136.audit.json",
+          "geometry_audit_sha256": "975138a693b286535ddc0d02d3ad38f9d90ca41ae15092cdf396a72daedd024e",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_ariane136",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+          "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+          "array_job": "1788030"
+        },
+        "index": 3,
+        "job": "1788030_3"
+      },
+      "FlowPlace/bp_be": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_be.def",
+          "def_sha256": "c67bcb95977a2458a1b35953e0ec2bdd77669def731e74083bbc61a482923b25",
+          "design": "bp_be",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_be.audit.json",
+          "geometry_audit_sha256": "a5a0451e7b97f3367a4b509c07018d53a28261e2e8a4a4f2d8f128e40c31d0dd",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_bp_be",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+          "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+          "array_job": "1788030"
+        },
+        "index": 4,
+        "job": "1788030_4"
+      },
+      "FlowPlace/swerv_wrapper": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/swerv_wrapper.def",
+          "def_sha256": "6f40e975fdacb5614b64fd9658c55d790e223196479e490589df6c9d1341f837",
+          "design": "swerv_wrapper",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/swerv_wrapper.audit.json",
+          "geometry_audit_sha256": "97d4292dd9fe957c250cb041a8751e720fb9e67e43329b0605c0868d70b7d8a7",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_swerv_wrapper",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_v1/tasks.jsonl",
+          "sha256": "d9a04b4fa367940aab26679dee053821f618694d23cdaacdf31ab010cc1e9b9b",
+          "array_job": "1788030"
+        },
+        "index": 5,
+        "job": "1788030_5"
+      },
+      "FlowPlace/bp_fe": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_fe.def",
+          "def_sha256": "27c5057f157410b4758bbd0e8143697786305515df5430cc13ba0e5f6c30ae97",
+          "design": "bp_fe",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp_fe.audit.json",
+          "geometry_audit_sha256": "b7b005d5c061959400fb85a281c831b769d051968995f850a7fb27fdb1f11315",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "t2auto_flowplace_bp_fe_1",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_flowplace_bp_fe_1/tasks.jsonl",
+          "sha256": "b0eb4bc39d868e9808d2b7a8a6819a22ddf443e3bcc05c7cfe78d73ca28fc9bf",
+          "array_job": "1788096"
+        },
+        "index": 0,
+        "job": "1788096_0",
+        "auto_retry_count": 1
+      },
+      "FlowPlace/bp": {
+        "task": {
+          "def_path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp.def",
+          "def_sha256": "f7323890159a40eb5be3292362203bf2c77cee01e81ecb245282f7fbf94f2120",
+          "design": "bp",
+          "diagnostic": false,
+          "generation_manifest": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/baseline/artifacts/official_stream_seed300/run_manifest.json",
+          "generation_manifest_sha256": "4fbed14077759944d06e7dd3a907603320adb318bc3b38ed1912216328fe4c32",
+          "generation_seed": 300,
+          "generation_slurm_job": "1783973",
+          "geometry_audit": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/results/official_stream_seed300_exports/bp.audit.json",
+          "geometry_audit_sha256": "675ed16651a7d18e6c5c9a206dd608b43bca8645c3a0841b3cd03597030a45eb",
+          "make_overrides": {},
+          "method": "FlowPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "official global torch RNG stream seeded before model initialization",
+          "run_id": "table2_source_era_flowplace_v1_bp_infra_retry2",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_flowplace_retry2/tasks.jsonl",
+          "sha256": "6e31ede2d26b598fdeb8231b626bd60ea6595952758880dd53634a263ce808ec",
+          "array_job": "1788071"
+        },
+        "index": 1,
+        "job": "1788071_1"
+      },
+      "DREAMPlace/bp_fe": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_fe_v1/bp_fe.handoff.def",
+          "def_sha256": "ace3ac1988bcd2eb072d192135ee416e5a8edaf7e07682dbd17c5e32c85e13ff",
+          "design": "bp_fe",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_fe_v1/manifest.json",
+          "generation_manifest_sha256": "44a1f4d1bd4afd548488d9c613acaf3253969ac4c03c19dfe6a0debb14bb1d40",
+          "generation_run_id": "dmp_public41_h20_abacusfix_bp_fe_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_fe_v1/handoff_audit.json",
+          "geometry_audit_sha256": "dac29c06ca56c93acac0b1d80f4172fb7dc380a088b04a34806a1e93679cc9f5",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_bp_fe",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 0,
+        "job": "1788077_0"
+      },
+      "DREAMPlace/bp": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_v1/bp.handoff.def",
+          "def_sha256": "8d334b409b198e05ff648daf3b92ddc6e11c9de20cd003838f87781eecbea2b0",
+          "design": "bp",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_v1/manifest.json",
+          "generation_manifest_sha256": "513006fac639ad7b9618d92158520c1adcc4b55cae17a14fc14e5a7424235180",
+          "generation_run_id": "dmp_public41_h20_abacusfix_bp_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_v1/handoff_audit.json",
+          "geometry_audit_sha256": "6febf50e2b8d191997b202b84cea0f59ca3c42815e953074b76750b8ab52e4ae",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "t2auto_dreamplace_bp_4",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_bp_4/tasks.jsonl",
+          "sha256": "bd5ea23b608ef3150fd01799cefe1df24af19bd32480aa2a827d809134907101",
+          "array_job": "1788482"
+        },
+        "index": 0,
+        "job": "1788482_0",
+        "auto_retry_count": 4
+      },
+      "DREAMPlace/ariane133": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane133_v1/ariane133.handoff.def",
+          "def_sha256": "e9ee6629a94e39fb918cdec92769d02ce6cac64b0e3580d71ffdbbb0a1ebbfcc",
+          "design": "ariane133",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane133_v1/manifest.json",
+          "generation_manifest_sha256": "da3b55b05aa370789453bd0ffd9828a9cc8443a4147b6e9865764ed3356f25cf",
+          "generation_run_id": "dmp_public41_h20_abacusfix_ariane133_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane133_v1/handoff_audit.json",
+          "geometry_audit_sha256": "4d01139a90101327826e271fced5d43acce0ad3dd36f36929f2167cc89cf8a29",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "t2auto_dreamplace_ariane133_2",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_2/tasks.jsonl",
+          "sha256": "3948ed6e16cc671ead47a0a4289a69de34a962357b4e51f39d59b5a01ca258c8",
+          "array_job": "1788408"
+        },
+        "index": 0,
+        "job": "1788408_0",
+        "auto_retry_count": 2
+      },
+      "DREAMPlace/ariane136": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane136_v1/ariane136.handoff.def",
+          "def_sha256": "b468c8c2cbd874677107cff2264a787d6987a6ea9181a5333d7a180ef97c8c7c",
+          "design": "ariane136",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane136_v1/manifest.json",
+          "generation_manifest_sha256": "800abdf2d290d8eaf841fd01a1299c93bffd8c8a1a7391e3bd264373972851b6",
+          "generation_run_id": "dmp_public41_h20_abacusfix_ariane136_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_ariane136_v1/handoff_audit.json",
+          "geometry_audit_sha256": "e4f02e58399f4e87ca1265e2fe8c7d3aa40c90f4569135376cf71b717e4b2a32",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_ariane136",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 3,
+        "job": "1788077_3"
+      },
+      "DREAMPlace/bp_be": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_be_v1/bp_be.handoff.def",
+          "def_sha256": "b4e3044dc715ba4bc1f8204da07705a65230eeb77ffe40f6f31aaeca0ddcdb86",
+          "design": "bp_be",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_be_v1/manifest.json",
+          "generation_manifest_sha256": "63eb7be565ddef4a614870e83e70a60ddd0a1e1ba2e23c0bab3732b3004c72f9",
+          "generation_run_id": "dmp_public41_h20_abacusfix_bp_be_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_bp_be_v1/handoff_audit.json",
+          "geometry_audit_sha256": "10bc22d6a43a850d8fbfd5c757a047db7ec504939582a27f0bf50a8cfcbf07a0",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_bp_be",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 4,
+        "job": "1788077_4"
+      },
+      "DREAMPlace/swerv_wrapper": {
+        "task": {
+          "baseline_reconstruction": "Public4.1.0 BB/two-stage and stock legalizers, one frozen Abacus float-row-index correction; exact author standalone baseline config unavailable",
+          "def_path": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_swerv_wrapper_v1/swerv_wrapper.handoff.def",
+          "def_sha256": "fcaf64a1861e5c8bb20fe5733d7b52fa42f11867b8abdfa36968146aef14db65",
+          "design": "swerv_wrapper",
+          "diagnostic": false,
+          "generation_manifest": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_swerv_wrapper_v1/manifest.json",
+          "generation_manifest_sha256": "c466550697a9252c50c1603fe7927a61065d90dfbbd840bb35d094d78e5fb8c8",
+          "generation_run_id": "dmp_public41_h20_abacusfix_swerv_wrapper_v1",
+          "generation_seed": 1000,
+          "generation_slurm_job": "1788062",
+          "geometry_audit": "/fact_data/bohanli/flowplace_fql_backend/dreamplace_table2/dmp_public41_h20_abacusfix_swerv_wrapper_v1/handoff_audit.json",
+          "geometry_audit_sha256": "fbf5c17836178255510bebb9e3e2a3ce3747b6e33901d659f928e72ee47911b9",
+          "installation_file_hashes_sha256": "bc9b3095651cc7689087a1c2af9f837852c86dc0ca3febc4df19c2fe10588ea5",
+          "make_overrides": {},
+          "method": "DREAMPlace",
+          "openroad_exe": "/fact_data/bohanli/flowplace_fql_backend/tools/openroad_20241214/probe_1787995/extracted/usr/bin/openroad",
+          "openroad_sha256": "93fe61454a52b927602fd6c798c4402214c19e80e7d614636345f0f427ea2f46",
+          "recipe_label": "released_author_flow_source_era_tool_v1",
+          "rng_mode": "Independent stock DREAMPlace process per design with seed1000",
+          "run_id": "table2_source_era_dreamplace_v1_swerv_wrapper",
+          "source_commit": "5d13c9001a3bc900dca1e108e633d5dd45b00701",
+          "source_runner_sha256": "1c4842d43feb37ba5804c3728fa24f9e98e18824815c0d60b66e1bedbb5bdccb",
+          "tool_image_sha256": "85f0ce74d79a79c1190632f775f0ed818c8de6e0fafd87717ae3d4839207ea4c",
+          "tool_version": "v2.0-17598-ga008522d8"
+        },
+        "plan": {
+          "path": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+          "sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+          "array_job": "1788077"
+        },
+        "index": 5,
+        "job": "1788077_5"
+      }
+    },
+    "created_unix": 1792223995.2936566,
+    "last_accounting": {
+      "1788030_0": {
+        "JobID": "1788030_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "160"
+      },
+      "1788030_1": {
+        "JobID": "1788030_1",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "499"
+      },
+      "1788030_2": {
+        "JobID": "1788030_2",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3602"
+      },
+      "1788030_3": {
+        "JobID": "1788030_3",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "6598"
+      },
+      "1788030_4": {
+        "JobID": "1788030_4",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1162"
+      },
+      "1788030_5": {
+        "JobID": "1788030_5",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3434"
+      },
+      "1788063_0": {
+        "JobID": "1788063_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "170"
+      },
+      "1788071_0": {
+        "JobID": "1788071_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "600"
+      },
+      "1788071_1": {
+        "JobID": "1788071_1",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "2911"
+      },
+      "1788077_0": {
+        "JobID": "1788077_0",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1035"
+      },
+      "1788077_1": {
+        "JobID": "1788077_1",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "2580"
+      },
+      "1788077_2": {
+        "JobID": "1788077_2",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1920"
+      },
+      "1788077_3": {
+        "JobID": "1788077_3",
+        "State": "TIMEOUT",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "9025"
+      },
+      "1788077_4": {
+        "JobID": "1788077_4",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1091"
+      },
+      "1788077_5": {
+        "JobID": "1788077_5",
+        "State": "FAILED",
+        "ExitCode": "1:0",
+        "ElapsedRaw": "3819"
+      },
+      "1788096_0": {
+        "JobID": "1788096_0",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "772"
+      },
+      "1788211_0": {
+        "JobID": "1788211_0",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3669"
+      },
+      "1788259_0": {
+        "JobID": "1788259_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "2911"
+      },
+      "1788262_0": {
+        "JobID": "1788262_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3671"
+      },
+      "1788378_0": {
+        "JobID": "1788378_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "130"
+      },
+      "1788405_0": {
+        "JobID": "1788405_0",
+        "State": "PREEMPTED",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1858"
+      },
+      "1788408_0": {
+        "JobID": "1788408_0",
+        "State": "RUNNING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "3748"
+      },
+      "1788482_0": {
+        "JobID": "1788482_0",
+        "State": "RUNNING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "1108"
+      }
+    },
+    "last_checked_unix": 1792235622.3276563
+  },
+  "completed_unix": 1792235634.0108047
+}

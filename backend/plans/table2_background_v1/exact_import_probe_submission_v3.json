@@ -1,0 +1,13 @@
+{
+  "job": "1788313",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "analysis/probe_exact_macro_import.slurm",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_results/table2_source_era_dreamplace_v1_swerv_wrapper",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_reports/exact_import_probe_swerv_v3",
+    "9d63374627364e277c12542453bfcccb3e6e2e664f5d604e66cbefac2bd2a410",
+    "odb-restore"
+  ],
+  "created_unix": 1792229419.793895
+}

@@ -1,0 +1,53 @@
+{
+  "time": 1792233253.1221676,
+  "reason": "Original archive submission omitted required SHA/authorization arguments and used a formal-only task driver for diagnostic compatibility tasks. Preserve failed task; replace only pending archive tasks with explicit frozen compatibility archive driver. Physical runs unchanged.",
+  "cancelled": [
+    "1788318_1",
+    "1788318_2",
+    "1788318_3",
+    "1788318_4",
+    "1788318_5",
+    "1788320_0",
+    "1788320_1",
+    "1788320_2",
+    "1788320_3",
+    "1788320_4",
+    "1788320_5"
+  ],
+  "replacements": [
+    {
+      "job": "1788451",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--array=0-5%1",
+        "--mem=20G",
+        "--exclude=enterprise",
+        "--dependency=aftercorr:1788317",
+        "backend/scripts/archive_table2_exact_task.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/flowplace_tasks.jsonl",
+        "9e73f228d7191e1596c08fea0a0bf0a9379b044fcb382aef82b252167669fc5d",
+        "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+        "19247b617dddc14818fe5ddca1ebe249cfed27cb70e426450aaf2e64df230d0d",
+        "commit-verified-artifacts"
+      ]
+    },
+    {
+      "job": "1788452",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--array=0-5%1",
+        "--mem=20G",
+        "--exclude=enterprise",
+        "--dependency=aftercorr:1788319",
+        "backend/scripts/archive_table2_exact_task.slurm",
+        "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_exact_import_v1/dreamplace_tasks.jsonl",
+        "3c07a46749130f7643d548f4c3ecf47993bfdb08b7b06cd90da9fc37e3d7a4ce",
+        "7fe87e6e021d8da8f4ad680515640d0af716f731d7fce18650dbf4a63f50fcbf",
+        "19247b617dddc14818fe5ddca1ebe249cfed27cb70e426450aaf2e64df230d0d",
+        "commit-verified-artifacts"
+      ]
+    }
+  ]
+}

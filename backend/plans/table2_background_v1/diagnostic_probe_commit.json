@@ -1,0 +1,17 @@
+{
+  "job": "1788129",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=t2_probe_archive_commit",
+    "backend/scripts/archive_table2_artifacts.slurm",
+    "commit",
+    "--archive-dir",
+    "/fact_data/bohanli/flowplace_fql_backend/table2_archives/table2_paper_gpl_diag_v1_bp_fe/zstd3_probe_v2",
+    "--scratch-dir",
+    "/scratch/bohanli/flowplace_table2/artifact_cache/table2_paper_gpl_diag_v1_bp_fe/zstd3_probe_v2",
+    "--confirm-remove-bulk-backup"
+  ],
+  "created_unix": 1792225923.7674708,
+  "reason": "Commit already fully verified diagnostic archive to preserve headroom for the unchanged formal baselines"
+}

@@ -1,0 +1,561 @@
+{
+  "user_request": "Pause Table 2 tasks and automatic continuation; prioritize studying Flow-Q integration into FlowPlace.",
+  "time_hkt": "2026-10-17T21:39:50.519840+08:00",
+  "before": [
+    {
+      "id": "1788559",
+      "name": "table2_prepare_source_controls",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788555",
+      "name": "table2_preserve_historical_sdk",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788521",
+      "name": "t2auto_dreamplace_ariane136_1_commit",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788520",
+      "name": "t2auto_dreamplace_ariane136_1_arc",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788517",
+      "name": "table2_capacity_finish",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788452_5",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788452_4",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788452_3",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788451_5",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788451_3",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788399",
+      "name": "table2_capaware_finish",
+      "state": "PENDING",
+      "reason": "(Dependency)"
+    },
+    {
+      "id": "1788319_5",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788319_4",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788317_5",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788319_3",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788317_3",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788335",
+      "name": "table2_exact_background",
+      "state": "RUNNING",
+      "reason": "deep-space"
+    },
+    {
+      "id": "1788518",
+      "name": "table2_preservation_capacity",
+      "state": "RUNNING",
+      "reason": "quantum"
+    },
+    {
+      "id": "1788516",
+      "name": "table2_background_capacity",
+      "state": "RUNNING",
+      "reason": "infinite-frontier"
+    },
+    {
+      "id": "1788537",
+      "name": "table2_storage_admission",
+      "state": "RUNNING",
+      "reason": "gravitation"
+    },
+    {
+      "id": "1788519_0",
+      "name": "t2auto_dreamplace_ariane136_1",
+      "state": "RUNNING",
+      "reason": "einstein"
+    }
+  ],
+  "actions": [
+    {
+      "command": [
+        "scancel",
+        "1788335",
+        "1788518",
+        "1788516",
+        "1788537"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788559"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788555"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788521"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788520"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788517"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788452_5"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788452_4"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788452_3"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788451_5"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788451_3"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788399"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788319_5"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788319_4"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788317_5"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788319_3"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scontrol",
+        "hold",
+        "1788317_3"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scancel",
+        "1788519_0"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "resume_policy": "Do not restart automatically. Preserve existing artifacts; cancelled physical jobs have intermediate files but may require restarting their incomplete flow. Rebind cancelled supervisor IDs on explicit resume.",
+  "after": [
+    {
+      "id": "1788335",
+      "name": "table2_exact_background",
+      "state": "COMPLETING",
+      "reason": "deep-space"
+    },
+    {
+      "id": "1788518",
+      "name": "table2_preservation_capacity",
+      "state": "COMPLETING",
+      "reason": "quantum"
+    },
+    {
+      "id": "1788516",
+      "name": "table2_background_capacity",
+      "state": "COMPLETING",
+      "reason": "infinite-frontier"
+    },
+    {
+      "id": "1788537",
+      "name": "table2_storage_admission",
+      "state": "COMPLETING",
+      "reason": "gravitation"
+    },
+    {
+      "id": "1788519_0",
+      "name": "t2auto_dreamplace_ariane136_1",
+      "state": "COMPLETING",
+      "reason": "einstein"
+    },
+    {
+      "id": "1788559",
+      "name": "table2_prepare_source_controls",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788555",
+      "name": "table2_preserve_historical_sdk",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788521",
+      "name": "t2auto_dreamplace_ariane136_1_commit",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788520",
+      "name": "t2auto_dreamplace_ariane136_1_arc",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788517",
+      "name": "table2_capacity_finish",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788319_5",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788319_4",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788317_5",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788319_3",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788317_3",
+      "name": "table2_exact_import",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788452_5",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788452_4",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788452_3",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788451_5",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788451_3",
+      "name": "table2_exact_archive_task",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    },
+    {
+      "id": "1788399",
+      "name": "table2_capaware_finish",
+      "state": "PENDING",
+      "reason": "(JobHeldUser)"
+    }
+  ],
+  "verified_final_queue": [
+    [
+      "1788559",
+      "table2_prepare_source_controls",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788555",
+      "table2_preserve_historical_sdk",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788521",
+      "t2auto_dreamplace_ariane136_1_commit",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788520",
+      "t2auto_dreamplace_ariane136_1_arc",
+      "PENDING",
+      "(JobHeldAdmin)",
+      "0"
+    ],
+    [
+      "1788517",
+      "table2_capacity_finish",
+      "PENDING",
+      "(JobHeldAdmin)",
+      "0"
+    ],
+    [
+      "1788319_5",
+      "table2_exact_import",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788319_4",
+      "table2_exact_import",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788317_5",
+      "table2_exact_import",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788319_3",
+      "table2_exact_import",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788317_3",
+      "table2_exact_import",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788452_5",
+      "table2_exact_archive_task",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788452_4",
+      "table2_exact_archive_task",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788452_3",
+      "table2_exact_archive_task",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788451_5",
+      "table2_exact_archive_task",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788451_3",
+      "table2_exact_archive_task",
+      "PENDING",
+      "(JobHeldUser)",
+      "0"
+    ],
+    [
+      "1788399",
+      "table2_capaware_finish",
+      "PENDING",
+      "(JobHeldAdmin)",
+      "0"
+    ]
+  ],
+  "verified_no_executing_jobs": true,
+  "verified_all_pending_priority_zero": true,
+  "verification_time_hkt": "2026-10-17T21:40:42.911230+08:00"
+}

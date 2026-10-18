@@ -1,0 +1,11 @@
+{
+  "time_unix": 1792227430.6733806,
+  "array_job": "1788077",
+  "old_throttle": 4,
+  "new_throttle": 5,
+  "reason": "FlowPlace swerv_wrapper physical task and verified archive commit completed. Reuse its freed 8-thread/16G resource envelope for the last pending DREAMPlace design; no task inputs or algorithm settings change.",
+  "quota_remaining_bytes": 14125850502,
+  "enterprise_node_before": "NodeName=enterprise Arch=x86_64 CoresPerSocket=80  CPUAlloc=202 CPUEfctv=320 CPUTot=320 CPULoad=68.07 AvailableFeatures=(null) ActiveFeatures=(null) Gres=(null) NodeAddr=enterprise NodeHostName=enterprise Version=24.11.4 OS=Linux 5.14.0-687.31.1.el9_8.x86_64 #1 SMP PREEMPT_DYNAMIC Wed Jul 29 13:22:17 UTC 2026  RealMemory=789504 AllocMem=753764 FreeMem=671316 Sockets=2 Boards=1 State=MIXED+PLANNED ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A Partitions=eda,service,cpu-scavenger  BootTime=2026-09-30T17:21:39 SlurmdStartTime=2026-09-30T17:22:02 LastBusyTime=2026-09-30T18:47:16 ResumeAfterTime=None CfgTRES=cpu=320,mem=771G,billing=320 AllocTRES=cpu=202,mem=753764M CurrentWatts=0 AveWatts=0 \n",
+  "status": "applied",
+  "scheduler_after": "             JOBID        STATE         TIME                    NODELIST(REASON)\n         1788077_5      PENDING         0:00                              (None)\n         1788077_4      RUNNING        13:57                          enterprise\n         1788077_3      RUNNING        13:57                          enterprise\n         1788077_2      RUNNING        21:57                          enterprise\n         1788077_1      RUNNING        32:57                          enterprise\n"
+}

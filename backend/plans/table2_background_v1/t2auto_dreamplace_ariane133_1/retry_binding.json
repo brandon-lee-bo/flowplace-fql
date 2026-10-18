@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "old_tasks": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_source_era_dreamplace_v1/tasks.jsonl",
+  "old_tasks_sha256": "e831aa44b494d02fe9e1665e28df4e8464766599e7562bd9710f48fb70360058",
+  "old_task_index": 2,
+  "old_run_id": "table2_source_era_dreamplace_v1_ariane133",
+  "old_job": "1788077_2",
+  "new_tasks": "/fact_home/bohanli/RL_Placement/experiments/flowplace_fql/backend/plans/table2_background_v1/t2auto_dreamplace_ariane133_1/tasks.jsonl",
+  "new_tasks_sha256": "84182095248e92253cfca3230c990d9b77acdd02a64348a6e1544b4b4d15bd14",
+  "new_task_index": 0,
+  "new_run_id": "t2auto_dreamplace_ariane133_1",
+  "reason": "Scheduler infrastructure interruption; identical task except run_id",
+  "scheduler_evidence": {
+    "JobID": "1788077_2",
+    "State": "PREEMPTED",
+    "ExitCode": "0:0",
+    "ElapsedRaw": "1920"
+  },
+  "created_unix": 1792228051.8813362
+}
