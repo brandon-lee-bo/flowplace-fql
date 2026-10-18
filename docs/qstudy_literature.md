@@ -215,3 +215,51 @@ critic 对未见布局或坐标变化方向的错误。
 动作梯度。按固定参考写相对改善便于解释和跨电路尺度处理，单独不构成新
 优化目标或贡献。reward 缩放会改变固定蒸馏系数下 Q 项的相对影响，需与
 真正增加约束、改变目标取舍的实验分开。
+
+## 11. 2026-10-19：固定 expert8 / finalPPA6 的可解释性审计
+
+只审计[专家八目标](qstudy_rule_reward_protocol.md)和
+[最终反馈六目标](qstudy_final_feedback_protocol.md)，不改变冻结矩阵。
+`B(C)=2C/(1+C)` 严格递增、导数为 `2/(1+C)^2`，单布局排序不变，但大成本
+差异被压缩。它是凹变换，随机策略优化 `E[B(C)]` 不等价于 `E[C]`，不能称为
+纯单位归一化。`mean(C)=1` 既不证明所有样本接近1，也不证明已经严重饱和。
+当前 critic **直接回归 B**，actor 取 `-mean(predicted B)`，没有再穿过该解析式；
+不能说该公式直接截断 actor 梯度。TRAIN 标准化后输出恢复 B 单位，同 alpha
+或 B 范围仍不等于同动作/参数梯度。模型不截断预测，负 B 等乐观外推仍可能
+被 actor 利用；失败 B4 的标签次序不是预测器学会安全边界的保证。
+
+保存审计1798614与96-fit报告1798710显示：四个激活规则在384条 executed TRAIN
+均无精确零值，不能统称稀疏 reward；但 group 只有19个值，351/384（91.4%）
+等于同一最大值，完全常数检查不能排除此类退化。dataflow 有382个不同值，
+channel 有370个，但其阈值/几何分支仍可能局部平坦。seed0全TRAIN refit 的 B
+均值约 .998–1.000；除 edge 外，标准化 buffer 中的 target_std 约 .03，受
+3%mean 下限约束，不能把该 buffer 值当作标签的真实标准差，也不能据此
+认定大 C 尾部已经饱和。dataflow 全局 CV rho 约 .706，而
+family-pair accuracy 仅 .4876±.0409（三 critic seeds），不能据前者推断梯度有效。
+原始报告路径/SHA见[进度证据](qstudy_progress.md)。所有384条 raw 布局都被执行
+流程移动（mean movable RMS .08070），raw 规则导数不是执行规则或后端的精确导数。
+
+| 一手机制 | 真正可迁移的思想与边界 |
+| --- | --- |
+| [IQL 预处理](https://github.com/ikostrikov/implicit_q_learning/blob/master/train_offline.py)、[actor](https://github.com/ikostrikov/implicit_q_learning/blob/master/actor.py) | 任务 reward 与截断指数优势加权分开；不能照搬 locomotion 的1000步轨迹缩放，质量加权 FM 也不是完整 IQL。 |
+| [CQL critic](https://github.com/aviralkumar2907/CQL/blob/master/d4rl/rlkit/torch/sac/cql.py) | 候选/数据 Q 比较是训练时保守正则，不是发明物理 reward；reward 尺度改变时须审查其系数/温度，ensemble 标准差惩罚不继承其保证。 |
+| [Cal-QL 校准](https://github.com/nakamotoo/Cal-QL/blob/main/JaxCQL/conservative_sac.py) | 在保守估计内部用数据 Monte Carlo return 校准候选 Q，不是裁剪全部 reward；终局 return 就是同一变换下的实测 utility，不能混用旧线性 return 与新 B。 |
+| [TD3+BC actor](https://github.com/sfujim/TD3_BC/blob/main/TD3_BC.py)、[FQL 固定版本](https://github.com/seohongpark/fql/blob/e8cd16eb490332924dfa2492097219f181765933/agents/fql.py) | `alpha/mean(abs(Q))` 或 FQL 可选 Q-loss 缩放是 actor 正则平衡，不是 reward 或梯度范数配平。FQL 默认不开此归一化；本实现增大 alpha 是加强模仿。 |
+
+本应用是整布局单步 terminal bandit，监督目标无 Bellman bootstrap/discount。
+Euler10 是生成积分，不是十个环境动作；没有将终局反馈分摊到积分步，也不
+借此声称解决逐宏 RL 的长期信用分配。等原生结果完整后，至多考虑两项条件提案：
+
+1. **已知规则作为 critic 先验。** 若 dataflow 有有效 TRAIN 变化，但原复合 critic
+   的局部分辨/物理输出仍弱，固定 `hpwl_dataflow` 一个目标，对比全学习与
+   `predB=b0(raw)+delta_theta(raw)`；其中
+   `b0=B(.8*HPWL(raw)/S_H+.2*dataflow(raw)/S_E)`，残差纠正到同一 executed B。
+   保持原标签、尺度、folds、网络/actor预算；不能在 B 外直接加规则而称目标不变。
+   这只是 raw 函数先验，不是 hard legalizer 的 exact gradient；不用近常数 group
+   或非光滑 channel，不从八臂挑有利规则。先做3seed×(3CV+refit)=12fits，若值得
+   原生检验再固定3actor×8noise=24GRT。[EXPlace 原环境](https://github.com/lamda-bbo/EXPlace/blob/d5d534a5fbdbc1ab4aa0bd450761277b437d0967/src/place_env/place_env.py)支持规则来源，分解是我们的候选适配。
+2. **只检验过强 Q 压力。** 仅在同目标保存梯度及实测共同显示乐观外推/破坏
+   teacher 时，固定一个目标比较 alpha30 与原 alpha10，同 critic/teacher/3seed/
+   1000updates/8noise，最多新增3actor/24GRT。它检验正则强度，不验证 B 饱和
+   或目标优劣；若缺乏正确方向，不能以降低 alpha 强推 Q。两提案均尚未执行，
+   只用原 TRAIN，不把已有 development/final evaluation 标签回流训练。
