@@ -20,7 +20,7 @@ as different sources, rather than assuming identical support.
 | Work | Slurm jobs | Declared scope | Interpretation |
 | --- | --- | --- | --- |
 | Main critic screen | 1795664; report 1795751 | Two designs, seven critic variants, three critic seeds, grouped TRAIN CV and fixed-budget refit | Prediction diagnostics; not placement gains |
-| Per-net pin-span feature control | 1795807; reports 1795829 / 1795843 | Same folds and 2x128 hidden trunk; extra per-net inputs | Feature hypothesis, including additional input parameters |
+| Per-net pin-span feature control | 1795807; final report 1795873 | Same folds and 2x128 hidden trunk; extra per-net inputs | Feature hypothesis, including additional input parameters |
 | Direct timing-utility scalar control | 1795825 | Three critic seeds, same multi-head comparator folds and minibatch RNG | Separates objective representation from head count |
 | Current-flow source labels | export 1795763; backend 1795769; collect 1795775 | Seed-0 common behavior flow; 32 TRAIN + 8 validation families, base and fixed-RMS local variant | 80 requested native labels, not 80 independent circuits or training seeds |
 | Equal-label source controls | plan 1795783; check 1795814; assemble 1795840; fits 1795841; report 1795842 | O64 / T64 / M64 and base-only O32 / T32 / M32; legacy and residual critics, three critic seeds | Same old/new validation candidates; exact original 256 BC targets unchanged |
@@ -63,6 +63,33 @@ and legal actual macro geometry. Local variants can improve WL while worsening
 slack; raw perturbation size can also substantially differ from the executed
 coordinate change. These observations motivate preserving multiple metrics and
 the complete raw-to-executed provenance. They are not aggregate efficacy claims.
+
+## Coordinate coverage before looking at current-flow labels
+
+Coordinate-only audit 1795926 passed eight invariance/provenance tests and
+compared the sealed teacher export against the old audited dataset. It loaded
+neither native outcomes nor metric arrays and made no inference, legalization,
+or backend calls. Its immutable report is
+`qstudy_v1/source_geometry_v1/snapshots/20261018T082630_job1795926_301245/report.json`.
+
+| TRAIN source | Rows / families | Mean raw-to-legalized RMS | Raw layouts with overlaps | Raw layouts outside bounds |
+| --- | --- | --- | --- | --- |
+| Released sampler data | 384 / 192 | 0.08070 | 49.0% | 49.7% |
+| Current behavior flow | 64 / 32 | 0.12570 | 96.9% | 82.8% |
+
+All retained final normalized layouts are legal under the cache geometry
+check; this is not a detailed-route DRC check. The raw-to-legalized displacement
+uses movable normalized coordinate entries, with macro identity preserved.
+
+The old TRAIN leave-family-out nearest-neighbor raw-coordinate RMS has mean
+0.34943 and p95 0.54610. Current-flow TRAIN layouts have nearest-old-TRAIN mean
+0.52628; 40.6% exceed that TRAIN-only p95 threshold. The executed-coordinate
+comparison is similar. Old historical validation is closer to old TRAIN than
+fresh teacher validation is. This is direct evidence that the retained sources
+cover different coordinate regions, and that the current final legalizer
+intervenes more strongly. It does not show which source produces better PPA,
+prove Q failure, or isolate checkpoint, sampler, and perturbation effects.
+Unequal family counts and dependent local variants also limit interpretation.
 
 ## Interpretation and next gates
 
