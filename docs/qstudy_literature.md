@@ -263,3 +263,54 @@ Euler10 是生成积分，不是十个环境动作；没有将终局反馈分摊
    1000updates/8noise，最多新增3actor/24GRT。它检验正则强度，不验证 B 饱和
    或目标优劣；若缺乏正确方向，不能以降低 alpha 强推 Q。两提案均尚未执行，
    只用原 TRAIN，不把已有 development/final evaluation 标签回流训练。
+
+## 12. 2026-10-19：固定 TRAIN 参考 STA 的规则可行性（仅只读核查）
+
+**现有材料可以支持一次补充查询，尚不足以直接产生宏块时序权重。** 固定参考
+可取 `/fact_data/bohanli/flowplace_fql/qstudy_v1/data_audit/bp_fe384/rows.jsonl`
+第一条：TRAIN / family0 / variant0 /
+source_row0，而不是按当前策略效果挑参考。其原始运行是
+`backend/results/bp_fe_grt_v1_row0000/`，manifest SHA 为
+`2288e6c6d2d0aa4f71bcaddcc98ea239ad9135c14f32ac2d60f59e04b25b967a`。
+该目录的 `orfs_work/reports/nangate45/bp_fe/eval/5_fql_global_route_label.rpt`
+（SHA `7422397d9b0d841810ad65e0eb5c2a40829af89ff86e2657bc69c12055d61406`）
+保存了端点、pin/cell 和 slack，但不是完整的 net/path 数据库：行29–36的
+BTB RAM 端点属于 **min/hold** 路径；行77–85及其后完整数据路径中的最差
+**max/setup** 路径是 `icache_1/addr_tv_r[15]` DFF 到
+`bp_fe_pc_gen_1/pc_gen_icache_o[37]` DFF，只经过标准单元。不能把 hold 路径
+出现宏块理解成“应该缩短它”，也不能假定关键路径必然经过宏块。
+原报告行31、79还有 `unknown field nets` 警告，不能声称已导出显式 net 名。
+当前 `backend/thirdparty/OpenROAD-flow-scripts/scripts/report_metrics.tcl:44–56`
+仅调用默认路径报告，未显式扩大 path count；其142行只取第一个 critical path。
+
+宏块名字可以对应：`datasets/bp_fe_grt_request_v1/rows/0000/bp_fe.audit.json`
+保存11个 node ID 到真实 instance/master/orientation 的映射；
+`backend/scripts/export_macro_def.py:33–45` 按 DEF COMPONENT 索引构造并检查它。
+但 **宏图不等于 timing graph**：
+`upstream/flowplace/benchmark_utils/openroad/problem_instance.py:234–252`
+从同一个真实 net 的 pin 中保留宏块，删除仅含零/一个宏块的 net；
+`upstream/flowplace/benchmark_utils/openroad_utils.py:98–124` 再将其展开成双向
+macro-pair 边。缓存的15个宏 hypernet 没有时序标签，另外的 `dataflow_mat`
+也没有已证明的 STA 来源。跨标准单元逻辑的宏间时序依赖不必是现有图中的
+同-net 边；不得直接把 dataflow 权重改称 criticality。
+
+最小额外需求是一场**固定参考、只查询的 STA**：同一原 TRAIN 运行还保存
+`orfs_work/results/nangate45/bp_fe/eval/{5_1_grt.odb,5_1_grt.sdc,route.guide,1_synth.v}`。
+必须绑定原工具、库、约束并正确恢复 GRT RC，先核对原 WNS/TNS；ODB 文件
+存在本身不证明寄生参数已恢复，不能悄悄改用 placement RC 或重跑布局布线。
+当前 `backend/thirdparty/OpenROAD-flow-scripts/scripts/` 下的源码
+`load.tcl:10–37` 加载库/DB/SDC/RC设置，`global_route.tcl:102–115`
+对应原流程估计 global-routing parasitics
+后写出这些结果；当前 host 文件不是所有历史 runtime 字节的追溯证明。
+补查应针对宏块端点的 max/setup 路径保存真实 pin、net、slack、path type
+和覆盖/缺失原因；[OpenSTA 官方接口](https://opensta.readthedocs.io/en/latest/Commands/#find_timing_paths)
+支持路径对象查询，实际旧版选项仍须核对，不能直接依赖新文档。
+
+**至多一个条件候选：** 只有补查得到实际负 setup-slack 的宏块 `i→j` 路径时，
+固定 `w_ij=max_p max(0,−slack_p/Tclk)`，以
+`E=Σw_ij·L1(center_i,center_j)/((W+H)·Σw_ij)` 作为参考关键宏块接近性规则。
+它是几何代理，不是实际 net 延迟，也不保证时序改善；排除 hold、时钟/复位和
+stdcell-only 路径，无合格路径或全零权重就不启用。候选成本用 executed 几何
+计算，raw 可微代理仍有 legalizer 失配。参考查询计作一次 upfront 成本，冻结
+权重后不得用 candidate evaluation/fresh STA 回流调整。本次未启动 STA、
+未计算这些权重、未训练或新增 reward 分支；冻结 expert8/finalPPA6 保持原状。

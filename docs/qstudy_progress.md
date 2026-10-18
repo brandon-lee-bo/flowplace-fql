@@ -1754,3 +1754,42 @@ arrays1798864/1798865 and two weighted-route software tests1798931/1798945,
 for144 unique parents. SHA256 is
 `58bb61393cfd861256a7eaf75518ef3777faf9b483e02a4d3eb35dd7bfa0ed69`.
 The newer plan/resolve/controllers/report jobs still need the next cost append.
+
+## 2026-10-18 18:15 UTC: broader rewards remain in flight; final-label QA queued
+
+The eight frozen expert-rule objectives retain matched three-seed one-step
+FQL actors, teacher, training streams and native evaluation. At this snapshot
+16/24 actors have completed, two are running and six remain dependency-pending.
+The first two native GRT arrays have40 completed tasks; this is not yet the
+complete192-request result and no rule is selected from partial outcomes.
+TRAIN64 final routing has19 completed tasks and six infrastructure-preempted
+tasks; the previously queued bounded recovery chain retains all64 identities.
+The weighted-flow native controller has completed three of its24 declared
+routes, including a twice-preempted request recovered without changing inputs.
+No partial native means are used to change weights or training budgets.
+
+After root and independent schema review, external handoff1799254 is queued
+after recovery1798873. It requires that exact coordinator to prove64/64 completed
+original-TRAIN results and a complete hashed collector report, saves its handoff
+receipt, then invokes unchanged `analysis.qstudy_final_power_audit`. It neither
+trains nor runs EDA. A successful scheduler dependency is not enough: unresolved
+recovery is rejected, and a handoff is not power admission. The six final-feedback
+objectives still require actual native power QA and every fold's variation gate.
+
+Read-only preservation audit1799010 and a scratch-only exact compression
+pilot1799170 distinguish inference state from full resumable checkpoints.
+The failed first pilot1799109 is retained in costs; no approximate tensor
+conversion was used. Closed-cache audit1799239, restricted to the fixed211
+old-run inventory, found no safely reclaimable large duplicate directory or
+prearchive. All201 closed native runs already link their raw caches to scratch;
+the remaining durable archives are protected. Global `/fact_data/bohanli`
+headroom is705,807,110 bytes, below the intended8GiB reserve. It has not been
+restored. New extension outputs remain on scratch; no bulk preservation or
+complete durability claim is made and no unique artifact was deleted.
+
+Cost inventory v10 preserves the previous152 entries and adds exactly seven
+proven parent jobs, for159. Its SHA256 is
+`459c6929b1cde932c38f926b1134a0af42021bb3fda9fdc76062ccbce5660da6`.
+It includes the failed compression pilot and QA handoff, without treating array
+task aliases as extra parents. Ongoing native submissions still require later
+appends; this is not a final extension cost total. Fresh confirmation stays held.
