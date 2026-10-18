@@ -724,3 +724,28 @@ independent public training seeds, final detailed-route results, or a resumed
 historical Table2 reproduction. They do not yet establish a matched policy
 improvement. The full report1796858 remains dependent on completion of both
 baseline finish controllers.
+
+## First bounded actor contract and separate confirmation exporter
+
+Bounded WL actor seed0 completed1000 updates in1796839. Independent read-only
+audit1796925 verified207 actor state tensors changed, while the behavior flow
+and critic remained identical to their bound common/refit checkpoints and
+their optimizer step counts stayed0. All eight actual evaluation noises are
+byte-identical to matched BC. Exported requests passed the native validator;
+the audit invoked no EDA and made no optimizer update.
+
+Across the ten logged gradient diagnostics, mean Q/distillation gradient-norm
+ratio was0.12865 in action space and0.27512 over actor parameters. These are
+training-contract and scale diagnostics, not evidence of a physical improvement.
+Other objective/seed actors and their native comparisons remain in progress.
+The audit is retained at
+`qstudy_v1/bounded_actor_post_gpu_audit_v1/job_1796925/report.json`, SHA
+`3c9c3db69c9ea143065e8bc4a1de12e6f91e45417fdcce3b274b971f33d753b4`.
+
+The separately reviewed fresh exporter passed16 CPU contract tests in1796984.
+It provides validation/declaration without model/noise/backend execution and
+immutable evaluation-only exports for frozen actors, current behavior flow and
+the released official flow. Original training configs and round identities are
+preserved. Fresh selection, noise85000000 generation and physical dispatch
+remain unopened until development review and the prospective selection lock.
+See [the confirmation protocol](qstudy_fresh_confirmation_protocol.md).

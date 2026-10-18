@@ -71,3 +71,25 @@ Any additional adaptation after fresh results creates a new development
 iteration and requires a separately locked confirmation stream. Three training
 seeds and eight noises still give limited uncertainty evidence; distinguish
 training variation from within-policy output variation.
+
+The evaluation-only entry point is `fql/qstudy_fresh_eval.py`. Its `validate`
+and `declare` stages require a selection JSON and its SHA256, but create no
+noise arrays, load no policy and invoke no backend. `export` additionally takes
+one declared stream and training seed and requires a Slurm CUDA allocation.
+It preserves the selected original training round separately from the fresh
+native request's logical round0. No critic or optimizer is constructed.
+
+The selection file binds original configs, completed checkpoint/replay chains,
+the code closure, graph cache, geometry inputs, common native evaluation data,
+and hardware/precision settings. Shared actual CUDA noise bytes are published
+once under a lock. Completed request exports are immutable and revalidated
+on resume, including public-flow trajectories and preselected DRT indices.
+The public checkpoint uses its official20-step hard-constraint sampler;
+current behavior flow uses10 Euler steps, and one-step actors use one forward
+pass. All receive the same saved noise arrays and final external legalizer.
+
+Sixteen CPU contract tests passed in Slurm1796984. These validate software
+contracts with synthetic fixtures, not a selected scientific comparison.
+The final selection record still requires review of actual method identities,
+matched offline/online budgets, common utility scales and acceptance rules.
+No real fresh noise, layout or physical outcome has been generated yet.
