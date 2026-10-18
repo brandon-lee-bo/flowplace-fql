@@ -1820,3 +1820,44 @@ parent jobs, including the new18-task array counted once, for167. SHA256:
 `e1ae9bb89ee291950b6123716f5d1326bd9361777f8c203ebfb967c516ab5768`.
 Native retries and unfinished jobs remain visible; final costs and preservation
 are still open.
+
+## 2026-10-18 18:35 UTC: final-feedback policy chain queued; online adapter in development
+
+The six final-feedback objectives now have an explicitly gated continuation:
+prepare1799340 follows all eighteen screen tasks1799296; actor array1799341
+follows preparation and maps the fixed six objectives to three seeds each,
+at most two L20 workers; native controller1799342 follows all eighteen actor
+exports and requests the declared144 GRT measurements, at most four backend
+workers. These jobs remain dependency-pending. They do not bypass TRAIN64
+recovery, actual power admission, variation gates or any of the90 checked fits.
+The original preparation, actor and native scientific sources are unchanged.
+External wrappers passed root/independent review and Python3.9/Bash syntax
+checks. The submission journal is
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_final_feedback_launch_v1/actor_matrix_submissions_v1.json`,
+SHA256 `2c50047ce4c2708eb96a8b7d2f5950cab8475939ff7e0d411172f1b753a39f17`.
+The72 predeclared final routes still require their own source resolution and
+submission; queueing GRT is not completion of final PPA evaluation.
+
+The new bounded scalar objectives are not compatible with the old five-column
+online replay path. An independent adapter is being implemented; no new-rule
+or final-PPA online training has run. It must preserve the full-TRAIN scales,
+frozen behavior teacher and parent model/Adam state, and supervise scalar B
+directly with the same Huber loss for feasible and confirmed B4 outcomes.
+The original raw GRT reward remains unchanged. Collect-only role evidence and,
+for final targets, actual closed DRT/native power evidence are required;
+evaluation never becomes replay and missing infrastructure evidence stays NA.
+
+A future online comparison needs matched BC continuation, the WL objective on
+the same data/feasibility predicate, and the selected new objective. Claiming
+that new Q feedback itself caused an improvement additionally needs a
+same-parent frozen-Q actor-continuation control, since extra actor updates can
+also change quality. No winner, new sample namespace or production online
+budget is selected here. Current partial native results do not alter the
+frozen eight-rule or six-final-feedback contrast matrices.
+
+Cost inventory v12 preserves all167 v11 parent dictionaries and adds the three
+new gated jobs plus three actual weighted-route workers/retries, for173 parents.
+`bookkeeping_20261018T183542_v12.json` SHA256 is
+`a4d701b6f699fe391eb6234e390627f96cb170a33e2f231dca49e566741d06cc`.
+It is a point-in-time inventory, not a final resource total; array children are
+not counted again as extra parent submissions.
