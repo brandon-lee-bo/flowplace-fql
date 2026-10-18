@@ -70,9 +70,11 @@ offline-only because their frozen online implementation has source-dependent
 failure scaling. Neither actor prediction nor a lower loss establishes PPA
 improvement; every requested layout needs measured backend evaluation.
 
-Original384-label direction probes are incomplete and concerning; they do
-not validate these64-label refits. No M64 actor, stronger Q weight, new
-training-source mixture or online source promotion follows automatically.
+The original bp_fe384/bp_be64 direction probes completed52/52 native requests
+on each design, with negative/mixed direction evidence. They do not establish
+useful directions for these source-specific64-label refits. No M64 actor,
+stronger Q weight, new training-source mixture or online source promotion
+follows automatically.
 Existing matched BC results may be reused only after certifying effective
 BC training inputs and streams, rather than equating different dataset file
 hashes. All current layout pools remain development evidence.

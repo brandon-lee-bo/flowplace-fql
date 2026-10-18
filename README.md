@@ -1,8 +1,10 @@
 # FlowPlace + FQL investigation
 
-The current Q/reward study is **in progress**. It tests critic inputs, losses,
-physical objectives and behavior-flow data sources before another matched
-policy comparison. Read the [current plan](docs/qstudy_plan.md),
+The current Q/reward study is **in progress**, with **no stable PPA advantage
+established**. The [compact evidence/decision table](docs/qstudy_decisions.md)
+separates completed diagnostics from the pending main/source/bounded physical
+policy matrices and fresh confirmation. The study tests critic inputs, losses,
+physical objectives and behavior-flow data sources. Read the [current plan](docs/qstudy_plan.md),
 [measured progress](docs/qstudy_progress.md),
 [behavior-flow label protocol](docs/qstudy_behavior_source.md) and
 [source-to-actor protocol](docs/qstudy_source_actor_protocol.md).
