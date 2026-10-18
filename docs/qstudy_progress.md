@@ -371,3 +371,26 @@ The declared successful-row counts are 384/16 for bp_fe and 64/16 for bp_be
 layouts number 382 and 63 respectively; bp_be validation has 14 unique layouts
 among 16 logical records. Exact cross-fold overlap is recorded per fit, and
 these duplicates are not additional independent evidence.
+
+## Teacher-label collection completed
+
+All 80 declared current-flow requests now have genuine successful native GRT
+outcomes: 64 TRAIN and 16 validation, with no confirmed physical/geometry
+failures. Recovery controller 1796060 completed its guarded verification with
+`all_native_outcomes_verified,count80`. The final missing request 35 completed
+as native job 1796414; request 50 reused its already-completed native evidence
+instead of repeating physical evaluation. Collector 1795775 and source
+assembler 1795840 subsequently completed, releasing the predeclared 36-task
+critic array 1795841. This completes data acquisition, not Q/actor efficacy.
+
+Restore job 1796382 completed and `scontrol` confirmed native array 1796007 is
+back at throttle four. The eight-CPU physical context and completed measurements
+were unchanged by this temporary scheduling priority.
+
+A separate [failure-utility review](qstudy_failure_utility_review.md) identifies
+a future multiobjective issue: a real successful TRAIN layout has linear
+timing/congestion utility -4.5715, below the generic failure utility -4. Current
+launched WL-only actors are unaffected. Before launching a congestion actor or
+utility selector, prospectively fix success/failure ordering consistently in
+actor, critic and reporting; changing presentation alone is insufficient. Raw
+native metrics and stored legacy WL rewards remain unchanged.

@@ -11,8 +11,8 @@ Table 2 reproduction remains paused. Results below describe completed earlier
 phases, rather than completion of the current study.
 
 This study implements **graph-based FlowPlace + Flow Q-learning (FQL), with
-actual offline-to-online training and native downstream evaluation**. It is
-the completed earlier evaluation phase, including final native evidence
+actual offline-to-online training and native downstream evaluation**. The
+earlier evaluation phase is complete, including final native evidence
 preservation. All three bp_fe
 training seeds completed offline training, two
 measured-feedback updates and native final routing:63/63 predeclared requests
