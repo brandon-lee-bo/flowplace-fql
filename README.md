@@ -1,5 +1,8 @@
 # FlowPlace + FQL investigation
 
+The [execution guide](docs/qstudy_reproduction.md) maps current inputs,
+training/evaluation entries and read-only report reproduction.
+
 The current Q/reward study is **in progress**, with **no stable PPA advantage
 established**. The [compact evidence/decision table](docs/qstudy_decisions.md)
 separates completed diagnostics and the complete main online GRT matrix from
