@@ -889,3 +889,14 @@ using CPU Slurm and no optimizer/layout/backend call. CPU recomputation of
 the existing BC/FQL scores is required to check CUDA-score selection agreement.
 This control tests whether actor learning adds value beyond generate-and-rank;
 it neither changes the fresh selection nor opens its reserved noise stream.
+
+The three bounded-WL actors are now complete. Controller1797058 starts their
+already declared24 native evaluations while the other six objective actors
+continue training. This changes scheduling order only: no new layout, training
+step or logical physical-request budget is added. The final72-request finisher
+1796852 keeps all remaining GPU success dependencies and additionally waits
+for1797058 to become terminal, then validates/reuses completed WL outcomes.
+Its same frozen controller and backend remain in use. Submission metadata is
+`bounded_actors_v1/native_wl_early_v1/submission.json`; read-only snapshot job
+1797061 will report any complete WL comparison while explicitly retaining the
+other objectives as unresolved. Final reporting still waits for all72 requests.
