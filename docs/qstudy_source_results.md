@@ -58,7 +58,7 @@ old-source OOF correlations are0.344 +/- 0.022 and0.286 +/- 0.017. These
 OOF target pools differ; this is supporting diagnosis, not a paired source
 treatment comparison.
 
-## Next actual-effect diagnostic
+## Actor contrast: preparation and comparison
 
 The dated review in `qstudy_source_actor_review_20261018.json` selects only
 O64 versus T64 with the same legacy critic. This is a bounded negative-
@@ -92,3 +92,55 @@ selection, early checkpoint selection or favorable-seed exclusion.
 This contrast changes the whole source/neighborhood recipe: old Gaussian
 perturbations and current-flow fixed-RMS perturbations differ. It cannot
 isolate the teacher checkpoint or integration procedure by itself.
+
+## Completed actor results
+
+All 48 requested O64/T64 outcomes completed successfully. Source controller
+1797490 and both strict native reporters completed with zero integrity errors.
+The common-reference report reuses 24 original BC round0 outcomes under the
+specific effective-update certificate; it does not rerun BC or claim a new
+bitwise GPU repeat. All nine arm/seed streams and three paired contrasts are
+complete. Each pair shares the actual saved noise bytes, seed and index.
+
+Authoritative snapshots under `qstudy_v1/source_actors_v1/`:
+
+- Generic native report:
+  `report/20261018T124252.590592Z_job1797504/report.json`, SHA256
+  `e0148130b9befdbb53df98102f365fdb6573b788039595e1b1617075aaf4a7fe`.
+- Common-reference paired report:
+  `common_reference_report/20261018T124308.027194Z_job1797505/report.json`, SHA256
+  `5ffe75e58bc1e18fa33a50a1b503377bce7b051aee0dcaac899c4e421adc4c98`.
+
+All values below are mean +/- sample SD of three training-seed means, with
+eight predeclared outputs per seed. These are seven **global-route** metrics,
+not final detailed-route/DRC measurements.
+
+| Policy | WL (m) | WNS (ns) | TNS (ns) | H overflow | V overflow | Power (W) | Standard-cell area (um2) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| BC, no Q | 2.314028 +/- .012141 | -.403605 +/- .016925 | -217.399 +/-16.505 | 7.667 +/-2.504 | 1.375 +/-.451 | .170010 +/-.000151 | 61200.24 +/-347.02 |
+| FQL, old-source O64 | 2.323754 +/- .006085 | -.415913 +/- .011548 | -217.693 +/-4.139 | 8.375 +/-2.929 | 2.042 +/-.520 | .170364 +/-.000293 | 61269.83 +/-182.19 |
+| FQL, current-flow T64 | 2.320758 +/- .030722 | -.419403 +/- .004590 | -210.515 +/-14.279 | 9.583 +/-10.573 | 1.250 +/-.650 | .170362 +/-.000782 | 61387.77 +/-195.08 |
+
+Paired WL changes (m), target minus reference; negative is shorter:
+
+| Training seed | O64 minus BC | T64 minus BC | T64 minus O64 |
+| --- | ---: | ---: | ---: |
+| 0 | +.000210 | +.010395 | +.010185 |
+| 1 | +.000463 | -.037157 | -.037620 |
+| 2 | +.028505 | +.046952 | +.018447 |
+| Mean +/- sample SD | +.009726 +/-.016264 | +.006730 +/-.042174 | -.002996 +/-.030268 |
+
+T64 mean WL is .129% lower than O64 but .291% higher than matched BC; only one
+of three seeds is better in either comparison. O64 is worse than BC in all
+three seeds. T64 improves mean TNS and vertical overflow versus O64, while
+mean WNS, horizontal overflow and area worsen; power is almost unchanged.
+Both source actors fail the predeclared primary improvement rule, so this
+comparison does not support promotion or stronger Q optimization.
+
+The data path works, but this 64-label, 1000-update recipe has not established
+a better Q-guided policy. The result does not rule out behavior-flow labels
+generally, different coverage or larger data budgets. It also does not turn
+the small mean T64-versus-O64 WL change into a stable benefit. The comparison
+remains inspected development evidence; no fresh selection or confirmation
+noise was created from it. Other previously declared development matrices
+continue before the final candidate review.

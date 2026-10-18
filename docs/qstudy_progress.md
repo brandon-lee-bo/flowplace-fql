@@ -1192,3 +1192,41 @@ declared weights remain 1/0/0/0/0, 1/.15/.35/0/0 and 1/.15/.35/.1/.1.
 These normalized bounded utilities supplement the complete native metrics;
 they do not redefine the predeclared physical-WL primary endpoint. No fresh
 selection, noise, fitting, inference or backend measurement occurred.
+
+## Complete behavior-flow source actor comparison
+
+Source controller1797490 and strict reports1797504/1797505 completed. All48
+new O64/T64 native outcomes succeeded; with the24 specifically certified
+reused BC outcomes, all72 comparisons are valid, with identical saved noise
+arrays and zero integrity errors. Independent read-only recomputation agrees
+with all three seed means, sample SDs and paired native-metric differences.
+The [source results](qstudy_source_results.md#completed-actor-results) retain
+both immutable report paths and exact hashes, full seven-metric statistics
+and the per-seed WL changes.
+
+T64 mean WL is2.320758m versus O64 2.323754m and BC2.314028m. The .129% source
+reduction is not stable: two seeds worsen and one improves; T64 is .291%
+worse than BC overall. TNS and vertical overflow improve versus O64, while
+WNS, horizontal overflow and area worsen. Neither source actor satisfies the
+locked primary rule. This closes the declared source actor test without
+promotion, a source-online extension or a new tuning grid. The valid data
+pipeline does not itself establish a better critic or policy. These are GRT
+development measurements, not final-route DRC results or fresh confirmation.
+
+## Saved development-noise provenance
+
+Read-only Slurm1797625 independently checked43 sealed request manifests and
+652 rows, including the saved float32 noise bytes. Its immutable report is
+`/fact_home/bohanli/flowplace_fql_recovery/development_noise_inventory_v1/snapshot_v1/report.json`,
+SHA256 `2934f9cf99781c8d8534845f26a93dd70ceca975aefcc4edd0c7cdc52611b0d2`.
+The five inspected noise pools contain4 arrays for900000,4 per design for
+4300000,48 across the4500000 seed/round family,8 shared arrays for4600000,
+and40 teacher-source arrays for5300000. Original900000 requests lacked a
+recorded array fingerprint; saved NPZ contents supplied it without recreating
+the RNG stream. Every newer recorded noise fingerprint matched saved bytes.
+
+The652 rows are this explicit provenance scope, not a physical-call budget
+or exhaustive historical-copy inventory. Unexported round2 streams remain
+listed as not yet sealed and need their eventual strict report bindings.
+No noise was generated and no model or EDA calls were made. None of these
+inspected development pools is eligible to become fresh confirmation.
