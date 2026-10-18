@@ -135,3 +135,23 @@ and exact source copies. The non-final1797308 and incorrect-denominator
 1797301 inventories remain superseded evidence. Later confirmation and
 preservation costs require a new dated snapshot and explicit additional-job
 manifest; they do not silently replace or enlarge this development scope.
+
+## Separate graph inference measurement admitted, 2026-10-19 HKT
+
+The old `fql/latency.py` constructs the earlier MLP actor, so its timings cannot
+stand in for the graph policies. The new [graph cost protocol](qstudy_graph_inference_cost.md)
+binds the six actual completed round2 BC/FQL checkpoints, three common behavior
+teachers, and the same eight saved development noises. It measures model-only,
+fresh original legalizer-only, and actual consecutive model-plus-legalizer
+calls, ending at GPU-resident coordinates. It excludes Q, transfers, DEF/I/O,
+checkpoint loading and the physical backend. The Euler10 teacher is explicitly
+different from the released FlowPlace20-hard sampler.
+
+Bounded CPU fixture1800541 passed10/10 checks in5s. Metadata preparation1800542
+completed0:0 in3s without loading bulk weights. The immutable plan under
+`/scratch/bohanli/flowplace_graph/qstudy_graph_inference_cost_v1/plan.json`
+has SHA256 `1662c6680f5bb7b91f57ef83743e356feb62b5dd235abdb91cb8864383963793`.
+The actual L20 GPU request is1800543, still queued at this admission snapshot.
+There are no measured latency values or speedup claims yet. These allocations
+are separate from the completed development resource totals above, and add
+no training, new layout noises or backend requests.

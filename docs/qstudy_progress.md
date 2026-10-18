@@ -2617,3 +2617,37 @@ its scheduler snapshot SHA256 is
 `7873b137306402f7e105dd2261471446705b05efce2ed8b082d062f39c4dc6dd`.
 Sixteen small sources/declarations/receipts/logs,49,635B, are captured there.
 This excludes model/data/native bulk and is not a final resource-cost closure.
+
+### Actual graph inference-cost measurement admitted, 2026-10-19 HKT
+
+The existing MLP latency helper does not measure GraphPolicy. The separate
+[graph measurement](qstudy_graph_inference_cost.md) now binds all three seeds'
+completed round2 BC/FQL actors and unchanged common Euler10 teachers. It uses
+the same eight saved seed4600000 noises, with no fresh noise, training, Q
+scoring, DEF export or backend. Model, fresh original legalizer, and actual
+model-plus-legalizer generation are timed separately, ending at GPU coordinates.
+Actual backbone hooks verify NFE outside timing; the main summaries use three
+training-seed means rather than treating repeated calls as independent models.
+This is not a benchmark of the released FlowPlace20-hard sampler.
+
+Independent review and CPU fixture1800541 passed all10 tests, including the
+outer FlowMatchingModel `__call__` hook pitfall, timing boundaries, saved-array
+binding, checkpoint-parent/replay metadata and seed-level aggregation. The
+fixture completed0:0 in5s; prepare1800542 completed0:0 in3s. The prepared plan
+SHA256 is `1662c6680f5bb7b91f57ef83743e356feb62b5dd235abdb91cb8864383963793`
+under `/scratch/bohanli/flowplace_graph/qstudy_graph_inference_cost_v1/`.
+GPU1800543 is queued, not completed. No latency number, speedup or new PPA
+gain is inferred from software checks or submission. The expert8, final6,
+scalar-online and weighted-flow physical inventories remain unchanged.
+
+Cost metadata v24 retains the exact246-entry v23 prefix and appends only
+actual parents1800541/1800542/1800543, for249 unique parents. Root independently
+verified all file hashes and the complete old-entry prefix. Recovery
+`qstudy_cost_additional_jobs_v1/bookkeeping_20261018T215640_v24.json` has SHA256
+`a011f01d760b234946542cdbf07856a1d3a169c30ecb3617262568f39d68130c`;
+the scheduler metadata SHA256 is
+`4816fc12cafaf0b8a8234f1c4714da1722424a0cda65eb3c8998046f8ee32cac`.
+Its capture correctly records GPU1800543 RUNNING on deep-space, not completed.
+Nine small source/plan/log/scheduler-proof files,141,836B, are preserved in the
+corresponding `captured_sources_20261018T215640_v24/` directory. Model, layout
+array and native-backend bulk are excluded; this is not final cost closure.
