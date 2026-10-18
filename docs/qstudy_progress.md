@@ -1230,3 +1230,31 @@ or exhaustive historical-copy inventory. Unexported round2 streams remain
 listed as not yet sealed and need their eventual strict report bindings.
 No noise was generated and no model or EDA calls were made. None of these
 inspected development pools is eligible to become fresh confirmation.
+
+## Final saved-report postprocessing scheduled
+
+Slurm1797689 waits for the complete three-arm report1797506, then renders
+the existing seven-metric policy curves. Its wrapper accepts only the exact
+snapshot named by that job's stdout, checks the completion/report hash and
+all27 original arm/seed/round identities, and delegates full native-row and
+noise validation to the already tested renderer. It performs no model or EDA
+calls. Submission and wrapper bindings are retained at
+`/scratch/bohanli/flowplace_graph/final_development_curves_v1/submission.json`;
+wrapper SHA256 is `d95fa63351280ea78921851fa510170c39070b44517973f9d51c526a956da2c5`.
+The output root is `qstudy_v1/actors_v1/flowfactor_curves_v1`.
+
+Read-only metadata job1797663 resolved three older diagnostic snapshots from
+their original job journals, verified the recorded hashes, and checked all
+five final-report stdout paths against Slurm. The closure plan and Python3.9-
+compatible resolver are now copied and pinned in
+`qstudy_v1/development_closure_inventory_v1/`. Their SHA256 values are
+`bc035b69d1d0afaf3dd1ad19207a5b77b337dd9fae7c70d753c292113da2ae40`
+and `2bafd76d8ca74171213a85caea85a2deef8183c7a99507148bc8638e74a73b67`.
+Closure metadata job1797740 waits for reports1797472/1797506/1796866/1797474/
+1797369 and the existing saved-BC diagnostic1797476. It inventories their
+saved metadata without selecting a candidate, changing any source, creating
+noise, loading models or invoking the backend. An afterany dependency can
+produce diagnostic metadata for incomplete work; the root still must inspect
+each report's native success, full denominators, provenance and scientific
+control eligibility. This submission is not proof that development or fresh
+confirmation is complete.
