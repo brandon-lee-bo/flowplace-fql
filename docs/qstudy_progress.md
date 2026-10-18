@@ -1320,3 +1320,50 @@ These are conditional development results, not a general rejection of
 multiobjective rewards. This closes the bounded branch without more alpha,
 capacity, objective-weight or online searches. Main matched online and
 final-route comparisons remain pending.
+
+## Round2 execution and storage preservation follow-up
+
+All nine declared round2 actor-training and request-export jobs completed.
+No additional policy training was added. The temporary GPU recovery monitor
+v5 was stopped after checking all nine immutable completions; its final
+session timestamp is2026-10-18T13:49:17.666000Z. Native arrays1797894 and1797903
+continue the already declared updated-flow and matched-control evaluations.
+Scheduling-only journals `logs/qstudy_native_throttle_20261018T1339_flowr2.json`
+and `logs/qstudy_native_throttle_20261018T1347_mainr2.json` record increases
+from2 to4 and4 to8 simultaneous workers respectively. Each worker still uses
+eight threads, the same physical inputs/settings and the same sample budget.
+Authoritative scheduler inspection confirmed the limits; the main-array
+scontrol return included warnings for completed children.
+
+The new compact native-preservation module was tested on one actual GRT
+outcome and one actual detailed-route outcome in Slurm1797908. Full decoding
+and per-file SHA checks passed for118 files:59,739,779 source bytes became
+7,492,013 archive bytes. This was a scratch-only two-outcome pilot, not the
+complete development archive or an admission to durable storage. Its stage
+archive SHA256 is
+`fda372b02e545f37104a1b05572977ba2b3f721d87e2cf82ee747158b978d9a9`.
+The full development payload must still be measured and independently admitted;
+the pilot compression ratio is not a budget estimate for that larger scope.
+
+Storage-only Slurm1798008 compacted15 closed historical graph-policy archives
+outside the original74-run repacking plan. All15 decoded inventories and exact
+original compressed SHAs had passed probe1797951. The measured archive change
+is949,457,982 to294,712,113 bytes, releasing654,745,869 bytes. Separate audit
+1798022 rechecked compact and original-path hashes, full decoded file contents,
+cache-link targets, original native manifests/outcomes/inventories and the
+unchanged original74-run plan/manifest. All checks passed. The new completion
+manifest is
+`/fact_data/bohanli/flowplace_fql/graph_o2o_archive_repack15_v1/manifest.json`,
+SHA256 `111797d8af6a8b3e92ada66842d449b68d88b0e914b2b05a037d361f97af1494`.
+Independent verification is
+`/fact_home/bohanli/flowplace_fql_recovery/storage_candidate_audit_v1/verification_job1798022.json`,
+SHA256 `ac3b68ce187db64d625384c83b7e7404d3af535315b1461c952d77eb9090018d`.
+
+The original compressed paths remain readable as exact-byte scratch cache
+links; durable compact archives and the pinned-encoder restore procedure
+preserve their contents. The separate admission adapter checks measured sizes
+and SHAs, reserves128MiB and refuses unknown destination artifacts. It changes
+neither the global EDA storage guard nor metrics, models, original provenance
+or held Table2 files. Observed account headroom rose from294,242,503 to
+948,183,854 bytes; the difference from archive-byte savings reflects metadata
+and concurrent account activity, so these are reported separately.
