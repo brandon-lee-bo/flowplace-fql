@@ -1,6 +1,7 @@
 # Q study: evidence and decisions
 
-Status: development remains in progress; no stable PPA advantage is established.
+Status: all declared development matrices are complete; evidence preservation
+and fresh confirmation remain pending. No stable PPA advantage is established.
 This page summarizes verified reports, not a new analysis or candidate selection.
 The whole-layout action is a terminal contextual-bandit adaptation of FQL;
 there is no Bellman bootstrap. See the [literature](qstudy_literature.md),

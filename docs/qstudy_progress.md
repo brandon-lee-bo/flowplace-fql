@@ -1410,3 +1410,37 @@ Saved raw coordinates are clipped, while training MSE uses unclipped outputs.
 The stochastic logged MSE endpoints also do not decrease in every seed.
 Neither convergence nor legalization as the cause of the physical gap follows.
 Close this diagnostic without launching the optional duration study.
+
+## Declared development matrices completed, 2026-10-18 15:17 UTC
+
+The earlier pending-status notes above record their observation times. Final
+main, source, bounded and flow-update GRT reports are now complete. Frozen
+FQL round2 lowers mean GRT WL0.804% versus matched BC, improving two of three
+seed means; updated flow lowers0.628%, also two of three, and fails vertical
+overflow tolerance. Neither meets the prospective primary rule. Source and
+bounded branches also fail their promotion rules, so none replaces the legacy
+anchor. See the [decisions](qstudy_decisions.md) for each hypothesis and limit.
+
+Final detailed-route report1797474 completes48/48 requests, all DRC0. On the
+fixed first4 noises, round2 frozen FQL mean WL is0.114483% higher than BC;
+mean WNS/TNS/power/area improve within the declared tolerances. It fails the
+final-route WL gate, and negative slacks remain. The [complete result table](qstudy_online_results.md#completed-final-detailed-routing)
+retains all three seeds, per-metric variation, paired differences and report
+identity. GRT all8 versus DRT first4 does not isolate a routing-stage effect.
+
+Final call inventory1797369 accounts648 new successful logical GRT outcomes,
+48 inherited representations,720 observed GRT attempts and48 successful DRT
+requests. The [cost inventory](qstudy_cost_inventory.md) separates retries,
+640 prior unique labels and scoped development allocations of369.720833
+CPU-hours/3.376111 GPU-hours. The saved-accounting alias correction changes
+coverage display, not allocation deduplication or resource totals.
+
+Independent requirement review
+`/fact_home/bohanli/flowplace_fql_recovery/goal_requirement_crosswalk_v2/development_addendum.json`
+(SHA256 `83845afefc560172da037e73fc0014f62240c8e24a03aebd50d3e3de448cc0ec`)
+supports closing the declared scientific exploration without blind parameter
+expansion. Alpha3/30 remain analytic gradient diagnostics, not trained
+policies; update-ratio optimality, a causal legalizer explanation, multi-seed
+cross-design gains and isolated inference latency are unproved. Durable
+preservation and unchanged-rule fresh confirmation are still required;
+this section does not claim the Goal is complete or create fresh noise.
