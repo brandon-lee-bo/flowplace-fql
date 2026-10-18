@@ -2651,3 +2651,26 @@ Its capture correctly records GPU1800543 RUNNING on deep-space, not completed.
 Nine small source/plan/log/scheduler-proof files,141,836B, are preserved in the
 corresponding `captured_sources_20261018T215640_v24/` directory. Model, layout
 array and native-backend bulk are excluded; this is not final cost closure.
+
+GPU1800543 subsequently completed0:0 in1m42s on one L20. The [completed cost
+table](qstudy_cost_inventory.md#completed-graph-inference-measurement) reports
+BC33.165±1.164ms and FQL33.381±1.425ms for actual warm model-plus-legalizer
+generation, versus Euler10 teacher242.167±8.751ms. These are three-seed means
+and sample SD, with repeated eight-noise timings distinguished from independent
+models. Both actors use one backbone call; the teacher uses10. All72 audited
+raw outputs and legalized outputs exactly reproduce the old arrays, and all72
+legalized geometries pass. Raw geometries all fail, so legality does not come
+from the one-step network alone. All fixed-node counts are0.
+
+This isolates an approximately7.3-fold generation speed benefit of one-step
+distillation, shared by matched BC; it is not a Q-specific improvement,
+FlowPlace20-hard speed comparison, scaling result or PPA gain. The complete
+864-call CSV and report are independently reviewed and preserved with the
+log and terminal accounting,178,301B, under recovery
+`qstudy_graph_inference_cost_v1/completed_job1800543/`. Report SHA256 is
+`4dfb9996351fcd856ef3a5fc61f390ba67a24de39054acaa94c670500e8a7005`;
+preservation receipt SHA256 is
+`1996abd2df1a72aa7cfcdbb9a2eb07d2425cfccd0f3cd1485f27a052cc1fca0e`.
+The unchanged v24 snapshot correctly retains its earlier RUNNING observation;
+the later terminal record is separate. No reward/actor/backend experiment was
+added or changed by this cost measurement.

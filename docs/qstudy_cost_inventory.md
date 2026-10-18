@@ -155,3 +155,49 @@ The actual L20 GPU request is1800543, still queued at this admission snapshot.
 There are no measured latency values or speedup claims yet. These allocations
 are separate from the completed development resource totals above, and add
 no training, new layout noises or backend requests.
+
+### Completed graph inference measurement
+
+GPU1800543 subsequently completed0:0 in1m42s on deep-space, NVIDIA L20,
+two CPU threads, float32, PyTorch2.2.1+cu121/PyG2.4.0. Prepare used
+Python3.9.25; the actual GPU run used3.9.21, with the same3.9 ABI and exact
+package/CUDA/executable contract. Every compared method ran in this one
+allocation. Results below are warm batch1 host-wall milliseconds with CUDA
+synchronization; mean±sample SD is over the three training-seed means.
+Each seed uses eight old actual noises, four timed repeats per noise/scope.
+
+| Completed bp_fe method | Model only (ms) | Legalizer only (ms) | Actual model→legalizer (ms) |
+| --- | ---: | ---: | ---: |
+| BC round2 one-step actor |23.185±0.180|9.127±0.014|33.165±1.164|
+| Frozen-flow FQL round2 one-step actor |23.352±0.355|9.131±0.043|33.381±1.425|
+| Common behavior flow, Euler10 |232.568±3.618|9.134±0.015|242.167±8.751|
+
+The FQL actor's approximately7.3-fold faster model-plus-legalizer generation
+than this Euler10 teacher is a **one-step distillation** benefit: BC is equally
+fast. It is not evidence of better Q learning, routed PPA or whole-backend
+runtime. The model-only difference is about10-fold, but legalization remains
+necessary. All72 audited raw layouts are geometrically illegal; all72 executed
+layouts are legal and both raw/executed arrays exactly match their saved
+development exports. No noise was replaced or layout filtered. This design
+has11 macros and zero fixed nodes, so it establishes neither scaling to larger
+designs nor nonempty fixed-node handling. It does not benchmark public
+FlowPlace20-hard. Loading, transfers, Q, DEF/I/O and EDA remain excluded.
+
+The completed loops contain864 timed calls,270 warmups and216 untimed audit
+invocations. Backbone hooks observe576 forwards in the audits, confirming
+actor1/teacher10/legalizer0 calls;2304 timed forwards and720 warmup forwards are
+protocol-derived counts, not hook measurements during timing. All nine model
+states are unchanged. Independent read-only review verified the full
+denominators, hashes, coordinates and scopes.
+
+The report SHA256 is
+`4dfb9996351fcd856ef3a5fc61f390ba67a24de39054acaa94c670500e8a7005`;
+raw864-call CSV SHA256 is
+`8ff9d8955bf2d93da00bc13796b642a03881feed04c6c3abeba0d4a2cf6aec6c`.
+Five small result/log/accounting artifacts,178,301B, are preserved under
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_graph_inference_cost_v1/completed_job1800543/`.
+Its receipt SHA256 is
+`1996abd2df1a72aa7cfcdbb9a2eb07d2425cfccd0f3cd1485f27a052cc1fca0e`.
+The earlier v24 cost snapshot remains an immutable running-state capture;
+this completion does not change its249-parent denominator or close the full
+study's resource/storage evidence.

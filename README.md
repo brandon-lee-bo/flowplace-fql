@@ -16,7 +16,10 @@ tests updated/frozen Q and stronger distillation against genuine BC; its
 distinguishes the scientific trial from completed one-update interface checks.
 The separate [graph inference-cost protocol](docs/qstudy_graph_inference_cost.md)
 compares the actual three-seed round2 BC/FQL actors with their Euler10 teacher;
-its CPU checks passed and GPU measurement is queued, with no latency result yet.
+its [completed measurements](docs/qstudy_cost_inventory.md#completed-graph-inference-measurement)
+find about33ms for either one-step actor plus legalization versus242ms for
+Euler10 plus legalization on bp_fe/L20. This is a distillation speed benefit,
+not a demonstrated Q-quality gain or a released FlowPlace20-hard comparison.
 The [compact evidence/decision table](docs/qstudy_decisions.md)
 separates completed diagnostics, the main online GRT matrix and48 completed
 final routes from pending evidence closure and fresh confirmation. The study tests critic inputs, losses,
