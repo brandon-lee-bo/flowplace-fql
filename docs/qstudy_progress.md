@@ -1723,3 +1723,34 @@ live-writer exclusion, source/spec tampering and interrupted-submit adoption.
 Redundant late worker dependencies are omitted after the coordinator's terminal
 gates, avoiding the same expired-ID rejection; gates and physical budget stay
 unchanged. This changes recovery scheduling, not final-feedback training labels.
+
+## 2026-10-18 17:52 UTC: conditional weighted-flow detailed routing launched
+
+The weighted-flow GRT gate passed before routing was admitted. The new metadata
+adapter passed nine final-source fixtures1798945 and root/independent review;
+the earlier nine-fixture1798931 result is retained as a separate software cost.
+It binds the actual six trained flow checkpoints and Euler10 exports, rather
+than assuming a one-step actor chain. It changes neither the original native
+route worker nor its final-result inspector.
+
+Plan1798965 fixes24 development routes: uniform/quality-rank, all three training
+seeds, indices0..3, cap20, eight backend threads and at most two workers.
+`/scratch/bohanli/flowplace_graph/qstudy_quality_weighted_route_v1/full_route_plan.json`
+has SHA256 `167954ce9d9e8b223749e29c8bf1b7e52b81f71291e53b6037825393d40d9eae`.
+Resolution1798975 independently revalidated all48 GRT outcomes and sealed24
+source bindings with actual request, noise, raw/executed coordinates and native
+source identities; all24 resolved. Its report SHA256 is
+`621fd191c1f0c1ff08d44d5d39ec268013d5d0ab2e133db8990763f30e6d713b`.
+Unchanged native controller1798984 is submitted; saved-result report1798989
+depends on its success. Nonzero DRC retains measured PPA, and missing/infra
+outcomes remain nonnumeric. No training/replay or fresh confirmation consumes
+these development layouts.
+
+Expert-rule saved-result job1798978 is also queued after combined native
+controller1798773. It will report the full192-request matrix with all eight
+objectives and three seeds; queued reporting is not evidence of physical gains.
+Cost inventory v8 preserves all140 v7 parents and adds exactly two native GRT
+arrays1798864/1798865 and two weighted-route software tests1798931/1798945,
+for144 unique parents. SHA256 is
+`58bb61393cfd861256a7eaf75518ef3777faf9b483e02a4d3eb35dd7bfa0ed69`.
+The newer plan/resolve/controllers/report jobs still need the next cost append.
