@@ -627,3 +627,47 @@ under all three common-TRAIN-scale utilities, and saved Q is calibrated only
 against its own objective. Flow-baseline report1796858 waits for both existing
 native-finish controllers. Source and full request denominators are retained
 when reports are partial.
+
+## Diagnosed main-array recovery
+
+Readonly audit1796838 strictly validated71 existing native successes and pinned
+25 interrupted attempts, original request/stream/matrix, unfinished manifests
+and the guard-only failure stdout. These are real scheduler FAILED states,
+not physical-failure labels. Most old Slurm task records had already expired
+from slurmctld (MinJobAge300s), so another same-job requeue was unavailable.
+
+A new narrow adapter keeps the original physical evaluator bytecode and sample
+flock. In private globals only, it admits FAILED for exactly the25 independently
+SHA-bound original jobs; real observed states remain FAILED. Unknown/live,
+mixed-state or new unaudited FAILED attempts are refused. Actual loaded stream
+SHA, index-to-sample mapping and request SHA are checked before any no-attempt
+or completed-outcome path; evidence is checked again inside the existing lock.
+Completed native results are still recovered through the frozen evaluator.
+The source module, prior attempts, physical configuration and71 successes are
+unchanged. Independent review identified and fixed an initial stream-binding
+gap before any physical dispatch. Final19 tests and actual96-request readonly
+preflight passed in1796901.
+
+Frozen adapter SHA is
+`9020a52eddf7d576ecde6a77309c15c3b3d9b14ae1949143b8d6c94ddc58a816`;
+formal plan `qstudy_v1/main_guard_recovery_v2/plan.json` has SHA
+`e9041c438c605ee458c6694830a7edf33f7cd9b7b6bdfb9c56fcb224141615d5`.
+Older preflight plans remain preserved and are not the production declaration.
+Array1796906 dispatches exactly25 missing indices, concurrency4,8CPUs/24GiB,
+no automatic requeue, excluding natural-selection/enterprise/blue-space.
+Validation1796908 runs after the array. These are recovery attempts, not25 new
+logical training examples or a scientific change in the feedback budget.
+
+Main resume1796907 waits for successful recovery and independently checks all96
+native outcomes before opening the same original controller state. Its outer
+wrapper clears inherited SLURM_RESTART_COUNT on every entry, including future
+requeues. The same frozen actor, source hashes, two online rounds, GPU
+concurrency2 and backend concurrency4 remain declared. Report1796909 waits for
+that resumed controller; source-resolution1796913 and final-route report1796914
+refresh earlier partial route evidence. If recovery is interrupted again,
+ordinary missing-only diagnosis continues; no interruption is a PPA label.
+
+bp_be original probe array1795819 is now terminal:41 successful jobs and11
+preemptions, with no FAILED worker. Existing missing-only coordinator1796062
+was released by that dependency and will recover the missing requests without
+repeating completed labels. bp_fe probe recovery1796061 continues separately.
