@@ -1798,3 +1798,25 @@ proven parent jobs, for159. Its SHA256 is
 It includes the failed compression pilot and QA handoff, without treating array
 task aliases as extra parents. Ongoing native submissions still require later
 appends; this is not a final extension cost total. Fresh confirmation stays held.
+
+## 2026-10-18 18:26 UTC: gated six-objective fitting is queued
+
+Fixed screen array1799296 is queued after prepare1799280: eighteen tasks,
+three concurrent2CPU/8GiB workers, four family-CV fits plus a full refit per
+objective/seed, ninety fits total. Its small external entry accepts only the
+unique final successful JSON printed by prepare1799280, including its plan
+SHA; it never hashes a newly read plan to authorize that plan. The unchanged
+screen run revalidates the supplied digest, all source/native/family bindings
+and variation gates. A stable per-task admission receipt rejects changed inputs
+across requeue; the original training engine owns checkpoints and resume.
+This schedules the already fixed matrix, without changing targets, budgets or
+physical execution. No fit has started while the TRAIN64/QA gates are pending.
+
+Both first expert-rule GRT controllers have closed; the edge/group controllers
+and their arrays1799287/1799288 now run in the same two lanes. The full192-row
+saved result, not these partial subsets, remains the comparison denominator.
+Cost inventory v11 retains all159 v10 entries and appends eight exact proven
+parent jobs, including the new18-task array counted once, for167. SHA256:
+`e1ae9bb89ee291950b6123716f5d1326bd9361777f8c203ebfb967c516ab5768`.
+Native retries and unfinished jobs remain visible; final costs and preservation
+are still open.
