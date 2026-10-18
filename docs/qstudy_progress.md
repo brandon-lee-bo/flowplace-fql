@@ -2261,3 +2261,74 @@ missing outcomes explicitly unresolved; it performs no forward pass, fit or
 backend call. The existing final report1798978 remains after all eight arms.
 Neither the partial report nor completed control arms can select a reward
 winner, change weights or trigger fresh confirmation before matrix closure.
+
+The saved-only partial report1800252 completed in41s, status `partial`, with
+all192 exported requests accounted for:92 successes,100 unresolved, zero
+physical/geometry failures or integrity-invalid records. Both control arms
+are closed at24/24 successful native GRT calls each; the remaining six arms
+are incomplete and have no eligible aggregate. All eight training arms passed
+their matched initialization, fixed teacher/critic,1000-step actor and RNG
+endpoint checks. This is not a claim to an independently recorded full
+per-step draw sequence or to an old-BC causal comparison.
+
+Three training-seed means (eight common noises nested within each):
+
+| GRT-stage metric | GRT-WL reward | Macro-HPWL reward |
+| --- | --- | --- |
+| Native routed WL (m) | 2.304274 ± 0.014205 | 2.327509 ± 0.017678 |
+| WNS (ns) | −0.418562 | −0.407723 |
+| TNS (ns) | −217.921733 | −216.256013 |
+| Horizontal overflow sum | 2.000000 | 15.291667 |
+| Vertical overflow sum | 0.791667 | 3.083333 |
+| Fixed-activity power (W) | 0.170021 | 0.170631 |
+| Standard-cell area (µm²) | 61,525.171 | 61,208.475 |
+
+The WL ± values are sample SD across three seed means, not a confidence
+interval or24 independent training runs. Same-noise macro-HPWL minus GRT-WL
+has WL deltas+34,669,+15,735,+19,299.25µm for seeds0/1/2: the proxy arm has
+longer native wire in all three, with a mean increase23,234.42µm (about1.01%).
+Its measured macro HPWL is slightly lower in each seed, so proxy improvement
+alone did not establish backend improvement. WNS/TNS differences favor the
+proxy arm in two seeds and reverse in the third; there is no uniform timing
+gain. These are native GRT metrics, not final DRT/DRC or Innovus measurements.
+The outcome supports testing domain rules against actual backend metrics,
+without selecting a winner among unclosed arms or assuming rules help.
+
+Report
+`qstudy_rule_reward_partial_reports_v1/20261018T201852.855710Z_job1800252/report.json`
+under scratch has SHA256
+`d7dc54bbb6072b6c46794f5de6467dc416bc79658441ea5794e31479d567e61b`.
+It issued zero model-forward, actor-update or backend calls. Missing outcomes
+remain in the192-request denominator and the final report is still pending.
+
+The partial report's16 declared report/CSV/source files (2,203,694 bytes) were
+copied and SHA-verified to recovery
+`qstudy_rule_reward_partial_v1/saved_report_1800252`. Its preservation receipt
+`saved_report_preservation_v1.json` SHA256 is
+`0f4497c79a3fbe4c4752dc1fa49336974d92e8a9be2f3a7a7a609d0eb462df80`.
+This preserves small reports/source metadata only; it does not archive model
+weights, optimizers or native databases, and does not resolve the outstanding
+personal persistent-storage capacity requirement.
+
+The final bounded BC integration chain is now scheduled: native C1 collect
+1800262 (three tasks, collect index0 only) → actual second actor update
+1800263 (three tasks, one step each, Q0/teacher0) → actual-parent CPU
+prepare1800268 → evaluation-only export1800269 (three tasks, one shared
+77108000-noise layout each). T2 request/checkpoint SHAs are sealed at runtime
+only after real completion, never substituted with T1 or guessed future
+values. Independent reviews approved both thin launchers. The first C1 native
+task completed successfully in3m25s; remaining tasks and downstream stages
+were unfinished at this snapshot. This chain does not alter any scientific
+reward arm or establish online policy quality.
+
+Cost inventory v19 preserves all225 v18 entry dictionaries/order, appends the
+exact seven parents1800218/1800239/1800252/1800262/1800263/1800268/1800269,
+and totals232 unique parents. Failed software fixture1800218 remains in cost
+coverage. Root independently verified inheritance, uniqueness and SHA.
+Manifest `qstudy_cost_additional_jobs_v1/bookkeeping_20261018T202334_v19.json`
+SHA256 is
+`b1b5c88635b94dccbd2fd6d47ffc455e552ab8e14c7cf45638446de6a783b1d4`;
+its exact-seven-parent scheduler metadata SHA256 is
+`9bcbfb3dfe44eae7c16acacb98347aaa342b144a2b473858e848a52efe97b96e`.
+Array children are not additional requested parents, live/pending observations
+remain unresolved, and final resource accounting is still open.
