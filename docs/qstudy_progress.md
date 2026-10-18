@@ -206,6 +206,38 @@ area and DRC are retained; GRT overflow is not relabeled as final routed
 congestion. These are development results, not fresh confirmation evidence.
 Plan and submission records live in `qstudy_v1/development_final_route_v1`.
 
+### Completed offline first4 DRT evidence
+
+Source resolution1797326 and audited report1797327 completed. The immutable
+snapshot is
+`qstudy_v1/development_final_route_v1/development_report/snapshots/20261018T114051_961307_job1797327`;
+the source tables are `policy_groups.csv` and `matched_deltas.csv`. Of48
+planned tasks,24 round0 layouts completed and24 round2 sources remain missing.
+Each offline policy has all12 declared layouts: three independent training
+seeds, each with the fixed first four evaluation-noise indices. All24 detailed
+routes completed with DRC0; no candidate was selected by quality.
+
+| Offline round0 policy | DRT WL (um), mean +/- seed SD | WNS (ns) | TNS (ns) | Power (W) | Std-cell area (um2) | DRC0 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Matched BC | 1979399.833 +/-13918.662 | −.579834833 | −360.588083 | .173064250 | 61050.3083 | 12/12 |
+| Legacy frozen-flow FQL | 1985800.583 +/-12414.537 | −.605670667 | −372.022917 | .173642083 | 61327.8417 | 12/12 |
+
+The report first averages four noises within each training seed, then reports
+the mean and sample SD across three seed means. Other table entries above
+are means. Matched FQL-minus-BC WL is +6400.75um with paired-seed SD26202.405um;
+seed deltas are −10918.25, −6424.75 and +36545.25um. Thus two of three seeds
+improve WL, while the aggregate WL is worse. Aggregate WNS/TNS, power and area
+also do not favor FQL. This is a negative/mixed offline development result,
+not evidence of a stable PPA advantage. DRC0 does not imply timing closure:
+both WNS and TNS remain negative.
+
+These DRT policy means use first4, whereas the earlier GRT policy means use
+all8 evaluation noises. They are not the same denominator and do not isolate
+the causal effect of routing. No GRT congestion value is substituted for a
+final routed congestion metric. Missing round2 layouts retain their24-task
+denominator with unavailable PPA. Online final-route results remain pending;
+fresh confirmation also remains pending and requires its own prospective lock.
+
 ## Direct current-flow evaluation control
 
 A separate eval-only exporter has been tested for the current behavior flow:

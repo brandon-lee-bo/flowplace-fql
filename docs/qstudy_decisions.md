@@ -17,7 +17,7 @@ there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 | Labels from current behavior flow improve Q | All80 native labels and36 source tasks completed. On the same current-flow16, legacy O64/T64 WL rho is .500/−.346; T64 worsens every critic seed. Base-only sensitivity does not rescue ranking. | Source substitution alone is negative. The declared O64/T64 actual-policy test remains pending; it tests physical consequences, not promotion. [Source results](qstudy_source_results.md). |
 | Q gradients improve nearby layouts | Both designs completed52/52 native probes. FE directions mostly fail; BE signs, ties and mean gains are mixed. Four bases and one critic seed per design. | Do not strengthen Q from these probes. They do not validate source64/bounded critics or identify a legalizer mechanism. |
 | Timing/congestion objectives improve policy tradeoffs | Nine bounded-objective tasks/36 fits completed. Timing/congestion CV MAE exceeds their own constant baselines; local ordering is weak. | The declared three-objective/three-seed physical matrix remains pending. Compare all native metrics and common-scale utilities; no automatic online extension. [Protocol](qstudy_bounded_objective_protocol.md). |
-| Q-based actor learning beats imitation and generate-and-rank | Matched offline native means and identical-initial-Q selection are complete below; small WL gains over BC are seed-unstable, and flow+Q is competitive. | Ranking ability is not evidence of correct actor gradients. Complete the declared main online/final-route matrices before selection. |
+| Q-based actor learning beats imitation and generate-and-rank | Offline GRT means and identical-initial-Q selection are complete below. Fixed-first4 offline DRT also completed: FQL has worse mean WL, timing, power and area than BC, despite better WL in two of three seeds. | No stable offline advantage. Ranking ability is not evidence of correct actor gradients. Complete the declared main online/final-route matrices before selection. |
 | One-step distillation is limited by training duration | Saved same-noise raw RMS to flow is .1000 for BC and .1009 for FQL; both have worse mean WL than flow in all three seeds. This is clipped export distance, not training MSE. | Use the already declared BC1000→1600→2200 continuation first: teacher stays fixed and Q weight is zero. No additional duration GPU/native jobs are launched. |
 
 ## Completed native development comparison
@@ -59,6 +59,20 @@ Evidence: baseline1796858 (`ee8d29d7…`), matched round0 report1797018
 flow/BC/FQL native outcomes succeeded with zero integrity errors. GRT success
 does not establish final DRC0 or timing closure. These inspected noises,
 historical validation sets and local probes are development evidence.
+
+## Fixed-first4 offline detailed routing
+
+The48-task plan has24 completed round0 layouts and24 round2 sources still missing.
+Each arm averages fixed first4 noises within each of three training seeds first; all12 layouts are DRC0.
+
+| Round0 policy | DRT WL (m) | WNS (ns) | TNS (ns) | Power (W) | Std-cell area (um2) | DRC0 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Matched BC | 1.979399833 | −.579834833 | −360.588083 | .173064250 | 61050.3083 | 12/12 |
+| Legacy offline FQL | 1.985800583 | −.605670667 | −372.022917 | .173642083 | 61327.8417 | 12/12 |
+
+FQL−BC WL is +6400.75um (paired-seed SD26202.405um): two of three seeds improve, but the aggregate worsens. DRC0 is not timing closure.
+GRT all8 and DRT first4 have different denominators and cannot isolate a routing-stage effect. Online round2 and fresh confirmation remain pending.
+Evidence: report1797327, snapshot `development_final_route_v1/development_report/snapshots/20261018T114051_961307_job1797327`.
 
 ## Stopping and confirmation gate
 
