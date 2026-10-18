@@ -20,6 +20,19 @@ there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 | Q-based actor learning beats imitation and generate-and-rank | Offline GRT means and identical-initial-Q selection are complete below. Fixed-first4 offline DRT also completed: FQL has worse mean WL, timing, power and area than BC, despite better WL in two of three seeds. | No stable offline advantage. Ranking ability is not evidence of correct actor gradients. Complete the declared main online/final-route matrices before selection. |
 | One-step distillation is limited by training duration | Saved same-noise raw RMS to flow is .1000 for BC and .1009 for FQL; both have worse mean WL than flow in all three seeds. This is clipped export distance, not training MSE. | Use the already declared BC1000→1600→2200 continuation first: teacher stays fixed and Q weight is zero. No additional duration GPU/native jobs are launched. |
 
+The declared actors retain alpha10. During offline actor training the separately
+fitted critic stays frozen; online FQL uses one critic update per actor update,
+with an additional flow update only in the explicitly updated-flow arm. Loss
+units and gradient contributions have been audited, but neither alpha nor the
+update ratio has been demonstrated optimal. Weak measured Q directions do not
+justify amplifying Q through an additional alpha grid. Equal alpha across
+different utility transforms also does not establish equal gradient pressure.
+Power and area remain audited/reporting metrics, not trained reward terms.
+Geometry and direction evidence shows changes through the placement pipeline,
+but does not identify legalization as the causal explanation for poor Q.
+The second-design bp_be screen/probes support limited mechanism diagnosis;
+they do not establish multi-seed cross-design policy improvement.
+
 ## Completed native development comparison
 
 All values below are GRT-stage measurements on bp_fe, with the same actual
