@@ -118,6 +118,22 @@ def verify_request_audit(row, evidence):
             checked_file(evidence[key])
 
 
+def dispatch_record(experiment, seed, row, sample, tasks):
+    """Reconstruct the full record written by both frozen native plan preparers."""
+    return dict(experiment=str(experiment), seed=seed, round=0, index=row["index"],
+        sample_dir=str(sample), tasks_sha256=native.sha(tasks),
+        request_sha256=native.sha(sample/"request.json"),
+        **{key:row[key] for key in ("noise_sha256", "action_sha256", "raw_action_sha256",
+            "checkpoint_sha256", "run_id", "role", "training_feedback_eligible",
+            "offline_train_eligible")})
+
+
+def verify_dispatch(expected, actual):
+    # Exact ordered equality also binds all extended provenance/eligibility keys.
+    if expected != actual:
+        raise ValueError("Native dispatch rows differ from completed immutable exports")
+
+
 def inspect_outcome(row, sample, tasks, backend_context):
     """Read native evidence only. Missing saved geometry must never launch EDA."""
     from .qstudy_backend import checked_existing
@@ -159,7 +175,8 @@ def summarize(rows, expected=8):
     successes = [r for r in rows if r["state"] == "success"]
     return dict(planned=expected, exported=len(rows), not_exported=max(expected-len(rows),0), **counts,
         fully_accounted=len(rows)==expected and sum(counts[k] for k in native.ADMITTED)==expected,
-        conditional_PPA=bool(counts["geometry_failure"]+counts["physical_failure"]),
+        conditional_PPA=len(successes)!=expected,
+        successful_native_metric_n=len(successes),
         successful_native_metric_means={k:native.mean([r["metrics"][k] for r in successes]) for k in native.METRICS},
         generation_noise_statistics_success_only={k:native.describe([r["metrics"][k] for r in successes]) for k in native.METRICS},
         legalizer_jump_rms=native.describe([r.get("legalizer_jump_rms") for r in rows]))
@@ -237,8 +254,7 @@ def collect(experiment, label, audit):
                 sample=public.verify_row(row,cfg,physical,declaration,declaration["noises"][row["index"]])
             verify_request_audit(row,evidence[(seed,row["index"])])
             rows.append(inspect_outcome(row,sample,tasks,backend_context))
-            expected_matrix.append(dict(experiment=str(experiment),seed=seed,round=0,index=row["index"],
-                sample_dir=row["sample_dir"],tasks_sha256=native.sha(tasks)))
+            expected_matrix.append(dispatch_record(experiment,seed,row,sample,tasks))
         if len({r["noise_sha256"] for r in rows})!=8:
             raise ValueError("Eight distinct actual noises are required")
         streams.append(dict(baseline=label,seed=seed,round=0,experiment=str(experiment),
@@ -246,8 +262,7 @@ def collect(experiment, label, audit):
             actual_noise_by_index={str(r["index"]):r["noise_sha256"] for r in rows},
             integrity_errors=[r["integrity_error"] for r in rows if r["state"]=="invalid"],
             rows=rows,**summarize(rows)))
-    if expected_matrix != matrix:
-        raise ValueError("Native dispatch rows differ from completed immutable exports")
+    verify_dispatch(expected_matrix,matrix)
     return dict(baseline=label,experiment=str(experiment),
         plan=fingerprint(experiment/"native_plan/plan.json"),config=plan["config"],declaration=plan["declaration"],
         matrix=plan["matrix"],source_kind=KINDS[label],physical_binding=backend_context[2],

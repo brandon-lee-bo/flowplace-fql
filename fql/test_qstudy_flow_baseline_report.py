@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import os
 from pathlib import Path
@@ -71,6 +72,77 @@ class FlowBaselineTests(unittest.TestCase):
         self.assertEqual(result["request_accounting"]["missing"],1)
         self.assertEqual(result["request_accounting"]["physical_failure"],0)
         self.assertIsNone(result["metrics"])
+        self.assertTrue(s["conditional_PPA"])
+        self.assertEqual(s["successful_native_metric_n"],7)
+
+    def test_missing_invalid_and_unexported_make_PPA_success_conditional(self):
+        for state in ("missing","invalid","physical_failure","geometry_failure"):
+            value=report.summarize(rows(failure=state))
+            self.assertTrue(value["conditional_PPA"])
+            self.assertEqual(value["successful_native_metric_n"],7)
+        short=report.summarize(rows()[:6])
+        self.assertTrue(short["conditional_PPA"])
+        self.assertEqual(short["not_exported"],2)
+        self.assertEqual(short["successful_native_metric_n"],6)
+        self.assertFalse(report.summarize(rows())["conditional_PPA"])
+
+    def dispatch_fixture(self):
+        sample=self.folder/"sample"
+        self.artifact("sample/request.json",'{"request":"immutable"}')
+        tasks=self.artifact("tasks.jsonl",'{"tasks":"immutable"}')
+        row=dict(index=0,noise_sha256="noise",action_sha256="executed",
+            raw_action_sha256="raw",checkpoint_sha256="checkpoint",run_id="unique",
+            role="evaluation",training_feedback_eligible=False,offline_train_eligible=False)
+        record=dict(experiment=str(self.folder),seed=2,round=0,index=0,sample_dir=str(sample),
+            tasks_sha256=tasks["sha256"],request_sha256=report.native.sha(sample/"request.json"),
+            **{k:v for k,v in row.items() if k!="index"})
+        return row,sample,Path(tasks["path"]),record
+
+    def test_full_native_dispatch_contract_includes_all_original_bindings(self):
+        row,sample,tasks,expected=self.dispatch_fixture()
+        actual=report.dispatch_record(self.folder,2,row,sample,tasks)
+        self.assertEqual(actual,expected)
+        report.verify_dispatch([expected],[actual])
+        self.assertEqual(len(actual),15)
+
+    def test_dispatch_provenance_eligibility_omission_order_and_tamper_refused(self):
+        _,_,_,record=self.dispatch_fixture()
+        for key in record:
+            changed=copy.deepcopy(record)
+            changed[key]="tampered"
+            with self.assertRaisesRegex(ValueError,"Native dispatch"):
+                report.verify_dispatch([record],[changed])
+            omitted=copy.deepcopy(record)
+            del omitted[key]
+            with self.assertRaisesRegex(ValueError,"Native dispatch"):
+                report.verify_dispatch([record],[omitted])
+        second=dict(record,index=1)
+        with self.assertRaisesRegex(ValueError,"Native dispatch"):
+            report.verify_dispatch([record,second],[second,record])
+
+    def test_real_frozen_all32_export_metadata_matches_exact_native_dispatch(self):
+        # Regression for job1796919. Only frozen metadata/array hashes are read;
+        # no native outcomes, model forward calls or physical tools are invoked.
+        root=Path("/fact_data/bohanli/flowplace_fql/qstudy_v1")
+        audit=report.checked_audit(root/"baseline_native_submission_v1/export_audit.json")
+        total=0
+        for label,folder in (("current","flow_eval_v1"),("public","public_flow_eval_v1")):
+            experiment=root/folder
+            _,_,_,matrix=report.checked_plan(experiment,label,audit)
+            expected=[]
+            for seed in report.SEEDS[label]:
+                tasks=experiment/f"seed_{seed}/round_0/requests/tasks.jsonl"
+                requests=[json.loads(line) for line in tasks.read_text().splitlines() if line.strip()]
+                for row in requests:
+                    evidence=next(v for v in audit["baselines"][label]["rows"]
+                        if v["seed"]==seed and v["index"]==row["index"])
+                    report.verify_request_audit(row,evidence)
+                    sample=Path(row["sample_dir"])
+                    self.assertEqual(json.loads((sample/"request.json").read_text()),row)
+                    expected.append(report.dispatch_record(experiment,seed,row,sample,tasks))
+            report.verify_dispatch(expected,matrix)
+            total+=len(expected)
+        self.assertEqual(total,32)
 
     def test_confirmed_failure_keeps_denominator_but_has_no_PPA(self):
         s=stream(failure="physical_failure")
