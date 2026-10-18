@@ -2024,3 +2024,41 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   of23, with actual workers1794947 and1794951 live. No live job was restarted
   for elapsed time. bp_be final report1793511, archive1794901 and unified
   summary1794697 retain their existing dependencies. Goal remains active.
+
+### 07:59–08:02 HKT — preserve offline inputs and all400 new native labels
+
+- Completion-scope review found scratch-only source arrays/replay for the
+  expanded320 labels and initial80 bp_be labels. Added a bounded preservation
+  driver, with explicit file/observation scope, native request/DEF/metric/tool
+  binding,8GiB reserve and full per-file archive decoding. No model, reward,
+  split, checkpoint choice or physical run was changed.
+- Initial registration-path check failed before any Slurm/data mutation:
+  exported tasks live in round_0/requests/tasks.jsonl. Its diagnostic and
+  correction remain in registration_attempt_01.json. Source48138c8 and first
+  registered plan38065736c2536d65dde0a0289e91f4943a0e149b7c8ca71781519f976b8cbc09
+  were retained. Actual preservation1794968 FAILED1:0 after9s: the initial
+  measurement outcomes intentionally have null normalized reward/scale;
+  derived labels are created only after all80 complete and TRAIN scale freezes.
+  This was a preservation-format assumption, not a changed scientific result.
+- Corrected only preservation semantics inb1d2244: require initial raw nulls,
+  compare numeric labels to measured GRT and the bound frozen dataset manifest,
+  and retain each reward's source. Old source, plan, submission and failed log
+  are themselves preserved. Amendment plan SHA
+  c5432c72bce0c45a56d47a7e32e13ec34245a3beeb21a07d4686bf5b9d8c7d95.
+- Actual1794972 COMPLETED46s. All400 declared native observations are present:
+  bp_fe additional320 and bp_be initial80. Fully decoded17856 files,
+  4418669606 source bytes→18332552 archive bytes; source files unchanged.
+  Archive SHA4e351add571a59d8d80f9a1deea94bddb461fb462845e2bff265146e81941fa0;
+  manifest SHA4b89e19500614ea5ac8ca8873957bfb5593d72554eba583730bbc12c34570c88.
+  Separately checked inventory/aliases/audit hashes and exact inclusion of
+  all34 registered inputs and the400 observation/reward-source records.
+  Full OpenDB/SPEF and optimizer resume state are outside this compact archive.
+- Read all nine model-preservation manifests:26 states include24 main/new
+  study-stage copies plus two mechanism-control models. Main seed0's remaining
+  six study-stage checkpoints are actual complete files on fact_data, so all30
+  study stages have durable model state. Scratch-only optimizer continuations
+  remain an explicit limitation for the inference-only copies.
+- bp_be controller1793205 remains actually live, with15 completed/2 running/
+  6 waiting of23. Current physical workers1794965/1794969 are running; their
+  existing final audit1793511, unified report1794697 and native archive1794901
+  retain dependencies. Old Table2 and unrelated jobs remain untouched.

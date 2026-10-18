@@ -228,6 +228,7 @@ GRT→DRT诊断覆盖83个请求，全部成功。80次策略评估按执行坐�
 | graph_o2o_fixed_critic_transfer_v1/reports/job_1794868 | 同40提案Q比较、逐预测表和已检查图 |
 | graph_o2o_model_preservation_v1/batch_01至09 | 完整模型参数/buffer及非优化器字段的持久副本，逐项精确校验 |
 | graph_o2o_used_feedback_preservation_v1/batch_01、02 | 最终模型实际使用的160条逻辑训练反馈、原始/执行动作、DEF和原生日志 |
+| graph_o2o_offline_input_preservation_v1/evidence | 原始输入数组及新增320条bp_fe TRAIN、80条bp_be初始标签的原生评分证据；400条均完整保存并解码校验 |
 | graph_o2o_native_evidence_preservation_v1 | seed1/2及batch_expanded384原生最终DEF/日志/报告已归档并完整解码校验；bp_be归档待最终审计 |
 | graph_o2o_evidence_snapshots_v1 | 已完成小报告/配置的逐文件SHA快照 |
 | graph_o2o_whole_study_v1 | 三组完整研究统一汇总计划，等待bp_be最终审计 |
@@ -235,7 +236,11 @@ GRT→DRT诊断覆盖83个请求，全部成功。80次策略评估按执行坐�
 
 模型副本保留flow、actor、critic、RNG等所有非优化器字段；完整优化器续训状态仍在原checkpoint。主实验新增seed的模型还通过实际GPU重载输出一致性检查；新批次只完成CPU全状态一致性时，不额外声称已GPU重载。紧凑原生归档完整解码逐文件校验，但不包含所有OpenDB/SPEF，不能称为完整EDA续跑备份。
 
+主seed0的六个原始完整checkpoint直接保存在fact_data。其余24个研究阶段模型均有上述持久推理状态副本，归档中另有两个机制控制模型；30个研究阶段都有持久模型状态，不需要把scratch当作唯一模型证据。
+
 384标签组的原生保存1794899实际完成：2213个文件、原始1,267,822,045字节，归档135,934,086字节，覆盖21个预定结果及2个best400参考的原生证据；源文件未改变。最终审计报告SHA为`55dc0eb7e5df7e10120efb52148f73f33aadcfc82b2531bbf1df8bc4a960edba`，保存清单SHA为`a515ce8d0e3070e63d10dd6686be2e209bbd47e086f2a4f8600583a0424f59d5`。
+
+离线输入保存1794972也已完成：34个固定输入、400条新增离线观测及其原生日志/DEF，共17,856个文件、4,418,669,606原始字节，归档18,332,552字节。初始bp_be的原始测量不记录归一化reward；全部80条完成后，数据汇总冻结TRAIN均值并生成训练标签。这两层记录分别保存，未改写原值。最初的归档格式检查失败1794968及修正源码也保留。原bp_fe数组中单独标记的未使用heldout数据只是按原字节保存，没有加入训练。保存清单SHA为`4b89e19500614ea5ac8ca8873957bfb5593d72554eba583730bbc12c34570c88`。
 
 预算已独立统计主实验三个seed的训练、GRT及控制器：33个父作业、279次实际分配，包含39次抢占，累计101.719 CPU小时、1.691 GPU小时。GPU是共同预热与BC/FQL联合分配，不是各方法独立计时；该范围不含共享初始数据、详细布线、诊断和新增研究，不能写成全项目总成本。
 
