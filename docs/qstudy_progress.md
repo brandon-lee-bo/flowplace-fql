@@ -2465,3 +2465,33 @@ scheduler snapshot SHA256
 `9d4868e2a70984722d4dcd63d3edf41cfbe3d18af520cf2bf9faa53e9f6f6b18`.
 Root independently checked the exact232-entry prefix and two appended IDs.
 This is ongoing bookkeeping, not a final resource total or scientific closure.
+
+## 2026-10-19: scientific scalar-online control admitted and T0 exported
+
+The four-arm control now has an immutable prospective manifest, SHA256
+`d86e233577c600b095729eff34f466c725eab7fbe02ba60166fd7957667e9016`, at
+`/scratch/bohanli/flowplace_graph/qstudy_scalar_online_control_v1/manifest.json`.
+Its [protocol](qstudy_scalar_online_control_protocol.md) fixes genuine BC,
+same-parent frozen-Q alpha10, updated-Q alpha10 and updated-Q alpha30;
+three training seeds; two eight-collect/600-update cycles; and the final
+round as the primary endpoint. The unique physical budget is384 GRT and72
+fixed-index DRT requests, including exactly shared FQL T0 requests. It does
+not choose a new expert/final-feedback reward or resume old Table2 work.
+
+Actual prepare array1800383 completed2/2. Actual GPU export array1800387
+completed6/6 in14--17s per task, producing96 T0 requests. The original
+exporters validated coordinates, DEF and producer identities. The saved
+`gates/T0_actual_noise.json` passed: the same eight evaluation arrays occur
+across all six producers; BC/FQL C0 arrays pair within each seed; the three
+C0 seed populations are distinct; and there are no collisions with the125
+actual historical noise fingerprints in the explicitly bound inventory.
+This inventory is scoped historical evidence, not a universal RNG proof.
+Root independently checked this gate and all four frozen source hashes.
+
+Native array1800396 was submitted for exactly96 requests, concurrency4,
+eight CPUs/24GiB/two hours per task, unchanged physical flow and scratch
+archive storage. Submission is not a measured PPA result. The frozen stage0
+driver implements prepare/export/native only. Continuation glue is being
+implemented separately, binding this manifest without modifying its source
+closure; no600-update scientific cycle is claimed complete here. The older
+eight-rule and six-final-feedback experiments remain separate pending work.
