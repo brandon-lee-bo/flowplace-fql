@@ -21,6 +21,13 @@ See [the protocol](qstudy_fresh_confirmation_protocol.md) and the exact
   Generic chain verification does not certify a new method's special adapter:
   source/bounded/flow-updated choices need their original preparation, scale,
   source closure and matched-control limitations explicitly reviewed too.
+  A round0 source/bounded candidate requires a round0 BC comparison and its
+  own effective-update review; the O64/T64 certificate does not certify
+  bounded actors. Source O64/T64 now fail the complete primary endpoint and
+  are ineligible for promotion. A flow-updated round2 candidate is the total
+  adaptive method: teacher updates and its changed replay accompany Q/actor
+  updates. Bind `actors_v1/legacy_updated/{import_plan,branch_import}.json`
+  and the imported frozen prefix. Do not attribute its effect to Q alone.
 - Prepare a standalone `common_train_utility_reference` JSON containing either
   one validated bounded utility spec or
   `{"version":"fresh_common_bounded_utilities_v1","utility_specs":{...}}`.
@@ -164,6 +171,13 @@ logical requests: **80/40 total**, excluding real retry costs. Public is one
 checkpoint with eight noise outputs, not three trained replicates. A new
 candidate would require an additional three-seed legacy anchor and explicitly
 revised104/52 budget before locking; do not silently reuse this default loop.
+This also applies to `legacy_updated`: it is not `legacy_frozen`. A promoted
+updated-flow comparison has13 exports across candidate/BC/legacy-anchor
+seeds0--2 and the three-seed common-flow plus one public checkpoint. Candidate,
+BC and legacy anchor use original round2. The common-flow reference remains
+the initial teacher, not the candidate's updated teacher. All three trained
+actors have2200 actor updates and16 collected labels per seed; disclose the
+candidate's additional online teacher updates and its own replay distribution.
 
 Verify all actual shared float32 CUDA85000000 noise hashes, raw/executed/DEF
 bindings, seven GRT metrics and six final DRT metrics, failure/missing counts,
