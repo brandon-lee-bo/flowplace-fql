@@ -1906,3 +1906,15 @@ actual new weighted-route worker, for179 parents. Manifest
 `bookkeeping_20261018T184319_v13.json` SHA256 is
 `fbddd4bfc45eb70b2a8233ca025bd24c438fd83a7570998b2a75343a3987a5f9`.
 This still does not close extension costs or durable preservation.
+
+At the next scheduler check, weighted-route controller1798984 had been
+infrastructure-preempted after48m30s. Its measured/completed worker outputs
+were retained. After checking its terminal state and unchanged four source
+hashes, replacement1799373 resumes the same24-task plan/state with the same
+two-worker limit. Reporting1798989 now depends on that replacement and is again
+Dependency-pending rather than DependencyNeverSatisfied. Recovery journal
+`/scratch/bohanli/flowplace_graph/qstudy_quality_weighted_route_v1/controller_recovery_v1.json`
+has SHA256 `ca390a77386191e8a6feb5a572986752b47996371a112a39cae3754fa16277e5`.
+This new parent and subsequent workers need the next consolidated cost append;
+v13 is not described as including them. No completed route is intentionally
+rerun and neither targets nor physical settings changed for this recovery.
