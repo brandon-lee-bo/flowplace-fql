@@ -394,3 +394,40 @@ launched WL-only actors are unaffected. Before launching a congestion actor or
 utility selector, prospectively fix success/failure ordering consistently in
 actor, critic and reporting; changing presentation alone is insufficient. Raw
 native metrics and stored legacy WL rewards remain unchanged.
+
+## Executed-input predictive result
+
+All six tasks in array 1796431 completed (30--36 seconds each). Reporting job
+1796472 verified all 24 paired CV/refit artifacts, with zero integrity errors.
+Reporter tests passed in 1796464 (nine tests); source commit is `08d8076`.
+Immutable JSON and paired fold/seed CSVs are under
+`qstudy_v1/executed_report_v1/`. No new inference, fit or physical measurement
+was performed by the reporter. Every fold has zero exact pre-DEF executed
+coordinate collisions across its training and target sets, despite duplicates
+within the original logical dataset.
+
+Primary timing results below are grouped TRAIN-CV scores, first averaging the
+three folds within each critic seed, then reporting three-seed mean/sample SD.
+WNS/TNS are positive violation costs; MAE is in ns. Rho is Spearman correlation.
+
+| Dataset / cost | Raw MAE | Executed-input MAE | Raw rho | Executed-input rho |
+| --- | ---: | ---: | ---: | ---: |
+| bp_fe384 / WNS | .04834 +/- .00086 | .04556 +/- .00063 | .009 +/- .012 | .085 +/- .009 |
+| bp_fe384 / TNS | 52.60 +/- .91 | 52.00 +/- .81 | .118 +/- .021 | -.009 +/- .023 |
+| bp_be64 / WNS | .07681 +/- .00216 | .08011 +/- .00265 | .131 +/- .045 | .108 +/- .039 |
+| bp_be64 / TNS | 112.98 +/- 1.74 | 135.89 +/- 3.67 | .218 +/- .042 | .188 +/- .077 |
+
+The intervention does not consistently improve timing prediction. bp_fe WNS
+improves modestly, but its TNS rank worsens; bp_be timing errors worsen.
+bp_be TNS within-family pair accuracy also falls from .612 to .384. WL is
+essentially unchanged on bp_fe, while bp_be WL rho falls from .522 to .281.
+All five heads, paired seed deltas and undefined-statistic accounting remain
+available in the full report. The 16-row historical refit development results
+are separate and do not override the grouped-CV conclusion.
+
+Do not promote executed inputs to the actor from this result. Retain raw
+proposal inputs as the anchor while the source-label study proceeds. This
+does not establish that legalization is irrelevant, that backend snapping is
+responsible, or that either representation supplies physically valid actor
+gradients. Features, normalization and the analytic prior changed together;
+the conclusion is limited to this fixed residual-critic preprocessing test.
