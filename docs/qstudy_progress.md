@@ -1170,3 +1170,25 @@ The [launch checklist](qstudy_fresh_launch_checklist.md) includes the exact
 saved-report reduction command. This is implementation and fixture evidence,
 not a fresh physical result: development matrices are still running, no
 candidate has been selected and no85000000 noise has been generated.
+
+## Common TRAIN utility reference prepared
+
+Slurm job 1797614 extracted the existing WL, timing and congestion utility
+specs fitted on all 384 training rows. All nine original objective/seed
+summaries were completed TRAIN-only refits; each objective's three saved specs
+matched exactly, and all objectives shared the exact reference and scales.
+The current fresh reporter successfully read the standalone inventory back
+without refitting any scale or loading model/data tensors.
+
+The immutable reference is
+`qstudy_v1/fresh_common_utility_reference_v1/common_train_utilities.json`, SHA256
+`55de0bcbbc9129384d01879f7d42eed1c59366f8f6488604214ac9cf1cb8500d`.
+Its `completed.json`, SHA256
+`9a06489efc8396d31207792dc604ef7e83c4d833d471342fc31a2c1dfec6175f`,
+binds all nine source files and the extraction script. The scales remain
+2368912.3724 um WL, .398183349 ns WNS violation, 206.822615 ns TNS violation,
+80.5364583 horizontal overflow and 28.15625 vertical overflow. The already
+declared weights remain 1/0/0/0/0, 1/.15/.35/0/0 and 1/.15/.35/.1/.1.
+These normalized bounded utilities supplement the complete native metrics;
+they do not redefine the predeclared physical-WL primary endpoint. No fresh
+selection, noise, fitting, inference or backend measurement occurred.

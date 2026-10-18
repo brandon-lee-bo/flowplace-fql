@@ -29,6 +29,14 @@ See [the protocol](qstudy_fresh_confirmation_protocol.md) and the exact
   `historical_validation.utility_spec`; verify their common384-TRAIN scales.
   The whole screen summary is **not** a valid utility-reference file. Fresh
   metrics must never fit scales. Physical WL remains the primary endpoint.
+  The standalone inventory has now been prepared by Slurm job 1797614 at
+  `fresh_common_utility_reference_v1/common_train_utilities.json` under
+  `BASE`, SHA256
+  `55de0bcbbc9129384d01879f7d42eed1c59366f8f6488604214ac9cf1cb8500d`.
+  Its sibling `completed.json` binds all nine original summaries and the
+  extraction script. This metadata preparation is independent of candidate
+  selection; all three objective specs use the unchanged scales from 384
+  training rows.
 - Confirm quota/headroom for exports, atomic writes and retained evidence;
   scratch backend outputs require verified durable preservation. Lock actual
   GPU name/software/precision, graph/cache, DEF/LEF and physical-flow revision.
