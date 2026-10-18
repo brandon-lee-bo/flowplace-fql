@@ -27,13 +27,36 @@ as different sources, rather than assuming identical support.
 | Matched BC and legacy FQL | controller 1795764 | Three independent actor seeds; fixed common initialization; 1000 offline actor updates, two online rounds of 8 labels and 600 updates | Behavior flow frozen; actual self-collected feedback required for online updates |
 | Local Q-direction checks | exports 1795767 / 1795768; backend 1795818 / 1795819; reports 1795844 / 1795845 | Four common-actor neighborhoods per design; two radii, both signs, matched random direction | Checks real optimization direction and legalizer changes; diagnostic labels stay outside replay |
 
-Main matrix results available so far do not establish a reliable timing
+The main matrix finished all 42 tasks; report 1795751 verified all CV/refit
+artifacts with zero integrity errors. The pin overlay finished 18/18 and was
+verified by report 1795873. The initially submitted final pin report 1795843
+used a file where its CLI required a directory; this reporting-only failure was
+recovered without any model or backend rerun.
+
+Main matrix results do not establish a reliable timing
 predictor. For example, on bp_fe the larger critic nearly interpolates TRAIN
 WNS while grouped held-out WNS remains weak. Per-net pin-span features also
 fail to consistently repair timing: their bp_fe OOF WNS Spearman is about
 0.040, versus 0.008 for the shared-head Huber model, while TNS worsens. On bp_be
 the same pin features improve WL ordering but do not yield a uniform metric
-gain. Final comparisons must use complete matched seeds and retained reports.
+gain. Comparisons use complete matched seeds and retained reports.
+
+Direct scalar timing-utility fitting also finished all three seeds. Its mean
+within-fold Spearman is about 0.195 versus 0.204 for the matched multi-head
+utility. MAE is slightly better (0.1075 versus 0.1099 in fold-specific utility
+units), but local pair accuracy is worse (0.512 versus 0.526). These utilities
+must not be pooled across folds with different TRAIN scales.
+
+Report 1795874 checks standalone physical priors using the exact same folds.
+On bp_fe, smooth-HPWL-only OOF rank correlation is 0.282, below legacy Q's
+0.560. On bp_be it is 0.202, below the residual critic's 0.330, but its WL MAE
+is better than that residual critic's. bp_be's TRAIN-fitted HPWL slope is
+negative while raw HPWL is positively correlated on the already-observed
+historical validation subset. The macro-only prior is not uniformly reliable
+across these observed subsets. With only 32 TRAIN and eight historical
+validation families on bp_be, limited coverage or sampling variation can also
+explain this reversal; it does not establish a sampler-specific domain shift.
+This motivates source and direction checks, not a fresh confirmation claim.
 
 First current-flow backend samples succeeded with all seven native metrics
 and legal actual macro geometry. Local variants can improve WL while worsening
@@ -62,3 +85,10 @@ the complete raw-to-executed provenance. They are not aggregate efficacy claims.
 All jobs above use scavenger Slurm queues. Controllers preserve checkpoint and
 request identities and recover only their declared work. Source-code snapshots,
 dataset hashes and native manifests remain the authority for individual runs.
+
+The stable tested study code has a local Git snapshot `5084276`; it was not
+pushed as part of this execution step. Report metadata defines gradient signs:
+the logged cosine compares the gradients of `alpha*distillation` and `+Q`.
+Because actor loss subtracts Q, their plain gradient improvement directions
+have the opposite cosine. This is not the cosine of Adam's actual parameter
+step, and no Q direction exists for the q_weight=0 BC control.
