@@ -1,14 +1,23 @@
 # Q study: evidence and decisions
 
-Status: all declared development matrices and native proof preservation are
-complete; fresh confirmation and final cost supplementation remain pending.
+Status: the original development matrices and native proof preservation are
+complete. The user-directed extension now includes a paired measured-quality
+flow control, eight fixed expert-rule FQL objectives, and a new TRAIN64 final
+detailed-route collection. The expert critic matrix is complete; physical
+policy tests and final-feedback training remain pending. Fresh confirmation
+and final cost supplementation remain pending.
 No stable PPA advantage is established.
 This page summarizes verified reports, not a new analysis or candidate selection.
 User follow-up on 2026-10-18 requests a focused review of rewards in other
 offline RL methods. The [reward addendum](qstudy_literature.md#10-2026-10-18其他-offline-rl-怎样使用-reward)
 proposes measured-quality weighting, separate constraint costs and stage-label
-fidelity checks. These are not new completed experiments or a fresh selection;
-review this extension before locking the final scientific scope.
+fidelity checks. The [matched stage audit](qstudy_stage_fidelity.md) is now
+complete: GRT WL agrees strongly with detailed-route ordering on the same48
+development layouts, whereas WNS is less consistent. The
+[fixed quality-weighted flow protocol](qstudy_quality_weighted_flow_protocol.md)
+compares uniform and quality-ranked training with the same measured TRAIN
+layouts, initialization and stochastic streams. Training is not yet evidence
+of improvement; no fresh selection has occurred.
 The whole-layout action is a terminal contextual-bandit adaptation of FQL;
 there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 [plan](qstudy_plan.md) and [full progress record](qstudy_progress.md).
@@ -34,7 +43,9 @@ units and gradient contributions have been audited, but neither alpha nor the
 update ratio has been demonstrated optimal. Weak measured Q directions do not
 justify amplifying Q through an additional alpha grid. Equal alpha across
 different utility transforms also does not establish equal gradient pressure.
-Power and area remain audited/reporting metrics, not trained reward terms.
+Power and area remain audited/reporting metrics in the original matrices,
+not trained reward terms. A separate new TRAIN64 collection is intended to
+test final PPA rewards; collection alone has not trained such a policy.
 Geometry and direction evidence shows changes through the placement pipeline,
 but does not identify legalization as the causal explanation for poor Q.
 The second-design bp_be screen/probes support limited mechanism diagnosis;

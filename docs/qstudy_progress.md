@@ -1476,3 +1476,119 @@ No new candidate selection, fresh noise, or confirmation measurement was
 created. Review this user-directed extension before locking final scope;
 the completed original matrices and their negative/mixed conclusions remain
 unchanged. Admission1798471 must be included in the later cost addendum.
+
+## 2026-10-18 16:19 UTC: reward-informed paired flow control
+
+Completed a saved-only, strict same-layout stage-fidelity audit1798483,
+CPU2/8GiB/32s. All48 planned GRT/DRT pairs resolve to the same source macro
+geometry. WL pooled/within-stratum rank correlations are0.9954/0.9833, and
+23/24 same-noise BC/FQL contrasts agree in direction. WNS is0.5855/0.3667,
+with16/24 direction agreement. Stage absolute metrics remain different;
+these are dependent development observations, not48 independent trials.
+No DRT labels entered training. See [full audit](qstudy_stage_fidelity.md).
+Its exact400-row measured dataset audit also confirms384TRAIN/16validation,
+192/8 nonoverlapping families and three matching independent common sources.
+
+The fixed [quality-weighted flow protocol](qstudy_quality_weighted_flow_protocol.md)
+was written before training. Both arms use the same384 measured TRAIN raw
+targets, not the separate256 mixed/unmeasured behavior targets. Rank weights
+use TRAIN GRT WL only, retain all384 layouts, have mean1 and max/min ratio4;
+effective sample size332.171. Targets remain raw; their labels describe the
+unchanged legalization/DEF/native-snapping execution. No critic, one-step actor,
+Q gradient, validation-based choice or online replay is added to this control.
+
+Ten meaningful CPU tests1798486 pass, including exact interrupted-resume
+parameters/Adam/RNG and paired data/noise/time streams. Root static review and
+an independent data-audit review found no blocker. Initial CPU proposal1798485
+captured the earlier validated source just before additional input-identity
+guards were added. It is retained as prepared-only and never trained. After
+the final source freeze and tests, CPU1798487 prepared the active proposal:
+`/scratch/bohanli/flowplace_graph/qstudy_quality_weighted_flow_v2/plan.json`,
+SHA256 `a7de7c7968ac13092a9b854ff723eb1aba8b5656df39d36b57439ebc30147640`.
+No dataset, hyperparameter or scientific protocol changed between proposals.
+
+Root submitted six fixed1000-step flow trainings1798489–1798494, two GPU
+dependency lanes at most: uniform seeds0/1/2 and quality_rank seeds0/1/2.
+Each requests one L20,2CPUs,20GiB,20min with checkpoint/restart support;
+natural-selection, enterprise and blue-space are excluded. Final full and
+compact weights stay in scratch. The saved submission manifest records
+all commands and dependencies. Planned development evaluation is48 new
+eight-thread GRT measurements, using the existing actual development noises;
+none has been submitted at this entry. No fresh noise was created. The
+extension must be closed and cost/preservation supplemented before fresh
+confirmation or a claim of a stable advantage.
+
+## 2026-10-18 16:58 UTC: expert-rule matrix and new final labels
+
+The user explicitly requested rewards beyond GRT, including placement
+expertise. The [fixed eight-objective protocol](qstudy_rule_reward_protocol.md)
+retains FQL, the same teacher and one-step actor, the same384 TRAIN proposals
+and executed-label mapping, the same legalizer, and three independent training
+seeds. It contrasts GRT-WL, macro-HPWL, four individual expert terms, their
+HPWL composite and their GRT composite. Rules encourage edge clearance,
+group compactness, shorter structural dataflow connections, or fewer narrow
+facing channels. They are testable engineering proxies, not proven PPA
+improvements. I/O rules are excluded because the cached construction is not
+verified. The [primary-source review](qstudy_rule_reward_literature.md)
+distinguishes these adaptations from EXPlace, RTL-MP and constrained offline RL.
+
+The corrected TRAIN geometry/source audit1798614 is
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_rule_audit_v3/20261018T164331.707916Z_job1798614/report.json`,
+SHA256 `8d9e263be3cf306bdb4ddbdb29e09247f7eda920c4be826b83e05d7cd18c1588`.
+Earlier audit continuation inventories used the config-parent nickname
+`bp_fe_top` instead of actual result nickname`bp_fe`; preserve them as
+superseded inventory reports, not evidence that source checkpoints are absent.
+Geometry-rule formulas did not change. Six audit tests1798582 passed.
+
+Critic preparation1798619 and array1798626 completed all24 objective/seed
+tasks and96 fits. Thirteen screen tests1798615 passed. Saved-only report
+1798710 (seven seconds,2CPUs/8GiB) verified96 fits, zero integrity errors and
+all12 cross-objective fold/seed scale/RNG endpoints. Report:
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_rule_reward_results_v1/20261018T165404.256751Z_job1798710/report.json`,
+SHA256 `3270821e2e0f416ed10c2df2a4fb87ae2f49500bcda05da5dd86eb47efecab16`.
+CV Spearman means are .561(GRT), .788(macroHPWL), .553(edge), .786(group),
+.706(dataflow), .583(channel), .605(HPWL composite), .477(GRT composite).
+Targets differ, so these numbers neither rank physical policy quality nor
+filter the fixed eight actors. Group bounding boxes share their exact largest
+value in351/384 layouts (91.4%); this rule has limited variation. All384 raw
+proposals are moved by execution; mean movable-coordinate RMS is .08070.
+These limitations remain visible rather than being used to change the recipe.
+
+Actor adapter tests1798613 passed all eight checks, including actual tiny
+interrupted/resumed actor updates and unchanged teacher/critic weights.
+Independent static review passed. Preparation1798689 completed, checking all
+24 full-TRAIN refits and the original256 behavior targets separately from
+the384 measured labels. Twenty-four fixed offline actor/export jobs
+1798712–1798735 were submitted in two dependency lanes on einstein, each one
+L20/2CPUs/20GiB/20min. No online round or backend call is included in this
+stage. Submission/source records are in
+`/scratch/bohanli/flowplace_graph/qstudy_rule_reward_actors_v1/`.
+All192 development GRT measurements will be dispatched only after the24
+exports complete; same-noise contrasts use the new GRT and HPWL controls.
+Old BC is not automatically an equivalent control.
+
+Separately, new TRAIN64 detailed-route plan1798620 fixes32 original TRAIN
+families, two variants each, selected by SHA within four GRT-quality strata.
+It retains four family-CV folds. No old validation16, development DRT48 or
+fresh layout enters this collection. All64 original native GRT sources and
+the pinned container match; no archive restore was needed at preparation.
+Plan`/scratch/bohanli/flowplace_graph/qstudy_train_drt64_v1/plan.json`, SHA256
+`18b109579d8076ee7f65afb84481b7c270a7edc101fdbb67d28216802c7c101f`.
+Fifteen collector tests1798616 passed. Array1798635 uses eight CPUs/12GiB,
+two workers, unchanged detailed-route repair cap20. First attempts genuinely
+entered detailed_route, then were preempted before a resumable DRT database
+was written. Preserve infrastructure outcomes and recover exact inputs;
+do not replace layouts or assign them physical-failure labels. This collection
+will provide final WL/WNS/TNS/power/area/DRC labels for a separate matched
+final-feedback reward study, not evidence of improvement on its own.
+
+The auxiliary weighted-flow control completed all six trainings and exports.
+Three quality-rank jobs1798492–1798494 failed before training because the
+exact software-build contract differed on another node; retries
+1798496–1798498 on einstein completed unchanged. All failures and retries
+remain in costs. Controller1798585 dispatches48 native GRT requests in
+array1798587, at concurrency4. Its pending time limit was reduced to2h before
+startup, without changing physical parameters. No weighted-policy result is
+claimed yet. This WL-only FM control does not replace the expert/final-PPA
+reward experiments. All new evidence still requires preservation and a cost
+addendum before fresh confirmation.
