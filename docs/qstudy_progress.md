@@ -1899,3 +1899,10 @@ one8CPU/16GiB/30min reference-only STA session1799365 is submitted on original
 TRAIN row0000. It must reproduce the original GRT WNS/TNS before any macro-path
 criticality is admitted; no placement, routing, repair or new reward training
 is authorized by that query. Its original results are mounted read-only.
+
+Cost inventory v13 retains the173 earlier parent records and adds the three
+scalar software attempts, fixed route-plan job, reference STA session and one
+actual new weighted-route worker, for179 parents. Manifest
+`bookkeeping_20261018T184319_v13.json` SHA256 is
+`fbddd4bfc45eb70b2a8233ca025bd24c438fd83a7570998b2a75343a3987a5f9`.
+This still does not close extension costs or durable preservation.
