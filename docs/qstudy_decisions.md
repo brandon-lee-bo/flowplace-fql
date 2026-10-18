@@ -21,8 +21,12 @@ complete: GRT WL agrees strongly with detailed-route ordering on the same48
 development layouts, whereas WNS is less consistent. The
 [fixed quality-weighted flow protocol](qstudy_quality_weighted_flow_protocol.md)
 compares uniform and quality-ranked training with the same measured TRAIN
-layouts, initialization and stochastic streams. Training is not yet evidence
-of improvement; no fresh selection has occurred.
+layouts, initialization and stochastic streams. All48 GRT outcomes are now
+complete: quality weighting lowers WL1.039% versus uniform in all three seed
+means and passes the declared secondary guards. Both adapted flows remain
+worse than their original common flow in WL. The predeclared24-route final
+check is next; this is not an offline-RL or stable baseline improvement claim.
+No fresh selection has occurred.
 The whole-layout action is a terminal contextual-bandit adaptation of FQL;
 there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 [plan](qstudy_plan.md) and [full progress record](qstudy_progress.md).
@@ -31,6 +35,7 @@ there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 
 | Hypothesis | Completed evidence | Decision / remaining gate |
 | --- | --- | --- |
+| Favoring measured good actions helps without Q gradients | Paired uniform/quality-rank flow continuations use identical384 TRAIN layouts,1000 updates and three seeds. All48 GRT requests succeed; weighting lowers WL1.039%, with lower mean timing violations/overflows and area+0.458%. Original common flow still has lower WL. | Continue only the predeclared24 first-four detailed routes. This isolates weighting versus uniform source adaptation, not an FQL or public FlowPlace win. No temperature/source grid or fresh promotion. |
 | Better regression, capacity or physical features provide useful Q | The 42-task screen, pin-feature and direct-scalar controls completed. WL can outperform a macro-HPWL prior, but timing/local ordering remains weak; fitting TRAIN well does not ensure held-family prediction. | Retain the simple anchor; no capacity/feature grid. Judge actual actor outcomes separately. |
 | Executed coordinates repair timing prediction | Six paired tasks completed. bp_fe WNS improves modestly, but TNS rank falls .118→−.009; bp_be TNS MAE worsens112.98→135.89ns. | Do not promote this preprocessing change. It does not isolate legalization or backend snapping as the cause. |
 | Ensemble disagreement supplies useful conservatism | Saved beta0/.5/1 scores give mixed ranking/selection results; no nonzero beta consistently improves the measured regret. | Keep beta0. This heuristic is neither CQL nor a calibrated confidence bound. |

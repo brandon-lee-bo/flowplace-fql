@@ -1661,3 +1661,65 @@ allocation. Its SHA256 is
 `815ff21f6767ad87b61aa97426e4bf37ea45d99a951b08042e265381eab4f2ec`.
 Many jobs remain pending/active; there is no final cost or preservation claim
 for this extension and fresh confirmation remains on hold.
+
+## 2026-10-18 17:44 UTC: weighted-flow result and overlapped native scheduling
+
+Saved-only reader1798853 completed all48 new uniform/quality-rank GRT outcomes,
+plus24 exactly bound existing common-flow references. Report:
+`/scratch/bohanli/flowplace_graph/qstudy_quality_weighted_results_v1/20261018T173934.466674Z_job1798853/report.json`,
+SHA256 `2b512668a08485e335b65d90d1db009b2691368832ddbb99f31610dad9d7a967`.
+All three arms have24/24 successful requests, with no missing/invalid/native
+failures. These are fixed eight development noises per independent seed,
+not24 independent training repetitions. Values below are three-seed means;
+WL uncertainty is sample SD of the three seed means.
+
+| Multi-step flow | GRT WL (m), mean ± seed SD | WNS (ns) | TNS (ns) | H overflow | V overflow | Power (W) | Std-cell area (um2) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Uniform measured-source continuation | 2.356046 ± .011625 | −.413601 | −224.454 | 63.250 | 13.583 | .169646 | 60421.9 |
+| Quality-rank continuation | 2.331569 ± .006352 | −.403168 | −200.282 | 48.000 | 9.125 | .169510 | 60698.8 |
+| Unchanged common behavior flow | 2.279086 ± .013390 | −.406557 | −206.695 | 22.125 | 7.125 | .169797 | 60997.7 |
+
+Weighting versus uniform lowers mean WL1.038887%; per-seed paired WL changes
+are−27292.375/−18346.625/−27791.000um. Mean WNS/TNS and both overflows improve;
+area increases0.458%, within the prespecified1% tolerance. The complete48
+development comparison passes its declared engineering gates. It does not
+beat common-flow WL: the weighted mean remains about2.30% higher. This is
+evidence about quality weighting under fixed source adaptation, without Q
+optimization or a one-step actor. It is not a new FQL win, final DRC proof or
+statistical-significance claim. Continue the protocol's24 detailed routes,
+both arms/all three seeds/indices0..3, cap20; no temperature or source sweep.
+
+Two reporting-only faults were fixed without changing frozen producers,
+checkpoints, declarations or native data.1798825 exposed extra observer imports
+in the producer's dynamic source inventory; isolated replay now verifies the
+exact captured working sources and snapshots, while binding observer sources
+separately.1798844 then exposed a literal-vs-canonical seed0 checkpoint alias;
+the actual path/inode/SHA are identical. The reader now resolves and rehashes
+that identity, still rejecting a different equal-byte file or a retargeted
+symlink.18 targeted tests1798850 and independent reviews pass. All failed
+attempts remain in accounting. No EDA was repeated to repair reporting.
+
+Scheduling-only revision overlaps the expert-rule actors with their192 native
+GRT measurements. Per-arm controllers1798855–1798862 each wait for all three
+corresponding rule-specific exports, use explicit round0 and two backend
+workers, and form two afterok dependency lanes. The original combined1798773
+was held before submissions, made dependent on both lane tails1798861/1798862
+and final actors1798734/1798735, then released. It will validate/reuse those
+same outcomes. Total maximum GRT-worker concurrency stays4; there are no new
+layouts, seeds or backend settings. Journal:
+`qstudy_rule_reward_actors_v1/native_pipeline_submissions_v2.json`.
+The first scheduling attempt was refused because completed Slurm job IDs had
+expired as new dependency prerequisites. No first-attempt controller allocated;
+the v2 journal verifies completed actor accounting plus export-marker hashes
+before omitting only already-satisfied dependencies. The refused admission-only
+test is not an allocated job. Frozen scientific sources remain unchanged.
+
+TRAIN64 recovery coordinator1798873 is queued afterany original1798635 and
+bounded dev0121798748. It audits all64 exact inputs and retries only missing,
+confirmed infrastructure-interrupted rows, never completed routes or closed
+native failures. Three generations at most, two8CPU/12GiB/cap20 workers.
+18 software tests1798869 pass, including real compressed-array accounting,
+live-writer exclusion, source/spec tampering and interrupted-submit adoption.
+Redundant late worker dependencies are omitted after the coordinator's terminal
+gates, avoiding the same expired-ID rejection; gates and physical budget stay
+unchanged. This changes recovery scheduling, not final-feedback training labels.

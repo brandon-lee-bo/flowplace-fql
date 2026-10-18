@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
+from types import FunctionType
 
 # Preserve the repository analysis package before upstream baseline imports.
 from analysis.placement_metrics import legality  # noqa: F401
@@ -34,6 +35,60 @@ def artifact(path):
 
 def read(path):
     return native.read(path)
+
+
+def checked_common_initialization(captured, configured_path, expected_sha256):
+    """Compare the actual canonical common checkpoint, preserving alias evidence."""
+    actual = artifact(configured_path)
+    if actual["sha256"] != expected_sha256 or actual != captured:
+        raise ValueError("Common reference checkpoint differs from paired training initialization")
+    return dict(configured_literal_path=str(configured_path), canonical_binding=actual,
+        configured_path_is_alias=str(configured_path) != actual["path"])
+
+
+def captured_sources(producer, experiment, declaration, snapshot_folder):
+    """Validate the producer's exact saved closure, independent of observer imports.
+
+    The frozen producer inventoried sys.modules at declaration time. A reader's
+    extra imports are not producer changes, but every captured working source
+    AND its saved snapshot must still match. Observer sources remain separately
+    bound by this report's own source closure.
+    """
+    captured = declaration.get("source_sha256")
+    if not isinstance(captured, dict) or not captured:
+        raise ValueError("Missing captured producer source inventory")
+    files = {}
+    for name, digest in captured.items():
+        relative = Path(name)
+        if (not isinstance(name, str) or relative.is_absolute() or ".." in relative.parts or
+                str(relative) != name or not isinstance(digest, str) or len(digest) != 64):
+            raise ValueError("Noncanonical captured producer source binding")
+        path = producer.ROOT/relative
+        producer.file_binding(path, digest)
+        producer.file_binding(experiment/snapshot_folder/relative, digest)
+        files[name] = path
+    observed = producer.source_files()
+    extras = {name:native.sha(path) for name,path in sorted(observed.items()) if name not in captured}
+    return files, dict(mode="exact captured producer inventory; isolated replay, no global mutation",
+        captured_source_sha256=dict(captured), observer_extra_source_sha256=extras,
+        captured_not_currently_imported=sorted(set(captured)-set(observed)),
+        captured_working_sources_and_snapshots_verified=True)
+
+
+def checked_captured_declaration(producer, experiment, cfg, physical, pairs, plan, trained):
+    """Run unchanged producer validation with only source_files bound to its seal."""
+    saved = read(experiment/"declaration.json")
+    files, evidence = captured_sources(producer, experiment, saved, "quality_flow_eval_sources")
+    namespace = dict(producer.declaration_value.__globals__)
+    namespace["source_files"] = lambda: dict(files)
+    namespace["declaration_value"] = FunctionType(producer.declaration_value.__code__, namespace,
+        producer.declaration_value.__name__, producer.declaration_value.__defaults__,
+        producer.declaration_value.__closure__)
+    check = FunctionType(producer.checked_declaration.__code__, namespace,
+        producer.checked_declaration.__name__, producer.checked_declaration.__defaults__,
+        producer.checked_declaration.__closure__)
+    value = check(experiment, cfg, physical, pairs, plan, trained)
+    return value, evidence
 
 
 def checked_completion(experiment, declaration, physical, tasks):
@@ -82,7 +137,8 @@ def collect_arm(experiment, expected_arm):
     cfg, physical, pairs, plan, trained = exporter.settings(experiment)
     if cfg["arm"] != expected_arm:
         raise ValueError("Experiment arm differs from requested report role")
-    declaration = exporter.checked_declaration(experiment, cfg, physical, pairs, plan, trained)
+    declaration, source_validation = checked_captured_declaration(
+        exporter, experiment, cfg, physical, pairs, plan, trained)
     tasks = {s: exporter.checked_seed(experiment, cfg, physical, declaration, s) for s in SEEDS}
     completion = checked_completion(experiment, declaration, physical, tasks)
     context = backend.context(experiment)
@@ -101,7 +157,8 @@ def collect_arm(experiment, expected_arm):
         declaration=artifact(experiment/"declaration.json"), completion=completion,
         dispatch=artifact(experiment/"dispatch.json"), physical_context=physical,
         physical_binding=context[2], training_manifest=cfg["training_manifest"],
-        all_paired_training=trained, source_pairs=pairs, streams=streams)
+        all_paired_training=trained, source_pairs=pairs, streams=streams,
+        producer_source_validation=source_validation)
 
 
 def collect_common(experiment, control):
@@ -116,9 +173,7 @@ def collect_common(experiment, control):
             declaration["pairs"] != pairs or pairs != control["source_pairs"] or
             declaration["physical_context"] != physical or declaration["expected_requests"] != 24):
         raise ValueError("Common flow source/noise/sampler declaration differs")
-    for name, digest in declaration["source_sha256"].items():
-        baseline.checked_file(dict(path=str(ROOT/name), sha256=digest))
-        baseline.checked_file(dict(path=str(experiment/"flow_eval_sources"/name), sha256=digest))
+    _, source_validation = captured_sources(original, experiment, declaration, "flow_eval_sources")
     common_parent = read(control["declaration"]["path"])["source_flow_eval"]
     if (common_parent["config"] != artifact(experiment/"config.json") or
             common_parent["declaration"] != artifact(experiment/"declaration.json") or
@@ -131,7 +186,7 @@ def collect_common(experiment, control):
             done.get("declaration_sha256") != native.sha(experiment/"declaration.json") or
             done.get("dispatch_sha256") != native.sha(experiment/"dispatch.json")):
         raise ValueError("Changed completed common-flow export")
-    context, streams = backend.context(experiment), []
+    context, streams, common_initializations = backend.context(experiment), [], {}
     for seed in SEEDS:
         requests, tasks = load_requests(experiment, seed, 0)
         marker = read(tasks.with_name("completed.json"))
@@ -140,9 +195,8 @@ def collect_common(experiment, control):
                 done["seed_tasks_sha256"][str(seed)] != native.sha(tasks)):
             raise ValueError("Changed common per-seed completion")
         artifact_common = control["all_paired_training"]["uniform"][str(seed)]["common"]
-        if artifact_common != dict(path=cfg["common_checkpoints"][str(seed)],
-                sha256=cfg["common_checkpoint_sha256"][str(seed)]):
-            raise ValueError("Common reference checkpoint differs from paired training initialization")
+        common_initializations[str(seed)] = checked_common_initialization(artifact_common,
+            cfg["common_checkpoints"][str(seed)], cfg["common_checkpoint_sha256"][str(seed)])
         rows = []
         for request in requests:
             pair = next(p for p in pairs if p["seed"] == seed and p["index"] == request["index"])
@@ -153,6 +207,8 @@ def collect_common(experiment, control):
         declaration=artifact(experiment/"declaration.json"), completion=artifact(experiment/"export_completed.json"),
         dispatch=artifact(experiment/"dispatch.json"), physical_context=physical,
         physical_binding=context[2], source_pairs=pairs, streams=streams,
+        producer_source_validation=source_validation,
+        common_initialization_validation=common_initializations,
         reference_scope="Additional source adaptation/1000-update diagnostic; not the primary quality-weighting contrast")
 
 

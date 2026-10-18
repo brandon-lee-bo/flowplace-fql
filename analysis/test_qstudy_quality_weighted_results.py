@@ -10,11 +10,138 @@ from unittest.mock import patch
 from analysis import qstudy_quality_weighted_results as m
 
 
+class ProducerClosureTests(unittest.TestCase):
+    """Exercise the real frozen producer validator on metadata-only fixtures."""
+    def setUp(self):
+        from fql import qstudy_quality_weighted_eval as exporter
+        self.producer = exporter
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)/"source"
+        self.experiment = Path(self.tmp.name)/"experiment"
+        self.parent = Path(self.tmp.name)/"parent"
+        for folder in (self.root,self.experiment,self.parent):
+            folder.mkdir()
+        self.files = {}
+        for name in (*exporter.OWN_SOURCES,"fql/producer_dependency.py"):
+            path = self.root/name
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text("# original captured source\n")
+            self.files[name] = path
+        (self.experiment/"config.json").write_text('{}\n')
+        for filename in ("config.json","declaration.json"):
+            (self.parent/filename).write_text('{}\n')
+        self.cfg = dict(arm="uniform",backend_concurrency=2,run_prefix="fixture",
+            training_manifest=dict(path="training_plan",sha256="plan"),
+            flow_eval_experiment=str(self.parent))
+        self.physical,self.pairs,self.plan,self.trained = {},[{"seed":0,"index":0,"noise_sha256":"noise"}],dict(population={}),{}
+        self.patches = (patch.object(exporter,"ROOT",self.root),
+                        patch.object(exporter,"source_files",return_value=dict(self.files)))
+        for item in self.patches:
+            item.start(); self.addCleanup(item.stop)
+        exporter.declare(self.experiment,self.cfg,self.physical,self.pairs,self.plan,self.trained)
+        self.saved = m.read(self.experiment/"declaration.json")
+
+    def check(self):
+        return m.checked_captured_declaration(self.producer,self.experiment,self.cfg,
+            self.physical,self.pairs,self.plan,self.trained)
+
+    def test_extra_reader_imports_accepted_without_changing_producer_globals(self):
+        extra = self.root/"analysis/new_observer.py"
+        extra.parent.mkdir(); extra.write_text('# read-only observer\n')
+        self.producer.source_files.return_value = dict(self.files,**{"analysis/new_observer.py":extra})
+        originals = (self.producer.source_files,self.producer.declaration_value,
+                     self.producer.checked_declaration)
+        with self.assertRaisesRegex(ValueError,"source closure"):
+            self.producer.checked_declaration(self.experiment,self.cfg,self.physical,
+                self.pairs,self.plan,self.trained)
+        value,evidence = self.check()
+        self.assertEqual(value,self.saved)
+        self.assertEqual(evidence["observer_extra_source_sha256"],
+                         {"analysis/new_observer.py":m.native.sha(extra)})
+        self.assertEqual(originals,(self.producer.source_files,self.producer.declaration_value,
+                                    self.producer.checked_declaration))
+        self.assertIs(self.producer.declaration_value.__globals__["source_files"],originals[0])
+
+    def test_captured_working_source_or_snapshot_tamper_refused(self):
+        name = "fql/producer_dependency.py"
+        for path in (self.files[name],self.experiment/"quality_flow_eval_sources"/name):
+            with self.subTest(path=str(path)):
+                payload = path.read_bytes()
+                path.write_text('# altered recorded producer source\n')
+                with self.assertRaisesRegex(ValueError,"changed"):
+                    self.check()
+                path.write_bytes(payload)
+        self.assertEqual(self.check()[0],self.saved)
+
+    def test_non_source_declaration_and_dispatch_tamper_still_refused(self):
+        path = self.experiment/"declaration.json"
+        declaration_bytes=path.read_bytes()
+        for field,value in (("flow_steps",20),("selection","best measured output"),
+                            ("pairs",[{"seed":2}])):
+            with self.subTest(field=field):
+                changed=copy.deepcopy(self.saved); changed[field]=value
+                path.write_text(json.dumps(changed))
+                with self.assertRaisesRegex(ValueError,"source closure"):
+                    self.check()
+                path.write_bytes(declaration_bytes)
+        dispatch=self.experiment/"dispatch.json"
+        payload=dispatch.read_bytes(); changed=m.read(dispatch); changed["count"]=1
+        dispatch.write_text(json.dumps(changed))
+        with self.assertRaisesRegex(ValueError,"dispatch"):
+            self.check()
+        dispatch.write_bytes(payload)
+        self.assertEqual(self.check()[0],self.saved)
+
+    def test_common_source_inventory_is_its_own_exact_snapshot(self):
+        other = Path(self.tmp.name)/"common"
+        for name,path in self.files.items():
+            target=other/"flow_eval_sources"/name
+            target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(path.read_bytes())
+        files,evidence=m.captured_sources(self.producer,other,self.saved,"flow_eval_sources")
+        self.assertEqual(files,self.files)
+        self.assertTrue(evidence["captured_working_sources_and_snapshots_verified"])
+        target=other/"flow_eval_sources/fql/producer_dependency.py"
+        target.write_text('# changed common snapshot\n')
+        with self.assertRaisesRegex(ValueError,"changed"):
+            m.captured_sources(self.producer,other,self.saved,"flow_eval_sources")
+
+
 class ResultsTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
         self.addCleanup(self.tmp.cleanup)
+
+    def test_common_checkpoint_realpath_alias_accepts_exact_original_only(self):
+        original=self.root/"retained/common.pt"
+        original.parent.mkdir();original.write_bytes(b"opaque immutable checkpoint")
+        captured=m.artifact(original)
+        direct=m.checked_common_initialization(captured,str(original),captured["sha256"])
+        self.assertFalse(direct["configured_path_is_alias"])
+        alias=self.root/"legacy_common.pt";alias.symlink_to(original)
+        value=m.checked_common_initialization(captured,str(alias),captured["sha256"])
+        self.assertTrue(value["configured_path_is_alias"])
+        self.assertEqual(value["canonical_binding"],captured)
+        self.assertEqual(value["configured_literal_path"],str(alias))
+        duplicate=self.root/"different_common.pt";duplicate.write_bytes(original.read_bytes())
+        with self.assertRaisesRegex(ValueError,"Common reference checkpoint differs"):
+            m.checked_common_initialization(captured,str(duplicate),captured["sha256"])
+        alias.unlink();alias.symlink_to(duplicate)
+        with self.assertRaisesRegex(ValueError,"Common reference checkpoint differs"):
+            m.checked_common_initialization(captured,str(alias),captured["sha256"])
+
+    def test_common_checkpoint_hash_or_captured_identity_change_refused(self):
+        original=self.root/"common.pt";original.write_bytes(b"original checkpoint")
+        captured=m.artifact(original)
+        with self.assertRaisesRegex(ValueError,"Common reference checkpoint differs"):
+            m.checked_common_initialization(captured,str(original),"0"*64)
+        changed=dict(captured,sha256="0"*64)
+        with self.assertRaisesRegex(ValueError,"Common reference checkpoint differs"):
+            m.checked_common_initialization(changed,str(original),captured["sha256"])
+        original.write_bytes(b"changed checkpoint bytes")
+        with self.assertRaisesRegex(ValueError,"Common reference checkpoint differs"):
+            m.checked_common_initialization(captured,str(original),captured["sha256"])
 
     def result(self, arm, seed_delta=(0., 0., 0.)):
         experiment = self.root/arm
