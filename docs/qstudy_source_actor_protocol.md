@@ -53,6 +53,17 @@ need common-utility semantics if any failure enters replay; the current frozen
 actor setup must not be handed NaN initial labels without an explicit tested
 failure-handling adaptation.
 
+The frozen legacy online loss has a further limitation: it regresses physical
+failures to -4 in the critic's source-normalized units. Multiplying that Q by
+S_j/S_ref then changes its effective failure utility. Consequently a corrected
+legacy source config is initially offline-only (`online_rounds=0`). A later
+online version would need to regress failures to -4/(S_j/S_ref), while native
+backend outcomes keep the common failure utility -4; that requires its own
+tested, explicitly bound actor implementation. Do not silently change native
+labels or assume a successful-layout scale correction also fixes failures.
+For the multi-metric implementation q_weight stays 1, and its failure-utility
+regression uses the corrected preference weights directly.
+
 ## Matched execution and interpretation
 
 Share the three audited common flow/actor initializations, actor minibatch/noise
