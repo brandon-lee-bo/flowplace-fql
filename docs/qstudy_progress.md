@@ -749,3 +749,41 @@ the released official flow. Original training configs and round identities are
 preserved. Fresh selection, noise85000000 generation and physical dispatch
 remain unopened until development review and the prospective selection lock.
 See [the confirmation protocol](qstudy_fresh_confirmation_protocol.md).
+
+## Complete direct-flow references and fixed conservative-critic contrast
+
+Native-finish1796791 recovered only the two interrupted current-flow requests.
+Final read-only report1796858 verified32/32 native successes, zero missing,
+invalid or confirmed-failure cases. All32 retain the same eight actual noises
+and fixed physical revision. Its immutable report is
+`qstudy_v1/flow_baseline_native_report_v1/20261018T104500.097363Z_job1796858/report.json`,
+SHA `ee8d29d7996616f0949bfed10ed83f673e0400e6f57c85b7d5a107d93597b406`.
+
+| GRT metric | Current behavior flow | Public official flow |
+| --- | ---: | ---: |
+| Wirelength (um) | 2279086.375 +/-13389.904 | 2403073.375 +/-88253.010 |
+| WNS (ns) | -0.40655675 +/-0.01713645 | -0.41083725 +/-0.05117051 |
+| TNS (ns) | -206.694546 +/-22.047881 | -216.567625 +/-25.832686 |
+| Horizontal overflow sum | 22.125 +/-16.891658 | 76.875 +/-96.416415 |
+| Vertical overflow sum | 7.125 +/-4.160829 | 15.25 +/-23.013971 |
+| Power (W) | 0.169797 +/-0.000302041 | 0.169719 +/-0.001412872 |
+| Standard-cell area (um2) | 60997.745833 +/-262.000356 | 60188.8625 +/-396.965662 |
+
+Current-flow uncertainty is sample SD across three equally weighted independent
+training-seed means, each using eight outputs. Public-flow uncertainty is the
+descriptive noise SD of eight outputs from ONE released checkpoint. These
+different uncertainty units must not be combined as if there were three public
+training seeds. Checkpoints and sampling paths also differ. These results are
+references, not a controlled explanation of why a method improved; final DRT,
+DRC and stable Q-related gains are not established by this report.
+
+The fixed COM-inspired WL contrast passed independent review and11 tests before
+formal dispatch. CPU preparation1797008 verified all12 existing supervised WL
+control fits and froze `qstudy_v1/com_wl_v1/plan.json`, SHA
+`cd4e2fa088c91a8b769d864a374376bff3f03a321fce8814b322e900c0b09d5b`.
+Array1797016 has three seed tasks with three family-CV fits plus refit each:
+12 new fits,2 CPUs/6GiB per task, concurrency3, no new actor or backend call.
+The source is committed as23f87e2. Its fixed loss and coordinate constraints
+are specified prospectively in [the literature note](qstudy_literature.md).
+It tests training-time conservatism separately from the earlier negative
+post-hoc ensemble-beta screen; no automatic hyperparameter expansion is opened.
