@@ -25,6 +25,7 @@ as different sources, rather than assuming identical support.
 | Current-flow source labels | export 1795763; backend 1795769; collect 1795775 | Seed-0 common behavior flow; 32 TRAIN + 8 validation families, base and fixed-RMS local variant | 80 requested native labels, not 80 independent circuits or training seeds |
 | Equal-label source controls | plan 1795783; check 1795814; assemble 1795840; fits 1795841; report 1795842 | O64 / T64 / M64 and base-only O32 / T32 / M32; legacy and residual critics, three critic seeds | Same old/new validation candidates; exact original 256 BC targets unchanged |
 | Matched BC and legacy FQL | controller 1795764 | Three independent actor seeds; fixed common initialization; 1000 offline actor updates, two online rounds of 8 labels and 600 updates | Behavior flow frozen; actual self-collected feedback required for online updates |
+| Online flow-update factor | launch 1796053; reports 1796054 / 1796059 | Same completed legacy round-0 states and measurements; enable flow updates only for subsequent rounds | Inherited prefix is not a new training run or new physical measurement |
 | Local Q-direction checks | exports 1795767 / 1795768; backend 1795818 / 1795819; reports 1795844 / 1795845 | Four common-actor neighborhoods per design; two radii, both signs, matched random direction | Checks real optimization direction and legalizer changes; diagnostic labels stay outside replay |
 
 The main matrix finished all 42 tasks; report 1795751 verified all CV/refit
@@ -119,3 +120,19 @@ the logged cosine compares the gradients of `alpha*distillation` and `+Q`.
 Because actor loss subtracts Q, their plain gradient improvement directions
 have the opposite cosine. This is not the cosine of Adam's actual parameter
 step, and no Q direction exists for the q_weight=0 BC control.
+
+All six matched offline actor streams completed their fixed 1000 updates.
+Their first 96 collect/evaluation backend requests were submitted as 1796007;
+they are still development work, not completed final PPA. The flow-update
+launcher waits for every declared legacy round-0 native outcome, verifies the
+shared prefix, then starts the unchanged two-round controller. Its 20 software
+tests passed in job 1796031, including a tiny real round-1 update, interrupted
+transaction recovery, and prevention of controller launch without the final
+verified import gate. The implementation is locally committed as `e621640`.
+
+At round 1 the two legacy branches have identical initial measured feedback,
+critic states and critic minibatch streams. Updating the independent flow can
+change the teacher and actor, while Q's tensors remain paired until new
+policy-specific feedback arrives. At round 2 the collected layouts can differ;
+that comparison estimates the adaptive total effect of flow updates. All
+shared physical-run identities remain visible and are counted only once.
