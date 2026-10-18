@@ -304,3 +304,40 @@ Keep beta 0 as the anchor. These observations separate ranking from candidate
 selection; they neither select an alpha nor establish physical gradient
 quality. The post-training mean-minus-disagreement score is not CQL or
 COM-style conservative training and has no calibrated confidence guarantee.
+
+## Partial native direction evidence and execution priority
+
+Read-only snapshot 1796374 completed in 23 seconds. Its immutable manifest is
+`qstudy_v1/probe_partial_snapshots/20261018T091049Z_job1796374/manifest.json`.
+The snapshot accounts for 32/52 bp_fe and 19/52 bp_be measurements, all genuine
+successes. It retains every predeclared cell and missing request; only measured
+baseline/plus/minus trios enter differences. This is one original critic seed
+at four common-actor neighborhoods, not a three-training-seed policy test.
+
+At this incomplete snapshot, bp_fe legacy-Q plus/minus directional signs agree
+with the backend in 0/2 complete trios at each radius. Mean positive-direction
+utility change versus the common baseline is -0.00679 at RMS 0.005 and -0.01962
+at RMS 0.02. The residual critic has 1/1 agreement at the small radius but 0/2
+at the larger radius. bp_be has only one or two complete trios per cell, with
+some identical-execution ties at small radius. Missingness is unbalanced across
+base/radius, and random-direction cells have different completion coverage;
+do not select a critic/radius or compare unpaired partial averages as winners.
+
+This raises a real local-direction concern for the old bp_fe critics. Defer
+the proposed stronger-Q alpha-3 trial; increasing a surrogate gradient that
+is physically wrong can worsen exploitation. Complete the source comparison
+and evaluate source-specific directions or controlled actor outcomes before
+interpreting stronger extraction. Original384 probes do not validate O64/T64
+critics, and these diagnostic labels remain outside TRAIN/replay.
+
+To prioritize the three missing teacher labels, native array 1796007 received
+a temporary scheduler-only throttle change 4 to 2. Running workers and their
+eight-CPU/24-GiB physical context were untouched. Restore job 1796382 is bound
+to `afterany:1796060`; it restores throttle 4 once teacher recovery terminates.
+Before/after evidence is `qstudy_v1/scheduler/teacher_priority_throttle_20261018.json`.
+Slurm returned warnings for completed array children, but `scontrol` verified
+the new throttle. No other project or paused Table2 job was changed.
+
+The cluster has `JobAcctGatherType=(null)` and no MaxRSS for the queried worker
+steps. OpenROAD's own stage-memory lines do not measure Python and archive
+peaks, so they do not justify reducing the whole-worker memory request.
