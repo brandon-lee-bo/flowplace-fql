@@ -2062,3 +2062,47 @@ Final source manifest: `/fact_data/bohanli/flowplace_fql/graph_o2o_report_schema
   6 waiting of23. Current physical workers1794965/1794969 are running; their
   existing final audit1793511, unified report1794697 and native archive1794901
   retain dependencies. Old Table2 and unrelated jobs remain untouched.
+
+
+### 08:02–08:51 HKT — complete final bp_be routes, native audits and three-study record
+
+- Continued from actual Slurm state; no scientific worker was restarted for an
+  observation timeout or elapsed runtime. Last eight online-BC/FQL routes
+  1794965,1794969,1794983,1794987,1795000,1795004,1795015,1795020 all
+  COMPLETED0:0. Controller1793205 completed2h57m21;23/23 final requests,
+  all DRC0. Last FQL route took14m04 and retains its actual source/metrics.
+- Actual independent1793511 COMPLETED32s. It reloaded all six parent/child
+  checkpoints, verified1000 offline and600+600 online steps per arm, exact
+  own-feedback replay8 then16, and207/207/16 changed parameter tensors per
+  phase. All76 real GRT outcomes and23 final DEF/native-log results bind;
+  each final DEF preserves all10 macros. Report SHA
+  85f14708fb6528ecc42c5412341e245717d0e93adf514d4c766e6d88b94f1230.
+- bp_be final online BC/FQL rWL3.019295/2.9965305m: FQL lower0.7539674%,
+  with three of four paired noises improving. WNS−1.2761975/−1.2568475,
+  TNS−1105.46725/−927.256, FQL power0.15834275W and area102352.75um2.
+  TNS magnitude improves16.1209%, power0.3883% lower, area0.1208% larger.
+  FQL rWL is nevertheless0.86843% worse than its own offline stage and
+  0.21095% worse than frozen FlowPlace. Only one training seed; no stable
+  or comprehensive PPA superiority. Best64/BC-best80/FQL-best80 final rWL
+  2.805265/2.782292/2.772227m, all DRC0; single measured references remain
+  separate from policy means.
+- Unified1794697 COMPLETED0:0, rebuilding15 policy rows/six comparisons
+  from three actual native reports with full denominators and common backend.
+  Evidence SHA52b6827c492dd40c534fbba8a21d618853118fc7d55c7fade9fa711eb12b13cd.
+  Main three-seed online rWL gain remains0.30768%, with2/3 seeds worse;
+  expanded single-seed gain1.38758% has worse TNS. No new selection occurred.
+- Native1794901 COMPLETED29s:2249 files,1992603631 source bytes to
+  209902022 archive bytes;23/23 native audits, full per-file decoding and
+  originals unchanged. Manifest35320821ca42da948285b19dedbcb579a488d242efd900f4af3010d08fd3949d;
+  archive SHAde430a7c4245b78b5c809aa3c228044fa8fa2962f0c07a28837a06a74a9653ea.
+  This compact evidence is not a full OpenDB/SPEF resume archive.
+- Bounded metadata review of109 logical final results(main63,expanded21 plus
+  two best400,second23) explicitly confirms zero macro-overlap pairs and
+  out-of-core macros, and DRC0. It binds existing source-geometry hashes;
+  actual final DEF parsing is proved by the completed native audits. Review
+  SHA5a8f54de122d07b8f1cbeb46986799f2b9c650fc73bcd022000d7af8bc77821c.
+- Updated the Chinese experiment record, README, integration notes and current
+  whole-objective audit. Historical pending/failure entries remain dated and
+  unchanged. Old Table2 jobs were checked still JobHeldUser/JobHeldAdmin;
+  unrelated hpca/dejacache jobs and the three pre-existing dirty historical
+  documents were left untouched.

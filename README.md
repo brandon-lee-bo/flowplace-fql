@@ -1,8 +1,9 @@
 # FlowPlace + FQL investigation
 
-The active goal is **graph-based FlowPlace + Flow Q-learning (FQL), with actual
-offline-to-online training and native downstream evaluation**. It remains in
-progress. All three bp_fe training seeds have completed offline training, two
+This study implements **graph-based FlowPlace + Flow Q-learning (FQL), with
+actual offline-to-online training and native downstream evaluation**. It is
+complete, including final native evidence preservation. All three bp_fe
+training seeds completed offline training, two
 measured-feedback updates and native final routing:63/63 predeclared requests
 passed, all with DRC0. Online FQL mean final wirelength is0.308% lower than
 matched BC, but is worse in two of three seeds and has greater between-seed
@@ -15,13 +16,18 @@ generalization. Expanded21/21 predeclared final routes and both best400 controls
 have completed, all DRC0, with the full native audit and durable evidence
 archive verified. Its final FQL wirelength is1.388% lower than matched BC,
 with slightly better WNS but worse TNS; this is one training seed.
-bp_be's76/76 GRT
-requests have now succeeded: final FQL mean GRT wirelength is0.709% below
-matched BC, but worse than its own offline stage. Its final detailed-route
-comparison also remains incomplete. The
+bp_be's76/76 GRT and23/23 final-route requests also succeeded, all final
+DRC0. Its online FQL final wirelength is0.754% below matched BC, with16.121%
+less TNS magnitude, but0.868% worse wirelength than its own offline stage.
+Independent audit1793511 reloaded all six parent/child checkpoint pairs and
+reparsed all23 final DEFs; native preservation1794901 completed full decoding
+of2249 files. Consolidation1794697 covers all three studies; the bounded
+geometry review records zero macro overlap and out-of-core counts for all109
+logical final requests, including the expanded best400 controls. The
 current Chinese [experiment record](docs/graph_fql_offline_to_online.md),
 [completion audit](docs/completion_audit.md) and [run ledger](docs/run_ledger.md)
-separate measured results from pending work. No stable RL PPA advantage is claimed.
+report the completed results, provenance and limitations. No stable RL PPA
+advantage is claimed.
 
 An earlier bounded MLP follow-up is complete: fresh learned behavior-flow
 distillation, a physical-feature critic and12/12 paired GRT outcomes. Its about
@@ -42,7 +48,8 @@ The earlier FQL research pilot ran on 2026-10-16/17 (Hong Kong).
 Macro-proxy and real-GRT pilot experiments are complete. The macro-reward FQL
 gain did not transfer to the tested backend cases; the real-GRT critic failed
 its predefined validation gate, so conditional actor expansion was not launched.
-Exact Table 2 numbers and a routed PPA improvement from FQL have not been established.
+Those pilots established neither paper-matching Table 2 numbers nor a routed
+PPA advantage from FQL.
 
 Read the [results report](docs/results_report.md) for measured outcomes,
 the [run ledger](docs/run_ledger.md) for Slurm jobs/failures, and the

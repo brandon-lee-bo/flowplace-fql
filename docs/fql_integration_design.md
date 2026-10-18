@@ -272,8 +272,11 @@ between-seed variation is greater. Expanded384-label final PPA is now natively
 audited:21/21 declared routes plus both best400 controls are DRC0; online FQL
 mean rWL is1.388% below matched BC, with slightly better WNS but worse TNS.
 Its native evidence is durably preserved; this single seed does not establish
-stable superiority. Second-circuit bp_be completed both actual online updates
-and all76 GRT requests, with its final detailed-route comparison still pending.
+stable superiority. Second-circuit bp_be completed both actual online updates,
+all76 GRT requests and23/23 final routes, all DRC0. Final online FQL rWL is
+0.754% below matched BC and TNS magnitude16.121% lower, but rWL is0.868%
+worse than its own offline stage. Actual native audit1793511, full-decoding
+preservation1794901 and three-study consolidation1794697 have completed.
 All30 completed arm/stage logs were preserved
 and plotted by1794923. Distillation error falls, but fixed-validation Q error
 does not consistently improve; bp_be validation ranking remains negative.
