@@ -1991,3 +1991,13 @@ and is not claimed as included in v14. Resource totals and durable native/model
 preservation remain open; source commits and metadata snapshots do not close
 those tasks. The reference-only STA1799365 is still Priority-pending and was
 not duplicated.
+
+The final scheduler check found weighted-route recovery controller1799373
+also infrastructure-preempted after15m30s. Replacement1799533 retains the same
+24-task plan, source hashes, completed measurements and two-worker limit;
+saved report1798989 now depends on it. The controller alone uses Slurm
+`--requeue`: its existing restart-count source snapshots and persistent journal
+support this. Native worker settings and physical budgets remain unchanged.
+Recovery receipt `qstudy_quality_weighted_route_v1/controller_recovery_v2.json`
+SHA256 is `e1edf331ad6c5e4502593b443df128b5f72b76ba446d532de3a62c2a68cd1600`.
+This later parent also belongs in the next cost append, not v14.
