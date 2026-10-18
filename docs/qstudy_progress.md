@@ -613,3 +613,17 @@ and cannot be treated as completed online-policy results.
 [Fresh confirmation](qstudy_fresh_confirmation_protocol.md) will use separately
 locked evaluation inputs only after development selection. The current actor
 noises, source labels, probes and historical validation are development data.
+
+Bounded-actor native reporter final tests1796867 passed11 cases and independent
+review. Actual read-only contract1796865 used the final reporter SHA
+`82d9a5721619cc8a7fdac04aaf53a60138043ed5d7c610e56eef81cf1da01a40`:
+it verified14 existing BC successes, retained10 missing BC requests and all72
+not-yet-exported bounded requests without integrity errors. This is a partial
+reporting check, not policy efficacy. Formal report1796866 waits for native
+finish1796852. Reused BC is explicitly a descriptive unchanged-layout/native
+reference: no new bounded zero-Q update-equivalence certificate is claimed.
+Three bounded arms are the matched objective intervention; each is evaluated
+under all three common-TRAIN-scale utilities, and saved Q is calibrated only
+against its own objective. Flow-baseline report1796858 waits for both existing
+native-finish controllers. Source and full request denominators are retained
+when reports are partial.
