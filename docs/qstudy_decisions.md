@@ -16,7 +16,7 @@ there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 | TRAIN-time conservatism fixes optimistic Q | COM-inspired12 fits versus12 unchanged controls: WL CV rho .561→.502, family accuracy .547→.503 and top regret .0144→.0193, despite slightly lower MAE. | Close this fixed regularizer test; no COM actor or beta search. Historical development16 does not overturn grouped CV. |
 | Labels from current behavior flow improve Q | All80 native labels,36 source tasks and48 source-actor outcomes completed. On the same current-flow16, legacy O64/T64 WL rho is .500/−.346. T64 policy mean WL is .129% below O64 but .291% above BC; only one of three seeds improves in either comparison. | This64-label/1000-update source recipe has no stable Q-guided gain. Both actors fail the predeclared primary gate; no source promotion or stronger Q optimization follows. [Source results](qstudy_source_results.md). |
 | Q gradients improve nearby layouts | Both designs completed52/52 native probes. FE directions mostly fail; BE signs, ties and mean gains are mixed. Four bases and one critic seed per design. | Do not strengthen Q from these probes. They do not validate source64/bounded critics or identify a legalizer mechanism. |
-| Timing/congestion objectives improve policy tradeoffs | Nine bounded-objective tasks/36 fits completed. Timing/congestion CV MAE exceeds their own constant baselines; local ordering is weak. Bounded-WL24/24 native outcomes are complete below; timing/congestion arms remain unmeasured. | Complete the declared matrix. WL improves versus the existing BC reference with timing/area tradeoffs; this is not a controlled bounded-formula effect. No alpha/grid expansion or automatic online extension. [Protocol](qstudy_bounded_objective_protocol.md). |
+| Timing/congestion objectives improve policy tradeoffs | Nine bounded-objective tasks/36 fits and all96 native outcomes completed (72 new bounded,24 reused BC). Timing WL is1.157% below descriptive BC, all3 seeds lower, but TNS/H overflow exceed declared tolerances. Against bounded WL, its own measured timing utility worsens in all3 seeds. | Close the declared matrix without promotion: WL misses1%, congestion misses1%/all-seed consistency, timing fails secondary metrics. BC has no bounded zero-Q equivalence certificate. No alpha/grid expansion or automatic online extension. [Results and protocol](qstudy_bounded_objective_protocol.md). |
 | Q-based actor learning beats imitation and generate-and-rank | Offline GRT means and identical-initial-Q selection are complete below. Fixed-first4 offline DRT also completed: FQL has worse mean WL, timing, power and area than BC, despite better WL in two of three seeds. | No stable offline advantage. Ranking ability is not evidence of correct actor gradients. Complete the declared main online/final-route matrices before selection. |
 | One-step distillation is limited by training duration | Saved same-noise raw RMS to flow is .1000 for BC and .1009 for FQL; both have worse mean WL than flow in all three seeds. This is clipped export distance, not training MSE. | Use the already declared BC1000→1600→2200 continuation first: teacher stays fixed and Q weight is zero. No additional duration GPU/native jobs are launched. |
 
@@ -47,13 +47,23 @@ are in [progress](qstudy_progress.md#matched-offline-results-after-missing-only-
 | Matched BC | 2.314028 ± .012141 | −.403605 | −217.399 | 7.667 | 1.375 | .170010 | 61200.2 |
 | Legacy offline FQL | 2.307890 ± .003804 | −.407202 | −217.652 | 2.625 | .667 | .170140 | 61198.8 |
 | Bounded-WL offline actor | 2.304274 ± .014205 | −.418562 | −217.922 | 2.000 | .792 | .170021 | 61525.2 |
+| Bounded timing offline actor | 2.287263 ± .014787 | −.415364 | −231.041 | 11.333 | 2.000 | .169886 | 61027.3 |
+| Bounded timing+congestion actor | 2.303493 ± .020889 | −.414849 | −222.394 | 4.083 | 1.167 | .169842 | 61011.4 |
 
-Bounded-WL report1797061 verifies24/24 successes: WL−BC is −9753.75 ±2064.471um
+Final bounded report1796866 verifies96/96 successes with no missing, failed
+or invalid requests, including24 reused BC references. Bounded WL−BC is −9753.75 ±2064.471um
 (paired-seed SD), lower in all three seeds. WNS worsens, TNS slightly worsens,
 and mean WL remains above current flow2.279086m. BC is an existing measured
 reference without a bounded zero-Q update-equivalence certificate; the gain
-cannot be attributed solely to the bounded formula. The overall report is
-partial because timing/congestion are unmeasured, not because WL is incomplete.
+cannot be attributed solely to the bounded formula. Timing's mean WL reduction
+of1.157% passes the numerical primary threshold, but TNS violation increases
+13.642ns (allowed10.870ns) and H overflow increases3.667 (allowed1).
+Even with a future matched-control certificate, those secondary failures would
+remain. Against bounded WL, timing improves WL0.738% but worsens TNS/H/V and
+its own measured utility in all three seeds. Timing/congestion Q on their own
+actor proposals has mean rho−.500/−.579; this is conditional development
+evidence, not a universal claim about those objectives. Full uncertainties and
+source hashes are in the [bounded result](qstudy_bounded_objective_protocol.md).
 
 For selection, the same frozen initial per-seed Q scores every generator's
 eight raw proposals. Each seed contributes **one selected output**, so its SD

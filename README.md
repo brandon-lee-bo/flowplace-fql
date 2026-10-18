@@ -2,8 +2,8 @@
 
 The current Q/reward study is **in progress**, with **no stable PPA advantage
 established**. The [compact evidence/decision table](docs/qstudy_decisions.md)
-separates completed diagnostics from the pending main/bounded physical
-policy matrices and fresh confirmation. The study tests critic inputs, losses,
+separates completed diagnostics from the pending main online/final-route
+matrices and fresh confirmation. The study tests critic inputs, losses,
 physical objectives and behavior-flow data sources. Read the [current plan](docs/qstudy_plan.md),
 [measured progress](docs/qstudy_progress.md),
 [behavior-flow label protocol](docs/qstudy_behavior_source.md) and
@@ -12,8 +12,11 @@ The completed [source-control result](docs/qstudy_source_results.md) is negative
 for current-flow WL prediction and stable policy improvement: all48 source-actor
 native outcomes succeeded, but current-flow labels did not beat matched BC
 consistently. The [bounded multiobjective comparison](docs/qstudy_bounded_objective_protocol.md)
-has completed its predictive screen; its fixed-budget physical policy test is
-running. The [fresh confirmation protocol](docs/qstudy_fresh_confirmation_protocol.md)
+has completed all96 native outcomes, including24 reused BC references.
+Its timing objective reduces mean WL by1.157% versus that descriptive BC
+reference, but worsens TNS and horizontal overflow beyond the declared
+tolerances; no bounded arm qualifies for promotion. The
+[fresh confirmation protocol](docs/qstudy_fresh_confirmation_protocol.md)
 reserves new generation noises after development selection is locked.
 These new experiments have not established a stable PPA improvement. The old
 Table 2 reproduction remains paused. Results below describe completed earlier

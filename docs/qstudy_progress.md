@@ -1258,3 +1258,65 @@ produce diagnostic metadata for incomplete work; the root still must inspect
 each report's native success, full denominators, provenance and scientific
 control eligibility. This submission is not proof that development or fresh
 confirmation is complete.
+
+## Cost snapshot and environment preflight scheduled
+
+Scheduling-only journal `logs/qstudy_native_throttle_20261018T1312.json`
+records active native arrays1797489/1797522 increasing from two to three
+simultaneous workers after checking spare CPU/memory. Completed-child warnings
+produced scontrol exit1; authoritative squeue confirmed both `%3` limits.
+No physical input, eight-thread worker, metric, repair or sample budget changed.
+Later controller arrays retain their original concurrency settings.
+
+GPU metadata Slurm1797843 completed in7seconds on deep-space. It verified
+NVIDIA L20, torch2.2.1+cu121, NumPy1.23.5 and CUDA12.1 under the existing fresh
+precision/determinism contract, without loading a model, generating noise or
+running EDA. The immutable record is
+`/fact_home/bohanli/flowplace_fql_recovery/fresh_hardware_preflight_v1/job1797843.json`,
+SHA256 `ab2fd3b6f39536f9868ce647c3fb76c697a5f1076899b610cc593f0a059fe95f`.
+This establishes the allocated preflight environment, not candidate selection
+or equivalence of earlier GPU numerical runs.
+
+Read-only cost job1797857 now waits for the final development reports. Its
+reviewed helper snapshot/submission is in
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_cost_tool_v1/`.
+The reducer SHA256 is
+`35027ff88e2d486d7484cf132522ca16ebf3db42d55253fc183e10abc534d9ee`;
+the explicit scope SHA256 is
+`185d8698aec958ca2bb4533400dc8a7f5a304a3f7e530cab3fb42b1c571e3316`.
+It binds inventory1797369's exact stdout snapshot, builds a Qstudy-only job
+whitelist and invokes the existing allocation collector with `--jobs-file`.
+Both failed and recovered GPU attempts are retained; unrelated projects and
+paused Table2 are excluded. Allocated resource-hours are not utilization.
+Saved native stage times and committed optimizer budgets remain separate from
+last-successful-attempt training duration. Isolated inference latency and
+unobserved shared/public pretraining costs remain unknown. A later post-fresh
+cost snapshot needs explicit fresh/preservation job IDs; this scheduled
+development snapshot is not an exhaustive final total.
+
+## Completed bounded-objective native comparison
+
+Report1796866 completed the full96-request matrix:72 new bounded actor
+measurements and24 unchanged BC references, all successful with zero missing,
+failed or invalid requests. Its immutable report is
+`qstudy_v1/bounded_actor_native_report_v1/20261018T132750.979106Z_job1796866/report.json`,
+SHA256 `0ce81b4ef635d0d6def02d751a809a3459bc1ed23d6003dd02167bae63d4ddfb`.
+The [full result](qstudy_bounded_objective_protocol.md#completed-development-result)
+reports all seven metrics, three-seed sample SDs, paired differences and
+control limitations.
+
+No bounded arm qualifies for promotion. Bounded WL lowers mean WL0.422%
+against the existing BC reference, below the locked1% threshold. Timing lowers
+WL1.157%, with all three seeds lower, but TNS violation increases13.642ns
+against an allowed10.870ns and H overflow increases3.667 against an allowed1.
+Timing+congestion lowers WL0.455% with two seeds worse. The existing BC has no
+bounded zero-Q effective-update certificate, so these BC comparisons remain
+descriptive; timing's secondary-metric failures independently remain.
+
+Against the bounded-WL actor, timing lowers WL0.738% but worsens TNS/H/V and
+its own measured timing utility in all three seeds. Timing and congestion
+critics also have negative mean ranking on their own24 actor proposals.
+These are conditional development results, not a general rejection of
+multiobjective rewards. This closes the bounded branch without more alpha,
+capacity, objective-weight or online searches. Main matched online and
+final-route comparisons remain pending.
