@@ -93,3 +93,15 @@ contracts with synthetic fixtures, not a selected scientific comparison.
 The final selection record still requires review of actual method identities,
 matched offline/online budgets, common utility scales and acceptance rules.
 No real fresh noise, layout or physical outcome has been generated yet.
+
+The separately reviewed native finish adapter is `fql/qstudy_fresh_native.py`.
+Its `prepare` stage requires the immutable selection and every completed export
+inventory. Submit its `controller` through `qstudy_fresh_native.slurm` with the
+absolute plan path and plan SHA256. Only its eight-thread Slurm worker calls
+the unchanged native evaluator. Completed measurements are verified and reused;
+genuine infrastructure interruptions are retried without inventing PPA labels.
+The read-only `fql/qstudy_fresh_report.py` reports all declared requests, saved
+actual-noise pairing, physical failures, unresolved requests and all seven GRT
+metrics. Sixteen contract tests passed in Slurm1797068. These modules do not
+select a candidate or generate fresh noise. The separately locked detailed-route
+executor remains to be completed before starting confirmation.

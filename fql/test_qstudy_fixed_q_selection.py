@@ -1,5 +1,6 @@
 """Bounded synthetic CPU inference/integrity tests; no real layouts or EDA."""
 import copy
+import csv
 import json
 import os
 from pathlib import Path
@@ -204,6 +205,24 @@ class FixedQTests(unittest.TestCase):
         self.assertEqual(pair['native_full_delta']['rWL_um']['mean'],3.)
         self.assertEqual(next(x for x in mg if x['arm']=='flow')['native_full']['rWL_um']['mean'],104.5)
         self.assertEqual(len(picks),45);self.assertEqual(len(means),9)
+
+    def test_csv_actual_flow_seed_identity_merges_without_duplicate_keyword(self):
+        pools=self.simple_pools()
+        for pool in pools:
+            if pool['arm']=='flow':
+                for row in pool['rows']:row['seed']=pool['seed']
+        rows=q.score_rows(pools)
+        self.assertEqual(len(rows),72)
+        self.assertEqual({(r['arm'],r['seed'],r['index']) for r in rows},
+            {(a,s,i) for a in q.ARMS for s in range(3) for i in range(8)})
+        q.selection.csv_write(self.root/'scores.csv',rows)
+        with (self.root/'scores.csv').open(newline='') as handle:
+            saved=list(csv.DictReader(handle))
+        self.assertEqual(len(saved),72)
+        self.assertEqual({(r['arm'],int(r['seed']),int(r['index'])) for r in saved},
+            {(a,s,i) for a in q.ARMS for s in range(3) for i in range(8)})
+        pools[0]['rows'][0]['seed']=99
+        with self.assertRaisesRegex(ValueError,'identity differs'):q.score_rows(pools)
 
     def test_failures_not_filtered_missing_withheld_and_no_fabricated_native(self):
         pools=self.simple_pools()

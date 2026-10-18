@@ -250,6 +250,17 @@ def aggregate(pools):
     return selected, groups, means, mean_groups, pairs
 
 
+def score_rows(pools):
+    """Flatten actor/current-flow rows after checking inherited identities."""
+    result=[]
+    for pool in pools:
+        for row in pool['rows']:
+            if any(key in row and row[key]!=pool[key] for key in ('arm','seed')):
+                raise ValueError('Score row identity differs from its generator/seed pool')
+            result.append({**row,'arm':pool['arm'],'seed':pool['seed']})
+    return result
+
+
 def audited_inputs():
     reports, bindings = {}, {}
     for name,(path,digest) in INPUTS.items():
@@ -363,7 +374,7 @@ def run(output):
     stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S_%f')+'_job'+os.environ['SLURM_JOB_ID']
     snapshot=output/stamp;snapshot.mkdir(parents=True,exist_ok=False)
     atomic_json(snapshot/'report.json',result)
-    selection.csv_write(snapshot/'scores.csv',[dict(arm=p['arm'],seed=p['seed'],**r) for p in pools for r in p['rows']])
+    selection.csv_write(snapshot/'scores.csv',score_rows(pools))
     selection.csv_write(snapshot/'selections.csv',selected)
     selection.csv_write(snapshot/'selected_vs_selected.csv',pairs)
     (snapshot/'source.py').write_bytes(Path(__file__).read_bytes())
