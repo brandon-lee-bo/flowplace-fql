@@ -900,3 +900,86 @@ Its same frozen controller and backend remain in use. Submission metadata is
 `bounded_actors_v1/native_wl_early_v1/submission.json`; read-only snapshot job
 1797061 will report any complete WL comparison while explicitly retaining the
 other objectives as unresolved. Final reporting still waits for all72 requests.
+
+## Completed local physical-direction checks
+
+Recoveries1796061/1796062 and reports1795844/1795845 completed all52 native
+requests on each design. Both inventories match the saved outcome hashes;
+there are no missing labels, physical failures or invented infrastructure
+penalties. FE evidence SHA is
+`11397335826d98d073f22b282ab2591b766f84b6fe6766687129a07b55023c2b`;
+BE is `9631813760830ee7e682a82a8f119ad24936681840b4f772e65a796010ebf475`.
+
+Each row below describes four starting-layout neighborhoods of ONE common
+actor and ONE critic seed. Signs compare the predicted positive direction to
+its negative direction; improvement measures positive direction versus the
+unmodified baseline. These are different tests. Utility uses each design's
+frozen TRAIN-WL normalization; values are not per-layout percentage changes.
+
+| Design / critic | Raw RMS radius | Correct non-tied directional signs | Ties | Mean positive-direction utility change |
+| --- | ---: | ---: | ---: | ---: |
+| bp_fe / legacy | .005 | 1/4 | 0 | -.005220 |
+| bp_fe / legacy | .020 | 1/4 | 0 | -.009149 |
+| bp_fe / Huber residual | .005 | 2/4 | 0 | -.002974 |
+| bp_fe / Huber residual | .020 | 1/4 | 0 | -.008555 |
+| bp_be / legacy | .005 | 2/2 | 2 | +.001671 |
+| bp_be / legacy | .020 | 3/4 | 0 | -.001511 |
+| bp_be / Huber residual | .005 | 1/1 | 3 | 0 |
+| bp_be / Huber residual | .020 | 3/4 | 0 | -.000961 |
+
+Matched random positive directions average +.005744/-.001666 on FE and
++.002625/+.002813 on BE at radii .005/.020. Random references reused under
+two critic normalizations are not independent repeats. At BE residual .005,
+every positive-direction execution equals its baseline: its lone correct
+non-tied sign only reflects a worse negative-direction layout. At .020 both
+BE critics improve three bases, but the fourth makes the mean negative.
+This is not evidence for generally useful ascent gradients. It also does not
+identify the legalizer as the cause: the experiment tests the whole raw-action
+to executed-layout to GRT mapping. These old critics do not validate new
+bounded/source critics. An actor alpha reduction remains conditional on actual
+favorable policy evidence; no alpha grid is launched from these probes.
+
+The first fixed-Q selection report job1797079 failed only while writing its
+score CSV because flow rows already contained a seed field. Its incomplete
+snapshot is retained. A narrow explicit identity-merge fix passed13 tests in
+1797081; rerun1797084 repeats CPU critic scoring only, with no additional
+layout, native evaluation, or label. No incomplete report is presented as a
+completed result.
+
+## Same frozen Q selects from Flow, BC and FQL
+
+Read-only CPU critic job1797084 completed in35s. Its immutable snapshot is
+`qstudy_v1/fixed_initial_q_selection_v1/20261018T111526_522211_job1797084`.
+All72 saved raw proposals and their already measured native outcomes are
+accounted for. There was no new policy inference, optimization, layout or EDA
+call. All six BC/FQL pools have identical CPU-versus-recorded-CUDA argmax and
+full ordering; maximum absolute score difference is1.1921e-7. All generators
+are selected using the same CPU implementation and same initial Q per seed.
+
+The selector chooses exactly one of eight existing candidates in each seed.
+Numbers below are means and sample SD over those three selected outputs, not
+over24 supposedly independent training runs. These are development results.
+
+| Native GRT metric | Behavior flow + Q selection | BC + Q selection | FQL + Q selection |
+| --- | ---: | ---: | ---: |
+| WL (m) | 2.221280 +/- .027090 | 2.275971 +/- .015563 | 2.240982 +/- .045602 |
+| WNS (ns) | -.392523 +/- .020164 | -.335976 +/- .022515 | -.370599 +/- .038509 |
+| TNS (ns) | -172.297 +/- 78.022 | -182.738 +/- 11.407 | -149.911 +/- 17.771 |
+| Horizontal overflow sum | .667 +/- .577 | 31.333 +/- 38.083 | 10.000 +/- 14.731 |
+| Vertical overflow sum | 0 +/- 0 | 2.667 +/- 2.887 | 1.000 +/- 1.732 |
+| Power (W) | .1698443 +/- .0011625 | .1699283 +/- .0008473 | .1700127 +/- .0004417 |
+| Standard-cell area (um2) | 60753.7 +/- 1074.1 | 60456.9 +/- 1255.8 | 60420.5 +/- 1082.3 |
+
+For comparison, means over all eight generated outputs per seed are
+2.279086/2.314028/2.307890m for flow/BC/FQL. The flow's unselected congestion
+means are worse, so its lower mean WL alone is not an overall PPA advantage.
+The measured-label oracle WL references are2.183941/2.198937/2.203562m;
+they inspect all eight backend labels and are not free deployable selectors.
+
+This control supports separating candidate ranking from gradient-based actor
+learning. The flow + Q selector is competitive here, and Q-based actor
+improvement is not established by Q's ability to select candidates. Current
+flow and the one-step actors use different inference costs (10 versus1 network
+steps per candidate); the comparison matches candidate count and native calls,
+not FLOPs. No fresh winner or new actor hyperparameter is selected from this
+single small inspected comparison.
