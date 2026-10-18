@@ -1145,3 +1145,28 @@ The prospective fresh protocol now also has a parser-reviewed
 85000000 noise arrays have been created. The default still requires completed
 development review before fixing the candidate and starting its80 GRT/40 DRT
 confirmation requests.
+
+## Frozen-rule fresh acceptance reducer
+
+`fql/qstudy_fresh_acceptance.py` now applies the exact previously committed
+prospective rules to the final saved GRT/DRT reports. It performs no model,
+training, backend or candidate-selection calls. All locked streams retain
+their full request denominators, shared actual-noise and selection bindings;
+candidate/BC means are recomputed per training seed. Unknown outcomes remain
+inconclusive, confirmed failures never receive fabricated PPA, and a BC
+physical failure cannot establish superiority from conditional WL. The
+public reference remains one checkpoint rather than three trained replicas.
+
+Independent production-schema review caught and fixed an implementation
+error before use: native metric dictionaries retain extra parser/runtime
+metadata. The reducer requires and validates the seven/six named numeric
+metrics while accepting those auxiliary fields. It also keeps report outputs
+outside immutable export/DRT evidence roots. Slurm1797591 passed all15 tests,
+including native metadata, threshold boundaries, full-denominator failures,
+shared identities and pinned-file tampering. Module SHA256 is
+`774568d403ffc9a8b0b5fc3e4623df87e8253b9e42e5cd29793750e2882ec0be`.
+
+The [launch checklist](qstudy_fresh_launch_checklist.md) includes the exact
+saved-report reduction command. This is implementation and fixture evidence,
+not a fresh physical result: development matrices are still running, no
+candidate has been selected and no85000000 noise has been generated.

@@ -167,3 +167,30 @@ uses the same immutable selection/plan and missing-only genuine interruption
 logic; never loosen guards, change metrics, add candidate-only repairs, replay
 fresh labels, or regenerate a favorable output. Any later method change needs
 a separately locked confirmation stream.
+
+After both authoritative reports have completed, apply the already locked
+rules with the saved-report-only reducer. Choose their exact immutable paths
+from the recorded report jobs; never choose a report because its numbers are
+favorable. `candidate` and `bc` below are the default locked stream IDs, not
+new method selection. Keep the output outside the immutable export and DRT
+roots.
+
+```bash
+GRT_REPORT=/absolute/path/from/completed/fresh_grt_report_job/report.json
+DRT_REPORT=/absolute/path/from/completed/fresh_drt_report_job/report.json
+RULES="$ROOT/fql/qstudy_confirmation_rules_v1.json"
+sbatch fql/qstudy_readonly_report.slurm -m fql.qstudy_fresh_acceptance \
+  --grt "$GRT_REPORT" --grt-sha256 "$(sha256sum "$GRT_REPORT" | cut -d ' ' -f1)" \
+  --drt "$DRT_REPORT" --drt-sha256 "$(sha256sum "$DRT_REPORT" | cut -d ' ' -f1)" \
+  --rules "$RULES" --rules-sha256 b6553120d9a4f410740d9f45ee3214dfa62b48f27b0a75a8c4cfe262f9b940ab \
+  --candidate candidate --bc bc --output "$BASE/fresh_acceptance_report_v1"
+```
+
+The reducer rechecks the report, selection, declaration, noise and rules
+bindings and recomputes the native metrics from individual requests. It has
+no model, EDA, fitting or selection calls. It reports all locked streams'
+success/failure/missing counts, complete candidate/BC seed means and paired
+primary differences. Its operational labels are `inconclusive`,
+`no_stable_gain`, `tradeoff` and `overall_improvement`; the full metric
+reports remain necessary, including current-flow and public-reference
+comparisons. Passing the BC gates is not a claim of superiority to FlowPlace.
