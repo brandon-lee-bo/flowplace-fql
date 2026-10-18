@@ -847,3 +847,45 @@ Its separate paired reporter passed11 tests in1797030 and independent review;
 it retains the full COM binding and validates the12 original controls without
 changing their verifier. Predictive accuracy and regularization pressure will
 be reported separately from any actor or physical-direction claim.
+
+## Conservative-critic result and online continuation
+
+Paired COM report1797042 completed with12 new verified fits,12 unchanged
+supervised controls and zero integrity errors. Immutable snapshot:
+`qstudy_v1/com_wl_report_v1/20261018T105624786102Z_job1797042/report.json`,
+SHA `ef82ee31e3fea8f4abd14fb1221a5d3246f7369e76cb09ed14430f0b5751bacf`.
+The reporter and tests are committed in95a281e. Grouped-family CV metrics are
+first averaged within each seed, then over three independent critic seeds:
+
+| Bounded-WL CV diagnostic | Supervised control | COM-inspired fixed regularizer |
+| --- | ---: | ---: |
+| MAE | 0.013213147 | 0.013064363 |
+| Spearman rank correlation | 0.561028977 | 0.502050403 |
+| Family-pair accuracy | 0.547205688 | 0.503251764 |
+| Top-candidate regret | 0.014411220 | 0.019259676 |
+
+Paired MAE change is -0.000148784 +/-0.000201476. However, rank correlation
+decreases in all three seeds, family-pair accuracy decreases in all three,
+and top regret increases in all three. Smaller raw-input gradients and lower
+regression error alone do not validate the direction that an actor will take.
+The previously inspected historical16 favor COM on MAE/rank but do not reverse
+this grouped-CV decision. No COM actor, new physical call or beta grid is
+promoted from this result; the negative predictive result remains retained.
+All per100/final regularization-pressure logs were present and validated.
+
+Main controller1796907 started and printed the strict96 verification before
+resuming round1; no round0 backend requests were repeated. Scheduler-only
+adjustments reduce its resumable outer window from12h to4h and allow the
+lightweight controller on blue-space. Its script still excludes blue-space
+for physical children and clears inherited restart counts on every entry.
+These metadata changes are recorded in
+`qstudy_v1/main_resume_scheduler_adjustment_v1.json`; source, scientific
+budgets and original checkpoint/state identities remain unchanged.
+
+A separate development control is being prepared to compare the same fixed
+eight-candidate Q-selection rule for current behavior flow, BC and legacy
+FQL. It may only rescore saved proposals with the same frozen initial critic,
+using CPU Slurm and no optimizer/layout/backend call. CPU recomputation of
+the existing BC/FQL scores is required to check CUDA-score selection agreement.
+This control tests whether actor learning adds value beyond generate-and-rank;
+it neither changes the fresh selection nor opens its reserved noise stream.
