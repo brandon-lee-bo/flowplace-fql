@@ -2159,3 +2159,66 @@ The captured scheduler view predates the above final completions and retains
 its original pending/running states. No final resource sum or durable bulk
 preservation is implied. Native outputs and unique checkpoints remain on
 scratch; final cost aggregation and preservation remain open.
+
+## 2026-10-18: completing the two-cycle path and preservation capacity audit
+
+The previous goal turn made concrete progress: the second FQL continuation
+adapter passed12 fixtures and independent review, actual second-cycle updates
+completed in all three seeds, and the implementation/results were committed
+and pushed. These remain bounded state/interface checks rather than evidence
+of scientific online quality. The current scheduler check confirms the
+expert-edge controller1798857 live, with22 completed worker-array tasks and
+two Priority-pending tasks under1799287. Its persistent journal and actual
+Slurm parent/worker states agree; there is no basis to duplicate those jobs.
+
+The complete new scalar scientific path still needs the genuine BC T1 child,
+BC second continuation and actual T2 evaluation export. These are now being
+implemented in separate files while the reward matrices collect measurements.
+The T2 exporter must load the actual T2 actor and, for diagnostics, the actual
+T2 critic; reconstructing its input source can otherwise leave a T1 critic in
+memory. Final-stage exports are evaluation-only and do not fabricate another
+training collect. Existing adapters and scientific source closures remain
+unchanged. The execution guide now distinguishes these extensions from the
+older completed two-cycle matrix and explicitly records their current limits.
+
+The independent preservation-capacity audit found only705,807,110 bytes of
+remaining personal Ceph quota. Thirty existing new-study full checkpoints
+alone total2,880,639,216 bytes; this excludes additional native evidence and
+future continuation states. Shared-filesystem free capacity does not override
+the personal quota. The project's8GiB reserve is a self-imposed safety guard,
+not a PDF requirement. PDF page21 says "No datasets, no model weights" in HOME
+and directs them to fact_data or scratch; page94 identifies fact_data as the
+checkpoint destination. HOME free space is therefore not a model archive plan.
+No additional authorized durable directory has been verified. The audit
+recommends at least16GiB extra personal capacity or an authorized equivalent,
+followed by measured-size admission, while preserving all seeds and negatives.
+
+Report `durability_feasibility_v1/20261018T200120Z_report.json` under recovery
+has SHA256
+`54a35bae598b74d1ad09fbc9f707691c001d1df62f5faad8ccf54a59e24ae508`.
+The existing closed cache audit found no safe large reclaim candidate. No
+models were copied to HOME, no unrelated files were deleted, and no bulk
+preservation was asserted. An asynchronous request for an additional durable
+directory/quota was sent to the user. Computation and temporary scratch
+retention continue while that resource information is pending.
+
+The genuine BC T1 exporter subsequently passed12 fixtures (1800166), the
+BC second-cycle trainer14 (1800180), and the genuine FQL T2 evaluation-only
+exporter12 (1800169). Independent source reviews found no current-scope
+blocker. The first T2 fixture attempt1800167 is retained as a failed test:
+the implementation correctly rejected a substituted T1 checkpoint at its
+fingerprint guard, earlier than the fixture's overly narrow expected error.
+Only that assertion changed before the successful rerun. No physical outcome
+was discarded or reclassified.
+
+The true T2 exporter explicitly reloads the updated T2 critic rather than
+using the reconstructed T1 critic. The BC second trainer verifies frozen
+teacher, separate scalar critic, their optimizers and unused RNG streams,
+and admits both rounds' own feedback for matched collection accounting while
+performing zero Q updates. These are implementation checks, not PPA results.
+The FQL T2 bounded graph integration was submitted as CPU prepare1800185
+followed by GPU export1800186: three actual completed1800075 parents, one
+evaluation-only layout per seed, shared new noise77108000, no collect,
+training or native evaluation. Receipts and the immutable request are under
+`qstudy_scalar_online_t2_eval_smoke_v1` in recovery. This does not consume the
+reserved fresh-confirmation population.

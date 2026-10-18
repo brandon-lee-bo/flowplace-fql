@@ -52,6 +52,60 @@ are not new physical calls. `flow_eval_v1` is the common10-step teacher;
 See [cost definitions](qstudy_cost_inventory.md) for logical requests versus
 real attempts, and immutable reports for actual success/failure counts.
 
+## Expert-rule and final-feedback extensions
+
+These are separate experiments from the historical online matrix above.
+Their fixed definitions, data denominators and stage-specific metrics are in
+the [expert-rule protocol](qstudy_rule_reward_protocol.md) and
+[final-feedback protocol](qstudy_final_feedback_protocol.md). A prepared
+configuration or completed software test does not establish native PPA gains.
+
+| Stage | Entry | Contract |
+| --- | --- | --- |
+| Eight expert-rule critic objectives | `fql/qstudy_rule_reward_screen.slurm` → `fql.qstudy_rule_reward_screen prepare/run` | Fixed384-row TRAIN, three family folds plus refit, three critic seeds; TRAIN-only utility scales. |
+| Expert-rule actor/export | `fql/qstudy_rule_reward_actor.slurm` → `fql.qstudy_rule_reward_actor prepare/run` | Eight objectives, three actor seeds, fixed1000 updates and eight predetermined native layouts each;192 GRT requests. |
+| Expert-rule result reduction | `analysis/qstudy_rule_reward_actor_results.slurm` | Validate every planned request and preserve incomplete/failure denominators; seven native GRT metrics and paired comparisons. |
+| New final-route TRAIN labels | `fql/qstudy_train_final_route.slurm` and `fql/qstudy_train_drt_recovery.slurm` | Fixed32 families/two variants each; original GRT→cap20 DRT, explicit infrastructure recovery, no replacement of difficult samples. |
+| Power/label admission | `analysis/qstudy_final_power_audit.slurm` | Complete TRAIN64 outcomes, fixed activity assumptions, per-fold and full-refit variation checks; reject unavailable/constant required targets. |
+| Six final-feedback critic objectives | `fql/qstudy_final_feedback_screen.slurm` → `fql.qstudy_final_feedback_screen prepare/run` | Externally pinned complete collector and power-audit reports; four family folds plus refit, three seeds. |
+| Final-feedback actor/export | `fql/qstudy_final_feedback_actor.slurm` → `fql.qstudy_final_feedback_actor prepare/run` | Six objectives, three actor seeds, fixed1000 updates;144 GRT requests with the same physical pipeline. |
+| Final-feedback detailed routes/report | `fql.qstudy_final_feedback_route plan/resolve`, `fql/graph_o2o_route_controller.slurm`, `analysis/qstudy_final_feedback_actor_results.slurm` | Resolve exact GRT inputs for the fixed first four noises per arm/seed,72 DRT requests; all six final metrics plus separate GRT overflow diagnostics. |
+
+Immutable launch receipts under
+`/fact_home/bohanli/flowplace_fql_recovery/` record the actual submitted
+dependencies, hashes and recovery attempts. Scientific arrays remain on
+scavenger. Short development fixtures and bounded interface smoke checks use
+the PDF's dev workflow; they are not substitute policy evaluations.
+
+## Measured scalar continuation adapters
+
+Scalar expert/final objectives use the declared bounded cost B and
+`Q=-mean(predicted B)`, without a second mean(B) rescaling. These adapters
+preserve the actual source checkpoint, optimizer/RNG state and fixed root
+teacher/normalizers. They do not select a reward, collection budget, update
+budget or winning checkpoint automatically.
+
+| Capability | Entry | Inputs and current scope |
+| --- | --- | --- |
+| Scalar offline actor export | `fql/qstudy_scalar_online_export.slurm` | `prepare --request ... --request-sha256 ... --output ...`, then `export --experiment ... --config-sha256 ... --seed ...`; explicit three-seed collect/evaluation streams, root actor identity and complete raw/legalized/DEF lineage. |
+| First measured FQL continuation | `fql/qstudy_scalar_online_train.slurm` | `--request ... --request-sha256 ...`; own C0 feedback only, externally bound final DRT/QA when required by the objective; actual actor/critic Adam and named RNG continue. |
+| Genuine BC export/first continuation | `fql/qstudy_scalar_online_bc_export.slurm`, `fql/qstudy_scalar_online_bc_train.slurm` | Original BC actor/teacher prefix; scalar critic provenance attached separately and frozen. BC training uses Q weight0 and no critic/teacher updates. |
+| Actual FQL T1 export | `fql/qstudy_scalar_online_child_export.slurm` | Same explicit prepare/export interface, real completed first-training request/checkpoint; logical round1, no relabeling as offline round0. |
+| Second measured FQL continuation | `fql/qstudy_scalar_online_second_train.slurm` | Explicit cycle2 request; independently admitted C0(root actor)+C1(T1 actor), complete cumulative replay, original TRAIN/teacher/normalizers, actual T1 Adam/RNG and audited cumulative counts. Supports updated-Q or frozen-Q settings. |
+| Actual BC T1 export | `fql/qstudy_scalar_online_bc_child_export.slurm` | Genuine completed BC continuation, with its original BC actor prefix and separately attached frozen scalar critic; logical round1 collect/evaluation, unchanged physical process. |
+| Second measured BC continuation | `fql/qstudy_scalar_online_bc_second_train.slurm` | Same complete C0+C1 admission and cumulative actor-state accounting; Q weight0, no critic/teacher updates, and bitwise checks of their weights, optimizers and unused RNG streams. |
+| Actual FQL T2 evaluation export | `fql/qstudy_scalar_online_second_export.slurm` | Explicit three completed second-training requests/checkpoints and evaluation streams only. Loads actual T2 actor and T2 critic, retains the complete source history, and excludes every exported row from training. |
+
+The completed three-seed interface checks use one actual update per segment
+and one native collect per seed/segment; they validate implementation, not
+scientific online quality or the earlier600-update schedule. Their results
+must not be combined with the historical matrix as an additional independent
+policy-quality run. The BC T1 exporter, BC second trainer and FQL T2 exporter
+passed12,14 and12 CPU fixtures respectively; their actual graph integration
+is a separate check. The final BC T2 evaluation exporter is still being
+implemented. A scientific online trial needs its own explicit matched
+collection/update plan and all actual feedback before training can start.
+
 ## Recompute a report without rerunning policies
 
 This reads the completed main matrix and writes a new project-scratch report.
