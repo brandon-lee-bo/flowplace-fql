@@ -2059,3 +2059,27 @@ its scheduler snapshot SHA256 is
 `d936dd886603c59fd6e672ecdddcf9909792a1d0e64057f6cb74ef37a2675eed`.
 No new FAILED/OOM/quota failure was present in that snapshot. This remains
 an inventory rather than final resource aggregation or durable preservation.
+
+At19:36 UTC the bounded actual integration chain had closed successfully:
+all three FQL collect calls1799524 completed (3m11s/3m01s/3m05s), as did all
+three genuine-BC collect calls1799619 (3m01s/3m20s/3m28s). No evaluation
+backend feedback was requested. FQL update1799549 completed all seeds in
+10s/7s/7s, each from its original1000-step parent with one actor update, one
+critic update and zero teacher updates. Genuine-BC update1799622 completed all
+seeds in9s each with one actor update and zero critic/teacher updates.
+Child preparation1799602 completed in11s;1799603 exported all three actual
+continued FQL actors in8s each, producing six logical-round1 layouts whose
+saved completion markers exist. Child export adds no training/backend call.
+The actual source checkpoints are distinct per seed and remain bound to their
+own completed training request. This closes the **first-cycle integration
+smoke**, not later-cycle/BC-child support, final-objective online training or
+evidence that one-update PPA improves.
+
+The latest separate scientific saved-outcome audit found29/64 TRAIN DRT labels
+(all completed DRC0),92/192 expert-rule GRT outcomes (all success), and9/24
+weighted-flow DRT outcomes (all completed DRC0). The eight rule denominators
+were24/24,24/24,22/24,22/24,0/24,0/24,0/24,0/24. Remaining requests were
+missing/pending rather than scored failures. No never-satisfied dependency or
+source-closure mismatch was found; scavenger priority and infrastructure
+preemption remained the bottleneck. This partial state cannot select a rule
+winner or establish complete multi-seed final PPA.
