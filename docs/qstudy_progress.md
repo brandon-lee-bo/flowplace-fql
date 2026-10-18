@@ -466,3 +466,64 @@ does not establish that legalization is irrelevant, that backend snapping is
 responsible, or that either representation supplies physically valid actor
 gradients. Features, normalization and the analytic prior changed together;
 the conclusion is limited to this fixed residual-critic preprocessing test.
+
+## Behavior-flow feedback and prospective objective experiment
+
+The user's suggested data chain is now executed: the current behavior flow
+generated 40 base layouts, with 40 additional local variants. All 80 have
+verified native backend successes and seven measured metrics. The 64 TRAIN
+and 16 development-validation labels remain separate. This is offline data
+acquisition, rather than an online policy update by itself.
+
+The completed equal-budget source comparison is negative; see
+[source results](qstudy_source_results.md). For the legacy critic, three-seed
+mean rank correlation on the same 16 current-flow validation candidates is
++0.500 for O64, versus -0.346 for T64. The residual critic also fails to improve
+this ranking. The source, sampler and perturbation recipe change together,
+and all current-flow labels originate from common teacher seed 0. This does
+not invalidate the data chain, or establish the effect on actor PPA.
+
+Preparation 1796553 verified the complete source study, common warmups,
+TRAIN-only scales and identical original 256 BC targets. Controller 1796559
+now requests the predeclared O64/T64 legacy actor comparison: three independent
+actor seeds, alpha 10, frozen flow, 1,000 offline updates and eight common
+actual evaluation noises per seed, giving 48 native requests. It is an
+explicit bounded negative-hypothesis test, with no selected best seed or
+automatic online extension. Q magnitudes are corrected to the O64 TRAIN WL
+reference. The frozen generic actor report's per-source utility must not be
+compared across sources; recompute common utility from native outcomes.
+
+CPU verification 1796608 independently certified that existing round-0 BC
+actor/noise/native outcomes provide the same effective control: identical
+common flow, actor initialization and random stream; no critic or flow
+updates; finite zero-weight Q gradients. This is an effective-control
+certificate, not an unperformed bitwise GPU rerun. Only original coordinates,
+noises and native PPA can be reused; old predicted Q and source-scaled utility
+are not reusable common-reference scores.
+
+Current behavior-flow export 1796150 and public FlowPlace export 1796301 both
+completed. Final CPU audit 1796702 verified all 32 layout/noise/graph bindings,
+fixed nodes, shared actual noises and the public hard-sampling trajectory.
+It submitted exactly 24 current-flow and eight public-flow native evaluations
+as 1796709 and 1796710, each at concurrency two and eight CPUs/24 GiB per
+worker. They are development baselines, not TRAIN data or resumed Table 2.
+
+The [bounded-objective protocol](qstudy_bounded_objective_protocol.md) fixes
+the prospective comparison of WL, WL plus timing, and WL plus timing and
+congestion. Success cost B=2C/(1+C) and confirmed-failure cost 4 prevent a
+finite successful target from ranking below a physical failure. This changes
+risk preferences and gradient scale, so raw physical metrics and C must also
+be reported. Missing/infrastructure outcomes remain missing. Native rewards
+are unchanged. The critic regresses B directly; actor Q is minus mean
+predicted B, with no second TRAIN-mean normalization.
+
+Helper tests 1796716 passed 11 cases, including ordinary gradients, failure
+semantics and finite extreme-value arithmetic. Screen tests 1796707 passed
+12 cases, including exact optimizer/RNG continuation and TRAIN-only folds.
+Independent source review found no current-scope blocker. Code commit
+e95cf48 is pushed. Declaration 1796732 completed; the fixed nine-task array
+1796737 requests three objectives times three critic seeds, each with three
+grouped CV fits and one full-TRAIN refit. No objective actor has launched yet.
+The three objectives share splits and minibatch streams on the complete
+384-row TRAIN data; that matching does not automatically extend to datasets
+with objective-dependent missing labels.
