@@ -245,9 +245,62 @@ interpretation stated above. These are unpreconditioned diagnostics, not Adam
 update vectors. No alpha or reward preference is selected from an unmeasured
 surrogate gain.
 
-A released-FlowPlace control is also being implemented separately: eight
-actual matched noise arrays, public checkpoint, official twenty-step hard
-sampling, then the same final legalizer and physical context. One fixed public
-checkpoint is not three independent training seeds, so this control has eight
-unique requests rather than duplicating them across three seed directories.
-It has not yet been declared or run, and does not resume paused Table 2 work.
+Stored-array movement diagnostic 1796341 compares eight actual matched noises
+per actor seed. It verifies that BC and FQL retained exactly the same initial
+critic state, and performs no model forward calls or EDA. Mean raw FQL-minus-BC
+movable-coordinate RMS is 0.02179, 0.01550 and 0.02342 across seeds; mean
+executed RMS is 0.02602, 0.02691 and 0.04180. No pair collapses to identical
+executed coordinates, and no raw/executed change cosine is negative. However,
+mean change cosines are only 0.487, 0.506 and 0.538, and one executed movement
+is 4.60 times its raw movement. This refutes complete erasure in these 24
+pairs, while showing substantial geometric redirection or amplification.
+Recorded Q generally favors FQL, but the fixed native snapshot has no complete
+BC/FQL evaluation pair and cannot establish physical improvement. Evidence:
+`qstudy_v1/offline_actor_diagnostics_v1/surrogate_movement_v1/movement_summary.json`.
+
+A released-FlowPlace control is declared separately: eight actual matched
+noise arrays, public checkpoint, official twenty-step hard sampling, then the
+same final legalizer and physical context. One fixed public checkpoint is not
+three independent training seeds, so this control has eight unique requests
+rather than duplicating them across three seed directories. Seven tests passed
+in 1796284; metadata declaration 1796300 completed with zero backend calls.
+GPU export 1796301 and metadata-only native-plan preparation 1796309 are
+queued. Export code is locally committed as `0c6f6dc`. Physical dispatch still
+requires checking the completed export. This does not resume paused Table 2
+work or put evaluation samples into Q training.
+
+At 17:05 HKT the original teacher-label array 1795769 was terminal: 77 genuine
+successes and three preempted requests (35, 50 and 64), with no confirmed
+physical failures. Recovery controller 1796060 submitted only missing work;
+the fixed collector and source-critic dependencies remain in place. Pending
+or preempted requests are not assigned failure utility or fabricated metrics.
+
+## Stored disagreement-penalty diagnostic
+
+Read-only aggregation 1796329 and presentation 1796348 completed. The report
+verified all 42 original screen tasks and their 168 CV/refit artifacts; 36
+multi-metric tasks have saved beta diagnostics, while six legacy tasks are
+explicitly not applicable. No model was refitted and no inference or physical
+measurement was added. Evidence is under
+`qstudy_v1/uncertainty_diagnostic_v1/report_job1796329/`.
+
+The paired comparison uses beta 0, 0.5 and 1 on the same fitted model and
+candidate pool. CV-fold statistics are averaged within each critic seed and
+then summarized over three independent critic seeds. The six mechanisms are
+a fixed descriptive set, not six independent replications. Historical
+validation remains development data.
+
+The penalty is not a stable improvement. On bp_fe, residual-critic WL beta
+0.5 changes CV local-pair accuracy by -0.00006 +/- 0.01395 and reduces mean
+physical pool regret from 0.086966 m to 0.073652 m, but only one of three
+critic seeds changes its selected candidate. For the same critic's
+timing-plus-congestion objective, beta 1 slightly increases rank correlation
+yet worsens normalized selection regret in all three seeds. On bp_be,
+residual-critic WL beta 0.5 improves local-pair accuracy by 0.04040 +/- 0.01750
+while physical regret worsens from 0.163861 m to 0.169803 m. Across all six
+mechanisms, neither nonzero beta improves historical-validation WL regret.
+
+Keep beta 0 as the anchor. These observations separate ranking from candidate
+selection; they neither select an alpha nor establish physical gradient
+quality. The post-training mean-minus-disagreement score is not CQL or
+COM-style conservative training and has no calibrated confidence guarantee.
