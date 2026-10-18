@@ -4,7 +4,12 @@ Status: the original development matrices and native proof preservation are
 complete. The user-directed extension now includes a paired measured-quality
 flow control, eight fixed expert-rule FQL objectives, and a new TRAIN64 final
 detailed-route collection. The expert critic matrix is complete; physical
-policy tests and final-feedback training remain pending. Fresh confirmation
+policy tests and final-feedback training remain pending. The separate
+[final-feedback protocol](qstudy_final_feedback_protocol.md) freezes six matched
+targets on the same new64 TRAIN labels: GRT WL, final WL, final WL+TNS,
+final WL+power, final multi-PPA, and final WL+expert costs. Final WNS remains
+a reported guardrail; power is a common-tool default-activity estimate.
+Fresh confirmation
 and final cost supplementation remain pending.
 No stable PPA advantage is established.
 This page summarizes verified reports, not a new analysis or candidate selection.

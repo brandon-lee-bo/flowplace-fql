@@ -4,7 +4,12 @@ The [execution guide](docs/qstudy_reproduction.md) maps current inputs,
 training/evaluation entries and read-only report reproduction.
 
 The current Q/reward study is **in progress**, with **no stable PPA advantage
-established**. The [compact evidence/decision table](docs/qstudy_decisions.md)
+established**. The user-directed extension now tests eight
+[expert-rule rewards](docs/qstudy_rule_reward_protocol.md) and six
+[final-backend reward definitions](docs/qstudy_final_feedback_protocol.md).
+The expert critic matrix has completed; policy evaluation and the new TRAIN64
+detailed-route collection are still running or pending. These are experiments,
+not demonstrated improvements. The [compact evidence/decision table](docs/qstudy_decisions.md)
 separates completed diagnostics, the main online GRT matrix and48 completed
 final routes from pending evidence closure and fresh confirmation. The study tests critic inputs, losses,
 physical objectives and behavior-flow data sources. Read the [current plan](docs/qstudy_plan.md),

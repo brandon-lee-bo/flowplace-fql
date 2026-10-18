@@ -1592,3 +1592,72 @@ startup, without changing physical parameters. No weighted-policy result is
 claimed yet. This WL-only FM control does not replace the expert/final-PPA
 reward experiments. All new evidence still requires preservation and a cost
 addendum before fresh confirmation.
+
+## 2026-10-18 17:20 UTC: final-feedback protocol and execution adapters
+
+The [final-feedback protocol](qstudy_final_feedback_protocol.md), SHA256
+`ecb148af55e0e491f4016a7e14ed900cc4e295c087263aa1c194c0f738b28e20`,
+was frozen before reading new TRAIN64 PPA values. It compares six objectives
+on identical labels: GRT WL; detailed-route WL; .75WL+.25TNS-violation;
+.75WL+.25power; .50WL+.25TNS+.15power+.10area; and .80WL+.05 for each
+of the four fixed expert costs. Terms use fit-TRAIN feasible means before
+the same bounded cost2C/(1+C), and Q stays in negative bounded-cost units.
+WNS is separately reported, avoiding two correlated timing penalties.
+Completed DRC-positive layouts retain measured PPA but receive common B4
+failure utility in all six targets. Unresolved infrastructure is NA, not B4.
+No native feedback is added as a critic input.
+
+The screen runs four family-CV folds and one explicitly in-sample64-row refit
+per target/seed:18 tasks and90 fits. No historical16 validation layouts,
+old48 development DRT results or fresh layouts enter training. The actor
+keeps the original256 BC targets distinct from64 critic labels and the
+original384-row physical context. It retains common frozen teachers,
+Euler10 distillation,1000 actor updates and alpha10, with offline round0
+only. The declared physical comparison is144 GRT layouts, then the same
+first four noises for all18 policies:72 cap20 detailed routes. This is a
+fixed six-way contrast, not selection on CV errors or favorable layouts.
+
+Meaningful software tests passed: final screen14 tests1798802, final actor
+13 tests1798778, saved-only power QA15 tests1798808, and route metadata
+10 tests1798814. Reciprocal independent source reviews found no blocker.
+Strict admission requires a complete audited64-label collection and saved
+power/condition QA before preparing the screen. Power QA compares captured
+image/tool/config/clock semantics, native raw/text power and available
+internal/switching/leakage components. Present-day uncaptured library hashes
+are not retroactive runtime attestations. No VCD/SAIF annotation is established;
+power is reported as a tool-default-activity estimate, not measured workload
+or silicon power. No actual final-feedback screen, actor or72-route evaluation
+has been submitted at this entry.
+
+Collector array1798635 has genuine completed detailed routes and genuine
+preempted allocations. Bounded recovery1798748 is limited to indices0/1/2,
+partition/QOS dev, afterany of the original array, max two workers, with the
+same eight threads/12GiB/cap20 and exact source inputs. It is not a large dev
+sweep. Later preemptions remain visible; do not classify them as bad layouts.
+
+Expert actor jobs1798712–1798735 were all still unallocated when a scheduling
+revision was recorded in
+`qstudy_rule_reward_actors_v1/pending_scheduler_move_deep_space_v2.json`.
+All24 were held, moved together from einstein to the same L20 node deep-space,
+given12GiB rather than20GiB host RAM, then released with the original two
+dependency lanes and scientific settings unchanged. The original queue's
+backfill estimates were17–19 hours away. Probe1798767 verified identical
+Torch2.2.1+cu121/git/CUDA12.1/NumPy1.23.5; destination Python is3.9.21,
+versus3.9.25 on einstein. This actor protocol does not pin the exact Python
+patch version. Host RAM is a resource request, not a measured peak claim.
+The first migration attempt used rejected memory syntax before changing any
+job; its complete command/error record remains as v1. No job was restarted.
+
+Native GRT controller1798773 depends on successful completion of both final
+actor dependency lanes1798734/1798735. All24 exports must already exist,
+so the generic controller dispatches backend work only, not its old actor
+entry. Fixed192 requests, GPU concurrency allowance2 and backend concurrency4
+do not alter the predeclared policy/noise matrix. The saved-only expert actor
+reporter passed14 tests1798754 and is ready after native outcomes close.
+
+Cost metadata v5 preserves all116 explicit unique parent jobs, failed software
+attempts included, and does not count sbatch admission-only1798740 as an
+allocation. Its SHA256 is
+`815ff21f6767ad87b61aa97426e4bf37ea45d99a951b08042e265381eab4f2ec`.
+Many jobs remain pending/active; there is no final cost or preservation claim
+for this extension and fresh confirmation remains on hold.
