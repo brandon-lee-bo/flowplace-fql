@@ -341,3 +341,24 @@ the new throttle. No other project or paused Table2 job was changed.
 The cluster has `JobAcctGatherType=(null)` and no MaxRSS for the queried worker
 steps. OpenROAD's own stage-memory lines do not measure Python and archive
 peaks, so they do not justify reducing the whole-worker memory request.
+
+## Matched critic-input diagnostic
+
+Before fitting the six tasks, the executed-input diagnostic passed ten Slurm
+tests (1796401), including paired minibatches, normalization bindings and exact
+checkpoint/RNG continuation. Independent source review found no blocker.
+The comparison reuses the completed residual-critic screen on bp_fe384 and
+bp_be64, with three critic seeds, three grouped TRAIN folds and one full-TRAIN
+refit per seed. Both sides use 2,000 updates, the same labels and family splits.
+No new layout generation or physical evaluation is added.
+
+The intervention selects final-legalizer, pre-DEF coordinates rather than raw
+proposals. Coordinate-derived features, feature normalization and the
+TRAIN-fitted smooth-HPWL residual baseline change together; this is a test of
+the input preprocessing pipeline, not coordinates with all priors held fixed.
+WNS/TNS are primary and are predicted as positive violation magnitudes.
+Report both timing heads and all three seeds, alongside WL and congestion.
+Repeated executed coordinates remain in their original family folds and their
+cross-fold counts must be disclosed. Historical validation is development
+evidence. Better prediction would neither establish backend-actual geometry
+nor validate gradients through the nondifferentiable legalizer.
