@@ -1106,3 +1106,42 @@ has revalidated all96 original round0 native outcomes and opened its original
 requests are recovering as1797488/1797489. Final detailed routing and reports
 continue from the original plans. These are pending measurements, not a new
 claim of PPA improvement.
+
+## Independently verified recovery and saved-report figures
+
+Read-only Slurm1797536 rechecked the behavior-flow data chain and the first
+recovered native outcomes. Its immutable audit is
+`qstudy_v1/recovery_teacher_audit_v1/20261018T122110Z_job1797536.json`, SHA256
+`e4add24c43bf3eb515abd3e2338f25bdaa58e44183cfa491be865706bb539f70`.
+At that snapshot, eight source-actor and four updated-flow recovery outcomes
+passed the unchanged native checker. All81 original request/evidence bindings,
+the15 protected successful source outcomes and six unsuccessful EDQUOT
+transactions remained unchanged. The audit made no model or EDA calls.
+
+The same audit independently confirms40 direct behavior-flow samples plus40
+local variants, all80 native successes with seven metrics, and32/8 complete
+families giving64 TRAIN/16 development-validation labels. The identical256
+behavior targets remain separate. Valid data provenance does not reverse the
+negative held-family Q-ranking result in [the source comparison](qstudy_source_results.md).
+
+All six quota-interrupted GPU replacements completed successfully. The bounded
+finisher1796852 verified all nine exported policies and opened its remaining
+48 native requests, reusing the24 completed WL outcomes. Main round1,
+source-actor and updated-flow recovery arrays are still in progress; no
+partial physical matrix is presented as a completed policy result.
+
+`analysis/qstudy_policy_curves.py` adds saved-report-only figures of all seven
+GRT metrics across original training rounds. It recomputes each seed mean
+from all eight native outcome rows, checks the common actual noise identities,
+and reports the sample SD of the three training-seed means. Partial reports,
+missing seeds, duplicate rounds, nonfinite metrics, conditional PPA and changed
+saved means are rejected. Nine tests passed in Slurm1797551. A real completed
+round0 report rendered successfully in1797553, with no inference, training or
+backend calls; the PNG was visually checked. This checks the renderer, not
+completion of the pending offline-to-online curves.
+
+The prospective fresh protocol now also has a parser-reviewed
+[launch checklist](qstudy_fresh_launch_checklist.md). No fresh selection or
+85000000 noise arrays have been created. The default still requires completed
+development review before fixing the candidate and starting its80 GRT/40 DRT
+confirmation requests.
