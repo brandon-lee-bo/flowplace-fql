@@ -1918,3 +1918,76 @@ has SHA256 `ca390a77386191e8a6feb5a572986752b47996371a112a39cae3754fa16277e5`.
 This new parent and subsequent workers need the next consolidated cost append;
 v13 is not described as including them. No completed route is intentionally
 rerun and neither targets nor physical settings changed for this recovery.
+
+## 2026-10-18 19:03 UTC: fixed final72 chain and scalar online integration
+
+Final-feedback evaluation is now queued through its original saved reader.
+Source resolver1799403 follows native GRT1799342 and metadata plan1799361;
+it requires all72 actual source bindings to be sealed, rather than accepting
+the original resolver's exit0 with a partial report. Native controller1799406
+follows this gate, preserves the fixed first four noises for every one of the
+six arms and three seeds, and allows two eight-CPU cap20 DRT workers. Saved
+reader1799423 follows the controller and reports all144 GRT and72 DRT requests.
+Its external launcher retains partial/integrity-error reports and exits2,
+without calling them complete. The original scientific producers/readers are
+unchanged. These jobs are dependency-pending, not completed PPA experiments.
+Root and independent review checked the actual original output schemas.
+Submission records are in
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_final_feedback_launch_v1/`;
+`report_submission_v1.json` has SHA256
+`69ac589050c8e6c0d1630a8c9fe35365c665420338fd4a05f16b6d222f368dec`.
+
+Three new independent scalar-online pieces are now implemented and reviewed:
+
+- `qstudy_scalar_online_export.py` verifies a real original offline parent and
+  exports its actor into a separate physical configuration. The checkpoint is
+  not copied, relabeled or altered; each request binds both identities. Its
+  finite scalar Q is diagnostic only, and all declared noises are retained.
+  Final CPU fixture1799425 passed9 tests; earlier1799407 also passed9.
+- `qstudy_scalar_online_train.py` connects that complete own-collect population
+  to the already tested first-cycle core, with atomic model/Adam/RNG recovery
+  and complete step history. It restores the original source prefix, fixes
+  full-TRAIN normalization and the behavior teacher, and records separate Q
+  and distillation gradient contributions without consuming training RNG.
+  Final1799426 passed8 tests, including interrupted versus uninterrupted
+  state identity and strict completed-marker validation. First1799417 failed
+  before testing because an upstream import shadowed the local analysis
+  package; import order was corrected, and1799420 passed the earlier7 tests.
+- `qstudy_scalar_online_bc.py` verifies the actual existing1000-step BC actor,
+  actor Adam and all RNG state, while separately attaching an audited scalar
+  refit and an explicitly fresh empty critic AdamW. Its two-source declaration
+  never pretends the old BC checkpoint originally contained the new critic.
+  Final1799439 passed9 tests, including exact zero-Q updates against an
+  independent BC reference and frozen/updated-Q same-parent controls.
+  First1799422 was an import-only failure, retained in costs.
+
+These are separate components, not a claim that a complete new online matrix
+has run. BC physical export, continuation-child export, later cycles and a
+complete native online comparison still require integration and an explicit
+matched collection plan. No objective winner or new online scientific budget
+has been selected from the partial development results.
+
+A bounded real integration smoke uses the existing `rule_grt_wl` control:
+CPU preparation1799441 completed in5s and GPU export array1799442 completed all
+three seeds in6s each. Every seed generated one collect and one evaluation
+layout; all six saved DEF conversions passed legal-no-halo checks. There were
+no checkpoint mutations, training updates or backend calls in those stages.
+The fixed smoke namespace is separate from the scientific comparison and
+reserved confirmation streams. Array1799524 now evaluates only the three
+collect layouts, one eight-CPU native worker at a time; evaluation samples
+will not enter replay. This is backend/update integration evidence, not a
+policy-quality test. No online update has yet used these labels.
+Smoke request SHA256 is
+`b109e951ab160bade0009fe4c0968c29e2151a23907fc8f17279366d9d403d90`;
+the external `qstudy_scalar_online_bridge_smoke_v1/submissions_v1.json` SHA is
+`59e3682fb34eaeff8723aa1e0d0013884f09687c4de5af30c72516e340f1aca8`.
+
+Cost inventory v14 preserves all179 previous parent records and appends21
+verified submissions, including failed software work and actual native retries,
+for200 parents. `bookkeeping_20261018T190208_v14.json` SHA256 is
+`eab48cdbd2e9981c5fb23142a9fb8acd45ecf6e21910e2f4e40b848d72f45a07`.
+The later smoke-collect parent1799524 is recorded in its own submission journal
+and is not claimed as included in v14. Resource totals and durable native/model
+preservation remain open; source commits and metadata snapshots do not close
+those tasks. The reference-only STA1799365 is still Priority-pending and was
+not duplicated.
