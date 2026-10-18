@@ -2001,3 +2001,61 @@ support this. Native worker settings and physical budgets remain unchanged.
 Recovery receipt `qstudy_quality_weighted_route_v1/controller_recovery_v2.json`
 SHA256 is `e1edf331ad6c5e4502593b443df128b5f72b76ba446d532de3a62c2a68cd1600`.
 This later parent also belongs in the next cost append, not v14.
+
+## 2026-10-18 19:26 UTC: genuine BC and continued-child integration
+
+Three separate adapters now extend the scalar-online integration without
+changing the frozen scientific reward matrices or their physical producers:
+
+- `qstudy_scalar_online_bc_export.py` exports the real existing BC actor and
+  its original checkpoint identity. The scalar critic is attached from a
+  separately declared refit for diagnostics; it is not asserted to have been
+  present in the original BC checkpoint. All requested noises are retained.
+  Fixture1799563 passed12 tests, and root/independent source review passed.
+  Actual preparation1799588 completed in9s; export1799592 completed all three
+  seeds in7s each. All six collect/evaluation DEF conversions were legal.
+- `qstudy_scalar_online_bc_train.py` continues that genuine BC actor/Adam/RNG
+  with Q weight0 and no critic/teacher updates. Frozen-source validation also
+  runs before a completed checkpoint can be reused: changing the attached
+  critic, optimizer or unused RNG state is rejected. Fixture1799572 passed5
+  tests, including an independent pure-BC update reference and exact resume.
+- `qstudy_scalar_online_child_export.py` exports the actual completed scalar
+  first-continuation checkpoint as logical round1. It reconstructs the true
+  measured parent lineage, checks the complete saved history/optimizers/RNG,
+  and refuses recycled collect noises. It neither relabels a child as round0
+  nor implements a later-cycle training loop. Fixture1799575 passed12 tests;
+  independent review passed.
+
+The new actual smoke comparison is deliberately small: the existing GRT-only
+FQL control and the genuine BC control each collect one measured layout per
+seed, then perform one actor update. FQL also performs one critic update; BC
+does not. Teacher and original full-TRAIN normalization remain fixed. FQL
+collect1799524 and BC collect1799619 each have three native calls; their paired
+one-update arrays1799549 and1799622 follow their own completed collection.
+Child preparation1799602 and export1799603 follow the actual FQL updates,
+without another backend call. At this snapshot both seed0 collect calls had
+completed, but no training update or child export had yet completed. These are
+interface/state-continuity checks, not policy-quality or new-reward results.
+
+These bounded debugging/integration jobs use the PDF's short dev workflow;
+the unchanged scientific TRAIN64, eight-rule192-GRT, weighted24-DRT and
+six-final-feedback pipelines remain on scavenger. Existing pending job IDs
+were updated without duplicate submissions; the exact queue handoff and scope
+are retained in `qstudy_scalar_online_bridge_smoke_v1/debug_queue_handoff_v1.json`.
+BC collect/update receipt SHA256 is
+`ba9cb1884b00554ea4e9befb6467996d8037f8be17f0635f14fbf4fc307401f5`;
+child receipt SHA256 is
+`8e77fb07b489d401be88ffd7dd5a54350dd321ba708d07118a8217ffb6ccf89b`.
+Both are under `/fact_home/bohanli/flowplace_fql_recovery/` in their named smoke
+directories. No reward winner, new online scientific budget or confirmation
+candidate has been selected from partial results.
+
+Cost inventory v16 preserves all202 previous parent records/order and adds12
+verified submissions for214 parents, including two canceled pending fixture
+attempts with zero runtime/allocation. Manifest
+`bookkeeping_20261018T192458_v16.json` SHA256 is
+`7f7a3b3ee9adf3396d6955ab0e4fb75be4366dc9aedf51721b5a8e7f46599c0b`;
+its scheduler snapshot SHA256 is
+`d936dd886603c59fd6e672ecdddcf9909792a1d0e64057f6cb74ef37a2675eed`.
+No new FAILED/OOM/quota failure was present in that snapshot. This remains
+an inventory rather than final resource aggregation or durable preservation.
