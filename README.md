@@ -2,8 +2,8 @@
 
 The current Q/reward study is **in progress**, with **no stable PPA advantage
 established**. The [compact evidence/decision table](docs/qstudy_decisions.md)
-separates completed diagnostics from the pending main online/final-route
-matrices and fresh confirmation. The study tests critic inputs, losses,
+separates completed diagnostics and the complete main online GRT matrix from
+pending final routing and fresh confirmation. The study tests critic inputs, losses,
 physical objectives and behavior-flow data sources. Read the [current plan](docs/qstudy_plan.md),
 [measured progress](docs/qstudy_progress.md),
 [behavior-flow label protocol](docs/qstudy_behavior_source.md) and
@@ -15,7 +15,12 @@ consistently. The [bounded multiobjective comparison](docs/qstudy_bounded_object
 has completed all96 native outcomes, including24 reused BC references.
 Its timing objective reduces mean WL by1.157% versus that descriptive BC
 reference, but worsens TNS and horizontal overflow beyond the declared
-tolerances; no bounded arm qualifies for promotion. The
+tolerances; no bounded arm qualifies for promotion. The complete
+[matched online results and seven-metric curves](docs/qstudy_online_results.md)
+show frozen-flow FQL round2 WL0.804% below BC, with two of three seeds improving;
+the updated-flow branch is0.628% below BC, also two of three. Neither passes
+the predeclared primary threshold, and updated flow additionally fails vertical
+overflow. The
 [fresh confirmation protocol](docs/qstudy_fresh_confirmation_protocol.md)
 reserves new generation noises after development selection is locked.
 These new experiments have not established a stable PPA improvement. The old
