@@ -120,6 +120,62 @@ superiority to the teacher. Comparisons use policy means rather than a best
 layout, and one-step versus10/20-step generation has different inference
 budgets. Isolated inference latency has not been measured.
 
+## Actor-loss diagnostics from saved states
+
+The fixed actor loss uses alpha10 throughout. A read-only reduction of the
+saved gradient logs measures the relative pressure of its terms; the table
+uses parameter-gradient norms before clipping and Adam. Each entry first
+averages the logged minibatches within a seed, then reports the mean and
+sample SD across three independent seeds.
+
+| Frozen-flow FQL round | Q-gradient / distillation-gradient norm, actual alpha10 | Analytical alpha3 | Analytical alpha30 |
+| --- | --- | --- | --- |
+|0 |.362±.083 |1.208±.275 |.121±.028 |
+|1 |.682±.105 |2.273±.349 |.227±.035 |
+|2 |.716±.110 |2.387±.365 |.239±.037 |
+
+The alpha3/30 columns only rescale the two recorded gradients on the same
+saved minibatches. Those policies were not trained. These are neither Adam
+update-vector ratios nor predictions of resulting PPA. The actual alpha10
+Q-to-distillation ratio rises during continuation, so fixed coefficients do
+not imply fixed optimization pressure. A smaller alpha would increase Q's
+local influence, but cannot repair an incorrect Q direction by itself.
+
+Round0 also permits a direct same-Q comparison: each seed's frozen initial
+critic scores both its BC and FQL outputs on the same eight saved noises.
+The earlier exact-tensor audit establishes critic identity; all24 pairs now
+have complete native GRT measurements. Utility is negative measured WL
+divided by the same initial384-TRAIN mean WL used by Q.
+
+| Quantity, FQL minus matched BC | Mean ± sample SD across three seed means |
+| --- | --- |
+| Predicted Q gain |+.004213±.001602 |
+| Measured utility gain |+.002591±.006726 |
+| Predicted minus measured gain |+.001622±.007803 |
+
+Q predicts an improvement for23/24 pairs;11 of those pairs have worse measured
+utility. The mean optimism difference alone hides substantial variation,
+including one seed with negative measured mean gain. This documents imperfect
+transfer from Q scores to physical results. It does not isolate critic bias,
+feature support, legalization or actor training as the cause. Saved exported
+proposals are clipped, whereas training distillation uses unclipped outputs;
+no new preclip forward pass was performed. Round1/2 are excluded from this
+same-initial-Q contrast because Q changes online.
+
+Actual online update counts are600 actor:600 critic per round for frozen
+FQL; updated FQL additionally performs600 teacher updates. BC performs600
+actor updates with frozen Q/teacher. Its saved Adam counters are1000/1600/2200
+at rounds0/1/2; updated round0 is inherited and adds no new compute. No
+alternative update-ratio experiment or heldout critic-ranking curve by update
+step was run. The study therefore describes the1:1 continuation and its
+failure modes, without claiming an optimal alpha or update ratio.
+
+Saved-only diagnostic, Slurm1798143, nine formula/pairing fixtures passed:
+`/fact_data/bohanli/flowplace_fql/qstudy_v1/saved_actor_objective_diagnostic_v1/20261018T144924.167436Z_job1798143/report.json`,
+SHA256 `5b54f6ad776ca207b7ef588e4d47ffb8f4d6d003aae2486292dc5581aa85b021`.
+The report binds its external reducer, scope, source logs and formal native
+reports. It performs no model loading, inference, training, EDA or selection.
+
 ## Immutable evidence
 
 Matched report, Slurm1797472:

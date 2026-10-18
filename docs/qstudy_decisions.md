@@ -118,6 +118,16 @@ not uninterrupted2200-step equivalence or convergence evidence. FQL also
 updates Q in these rounds and cannot isolate duration alone. A lower loss
 without physical benefit does not justify more duration variants.
 
+Saved-only actor-loss diagnostic1798143 closes the gradient-pressure and
+round0 Q-versus-physical-gain checks using complete native measurements.
+The actual alpha10 parameter-gradient Q/distillation norm ratio rises from
+.362 at round0 to .716 at round2. Of23 round0 pairs Q predicts to improve,
+11 have worse measured utility. This motivates closing blind alpha sweeps
+while Q directions remain unreliable, rather than assuming a stronger Q term
+will help. Analytical alpha3/30 rescaling is not policy training; no update
+ratio ablation or optimal-coefficient claim is made. Full units, uncertainties,
+pairing and limits are in the [actor-loss diagnostics](qstudy_online_results.md#actor-loss-diagnostics-from-saved-states).
+
 Then select **one configuration and original round, retaining all three
 seeds**, with native policy means, failures and explicit secondary-metric
 tolerances. If no new mechanism has a credible matched physical tradeoff,
