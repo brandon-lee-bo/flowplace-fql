@@ -103,5 +103,23 @@ genuine infrastructure interruptions are retried without inventing PPA labels.
 The read-only `fql/qstudy_fresh_report.py` reports all declared requests, saved
 actual-noise pairing, physical failures, unresolved requests and all seven GRT
 metrics. Sixteen contract tests passed in Slurm1797068. These modules do not
-select a candidate or generate fresh noise. The separately locked detailed-route
-executor remains to be completed before starting confirmation.
+select a candidate or generate fresh noise.
+
+Detailed routing uses the separate `fql/qstudy_fresh_route.py` adapter and
+`qstudy_fresh_route.slurm`. Its `prepare` and `controller` accept the selection
+and sealed plan bindings respectively. It predeclares all locked streams and
+indices0--3, then continues only their verified saved GRT inputs using the exact
+existing `graph_o2o_full_route` worker, eight threads and cap20. Its reporter is
+`fql/qstudy_fresh_route_report.py`; it preserves nonzero DRC and distinguishes
+upstream confirmed failures from unresolved routing/tool attempts. Thirteen
+contract tests passed in Slurm1797107. No actual fresh routing has started.
+
+The metadata-only `fql/qstudy_fresh_lock.py template` prints a request template;
+`build --request PATH --sha256 SHA` requires the root's explicit scientific
+selection, original checkpoint rounds, prospective acceptance rules and complete
+development inventory. It hashes/copies metadata and validates the selection,
+without declaring an evaluation or loading tensors/noise. Five contract tests
+passed in1797112, including prospective binding of the native and detailed-route
+code closure. Software validation does not replace review of the selected
+scientific comparison and matched training budgets. The production builder has
+not yet been invoked.

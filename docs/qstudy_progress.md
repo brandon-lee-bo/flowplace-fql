@@ -983,3 +983,40 @@ flow and the one-step actors use different inference costs (10 versus1 network
 steps per candidate); the comparison matches candidate count and native calls,
 not FLOPs. No fresh winner or new actor hyperparameter is selected from this
 single small inspected comparison.
+
+## Saved-proposal teacher versus one-step gap
+
+Read-only CPU Slurm1797105 examined the same72 saved proposals, actual noises
+and measured outcomes used above: behavior flow, BC and FQL, three independent
+training seeds and eight development noises per seed. It loaded no policy,
+performed no inference, optimization or legalization, and added no physical
+calls. The pinned graph cache supplies the authoritative movable-node mask;
+all11 macros in this design are movable. Report SHA is
+`11b08043df5cccde5910da0810ed1c78dbe3363923f81c0ef763f67f8f467cc9`,
+at `qstudy_v1/distillation_gap_v1/20261018T112053Z_job1797105/report.json`.
+
+| Paired distance to the same-noise behavior flow | BC | FQL |
+| --- | ---: | ---: |
+| Saved pre-legalization coordinate RMS | .100037 +/- .004179 | .100850 +/- .003584 |
+| Saved external-legalized coordinate RMS | .143660 +/- .010784 | .137539 +/- .009395 |
+| Mean measured GRT WL minus flow (um) | +34941.79 +/-25530.76 | +28803.42 +/-9603.54 |
+
+Uncertainty is the sample SD of three per-training-seed means. Coordinates
+are normalized to[-1,1]; raw RMS .10 is about5% of each corresponding canvas
+axis. Saved raw actor exports are already clipped, whereas the training MSE
+uses unclipped predictions, so this distance is not the training loss itself.
+No BC or FQL proposal exactly matches its paired flow output. Legalization
+increases the pair's RMS in18/24 cases for each actor, but this observation
+does not isolate a causal effect of legalization or prove under-training.
+
+Both one-step arms have worse average WL than the same-noise flow in all three
+training seeds. Other measured changes remain mixed: BC-minus-flow means are
+WNS +.002952ns, TNS -10.70489ns, horizontal/vertical overflow -14.4583/-5.75,
+power +.00021254W and standard-cell area +202.496um2. FQL-minus-flow means are
+WNS -.000645ns, TNS -10.95720ns, horizontal/vertical overflow -19.5/-6.4583,
+power +.00034258W and area +201.083um2. All72 outcomes are successful.
+The comparison motivates separating teacher-to-one-step approximation from
+Q-based policy improvement. It does not establish that training longer will
+improve either distillation or physical quality. A possible matched-duration
+diagnostic must preserve the actual1000-step prefix, frozen Q/flow, optimizer
+and random states; it must not be disguised as an online update.
