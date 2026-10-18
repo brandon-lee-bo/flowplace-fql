@@ -57,6 +57,13 @@ def preserve(plan_path):
                 or data['validation_heldout_used']
                 or data['reward_scale'] != study['reward_scale']):
             raise ValueError('Expanded labels changed their offline TRAIN scope')
+        if study['format'] == 'initial_labels':
+            initial = read(study['dataset_manifest'], study['dataset_manifest_sha256'])
+            if (initial['requested'] != len(rows) or initial['successful'] != len(rows)
+                    or initial['TRAIN_requested'] != 64 or initial['validation_requested'] != 16
+                    or initial['backend_labels_sha256'] != study['labels_sha256']
+                    or initial['reward_scale_train_only'] != study['reward_scale']):
+                raise ValueError('Initial offline dataset/normalization scope changed')
         seen = set()
         for row in rows:
             outcome_path = Path(row['outcome_path'])
@@ -69,19 +76,29 @@ def preserve(plan_path):
             # audits. A newly changed failure must not silently disappear.
             if out['status'] != row['status'] or out['status'] != 'success':
                 raise ValueError('Successful completed offline scope changed')
-            for key in ['raw_action', 'executed_action', 'action_sha256', 'reward', 'terminal_mask', 'metrics']:
+            for key in ['raw_action', 'executed_action', 'action_sha256', 'terminal_mask', 'metrics']:
                 if row[key] != out[key]:
                     raise ValueError('Input data differs from actual outcome: ' + key)
             for key in ['raw_action', 'executed_action', 'action_sha256']:
                 if request[key] != out[key]:
                     raise ValueError('Offline request/action binding differs: ' + key)
-            if out['terminal_mask'] != 0 or out['reward_scale'] != study['reward_scale']:
-                raise ValueError('Offline reward/termination context changed')
+            if out['terminal_mask'] != 0:
+                raise ValueError('Offline termination context changed')
+            if study['format'] == 'expanded_replay':
+                if out['reward'] != row['reward'] or out['reward_scale'] != study['reward_scale']:
+                    raise ValueError('Expanded offline reward context changed')
+                reward_source = 'measured_outcome_with_preexisting_frozen_scale'
+            else:
+                # Initial measurements intentionally store no normalized reward:
+                # the TRAIN mean is frozen only after all80 have been audited.
+                if out['reward'] is not None or out['reward_scale'] is not None or out['policy_feedback']:
+                    raise ValueError('Initial measurement/derived-label semantics changed')
+                reward_source = 'derived_label_with_subsequently_frozen_initial_TRAIN_scale'
             run = Path(out['physical_run'])
             manifest = read(run / 'manifest.json', out['physical_manifest_sha256'])
             metrics = read(run / 'metrics.json', out['metrics_sha256'])
             if metrics != out['metrics'] or not math.isclose(
-                    out['reward'], -metrics['rWL_um'] / study['reward_scale'], rel_tol=1e-12, abs_tol=1e-12):
+                    row['reward'], -metrics['rWL_um'] / study['reward_scale'], rel_tol=1e-12, abs_tol=1e-12):
                 raise ValueError('Offline reward differs from the measured GRT result')
             if (manifest['stage'] != 'global_route_only' or not manifest['success']
                     or manifest['design'] != study['design'] or int(manifest['num_cores']) != 8
@@ -115,7 +132,8 @@ def preserve(plan_path):
                     raise ValueError('Successful offline measurement lacks native ' + kind)
             audits.append(dict(study=study['id'], outcome_path=str(outcome_path),
                 outcome_sha256=row['outcome_sha256'], source_row_index=row['source_row_index'],
-                status=out['status'], reward=out['reward'], action_sha256=out['action_sha256'],
+                status=out['status'], reward=row['reward'], reward_source=reward_source,
+                action_sha256=out['action_sha256'],
                 physical_run=str(run), physical_manifest_sha256=out['physical_manifest_sha256']))
     if len(audits) != plan['requested_native_observations']:
         raise ValueError('Complete offline preservation scope changed')
