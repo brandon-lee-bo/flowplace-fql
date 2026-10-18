@@ -1775,6 +1775,11 @@ receipt, then invokes unchanged `analysis.qstudy_final_power_audit`. It neither
 trains nor runs EDA. A successful scheduler dependency is not enough: unresolved
 recovery is rejected, and a handoff is not power admission. The six final-feedback
 objectives still require actual native power QA and every fold's variation gate.
+Metadata handoff1799280 is subsequently queued after QA1799254. It accepts only
+that job's verified64-row admission snapshot and then invokes unchanged
+`fql.qstudy_final_feedback_screen prepare`. Its output is the fixed eighteen-task,
+ninety-fit plan only if the original admission and variance checks pass; no
+training, fallback target or physical job is submitted by this handoff.
 
 Read-only preservation audit1799010 and a scratch-only exact compression
 pilot1799170 distinguish inference state from full resumable checkpoints.
