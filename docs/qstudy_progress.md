@@ -147,3 +147,30 @@ new coordinator's nine mock safety tests passed in 1796052. Teacher collection
 1795775 and the direction reports now depend on verified recovery completion,
 so an interrupted original array will not strand later source fitting.
 Recovery metadata is in `qstudy_v1/recovery_v1/submission_20261018_1635.json`.
+
+## Matched development final routing
+
+Before reading any new final-route measurements, metadata-only job 1796084
+declared 48 tasks: BC and frozen-flow legacy FQL, actor seeds 0/1/2, offline
+round 0 and online round 2, and the first four of eight fixed evaluation noise
+indices. This subset is fixed by index, not selected by Q or measured PPA.
+The native flow is the same eight-thread OpenROAD context with detailed-route
+iteration cap 20. This is separate from historical Table 2 cap-4 work, which
+remains paused.
+
+Controller 1796110 consumes the declared source GRT outcomes as they arrive,
+with at most two detailed-route workers. Source sealing job 1796111 follows
+the matched online controller 1795764; audited final report 1796112 follows
+both sealing and routing. The controller's historical `full_route/summary`
+text describes a single seed and is not the study's statistical report. Use
+the `qstudy_final_route` development report, which averages noise within each
+actor seed and then computes mean/sample SD across the three seed means.
+
+The helper's ten tests passed in 1796078. They cover exact source/native
+bindings, refusal to run a missing geometry audit inside the reporter,
+configuration/noise mismatches, and retaining missing/physical failures in
+the 48-task denominator. No complete-policy mean is reported unless all
+declared samples for all three seeds are available. DRT rWL, WNS, TNS, power,
+area and DRC are retained; GRT overflow is not relabeled as final routed
+congestion. These are development results, not fresh confirmation evidence.
+Plan and submission records live in `qstudy_v1/development_final_route_v1`.
