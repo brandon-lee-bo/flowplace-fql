@@ -57,8 +57,35 @@ remains two. The final call inventory 1797369 is temporarily held so its
 dependencies can include the replacement controllers rather than the failed
 ones.
 
-Backend recovery is being independently audited for the 81 interrupted source
-and updated-flow requests. Recovery attempts do not enlarge the logical
-training or evaluation denominator. Actual native invocations, including
-incomplete infrastructure attempts, remain separately counted. No missing or
-infrastructure-failed label is replaced by zero or a physical-failure target.
+Backend recovery passed 21 contract tests in1797484, an actual81-request
+metadata audit/plan in1797485 and independent implementation review. The plan
+`qstudy_v1/quota_recovery_v1/plan.json` has SHA256
+`74ccbb3e660849dcd44dc187088c9445ed2fc05ebe419e60d5cfd87078de4902`.
+The exact frozen evaluator bytecode runs in a private namespace. Only six
+SHA-bound unsuccessful EDQUOT attempts are omitted from its attempt iterator,
+under the original sample lock. All later attempts remain visible to the
+original native verification and duplicate-work guards. The other75 requests
+never wrote attempt metadata or invoked the runner. No terminal unsuccessful
+transaction is converted into a success, including source index16, which had
+saved numerical metrics before its quota exception. Original failed states,
+logs, native manifests and metrics remain unchanged.
+
+| Work | Recovery array | Resume controller | Unchanged logical requests |
+| --- | --- | --- | --- |
+| Source actors | 1797488, indices15--47, concurrency4 | 1797490 | 33 interrupted;15 earlier source outcomes preserved |
+| Updated-flow online round1 | 1797489, indices0--47, concurrency2 | 1797491 | 48 interrupted |
+
+Both arrays use8 CPUs/24GiB per native worker. Controllers resume the same
+states only after these exports/outcomes finish, so completed stages bypass
+the diagnosed old FAILED jobs without changing the controller's restart rules.
+The updated-flow controller then continues its original round2 plan.
+
+The final call inventory1797369 was rebound to all five replacement/current
+controllers and released. New main/source/paired/flow reports are1797472,
+1797504,1797505,1797506; route source resolution/report are1797473/1797474.
+Saved-only BC1000/1600/2200 analysis1797476 waits for the main report and makes
+no new model inference or physical calls. Recovery attempts do not enlarge
+the logical training or evaluation denominator. Actual native invocations,
+including the six incomplete infrastructure attempts and their retries,
+remain separately counted. No missing or infrastructure-failed label is
+replaced by zero or a physical-failure target.

@@ -1094,3 +1094,15 @@ without new physical calls. Round-specific generator resets mean it is not
 identical to uninterrupted2000-step round0 training. FQL's online rounds also
 update Q from real feedback, so their trajectory is not a pure duration effect.
 Inspect these existing BC curves before considering a separate duration test.
+# Storage-only interruption recovery
+
+The development pipelines encountered a per-user Ceph EDQUOT event. The
+[recovery record](qstudy_quota_recovery.md) preserves exact cache migrations,
+checkpoint audits, native-attempt accounting and replacement job identities.
+Original model/optimizer/RNG states and scientific settings remain fixed;
+infrastructure errors are not physical-failure labels. Main controller1797468
+has revalidated all96 original round0 native outcomes and opened its original
+96-request round1 feedback/evaluation matrix. Source and updated-flow missing
+requests are recovering as1797488/1797489. Final detailed routing and reports
+continue from the original plans. These are pending measurements, not a new
+claim of PPA improvement.
