@@ -27,6 +27,43 @@ universally. The unavailable-provenance I/O term is excluded, and graph/dataflow
 weights are not called STA criticality. No rule trial changes the legal action
 space or imports EXPlace's soft action pruning.
 
+### A measured decision against an extra reward run
+
+The TRAIN-only support diagnostic1800349 completed with no model, policy or
+backend calls. It prospectively fixed empirical75th-percentile H/V tolerances,
+three family folds with seed41307, and the recipe
+`.8*WL/S_WL + .1*[H-b_H]+/S_Hexcess + .1*[V-b_V]+/S_Vexcess`.
+Each budget and scale uses only its fit-TRAIN rows; the historical validation
+and policy-evaluation labels do not enter these estimates. This is an empirical
+soft preference, not a foundry constraint or COptiDICE implementation. Its
+linear-versus-excess diagnostic changes both threshold shape and tail scale.
+
+Full TRAIN budgets are H106 and V28.25, with270/384 layouts below both.
+Held-family joint-within-budget counts are85/128,75/128 and110/128; all three
+folds and the full-TRAIN fit have nonconstant excess labels. Full-TRAIN
+same-family rankings strictly oppose WL in25/190 non-tied pairs, compared
+with48/190 for the matched no-timing linear-overflow recipe; the two recipes
+strictly oppose one another in29/192 pairs. These are label-support and
+ranking descriptions, not measured policy gains.
+
+Do **not** start an extra actor for this q75 definition now. The already
+measured rule-GRT-WL root has24 nonnegative H/V outcomes with respective sums
+48 and19, each below the corresponding single-layout budget. Consequently all
+24 observed layouts have zero H/V excess under this definition. This does not
+establish that future layouts satisfy the budgets, that this reward cannot
+help elsewhere, or that a learned critic's gradients vanish. It gives no direct
+excess signal for the current root outputs. Do not lower the declared quantile
+after inspecting development results merely to activate the penalty.
+
+Report SHA256 `6f4ded7b87bafa2ce1ebf7ca962bd226abe7eed9c8965fb91aa4285a4de1d3c0`;
+small report and sources are preserved under
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_congestion_budget_support_v1/saved_job1800349/`.
+Preservation receipt SHA256
+`51639d6df9931fff59270b836ea9e7dd9dc97ceac2b155038c2b59d14297c476`.
+The fixed-TRAIN-reference setup-criticality idea remains conditional on the
+already queued STA restoration/coverage query; no static dataflow weight has
+been relabeled as criticality.
+
 Sources and mechanism boundaries are in
 [the reward literature review](qstudy_rule_reward_literature.md). FQL supplies
 the behavior-flow/one-step actor structure; CQL/Cal-QL/IQL/TD3+BC inform support,

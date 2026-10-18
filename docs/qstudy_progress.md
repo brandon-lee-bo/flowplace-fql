@@ -2412,3 +2412,56 @@ physical settings. Receipt
 `cee16b593192d5443125a567c0161144b0a96b2bd924ce19532008b8d1eba68b`.
 There are28 scheduling metadata updates in total and zero new submitted parents
 from them. These updates do not establish faster scheduling or new PPA results.
+## 2026-10-19: real root admission and congestion-budget support
+
+CPU-scavenger job1800345 completed0:0 on einstein in4s. This was a read-only
+checkpoint audit, not another integration training run. It sequentially read
+six actual root checkpoints, three common checkpoints and six small own-refit
+checkpoints. All three BC/rule-GRT-WL pairs have the same teacher tensors,
+fixed/movable actor buffers, Adam configuration and actual actor step1000,
+and matching saved CPU/CUDA/named RNG states. Each critic matches its own
+declared refit. Actor weights and Adam moments differ as expected under the Q
+treatment. Both offline1000 loops distill the same frozen teacher on sampled
+noise; the identical256 behavior arrays are not directly sampled by those
+loops. Historical complete per-step noise hashes do not exist, and historical
+Python patch versions differ, so the certificate does not invent a bitwise
+full-training transcript. BC retains its old legacy-critic identity separately
+from any scalar critic attached by the continuation adapter.
+
+Certificate:
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_root_control_audit_v1/snapshot_job1800345/report.json`,
+SHA256 `da9b60a6076b0a06da7143e095eece13f1039cc85384ec186419755b2878f574`.
+Root independently read the actual report; all admissions passed. The intended
+scientific control is genuine BC, same-parent updated-Q alpha10, frozen-Q
+alpha10 and updated-Q alpha30, three seeds and two8-collect/600-update cycles.
+This paragraph records root admission only; it does not claim those scientific
+cycles are submitted or completed. Explicit stage0 manifests/dispatch are being
+prepared separately from the completed one-update integration checks.
+
+CPU-scavenger job1800349 completed0:0 (scheduler elapsed rounded to0s) for the
+new TRAIN-only congestion-excess support diagnostic. It made zero model or
+backend calls. Fixed q75 budgets/scales are fit-TRAIN-only in the existing
+three family folds; all four fits, including the separate full-TRAIN
+description, have nonconstant excess. The full-TRAIN H/V budgets106/28.25
+are too loose to activate on any of the24 observed rule-GRT-WL root outputs:
+their nonnegative H/V totals are only48/19. No new actor is launched for this
+definition, and no post-hoc threshold reduction is made. This is a useful
+non-launch decision, not proof that constrained rewards are generally useless.
+Exact fold/support/ranking counts and limitations are in
+[the reward extension plan](qstudy_reward_extension_plan.md).
+
+All four small report/source files,92,929B, were copied and SHA-verified under
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_congestion_budget_support_v1/saved_job1800349/`;
+receipt SHA256 `51639d6df9931fff59270b836ea9e7dd9dc97ceac2b155038c2b59d14297c476`.
+No weights, dataset or native bulk were copied to HOME and no new durable-bulk
+closure is claimed. The existing extension-storage limitation is unchanged.
+
+Cost metadata v20 preserves all232 prior entry dictionaries/order and failed
+attempt evidence, adding only1800345/1800349, hence234 unique parent IDs.
+Bookkeeping `qstudy_cost_additional_jobs_v1/bookkeeping_20261018T205239_v20.json`
+under recovery has SHA256
+`d0a4bb88e6abe2069b046a263ce244093300a4ecc65b9cf921d77f4df7bbbaec`;
+scheduler snapshot SHA256
+`9d4868e2a70984722d4dcd63d3edf41cfbe3d18af520cf2bf9faa53e9f6f6b18`.
+Root independently checked the exact232-entry prefix and two appended IDs.
+This is ongoing bookkeeping, not a final resource total or scientific closure.
