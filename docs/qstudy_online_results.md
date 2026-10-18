@@ -18,6 +18,11 @@ the shared300-update flow warmup is also a separate cost. Every round is
 evaluated on the same eight saved development-noise arrays, without putting
 evaluation labels into replay.
 
+Initial Q labels come from measured TRAIN layouts, not benchmark-supplied
+PPA answers. A behavior flow can generate additional layouts for the same
+backend-labeling path without being retrained; the completed
+[data-source contrast](qstudy_source_results.md) tests that option separately.
+
 | Arm | Actor objective | Critic/teacher continuation | Feedback budget per seed by round2 |
 | --- | --- | --- | --- |
 | Matched BC |10×teacher-coordinate MSE; Q weight0 | Both frozen |16 measured layouts, unused for training |

@@ -10,7 +10,8 @@ targets fixed. Its native request budget is separate from later online replay.
 1. Complete the teacher's 80 declared requests, including ordinary recovery of
    preempted attempts. Retain failed requests and their actual status.
 2. Verify all six assembled source datasets and all 36 critic fits. Read Q
-   scores separately on old historical validation and fresh teacher validation;
+   scores separately on old historical validation and current-flow development
+   validation (initially fresh, subsequently inspected);
    inspect base-only sensitivity and family-local comparisons.
 3. Examine the already-declared positive/negative/random direction probes.
    Useful ordering alone is not evidence that an actor can follow Q gradients.
