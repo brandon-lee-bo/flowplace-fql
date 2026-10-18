@@ -2083,3 +2083,53 @@ missing/pending rather than scored failures. No never-satisfied dependency or
 source-closure mismatch was found; scavenger priority and infrastructure
 preemption remained the bottleneck. This partial state cannot select a rule
 winner or establish complete multi-seed final PPA.
+
+## 2026-10-18 19:53 UTC: second-cycle replay and state continuity check
+
+The final independent metadata audit of the first-cycle integration passed
+with zero errors. Its immutable report is
+`qstudy_scalar_online_integration_audit_v1/20261018T193846Z_final_report.json`
+under the recovery directory, SHA256
+`cbc19dd339d1022eaeb4c0784d7b23bd339293a50cdc3831d0ab5b65125497e3`.
+It confirms all three genuine FQL and BC continuations, separate evaluation
+streams, and all six legal true-child exports; it does not measure PPA gains.
+
+The new `qstudy_scalar_online_second_train.py` supports an explicitly declared
+second FQL cycle. It keeps the real T1 payload and checkpoint identity, admits
+the original C0 and child C1 native feedback separately against their actual
+parents, and samples the complete admitted C0+C1 replay. Both historical and
+current evaluation noises are excluded. Full original TRAIN labels, teacher,
+normalization, actor/critic Adam and global/CUDA/named RNG state are preserved.
+The core's segment-local counters are explicitly distinguished from cumulative
+counts checked against actual optimizer steps. The adapter also audits saved
+completed checkpoints before reuse. It does not implement BC continuation,
+generic later cycles, a T2 exporter, or a scheduler.
+
+Fixture1799959 passed all12 tests in1.838s (4s Slurm allocation). These include
+native C0+C1 admission, exact interrupted/resumed state, cumulative counters,
+nonempty inherited critic Adam, frozen-Q state, and rejection of forged parent,
+evaluation, duplicate or incomplete replay. Root and independent review passed
+without changes after that run. The module SHA256 is
+`8a033584918f59a0712805f9de131d0ce2fae4f23436aa91d33d482a5ece6e9e`;
+the test log SHA256 is
+`2450e81ee5f201e8c5c66d7a31c09687b4712533e0e20189849b446e9f275379`.
+
+Collect array1799769 obtains exactly one additional measured C1 layout per
+seed from the genuine first-continuation actors. At submission of the next
+stage, seeds0 and1 had completed and seed2 was running. Array1800075 depends
+on the whole successful collection and requests one second-cycle actor and
+critic update per seed, with the same alpha10, batch16 and fixed teacher.
+The expected totals are actor Adam1002, critic Adam2, and replay component
+counts[1,1]. Its immutable manifest pins62 source files and all three explicit
+requests, SHA256
+`6f6a00a65446cfb0672fc9465667f85e12b8e9d7f20248d2ce1c7ab23b037e0b`.
+Submission receipt SHA256 is
+`291440c4a927ba84bedbfe8f0ecfcab2e3003c461ca448150fd2059c4f1a08bd`,
+at `qstudy_scalar_online_second_smoke_v1/submission_v1.json` under recovery.
+The short dev jobs are bounded interface debugging; all scientific reward
+matrices remain unchanged on scavenger. No second-cycle training completion
+or online quality improvement is asserted at this snapshot.
+
+The eight expert-rule and six final-feedback objective protocols remain the
+scientific reward comparison. Their partial outcomes have not selected a
+winner, changed reward weights, or released reserved confirmation samples.
