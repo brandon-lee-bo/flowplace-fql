@@ -18,7 +18,7 @@ there is no Bellman bootstrap. See the [literature](qstudy_literature.md),
 | Q gradients improve nearby layouts | Both designs completed52/52 native probes. FE directions mostly fail; BE signs, ties and mean gains are mixed. Four bases and one critic seed per design. | Do not strengthen Q from these probes. They do not validate source64/bounded critics or identify a legalizer mechanism. |
 | Timing/congestion objectives improve policy tradeoffs | Nine bounded-objective tasks/36 fits completed. Timing/congestion CV MAE exceeds their own constant baselines; local ordering is weak. | The declared three-objective/three-seed physical matrix remains pending. Compare all native metrics and common-scale utilities; no automatic online extension. [Protocol](qstudy_bounded_objective_protocol.md). |
 | Q-based actor learning beats imitation and generate-and-rank | Matched offline native means and identical-initial-Q selection are complete below; small WL gains over BC are seed-unstable, and flow+Q is competitive. | Ranking ability is not evidence of correct actor gradients. Complete the declared main online/final-route matrices before selection. |
-| One-step distillation is limited by training duration | Saved same-noise raw RMS to flow is .1000 for BC and .1009 for FQL; both have worse mean WL than flow in all three seeds. This is clipped export distance, not training MSE. | At most one exact-prefix1000→2000 BC/FQL duration diagnostic; preserve optimizer/RNG, frozen teacher/Q and fixed endpoint. No alpha or online branch. |
+| One-step distillation is limited by training duration | Saved same-noise raw RMS to flow is .1000 for BC and .1009 for FQL; both have worse mean WL than flow in all three seeds. This is clipped export distance, not training MSE. | Use the already declared BC1000→1600→2200 continuation first: teacher stays fixed and Q weight is zero. No additional duration GPU/native jobs are launched. |
 
 ## Completed native development comparison
 
@@ -64,9 +64,13 @@ historical validation sets and local probes are development evidence.
 
 Finish the already-declared main, source and bounded physical matrices and
 their applicable final-route reports. Close negative predictive branches;
-do not open new parameter sweeps or online variants. The optional single
-duration diagnostic addresses training sufficiency, not a presumption that
-longer training fixes PPA. A lower loss without physical benefit closes it.
+do not open new parameter sweeps or online variants. Main BC already restores
+the parent actor and optimizer for two further600-step distillation rounds.
+Compare its teacher distance and native outcomes before adding another duration
+experiment. Each round resets its named random generators, so this is practical
+continued training, not an uninterrupted2000-step equivalence test. FQL also
+updates Q in these rounds and cannot isolate duration alone. A lower loss
+without physical benefit does not justify more duration variants.
 
 Then select **one configuration and original round, retaining all three
 seeds**, with native policy means, failures and explicit secondary-metric

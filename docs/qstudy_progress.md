@@ -1020,3 +1020,12 @@ Q-based policy improvement. It does not establish that training longer will
 improve either distillation or physical quality. A possible matched-duration
 diagnostic must preserve the actual1000-step prefix, frozen Q/flow, optimizer
 and random states; it must not be disguised as an online update.
+
+On reviewing overlap with declared work, no additional duration production
+is launched. Main frozen-flow BC already continues1000→1600→2200 actor updates,
+preserving parent actor/Adam state and never updating its teacher or zero-weight
+Q. Its same-eight-noise evaluations can test practical continued distillation
+without new physical calls. Round-specific generator resets mean it is not
+identical to uninterrupted2000-step round0 training. FQL's online rounds also
+update Q from real feedback, so their trajectory is not a pure duration effect.
+Inspect these existing BC curves before considering a separate duration test.
