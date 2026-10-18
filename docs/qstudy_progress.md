@@ -1367,3 +1367,46 @@ neither the global EDA storage guard nor metrics, models, original provenance
 or held Table2 files. Observed account headroom rose from294,242,503 to
 948,183,854 bytes; the difference from archive-byte savings reflects metadata
 and concurrent account activity, so these are reported separately.
+
+## Saved BC continuation result
+
+Read-only Slurm1797476 completed the predeclared BC1000→1600→2200 diagnostic:
+all72 saved evaluations succeeded, all nine seed/round streams were eligible,
+and no integrity errors, new model forwards, training updates, replay rows or
+backend calls occurred. The immutable report is
+`qstudy_v1/bc_distillation_rounds_v1/20261018T141052Z_job1797476/report.json`,
+SHA256 `19172e727ea1a2943b62d84b5a08c0239d54e51218b7e13feff9ce60996e442d`.
+Its round0 geometry exactly reproduces report1797105.
+
+| Cumulative actor updates | Clipped raw RMS to teacher | Saved executed RMS to teacher |
+| --- | ---: | ---: |
+| 1000 | .100037 ± .004179 | .143660 ± .010784 |
+| 1600 | .092280 ± .004426 | .130776 ± .014759 |
+| 2200 | .084646 ± .003619 | .131449 ± .010207 |
+
+These are means and sample SDs of three training-seed means, each using the
+same eight actual evaluation noises. Raw distance decreases in all three
+seeds at both continuations. Executed distance is lower than round0 in all
+three final seed means, but its aggregate slightly rebounds after1600 updates.
+
+| Updates | GRT WL (um) | WNS (ns) | TNS (ns) | H overflow | V overflow | Power (W) | Std-cell area (um2) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1000 | 2314028.167 | −.403605 | −217.399438 | 7.666667 | 1.375000 | .170009542 | 61200.241667 |
+| 1600 | 2322382.667 | −.415692 | −220.214458 | 11.208333 | 1.458333 | .170145417 | 61317.437500 |
+| 2200 | 2312631.750 | −.428621 | −224.646958 | 35.083333 | 6.500000 | .169987208 | 61108.983333 |
+
+Closer teacher coordinates do not produce stable physical improvement here:
+mean WL is nonmonotonic, final WL improves over1000 updates in only one seed,
+and BC remains worse than its paired teacher in all three final seed means.
+Final WNS/TNS and H/V overflow worsen; power and area are slightly lower.
+These successful GRT outcomes do not establish final DRC0 or timing closure.
+
+Saved Adam counters verify actual1000/1600/2200 updates with parent optimizer
+state, unchanged common flow/initial Q, and empty flow/Q optimizer states.
+Feedback remains provenance-bound in the online parent chain, but Q weight0
+and disabled flow updates make these BC rounds continued teacher distillation.
+Named generators reset each round; this is not uninterrupted2200-step training.
+Saved raw coordinates are clipped, while training MSE uses unclipped outputs.
+The stochastic logged MSE endpoints also do not decrease in every seed.
+Neither convergence nor legalization as the cause of the physical gap follows.
+Close this diagnostic without launching the optional duration study.
