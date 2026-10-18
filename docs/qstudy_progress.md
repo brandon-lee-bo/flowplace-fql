@@ -2332,3 +2332,83 @@ its exact-seven-parent scheduler metadata SHA256 is
 `9bcbfb3dfe44eae7c16acacb98347aaa342b144a2b473858e848a52efe97b96e`.
 Array children are not additional requested parents, live/pending observations
 remain unresolved, and final resource accounting is still open.
+
+## Reward-study continuation, 2026-10-19 HKT (20:34 UTC snapshot)
+
+A full-objective read-only audit confirms that the completed original
+development matrix is not closure of the user's expanded reward study. The
+eight-rule program remains92/192 audited GRT successes, new TRAIN final-route
+labels29/64 and weighted-flow final evaluation9/24. Existing pending/live jobs
+remain the authoritative requests, not failures or lost work to duplicate.
+Final power admission, the declared six-objective physical matrix, scientific
+scalar online trials, fresh confirmation, aggregate extension cost and durable
+extension model/native preservation remain open. Original648-GRT/48-DRT compact
+native proof is already preserved; it is not the unresolved extension archive.
+
+The revised reward-extension plan now links each reward hypothesis to its
+actual collection/result state. It keeps the measured1.01% macro-HPWL-to-GRT
+mismatch and the negative/conditional congestion and weighted-flow findings.
+An independent review approved the prospective online design: genuine BC,
+same-parent frozen-Q and updated-Q, with a matched scalar GRT control if a new
+expert/final target is selected. A single alpha30-versus10 intervention tests
+stronger behavior regularization from the same actual alpha10 offline parent;
+it does not constitute alpha optimization from scratch. First-cycle shared C0
+implies a testable identical-critic condition, while own C1 makes the second
+cycle a full feedback-procedure comparison. No new scientific jobs or reward
+winner were selected by these documentation changes.
+
+To improve backfill eligibility without duplicating queued work, root changed
+only TimeMin on26 verified pending own-study tasks:1799287_17/23 to30min and
+1798635_40..63 to45min. All26 updates succeeded, retaining command,8 CPUs,
+memory, QOS, thread/physical settings, array throttle and requeue policy. No new
+parent was submitted; raw array child materialization is not a new logical job.
+The requested TimeLimit was unchanged at the update, but Slurm may reduce the
+actual allocated limit under TimeMin. A later TIMEOUT must be retained and
+diagnosed explicitly because these collectors do not automatically restart it.
+An independent before/after review passed. Receipt under recovery
+`qstudy_backfill_adjustment_v1/20261018T203142Z/receipt.json` SHA256 is
+`3b1501d307591f52986650f940bd89f369f16e195ff0a0d661c2df87587899c9`.
+The official scheduling semantics are documented at
+https://slurm.schedmd.com/sbatch.html#OPT_time-min .
+
+Actual BC second-cycle integration subsequently closed:1800262 collected
+three C1 native GRT successes in3m25s/3m16s/3m42s;1800263 completed three genuine
+second continuations in15s/12s/11s. Every seed retains its actual T1 and original
+BC-root identities, cumulative actor Adam1002/Q0/teacher0, C0+C1 counts[1,1]
+and both prior evaluation noise sets excluded from replay. No evaluation
+backend calls were added. Independent metadata report under recovery
+`qstudy_scalar_online_bc_second_smoke_v1/20261018T203244Z_final_metadata_audit.json`
+has SHA256
+`a4931f66ec8bcb8a153e7e6426dd0b068123c9125978af1122a4cad514349645`.
+The training runner performed the full-state checks; this second audit reads
+saved metadata, not checkpoint tensors or compressed native payloads. Actual
+BC T2 prepare1800268 completed1m02s, while1800269 exports are still progressing
+at this snapshot. These one-update-per-cycle checks establish interface/state
+continuity, not scientific600-update online quality or any PPA improvement.
+
+The genuine BC T2 export has now closed as well:1800269 completed all three
+seeds in41s/41s/43s after actual-parent prepare1800268. All three evaluation
+DEFs have finite coordinates, no overlap/boundary violation and no backend
+outcome or training eligibility. Each uses its actual1002-step BC T2 actor,
+with separate frozen scalar-critic provenance and the complete C0+C1 history.
+The actual noise SHA256 is
+`b0ac11fdb30425dbd8a4123e7f9908e1c405a931a4969479d88411ce330bb555`,
+matching FQL T2's shared77108000 stream and disjoint from prior collect noise.
+Independent audit under recovery
+`qstudy_scalar_online_bc_t2_eval_smoke_v1/actual_final_metadata_audit_v1.json`
+has SHA256
+`63f24c09f056cf8d1c002886c1dcc5835b5d39f6bf7132d9dd0af86e28abae91`.
+No model update, forward pass or physical call was made by that metadata audit.
+All declared scalar two-cycle interface checks are now complete; the actual
+scientific multi-reward online experiments remain a separate unfinished stage.
+
+At20:39 UTC the group controller1798858 had resumed its existing1799288
+worker journal, without submitting a new parent or producing a new outcome.
+The four remaining edge/group workers were still pending, with no observed
+FAILED/OOM/TIMEOUT. Two additional strict pending-only metadata updates set
+1799288_21/23 to the same30min TimeMin as edge, retaining all resource and
+physical settings. Receipt
+`qstudy_backfill_adjustment_v1/20261018T203916Z/receipt.json` SHA256 is
+`cee16b593192d5443125a567c0161144b0a96b2bd924ce19532008b8d1eba68b`.
+There are28 scheduling metadata updates in total and zero new submitted parents
+from them. These updates do not establish faster scheduling or new PPA results.

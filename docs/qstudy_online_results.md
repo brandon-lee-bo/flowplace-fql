@@ -3,9 +3,11 @@
 The full declared GRT comparison has completed. Frozen-flow FQL has a small
 mean advantage over matched BC after two measured-feedback rounds, but neither
 FQL branch meets the prospectively declared stable-improvement rule. Final
-development detailed routing has also completed without meeting its WL gate;
-fresh confirmation and durable-evidence closure remain pending. This is development
-evidence on `bp_fe`, not completion of the paused FlowPlace Table2 reproduction.
+development detailed routing has also completed without meeting its WL gate.
+The original648-GRT/48-DRT compact native proof has been preserved and verified;
+fresh confirmation and the user-expanded reward program, including its durable
+model/native archive, remain pending. This is development evidence on `bp_fe`,
+not completion of the paused FlowPlace Table2 reproduction.
 
 ## What was compared
 

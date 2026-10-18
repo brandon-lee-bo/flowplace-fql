@@ -105,10 +105,17 @@ policy-quality run. The BC T1 exporter, BC second trainer and FQL T2 exporter
 passed12,14 and12 CPU fixtures respectively. The BC T2 exporter passed another
 12. Actual graph integration is a separate check: the BC T1 and FQL T2
 three-seed exports completed with six and three legal DEFs respectively,
-without training or backend calls. The BC second measured continuation and
-its final T2 export are not yet claimed complete at this snapshot. A
-scientific online trial needs its own explicit matched collection/update plan
-and all actual feedback before training can start.
+without training or backend calls. The BC second continuation subsequently
+completed in all three seeds (1800263), each admitting its complete C0+C1 and
+retaining cumulative actor Adam1002/Q0/teacher0. Actual BC T2 prepare1800268
+and three-seed export1800269 also completed: three legal evaluation-only DEFs,
+with the same actual77108000 noise arrays as FQL T2, no replay eligibility and
+no new backend calls. Its independent saved-metadata audit is recovery
+`qstudy_scalar_online_bc_t2_eval_smoke_v1/actual_final_metadata_audit_v1.json`,
+SHA256 `63f24c09f056cf8d1c002886c1dcc5835b5d39f6bf7132d9dd0af86e28abae91`.
+A scientific online trial needs its own explicit matched collection/update
+plan and all actual feedback before training can start; these integrations
+do not supply600-update policy-quality results.
 
 ## Recompute a report without rerunning policies
 
