@@ -787,3 +787,63 @@ The source is committed as23f87e2. Its fixed loss and coordinate constraints
 are specified prospectively in [the literature note](qstudy_literature.md).
 It tests training-time conservatism separately from the earlier negative
 post-hoc ensemble-beta screen; no automatic hyperparameter expansion is opened.
+
+## Matched offline results after missing-only recovery
+
+All25 recovery tasks1796906 completed with genuine native success. Final
+audit1796908 verified the complete96-request round0 inventory. The original71
+outcome hashes and25 interrupted-attempt hashes remain unchanged; the recovery
+metadata summary SHA is
+`282ec512b9bc8befd5c3d44c12740c8715815e7d7f3993d1fa40a0f40b6e82f8`.
+The96 requests contain48 training-eligible collection layouts and48
+evaluation-only layouts. Evaluation labels never enter replay. Main resume
+1796907 has no remaining dependency and awaits ordinary CPU scheduling before
+continuing the original two matched online rounds.
+
+Separate read-only round0 report1797018 is complete: six policy/seed rounds,
+96 verified native outcomes, zero invalid cases. Its snapshot is
+`qstudy_v1/matched_offline_r0_report_v1/20261018T104921.160264Z_job1797018/report.json`,
+SHA `dc19bc3b64d3ea7888cffb2b70e555f183e3a32f3cb7885b89b2e76e7340c7d6`.
+The following are evaluation-only means and sample SD across three independent
+training-seed means, each using all eight common generation noises:
+
+| GRT metric | Matched BC | Legacy offline FQL |
+| --- | ---: | ---: |
+| Wirelength (um) | 2314028.167 +/-12141.004 | 2307889.792 +/-3804.304 |
+| WNS (ns) | -0.40360479 +/-0.01692463 | -0.40720167 +/-0.00749839 |
+| TNS (ns) | -217.399438 +/-16.505006 | -217.651750 +/-0.675703 |
+| Horizontal overflow sum | 7.666667 +/-2.504163 | 2.625000 +/-1.887459 |
+| Vertical overflow sum | 1.375000 +/-0.450694 | 0.666667 +/-0.072169 |
+| Power (W) | 0.170009542 +/-0.000150770 | 0.170139583 +/-0.000453631 |
+| Standard-cell area (um2) | 61200.241667 +/-347.024987 | 61198.829167 +/-393.850309 |
+
+The paired FQL-minus-BC wirelength difference is -6138.375 +/-15933.804um;
+seed0/1 improve and seed2 worsens. Congestion decreases, while mean signed
+timing slack is slightly worse. This is a small, unstable offline policy-mean
+gain, not a stable multiobjective improvement or final detailed-route claim.
+
+Read-only fixed-eight-candidate analysis1797038 also completed, using only
+those existing evaluation outcomes. Its snapshot is
+`qstudy_v1/matched_offline_r0_selection_v1/20261018T105429_998452_job1797038`.
+No model inference or physical call was added. Each rule selects one output
+per seed from the same eight candidates; uncertainty is across those three
+selected outputs, not across24 candidates:
+
+| Fixed selection rule | BC GRT WL (um) | FQL GRT WL (um) |
+| --- | ---: | ---: |
+| Noise index0 | 2373611.667 +/-37852.973 | 2334025.333 +/-38214.956 |
+| Minimum executed macro HPWL | 2343312.333 +/-37946.858 | 2342670.000 +/-22715.448 |
+| Maximum recorded Q | 2275970.667 +/-15562.540 | 2240981.667 +/-45602.133 |
+| Oracle minimum measured GRT WL | 2198936.667 +/-29275.152 | 2203561.667 +/-38291.581 |
+
+Q selection helps these development pools; its paired FQL-minus-BC wirelength
+difference is -34989 +/-30581.283um, with WNS worse and TNS better on average.
+The oracle inspects all eight real backend labels and is not a free deployable
+selector. Selected-layout results and policy means answer different questions.
+These inspected outcomes cannot become fresh confirmation later.
+
+COM array1797016 completed all three seed tasks in3m06s, producing12 fits.
+Its separate paired reporter passed11 tests in1797030 and independent review;
+it retains the full COM binding and validates the12 original controls without
+changing their verifier. Predictive accuracy and regularization pressure will
+be reported separately from any actor or physical-direction claim.
