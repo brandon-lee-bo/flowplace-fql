@@ -201,3 +201,12 @@ Its receipt SHA256 is
 The earlier v24 cost snapshot remains an immutable running-state capture;
 this completion does not change its249-parent denominator or close the full
 study's resource/storage evidence.
+
+The next append-only snapshot is
+`/fact_home/bohanli/flowplace_fql_recovery/qstudy_cost_additional_jobs_v1/bookkeeping_20261019T023135_v25.json`
+(SHA256 `73d1de177bfe80cb00ffb0560ca1148d3140b5c3503f0f3ecfcb481e4ea4436b`).
+It preserves all249 v24 entries in exact order and adds completed read-only
+expert-reward reader1801691 (2CPU,8GiB request,43 seconds, exit0:0), for250
+unique parent IDs. The captured scheduler record and small-report preservation
+receipt are bound in the entry. This is an allocation inventory extension,
+not a recalculated study-wide resource total.

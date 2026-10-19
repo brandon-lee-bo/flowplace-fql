@@ -192,3 +192,41 @@ Related sources and exact definitions will be recorded in
 `qstudy_literature.md`. No new reward arm is called successful before its
 native backend outcomes are complete. Final fresh-confirmation scope will be
 locked only after this user-directed development extension is closed.
+
+## 2026-10-19: four completed expert-reward arms
+
+Read-only Slurm reader1801691 completed successfully in43 seconds. Its native
+audit report closes96/192 requests: four complete arms, each with three
+independent training seeds and eight matched generation noises per seed.
+There are96 pending evaluations and no recorded physical, geometry or integrity
+failures in this snapshot. The remaining dataflow, channel and two composite
+arms are not yet eligible for comparison. No reward winner has been selected.
+
+All values below are **global-route-stage**, not final detailed-route Table2
+metrics. Entries are means of three equally weighted training-seed means.
+Overflow is summed positive edge demand minus capacity, not a percentage or DRC.
+
+| Training objective | GRT WL (m) | WNS (ns) | TNS (ns) | H overflow | V overflow | Estimated power (W) | Standard-cell area (µm²) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| GRT WL |2.3043|−0.4186|−217.92|2.00|0.79|0.17002|61,525.2|
+| Macro HPWL |2.3275|−0.4077|−216.26|15.29|3.08|0.17063|61,208.5|
+| HPWL + edge rule |2.3129|−0.4153|−221.28|10.50|2.33|0.17014|61,211.1|
+| HPWL + group rule |2.3134|−0.4117|−200.82|10.88|1.54|0.17007|61,130.3|
+
+GRT-WL sample standard deviations across seed means are respectively0.01421,
+0.01768,0.01585 and0.00416m. The grouping arm improves TNS relative to GRT-WL
+in all three seed means, but worsens WL and both congestion directions in all
+three. Both rule arms improve mean WL relative to the HPWL-only control,
+without consistent improvement in every seed. This is evidence of a tradeoff,
+not an overall PPA gain or proof that the group-rule mechanism caused better
+timing. In particular, the earlier TRAIN audit found the group feature91.4%
+constant. This is a development comparison on one circuit, not fresh confirmation.
+
+Immutable report SHA256:
+`74a8492067811c27e51b5b9ca450d4dd60669c271c864215995fe3166963c279`.
+The report, paired per-seed comparisons, captured sources and log are preserved
+under `/fact_home/bohanli/flowplace_fql_recovery/qstudy_rule_reward_partial_v1/saved_report_1801691/`;
+preservation receipt SHA256:
+`6d9ebdd88c10ff1d1c455b154bd1babe93ed958dd542d73083f31f2104d8b0eb`.
+Separately, the final-route TRAIN collection has51/64 canonical completions
+at this check; this is label collection, not a trained final-feedback result.
