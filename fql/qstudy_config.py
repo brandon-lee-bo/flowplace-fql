@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from .graph_o2o_archive import atomic_json, sha
+from .flow_policy_config import RELEASED, LEGACY, STEPS, PUBLIC_SHA, validate_teacher_config
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = Path('/fact_data/bohanli/flowplace_fql/qstudy_v1')
@@ -21,6 +22,8 @@ def common_checkpoint(design, seed):
 
 
 def prepare(args):
+    if args.flow_policy == RELEASED and args.online_flow_update:
+        raise ValueError('The public FlowPlace teacher is frozen; remove --online-flow-update')
     dataset = BASE/'data_audit'/args.dataset/'dataset.npz'
     manifest = json.loads(dataset.with_name('manifest.json').read_text())
     design = manifest['design']
@@ -34,13 +37,18 @@ def prepare(args):
         online_updates=args.online_updates, online_samples=args.online_samples, online_rounds=2,
         evaluation_samples=args.evaluation_samples, evaluation_noise_seed=args.evaluation_noise_seed,
         evaluation_purpose=args.evaluation_purpose,
-        collection_noise_seed=4500000, batch_size=16, flow_steps=10,
+        collection_noise_seed=4500000, batch_size=16,
+        flow_policy=args.flow_policy, flow_steps=STEPS if args.flow_policy == RELEASED else 10,
         actor_lr=1e-5, flow_lr=1e-5, critic_lr=3e-4,
         physical_failure_reward=-4, backend_threads=8, backend_storage='scratch',
         offline_critic_update=False, common_checkpoints={}, common_checkpoint_sha256={},
         critic_checkpoints={}, critic_checkpoint_sha256={}, terminal_mask=0,
         checkpoint_selection='fixed step budget; all predetermined evaluation noises',
         note='Offline Q fits independently before actor training; online Q uses measured own collect data.')
+    if args.flow_policy == RELEASED:
+        cfg.update(flow_checkpoint_sha256=PUBLIC_SHA, flow_warmup_steps=0,
+            actor_initialization='Audited common student weights only; common flow weights are ignored')
+    validate_teacher_config(cfg)
     for seed in args.seeds:
         common = common_checkpoint(design, seed)
         qfolder = args.screen/args.dataset/args.variant/f'seed_{seed}'/'refit'
@@ -75,6 +83,8 @@ def main():
     p.add_argument('--q-weight', type=float, default=1.)
     p.add_argument('--beta', type=float, default=0.)
     p.add_argument('--online-flow-update', action='store_true')
+    p.add_argument('--flow-policy', choices=[RELEASED, LEGACY], default=RELEASED,
+                   help='Frozen released FlowPlace by default; legacy only reproduces old experiments')
     p.add_argument('--steps', type=int, default=1000)
     p.add_argument('--online-updates', type=int, default=600)
     p.add_argument('--online-samples', type=int, default=8)

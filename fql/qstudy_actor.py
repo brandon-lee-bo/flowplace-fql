@@ -1,8 +1,9 @@
 """One-step FQL actor study with fixed offline critics and measured online replay.
 
-The flow and actor start from matching, already audited common warmups. A
-screened terminal critic is fixed during offline actor fitting; online updates
-refit it using own measured feedback. Teacher updates are an explicit factor.
+New configs use the frozen public FlowPlace teacher and initialize the student
+from an audited common warmup. A screened terminal critic is fixed during offline
+actor fitting; online updates refit it using own measured feedback. Historical
+untagged configs retain their previous teacher/update protocol.
 """
 from __future__ import annotations
 import argparse
@@ -22,6 +23,8 @@ from baseline.api import RUNTIME, CHECKPOINT, load_problem, load_model, generate
 from backend.scripts.export_macro_def import convert
 from .graph_o2o_archive import atomic_json, sha
 from .graph_o2o_models import GraphPolicy, FeatureCritics
+from .released_flowplace_teacher import make_behavior_flow
+from .flow_policy_config import uses_released_teacher, validate_teacher_config
 from .qstudy_data import load_dataset, METRIC_NAMES
 from .qstudy_models import MultiMetricCritic, measured_costs, frozen_critic
 from .qstudy_screen import VARIANTS, make_model, atomic_torch
@@ -137,9 +140,11 @@ def gradient_norms(first, second, tensors):
 def train(args):
     exp = args.experiment.resolve()
     cfg, problem, x, costs, mask, behavior, critic, families = setup(exp, args.seed)
+    validate_teacher_config(cfg)
     folder = exp/f'seed_{args.seed}'/f'round_{args.round}'
     folder.mkdir(parents=True, exist_ok=True)
-    flow, actor = GraphPolicy(problem), GraphPolicy(problem)
+    flow = make_behavior_flow(problem, cfg) if uses_released_teacher(cfg) else GraphPolicy(problem)
+    actor = GraphPolicy(problem)
     opts = dict(actor=torch.optim.Adam(actor.parameters(), lr=cfg.get('actor_lr', 1e-5)),
         flow=torch.optim.Adam(flow.parameters(), lr=cfg.get('flow_lr', 1e-5)),
         critic=torch.optim.AdamW(critic.parameters(), lr=cfg.get('critic_lr', 3e-4), weight_decay=1e-4))
@@ -164,6 +169,11 @@ def train(args):
         replay=replay_binding, parent=parent_binding, source_sha256={n: sha(ROOT/n) for n in [
             'fql/qstudy_actor.py', 'fql/qstudy_models.py', 'fql/qstudy_screen.py',
             'fql/graph_o2o_models.py', 'baseline/api.py']})
+    if uses_released_teacher(cfg):
+        binding['flow_policy'] = cfg['flow_policy']
+        binding['flow_checkpoint_sha256'] = cfg['flow_checkpoint_sha256']
+        binding['source_sha256'].update({n: sha(ROOT/n) for n in [
+            'fql/released_flowplace_teacher.py', 'fql/flow_policy_config.py']})
     binding_path = folder/'binding.json'
     if binding_path.exists() and json.loads(binding_path.read_text()) != binding:
         raise ValueError('Policy training binding changed')
@@ -187,7 +197,9 @@ def train(args):
             raise ValueError('Online parent identity changed')
     else:
         source = torch.load(common, map_location='cuda', weights_only=False)
-        flow.load_state_dict(source['flow'])
+        # A common checkpoint may initialize the student, never the public teacher.
+        if not uses_released_teacher(cfg):
+            flow.load_state_dict(source['flow'])
         actor.load_state_dict(source['actor'])
         critic.load_state_dict(torch.load(qpath, map_location='cuda', weights_only=False)['model'])
         del source

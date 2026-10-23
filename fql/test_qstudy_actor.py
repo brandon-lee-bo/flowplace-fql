@@ -24,6 +24,7 @@ from torch import nn
 from . import qstudy_actor as runner
 from .graph_o2o_archive import atomic_json, sha
 from .qstudy_models import MultiMetricCritic
+from .flow_policy_config import RELEASED, PUBLIC_SHA
 
 
 class TinyPolicy(nn.Module):
@@ -177,6 +178,29 @@ class ActorRunnerTests(unittest.TestCase):
         self.assertEqual(rows[0]["parameter_gradients"]["q_grad_norm"], 0.)
         rows = [json.loads(line) for line in (fql/"seed_0/round_0/learning_curve.jsonl").read_text().splitlines()]
         self.assertGreater(rows[0]["action_gradients"]["q_grad_norm"], 0.)
+
+    def test_released_teacher_ignores_legacy_common_flow_and_stays_frozen_online(self):
+        exp = self.experiment("released", flow_policy=RELEASED, flow_steps=20,
+                              flow_warmup_steps=0, flow_checkpoint_sha256=PUBLIC_SHA)
+        torch.manual_seed(9876)
+        public = TinyPolicy(self.problem).requires_grad_(False).eval()
+        public_state = copy.deepcopy(public.state_dict())
+        replay = dict(x=torch.full((4, 3, 2), .9), costs=self.costs[:4]*.9,
+                      mask=self.mask[:4], success=torch.ones(4, dtype=torch.bool),
+                      bindings=[dict(path="fixture", sha256="own")])
+        def factory(*args):
+            return copy.deepcopy(public)
+        with self.cpu_fixture(), mock.patch.object(runner, "make_behavior_flow", side_effect=factory):
+            runner.train(self.args(exp))
+        with self.cpu_fixture(replay=replay), mock.patch.object(runner, "make_behavior_flow", side_effect=factory):
+            runner.train(self.args(exp, 1))
+        offline, online = self.checkpoint(exp), self.checkpoint(exp, 1)
+        for saved in [offline, online]:
+            self.assert_nested_equal(saved["flow"], public_state)
+            self.assertFalse(saved["optimizers"]["flow"]["state"])
+        self.assertFalse(torch.equal(offline["actor"]["linear.weight"], online["actor"]["linear.weight"]))
+        self.assertTrue(any(not torch.equal(offline["critic"][key], value)
+                            for key, value in online["critic"].items() if key.startswith("members")))
 
     def test_exact_resume_and_final_checkpoint_before_marker_recovery(self):
         full, interrupted = self.experiment("full"), self.experiment("interrupted")

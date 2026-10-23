@@ -1,0 +1,27 @@
+{
+  "schema": "sequential_fql_v2_4",
+  "design": "bp_fe",
+  "batch_size": 2,
+  "bc_steps": 1000,
+  "critic_mc_steps": 1000,
+  "train_steps": 1000,
+  "alpha": 10.0,
+  "q_weight": 1.0,
+  "actor_lr": 1e-05,
+  "critic_lr": 0.0003,
+  "critic_weight_decay": 0.0001,
+  "critic_width": 128,
+  "gamma": 1.0,
+  "target_tau": 0.005,
+  "target_reduction": "mean",
+  "actor_q_reduction": "mean",
+  "grad_clip": 1.0,
+  "checkpoint_every": 50,
+  "log_every": 25,
+  "env_padding": 0.0,
+  "arms": [
+    "bc",
+    "fql"
+  ],
+  "dataset": "datasets/bp_fe_grt_v1/dataset.npz"
+}

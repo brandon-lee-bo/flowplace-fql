@@ -1,110 +1,50 @@
 # FlowPlace + FQL investigation
 
-The [execution guide](docs/qstudy_reproduction.md) maps current inputs,
-training/evaluation entries and read-only report reproduction.
+This repository studies whether Q-guided policy learning can improve macro
+placement beyond a distilled FlowPlace policy. It contains the baseline adapter,
+whole-layout and sequential research prototypes, matched controls, and native
+OpenROAD evaluation code. **No stable overall PPA advantage has been established.**
 
-The current Q/reward study is **in progress**, with **no stable PPA advantage
-established**. The user-directed extension now tests eight
-[expert-rule rewards](docs/qstudy_rule_reward_protocol.md) and six
-[final-backend reward definitions](docs/qstudy_final_feedback_protocol.md).
-The expert critic matrix has completed; policy evaluation and the new TRAIN64
-detailed-route collection are still running or pending. These are experiments,
-not demonstrated improvements. The separately frozen
-[four-arm scalar-online control](docs/qstudy_scalar_online_control_protocol.md)
-tests updated/frozen Q and stronger distillation against genuine BC; its
-[execution map](docs/qstudy_reproduction.md#frozen-four-arm-scalar-online-experiment)
-distinguishes the scientific trial from completed one-update interface checks.
-The separate [graph inference-cost protocol](docs/qstudy_graph_inference_cost.md)
-compares the actual three-seed round2 BC/FQL actors with their Euler10 teacher;
-its [completed measurements](docs/qstudy_cost_inventory.md#completed-graph-inference-measurement)
-find about33ms for either one-step actor plus legalization versus242ms for
-Euler10 plus legalization on bp_fe/L20. This is a distillation speed benefit,
-not a demonstrated Q-quality gain or a released FlowPlace20-hard comparison.
-The [compact evidence/decision table](docs/qstudy_decisions.md)
-separates completed diagnostics, the main online GRT matrix and48 completed
-final routes from pending evidence closure and fresh confirmation. The study tests critic inputs, losses,
-physical objectives and behavior-flow data sources. Read the [current plan](docs/qstudy_plan.md),
-[measured progress](docs/qstudy_progress.md),
-[behavior-flow label protocol](docs/qstudy_behavior_source.md) and
-[source-to-actor protocol](docs/qstudy_source_actor_protocol.md).
-The completed [source-control result](docs/qstudy_source_results.md) is negative
-for current-flow WL prediction and stable policy improvement: all48 source-actor
-native outcomes succeeded, but current-flow labels did not beat matched BC
-consistently. The [bounded multiobjective comparison](docs/qstudy_bounded_objective_protocol.md)
-has completed all96 native outcomes, including24 reused BC references.
-Its timing objective reduces mean WL by1.157% versus that descriptive BC
-reference, but worsens TNS and horizontal overflow beyond the declared
-tolerances; no bounded arm qualifies for promotion. The complete
-[matched online results and seven-metric curves](docs/qstudy_online_results.md)
-show frozen-flow FQL round2 WL0.804% below BC, with two of three seeds improving;
-the updated-flow branch is0.628% below BC, also two of three. Neither passes
-the predeclared primary threshold, and updated flow additionally fails vertical
-overflow. The
-[fresh confirmation protocol](docs/qstudy_fresh_confirmation_protocol.md)
-reserves new generation noises after development selection is locked.
-These new experiments have not established a stable PPA improvement. The old
-Table 2 reproduction remains paused. Results below describe completed earlier
-phases, rather than completion of the current study.
+## Latest version comparison — 2026-10-23
 
-This study implements **graph-based FlowPlace + Flow Q-learning (FQL), with
-actual offline-to-online training and native downstream evaluation**. The
-earlier evaluation phase is complete, including final native evidence
-preservation. All three bp_fe
-training seeds completed offline training, two
-measured-feedback updates and native final routing:63/63 predeclared requests
-passed, all with DRC0. Online FQL mean final wirelength is0.308% lower than
-matched BC, but is worse in two of three seeds and has greater between-seed
-variation. The expanded384-label and second-circuit bp_be models have also
-completed offline and both measured-feedback online updates. All eight new
-online arm/stage pairs have independent actual parent/child tensor and replay
-checks. Expanded final GRT wirelength is1.255% lower than matched BC, but
-timing is worse; identical-proposal Q diagnostics do not show better critic
-generalization. Expanded21/21 predeclared final routes and both best400 controls
-have completed, all DRC0, with the full native audit and durable evidence
-archive verified. Its final FQL wirelength is1.388% lower than matched BC,
-with slightly better WNS but worse TNS; this is one training seed.
-bp_be's76/76 GRT and23/23 final-route requests also succeeded, all final
-DRC0. Its online FQL final wirelength is0.754% below matched BC, with16.121%
-less TNS magnitude, but0.868% worse wirelength than its own offline stage.
-Independent audit1793511 reloaded all six parent/child checkpoint pairs and
-reparsed all23 final DEFs; native preservation1794901 completed full decoding
-of2249 files. Consolidation1794697 covers all three studies; the bounded
-geometry review records zero macro overlap and out-of-core counts for all109
-logical final requests, including the expanded best400 controls. The
-current Chinese [experiment record](docs/graph_fql_offline_to_online.md),
-[completion audit](docs/completion_audit.md) and [run ledger](docs/run_ledger.md)
-report the completed results, provenance and limitations. No stable RL PPA
-advantage is claimed.
+| Version | Main change | Current evidence |
+| --- | --- | --- |
+| V1.0 | Frozen Euler10 teacher; whole-layout one-step actor with terminal Q | Three development training seeds: mean paired rWL improvement +0.114%, SD 1.566 percentage points; only one seed improves |
+| V1.1 | Replace teacher with frozen public FlowPlace weights and exact constrained20 sampler | Sampler equivalence and both seed-0 training arms complete; matched backend comparison incomplete |
+| V2_4 | Prefix-conditioned teacher, one macro per action, graph critics and Bellman updates | One seed; padding=.001 execution variant lowers mean GRT rWL 0.640% versus matched BC, with worse TNS, area and vertical overflow |
 
-An earlier bounded MLP follow-up is complete: fresh learned behavior-flow
-distillation, a physical-feature critic and12/12 paired GRT outcomes. Its about
-0.9% mean wirelength gain over matched BC is an exploratory single-circuit
-historical result, not the current graph-policy result. See the last section
-of `docs/results_report.md`,
-`fql/fresh_flow_plan_v2.json`, `fql/physical_actor_plan_v1.json`, and
-`logs/fql_fresh_completed_v1.json`.
-The existing Table 2 work covers FlowPlace and DREAMPlace on six OpenROAD
-designs with a common physical-design backend; its remaining jobs and automatic
-continuation are paused. Do not resume them without user direction. See the
-[current execution plan](docs/pending_pipeline.md),
-[Table 2 protocol](docs/table2_protocol.md), and
-[DREAMPlace public-implementation review](docs/table2_dreamplace_protocol.md).
-This work has not yet established paper-matching numbers.
+The V1.0 online controls do not isolate a benefit from new feedback: equal-update
+training on offline data alone outperforms the online branch in the measured
+R1/R2 comparisons. V2's original padding=0 execution has low native acceptance
+(BC2/8, FQL1/8); its padding=.001 results are a separately declared variant.
+These are fixed-design GRT experiments, not final detailed-route/Table2 claims.
 
-The earlier FQL research pilot ran on 2026-10-16/17 (Hong Kong).
-Macro-proxy and real-GRT pilot experiments are complete. The macro-reward FQL
-gain did not transfer to the tested backend cases; the real-GRT critic failed
-its predefined validation gate, so conditional actor expansion was not launched.
-Those pilots established neither paper-matching Table 2 numbers nor a routed
-PPA advantage from FQL.
+- [Measured results, controls and limitations](docs/placement_versions.md)
+- [Training parameters, data requirements and runnable entrypoints](docs/placement_versions_reproduction.md)
+- [Frozen released FlowPlace teacher contract](docs/released_flowplace_teacher.md)
+- [Machine-readable result snapshot and evidence digests](docs/data/placement_versions_20261023.json)
+- [Fresh-run configuration examples](examples/placement_versions)
 
-Read the [results report](docs/results_report.md) for measured outcomes,
-the [run ledger](docs/run_ledger.md) for Slurm jobs/failures, and the
-[evaluation protocol](docs/evaluation_protocol.md) for what each result means.
-The concise Chinese [research interpretation](docs/research_interpretation.md)
-explains what was adapted from FQL and which hypotheses remain unproven.
-The [six-circuit comparison](analysis/artifacts/table2_released_v1/comparison.md)
-retains five completed fullflows and the released swerv DEF's overlap failure.
+Publication verification passed all57 CPU Slurm tests, including real public
+weights, exact original-sampler output equality, teacher freezing, actor/Q
+updates, sequential masking and exact checkpoint recovery. See the reproduction
+guide for the test command. These checks establish code behavior, not quality gains.
+
+## Earlier studies
+
+Earlier graph offline-to-online runs, expert/final-feedback reward screening,
+scalar controls and final-routing studies are separate protocols. Their budgets,
+reward scales, teachers and physical stages must not be mixed with this version
+comparison. The existing records retain their original conclusions and provenance:
+
+- [Graph/FQL experiment record](docs/graph_fql_offline_to_online.md),
+  [completion audit](docs/completion_audit.md) and [run ledger](docs/run_ledger.md).
+- [Q-study execution guide](docs/qstudy_reproduction.md),
+  [decision table](docs/qstudy_decisions.md) and [online comparisons](docs/qstudy_online_results.md).
+- [Measured Euler10/actor inference costs](docs/qstudy_cost_inventory.md#completed-graph-inference-measurement).
+  Those timings are not a public constrained20 speed comparison.
+- [FlowPlace/DREAMPlace Table2 protocol](docs/table2_protocol.md) and
+  [pending pipeline](docs/pending_pipeline.md). Historical controllers remain paused.
 
 ## GitHub checkout
 
@@ -119,8 +59,8 @@ The repository includes experiment code, configuration, Slurm scripts, research
 records and the existing local commit history. Python environments, model
 weights, datasets, downloaded upstream sources and large native EDA artifacts
 remain on the server and are excluded from Git. This is a source-code snapshot,
-not a self-contained copy of the experiment data. The current study is documented
-in [the experiment record](docs/graph_fql_offline_to_online.md).
+not a self-contained copy of the experiment data. The latest version-development results are documented
+in [the version comparison](docs/placement_versions.md).
 
 For a fresh checkout, restore the official sources at the revisions recorded in
 `manifest.json`:
@@ -141,43 +81,22 @@ FactLab paths, resource requests and references to server-local artifacts. Revie
 these before submitting from another checkout; use Slurm for computation.
 Historical Table 2 controllers remain paused.
 
-## Goal
+## Code map and evidence boundaries
 
-Integrate the actual FQL flow teacher, one-step actor and critic with FlowPlace's
-graph backbone; train offline, collect actual policy feedback, update replay
-and continue learning. Compare measured layout quality against original
-FlowPlace, matched BC and best-measured-layout controls, including independent
-seeds, more real training labels and a second circuit. Use one OpenROAD/Nangate45
-flow, preserve failures and report final PPA and DRC. All substantive computation
-runs via FactLab Slurm with requested resource limits.
+`baseline/` wraps the pinned upstream FlowPlace model. `backend/` exports macros
+and runs the native physical-design flow. `analysis/` validates geometry and
+metrics. `fql/versions_whole_train.py` implements matched whole-layout training;
+`fql/sequential_{env,teacher,models,train}.py` implements the sequential prototype.
+The older graph/Q-study entrypoints remain available for their separate protocols.
 
-The earlier FlowPlace/DREAMPlace Table2 reproduction remains recorded and
-paused following the user's2026-10-17 21:39 HKT instruction. Its old pending
-tasks must not be resumed as part of this goal.
+Whole-layout V1 is a single-action contextual bandit; V2 makes sequential
+placement decisions. Macro-only HPWL, GRT and detailed-route metrics describe
+different evaluation levels. Record legality, fixed sample denominators, seeds,
+failures and cost alongside quality. Reward is a chosen measured objective;
+Q is its learned estimate and can be wrong. Neither a higher predicted Q nor a
+lower wirelength alone establishes better overall PPA.
 
-## Layout
-
-- `manifest.json`: pinned upstream revisions and scope.
-- `upstream/`: untouched official source archives (`SOURCE_COMMIT`).
-- `baseline/`: strictly loaded pretrained FlowPlace, data conversion, samples.
-- `backend/`: released OpenROAD flow, tool container, DEF export and evaluation.
-- `fql/`: terminal contextual-bandit adaptation, one-step distillation baseline.
-- `analysis/`: independent legality and macro-only HPWL validation.
-- `collect_dataset.py`: paired teacher/noise and perturbed-action collection,
-  grouped train/validation/test splits, explicit reward provenance.
-- `docs/`: integration rationale, cluster rules and experiment decisions.
-- `logs/`: installation failures and runtime logs are retained.
-
-## Evidence boundaries
-
-FlowPlace Table 2 reports full routed physical metrics. A macro-only HPWL
-improvement is not a timing, power, or area improvement. Whole-layout
-single-action FQL is a contextual bandit and does not test long-horizon
-Bellman credit assignment. Author-provided DEF replay validates a backend,
-while fresh generation additionally validates the model pipeline. Keep these
-levels separate in any report.
-
-The original source and released configuration can differ from paper text;
-preserve and document such differences rather than silently alter a baseline.
-Run-to-run sample variability, legality, and cost must be reported alongside
-any selected best sample. Test seeds cannot select hyperparameters.
+Model weights, datasets, downloaded upstream sources, runtime logs, containers
+and large EDA artifacts are excluded from Git. Full historical reproduction
+requires their separately preserved provenance. Computation uses finite Slurm
+allocations under [the cluster execution policy](docs/cluster_execution.md).

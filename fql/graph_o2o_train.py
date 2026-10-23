@@ -1,8 +1,8 @@
 """Train graph FQL and its matched no-Q control; ingest measured online data.
 
 Single fixed graph, terminal action, mask=0. The uniform prior is an explicit
-FlowPlace adaptation of FQL's Gaussian prior. Euler BC-flow distillation is
-FQL's mechanism; it is not the released endpoint-projection sampler.
+FlowPlace adaptation of FQL's Gaussian prior. New configs use the frozen public
+20-step constrained FlowPlace teacher; untagged historical configs retain Euler.
 """
 from __future__ import annotations
 import argparse
@@ -25,6 +25,8 @@ from backend.scripts.export_macro_def import convert
 from .core import critic_diagnostics
 from .critic_gate import load_train_validation
 from .graph_o2o_models import GraphPolicy, FeatureCritics, actor_objective
+from .released_flowplace_teacher import make_behavior_flow
+from .flow_policy_config import uses_released_teacher
 from .provenance import capture_source_provenance
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -88,8 +90,8 @@ def state_of(flow, actor, critic, optimizers, **metadata):
 
 def construct(problem, cache, x, y, saved=None, cfg=None):
     cfg = cfg or {}
-    flow = GraphPolicy(problem)
-    actor = copy.deepcopy(flow)
+    flow = make_behavior_flow(problem, cfg)
+    actor = GraphPolicy(problem) if uses_released_teacher(cfg) else copy.deepcopy(flow)
     critic = FeatureCritics(cache, x, y, actor.movable, width=cfg.get("critic_width", 128)).cuda()
     optimizers = dict(flow=torch.optim.Adam(flow.parameters(), lr=cfg.get("flow_lr", 1e-5)),
                       actor=torch.optim.Adam(actor.parameters(), lr=cfg.get("actor_lr", 1e-5)),
@@ -159,7 +161,8 @@ def train(args):
     if not source_dir.exists():
         status["source"] = capture_source_provenance(source_dir, extra_paths={
             name: ROOT / name for name in ["fql/graph_o2o_models.py", "fql/graph_o2o_train.py",
-                                           "fql/graph_o2o_train.slurm", "baseline/api.py"]})
+                                           "fql/graph_o2o_train.slurm", "baseline/api.py",
+                                           "fql/released_flowplace_teacher.py", "fql/flow_policy_config.py"]})
     atomic_json(status_path, status)
     resume_common = folder / "common_resume.pt"
     if args.round == 0 and not (folder / "common.pt").exists():
@@ -257,10 +260,11 @@ def train(args):
                 # Compute all targets before updates, matching FQL's simultaneous losses.
                 aloss, distill, aq = actor_objective(actor, flow, critic, z,
                     alpha=cfg["alpha"], q_weight=float(arm == "fql"), flow_steps=cfg["flow_steps"])
-                floss = flow.flow_loss(bb[bindex], zbc, t)
+                floss = z.new_zeros(()) if uses_released_teacher(cfg) else flow.flow_loss(bb[bindex], zbc, t)
                 qloss = (critic(xx[index]) - yy[index, None]).square().mean()
                 update(aloss, opts["actor"], actor)
-                update(floss, opts["flow"], flow)
+                if not uses_released_teacher(cfg):
+                    update(floss, opts["flow"], flow)
                 update(qloss, opts["critic"], critic)
                 if (i+1) % 50 == 0 or i+1 == total:
                     row = dict(step=i+1, actor_loss=float(aloss), flow_loss=float(floss),
@@ -340,7 +344,7 @@ def export(args, cfg, problem, cache, x, y, folder):
                     executed_action=a.tolist(), predicted_q=q, source_checkpoint=str(source),
                     checkpoint_sha256=sha(source), geometry=geom,
                     action_sha256=hashlib.sha256(np.asarray(a, dtype="<f4").reshape(-1).tobytes()).hexdigest(),
-                    sample_dir=str(sample_dir), run_id=f"go2o_v1_s{args.seed}_r{args.round}_{arm}_{role}_{i}",
+                    sample_dir=str(sample_dir), run_id=f"{cfg.get('run_id_prefix', 'go2o_v1')}_s{args.seed}_r{args.round}_{arm}_{role}_{i}",
                     stage="global_route_only", training_feedback_eligible=role == "collect",
                     macro_hpwl=float(metric(a)))
                 np.savez_compressed(sample_dir/"actions.npz", noise=noise.cpu().numpy(),
